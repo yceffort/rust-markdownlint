@@ -67,24 +67,3 @@ optional = true
 [dependencies.unicode-id]
 version = "0.3"
 features = ["no_std"]
-
-[dev-dependencies.criterion]
-version = "0.5"
-
-[dev-dependencies.env_logger]
-version = "0.11"
-
-[dev-dependencies.pretty_assertions]
-version = "1"
-
-[dev-dependencies.serde_json]
-version = "1"
-
-[dev-dependencies.swc_core]
-version = "22"
-features = [
-    "common",
-    "ecma_ast",
-    "ecma_parser",
-    "ecma_visit",
-]
