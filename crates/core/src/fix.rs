@@ -77,7 +77,7 @@ fn preferred_line_ending(input: &str) -> &'static str {
 }
 
 /// helpers.cjs `newLineRe` (`/\r\n?|\n/`) 로 split.
-fn split_lines(input: &str) -> Vec<&str> {
+pub(crate) fn split_lines(input: &str) -> Vec<&str> {
     let mut lines = Vec::new();
     let bytes = input.as_bytes();
     let mut start = 0;
