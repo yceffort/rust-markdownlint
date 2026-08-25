@@ -386,6 +386,8 @@ pub fn ok(tokenizer: &mut Tokenizer) -> State {
 /// ```
 pub fn nok(tokenizer: &mut Tokenizer) -> State {
     let start = tokenizer.tokenize_state.label_starts.pop().unwrap();
+    // 로컬 패치: markdownlint undefined reference 기록.
+    crate::undefined_refs::record(tokenizer, start.start.0);
     tokenizer.tokenize_state.label_starts_loose.push(start);
     tokenizer.tokenize_state.end = 0;
     State::Nok
