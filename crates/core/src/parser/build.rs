@@ -20,7 +20,11 @@ fn parse_options(html_flow: bool) -> ParseOptions {
 /// 줄 시작 바이트부터 `index` 까지의 UTF-16 단위 수 + 1 (micromark JS 와 동일).
 fn column_at(text: &str, index: usize) -> usize {
     let line_start = text[..index].rfind(['\n', '\r']).map_or(0, |i| i + 1);
-    text[line_start..index].chars().map(char::len_utf16).sum::<usize>() + 1
+    text[line_start..index]
+        .chars()
+        .map(char::len_utf16)
+        .sum::<usize>()
+        + 1
 }
 
 fn codepoint_column(text: &str, point: &Point) -> usize {
@@ -67,7 +71,10 @@ fn append_undefined_references(
                 continue;
             }
             let (s, e) = (d.1.1, d.2.1);
-            if s == 0 || text.as_bytes().get(s.wrapping_sub(1)) == Some(&b'\n') || text.as_bytes().get(s.wrapping_sub(1)) == Some(&b'\r') {
+            if s == 0
+                || text.as_bytes().get(s.wrapping_sub(1)) == Some(&b'\n')
+                || text.as_bytes().get(s.wrapping_sub(1)) == Some(&b'\r')
+            {
                 let mut ns = s;
                 while ns < e && matches!(text.as_bytes()[ns], b' ' | b'\t') {
                     ns += 1;
@@ -167,7 +174,11 @@ fn flatten(tree: &mut TokenTree, n: Node, parent: Option<usize>) -> usize {
         parent,
         children: Vec::new(),
     });
-    let children: Vec<usize> = n.children.into_iter().map(|c| flatten(tree, c, Some(id))).collect();
+    let children: Vec<usize> = n
+        .children
+        .into_iter()
+        .map(|c| flatten(tree, c, Some(id)))
+        .collect();
     tree.tokens[id].children = children;
     id
 }

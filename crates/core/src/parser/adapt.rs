@@ -92,7 +92,7 @@ pub(super) fn adapt(nodes: Vec<Node>, text: &str, line_delta: usize) -> Vec<Node
 
 /// micromark `resolveCodeText`: 인접 codeTextData 병합 후, 양끝이 공백/줄바꿈이고
 /// 사이에 내용이 있으면 한 글자씩 codeTextPadding 으로 분리한다.
-fn fix_code_text(nodes: &mut Vec<Node>) {
+fn fix_code_text(nodes: &mut [Node]) {
     for n in nodes.iter_mut() {
         fix_code_text(&mut n.children);
     }
@@ -104,7 +104,10 @@ fn fix_code_text(nodes: &mut Vec<Node>) {
         // 인접 codeTextData 병합
         let mut k = 0;
         while k + 1 < kids.len() {
-            if kids[k].kind == "codeTextData" && kids[k + 1].kind == "codeTextData" && kids[k].end == kids[k + 1].start {
+            if kids[k].kind == "codeTextData"
+                && kids[k + 1].kind == "codeTextData"
+                && kids[k].end == kids[k + 1].start
+            {
                 let nx = kids.remove(k + 1);
                 let cur = &mut kids[k];
                 cur.end_line = nx.end_line;
@@ -129,13 +132,15 @@ fn fix_code_text(nodes: &mut Vec<Node>) {
         }
         // 패딩 1 글자씩 제외한 내부에 공백 아닌 내용이 있어야 한다
         let inner: String = kids[h..=t].iter().map(|c| c.text.as_str()).collect();
-        if inner.len() < 2 || inner[1..inner.len() - 1].trim_matches([' ', '\n', '\r']).is_empty() {
+        if inner.len() < 2
+            || inner[1..inner.len() - 1]
+                .trim_matches([' ', '\n', '\r'])
+                .is_empty()
+        {
             continue;
         }
         // 꼬리 먼저 처리 (인덱스 보존)
-        if kids[t].kind == "lineEnding" {
-            kids[t].kind = "codeTextPadding".into();
-        } else if kids[t].text == " " {
+        if kids[t].kind == "lineEnding" || kids[t].text == " " {
             kids[t].kind = "codeTextPadding".into();
         } else {
             let d = &mut kids[t];
@@ -155,9 +160,7 @@ fn fix_code_text(nodes: &mut Vec<Node>) {
             };
             kids.insert(t + 1, pad);
         }
-        if kids[h].kind == "lineEnding" {
-            kids[h].kind = "codeTextPadding".into();
-        } else if kids[h].text == " " {
+        if kids[h].kind == "lineEnding" || kids[h].text == " " {
             kids[h].kind = "codeTextPadding".into();
         } else {
             let d = &mut kids[h];
@@ -229,10 +232,12 @@ fn extend_line_endings(nodes: &mut [Node], parent: &str, interrupt: bool) {
         }
         let mut j = i + 1;
         let mut last_container = None;
-        while nodes
-            .get(j)
-            .is_some_and(|c| matches!(c.kind.as_str(), "blockQuotePrefix" | "listItemIndent" | "linePrefix"))
-        {
+        while nodes.get(j).is_some_and(|c| {
+            matches!(
+                c.kind.as_str(),
+                "blockQuotePrefix" | "listItemIndent" | "linePrefix"
+            )
+        }) {
             if nodes[j].kind != "linePrefix" {
                 last_container = Some(j);
             }
@@ -259,13 +264,20 @@ fn extend_line_endings(nodes: &mut [Node], parent: &str, interrupt: bool) {
                     && if blank_next {
                         parent != "blockQuote" || next == "lineEndingBlank"
                     } else {
-                        !matches!(next, "blockQuote" | "listUnordered" | "listOrdered" | "listItemPrefix")
+                        !matches!(
+                            next,
+                            "blockQuote" | "listUnordered" | "listOrdered" | "listItemPrefix"
+                        )
                     }
             }
             _ => false,
         };
         if extend {
-            let (el, ec, e) = (nodes[end_idx].end_line, nodes[end_idx].end_column, nodes[end_idx].end);
+            let (el, ec, e) = (
+                nodes[end_idx].end_line,
+                nodes[end_idx].end_column,
+                nodes[end_idx].end,
+            );
             nodes[i].end_line = el;
             nodes[i].end_column = ec;
             nodes[i].end = e;
@@ -301,7 +313,15 @@ fn reparse_html_flow(nodes: &mut [Node], text: &str, line_delta: usize) {
 }
 
 const FLOW_WITH_PREFIX: &[&str] = &[
-    "atxHeading", "thematicBreak", "codeFenced", "htmlFlow", "definition", "paragraph", "setextHeading", "table", "mathFlow",
+    "atxHeading",
+    "thematicBreak",
+    "codeFenced",
+    "htmlFlow",
+    "definition",
+    "paragraph",
+    "setextHeading",
+    "table",
+    "mathFlow",
     "blockQuote",
 ];
 
@@ -311,7 +331,11 @@ fn take_leading_ws(n: &mut Node) -> Option<Node> {
     if first.start != n.start {
         return None;
     }
-    let ws = if first.kind == "spaceOrTab" { n.children.remove(0) } else { take_leading_ws(first)? };
+    let ws = if first.kind == "spaceOrTab" {
+        n.children.remove(0)
+    } else {
+        take_leading_ws(first)?
+    };
     n.start_line = ws.end_line;
     n.start_column = ws.end_column;
     n.text = n.text.split_off(ws.end - n.start);
@@ -322,7 +346,11 @@ fn take_leading_ws(n: &mut Node) -> Option<Node> {
 fn rename_all(nodes: &mut [Node]) {
     for n in nodes.iter_mut() {
         let r = rename(&n.kind);
-        n.kind = if r.is_empty() { camel(&n.kind) } else { r.to_string() };
+        n.kind = if r.is_empty() {
+            camel(&n.kind)
+        } else {
+            r.to_string()
+        };
         rename_all(&mut n.children);
     }
 }
@@ -332,21 +360,28 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
     let mut out: Vec<Node> = Vec::new();
     for mut n in nodes {
         let kind = n.kind.clone();
-        n.children = restructure(std::mem::take(&mut n.children), &kind, in_head || kind == "tableHead");
+        n.children = restructure(
+            std::mem::take(&mut n.children),
+            &kind,
+            in_head || kind == "tableHead",
+        );
         // 플로우 구성요소 앞 들여쓰기는 linePrefix 로 밖에 둔다 (중첩 첫 자식 체인 포함)
-        if FLOW_WITH_PREFIX.contains(&kind.as_str()) {
-            if let Some(mut ws) = take_leading_ws(&mut n) {
-                ws.kind = "linePrefix".into();
-                out.push(ws);
-            }
+        if FLOW_WITH_PREFIX.contains(&kind.as_str())
+            && let Some(mut ws) = take_leading_ws(&mut n)
+        {
+            ws.kind = "linePrefix".into();
+            out.push(ws);
         }
         match kind.as_str() {
-            "literalAutolinkHttp" | "literalAutolinkWww" | "literalAutolinkEmail" => out.push(Node::wrapper("literalAutolink", n)),
+            "literalAutolinkHttp" | "literalAutolinkWww" | "literalAutolinkEmail" => {
+                out.push(Node::wrapper("literalAutolink", n))
+            }
             "definition" => {
                 for k in 0..n.children.len() {
                     if n.children[k].kind == "spaceOrTab" {
                         let after_le = k > 0 && n.children[k - 1].kind == "lineEnding";
-                        n.children[k].kind = if after_le { "linePrefix" } else { "lineSuffix" }.into();
+                        n.children[k].kind =
+                            if after_le { "linePrefix" } else { "lineSuffix" }.into();
                     }
                 }
                 out.push(Node::wrapper("content", n));
@@ -365,13 +400,13 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
                         t.start_column = seq.start_column;
                         t.start = seq.start;
                         t.text = format!("{}{}", seq.text, t.text);
-                        if let Some(d) = t.children.first_mut() {
-                            if d.kind == "data" {
-                                d.start_line = seq.start_line;
-                                d.start_column = seq.start_column;
-                                d.start = seq.start;
-                                d.text = format!("{}{}", seq.text, d.text);
-                            }
+                        if let Some(d) = t.children.first_mut()
+                            && d.kind == "data"
+                        {
+                            d.start_line = seq.start_line;
+                            d.start_column = seq.start_column;
+                            d.start = seq.start;
+                            d.text = format!("{}{}", seq.text, d.text);
                         }
                     } else {
                         k += 1;
@@ -383,19 +418,24 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
                 // 두 번째 이후 줄(밑줄, 구분자 행, 본문 행)의 들여쓰기는 행 밖 linePrefix
                 let mut k = 0;
                 while k < n.children.len() {
-                    if matches!(n.children[k].kind.as_str(), "setextHeadingLine" | "tableDelimiterRow" | "tableRow")
-                        && n.children[k].start != n.start
+                    if matches!(
+                        n.children[k].kind.as_str(),
+                        "setextHeadingLine" | "tableDelimiterRow" | "tableRow"
+                    ) && n.children[k].start != n.start
+                        && let Some(mut ws) = take_leading_ws(&mut n.children[k])
                     {
-                        if let Some(mut ws) = take_leading_ws(&mut n.children[k]) {
-                            ws.kind = "linePrefix".into();
-                            n.children.insert(k, ws);
-                            k += 1;
-                        }
+                        ws.kind = "linePrefix".into();
+                        n.children.insert(k, ws);
+                        k += 1;
                     }
                     k += 1;
                 }
                 // 첫 행에서 나온 linePrefix 는 tableBody 밖으로
-                if kind == "tableBody" && n.children.first().is_some_and(|c| c.kind == "linePrefix" && c.start == n.start) {
+                if kind == "tableBody"
+                    && n.children
+                        .first()
+                        .is_some_and(|c| c.kind == "linePrefix" && c.start == n.start)
+                {
                     let ws = n.children.remove(0);
                     if let Some(f) = n.children.first() {
                         n.start_line = f.start_line;
@@ -410,7 +450,9 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
                 fn flatten_call(children: Vec<Node>, out: &mut Vec<Node>) {
                     for mut c in children {
                         match c.kind.as_str() {
-                            "label" | "gfmFootnoteCallLabel" => flatten_call(std::mem::take(&mut c.children), out),
+                            "label" | "gfmFootnoteCallLabel" => {
+                                flatten_call(std::mem::take(&mut c.children), out)
+                            }
                             "labelMarker" => {
                                 c.kind = "gfmFootnoteCallLabelMarker".into();
                                 out.push(c);
@@ -446,10 +488,11 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
                 }
                 // prefix 바로 앞 공백은 linePrefix
                 let pos = n.children.iter().position(|c| c.kind == "listItemPrefix");
-                if let Some(p) = pos {
-                    if p > 0 && n.children[p - 1].kind == "listItemIndent" {
-                        n.children[p - 1].kind = "linePrefix".into();
-                    }
+                if let Some(p) = pos
+                    && p > 0
+                    && n.children[p - 1].kind == "listItemIndent"
+                {
+                    n.children[p - 1].kind = "linePrefix".into();
                 }
                 out.extend(n.children);
             }
@@ -475,7 +518,11 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
             }
             "paragraph" if parent != "setextHeading" => out.push(Node::wrapper("content", n)),
             "tableCell" => {
-                n.kind = if in_head { "tableHeader".into() } else { "tableData".into() };
+                n.kind = if in_head {
+                    "tableHeader".into()
+                } else {
+                    "tableData".into()
+                };
                 out.push(n);
             }
             _ => out.push(n),
@@ -506,7 +553,11 @@ fn classify_whitespace(nodes: &mut [Node], parent: &str, list_depth: usize, in_f
         if kind != "spaceOrTab" {
             continue;
         }
-        let prev = if i > 0 { nodes[i - 1].kind.as_str() } else { "" };
+        let prev = if i > 0 {
+            nodes[i - 1].kind.as_str()
+        } else {
+            ""
+        };
         let next = nodes.get(i + 1).map(|n| n.kind.as_str()).unwrap_or("");
         let at_line_start = nodes[i].start_column == 1
             || matches!(prev, "blockQuotePrefix" | "listItemIndent" | "linePrefix")
@@ -524,7 +575,9 @@ fn classify_whitespace(nodes: &mut [Node], parent: &str, list_depth: usize, in_f
         let new = match parent {
             "listItemPrefix" => "listItemPrefixWhitespace",
             "blockQuotePrefix" => "blockQuotePrefixWhitespace",
-            "atxHeading" | "tableHeader" | "tableData" | "tableDelimiter" | "thematicBreak" => "whitespace",
+            "atxHeading" | "tableHeader" | "tableData" | "tableDelimiter" | "thematicBreak" => {
+                "whitespace"
+            }
             "resource" => "lineSuffix",
             "codeIndented" if at_line_start || prev.is_empty() => "linePrefix",
             "codeFencedFence" if prev.is_empty() => "linePrefix",
@@ -538,7 +591,7 @@ fn classify_whitespace(nodes: &mut [Node], parent: &str, list_depth: usize, in_f
             }
             _ if at_line_start && list_depth > 0 && seg < list_depth => "listItemIndent",
             _ if at_line_start => "linePrefix",
-            _ if next == "lineEnding" || next == "" => "lineSuffix",
+            _ if next == "lineEnding" || next.is_empty() => "lineSuffix",
             _ => "whitespace",
         };
         nodes[i].kind = new.into();
@@ -547,7 +600,10 @@ fn classify_whitespace(nodes: &mut [Node], parent: &str, list_depth: usize, in_f
 
 /// micromark 가 `_container` 로 표시하는 토큰: postprocess 의 exit 이동 대상.
 fn is_list(n: &Node) -> bool {
-    matches!(n.kind.as_str(), "listUnordered" | "listOrdered" | "gfmFootnoteDefinition")
+    matches!(
+        n.kind.as_str(),
+        "listUnordered" | "listOrdered" | "gfmFootnoteDefinition"
+    )
 }
 
 /// 노드가 (컨테이너를 파고들었을 때) 문단 content 로 끝나는가.
@@ -562,7 +618,11 @@ fn ends_with_content(n: &Node) -> bool {
             .find(|c| {
                 !matches!(
                     c.kind.as_str(),
-                    "lineEnding" | "lineEndingBlank" | "linePrefix" | "listItemIndent" | "blockQuotePrefix"
+                    "lineEnding"
+                        | "lineEndingBlank"
+                        | "linePrefix"
+                        | "listItemIndent"
+                        | "blockQuotePrefix"
                 )
             })
             .is_some_and(ends_with_content),
@@ -619,7 +679,11 @@ fn fix_list_spans(nodes: &mut Vec<Node>) {
         let allow_bq = nodes.get(i + 1).is_some_and(|c| {
             !matches!(
                 c.kind.as_str(),
-                "lineEndingBlank" | "listUnordered" | "listOrdered" | "gfmFootnoteDefinition" | "blockQuote"
+                "lineEndingBlank"
+                    | "listUnordered"
+                    | "listOrdered"
+                    | "gfmFootnoteDefinition"
+                    | "blockQuote"
             )
         });
         let children = &mut nodes[i].children;
@@ -677,7 +741,10 @@ fn merge_content(nodes: &mut Vec<Node>) {
     }
     let mut i = 0;
     while i + 2 < nodes.len() {
-        if nodes[i].kind == "content" && nodes[i + 1].kind == "lineEnding" && nodes[i + 2].kind == "content" {
+        if nodes[i].kind == "content"
+            && nodes[i + 1].kind == "lineEnding"
+            && nodes[i + 2].kind == "content"
+        {
             let next = nodes.remove(i + 2);
             let le = nodes.remove(i + 1);
             let cur = &mut nodes[i];

@@ -6,7 +6,10 @@ fn atx_heading_tokens() {
     let heads = tree.filter_by_types(&["atxHeading"]);
     assert_eq!(heads.len(), 1);
     let h = tree.get(heads[0]);
-    assert_eq!((h.start_line, h.start_column, h.end_line, h.end_column), (1, 1, 1, 8));
+    assert_eq!(
+        (h.start_line, h.start_column, h.end_line, h.end_column),
+        (1, 1, 1, 8)
+    );
     let seq = tree.descendants_by_type(heads[0], &["atxHeadingSequence"]);
     assert_eq!(tree.get(seq[0]).text, "#");
     assert_eq!(tree.parent_of_type(seq[0], &["atxHeading"]), Some(heads[0]));
@@ -38,8 +41,10 @@ fn matches_micromark_token_dumps() {
         "empty-links",
     ] {
         let md = std::fs::read_to_string(format!("{dir}/{name}.md")).unwrap();
-        let expected: serde_json::Value =
-            serde_json::from_str(&std::fs::read_to_string(format!("{dir}/{name}.md.json")).unwrap()).unwrap();
+        let expected: serde_json::Value = serde_json::from_str(
+            &std::fs::read_to_string(format!("{dir}/{name}.md.json")).unwrap(),
+        )
+        .unwrap();
         assert_eq!(parse(&md).to_json(), expected, "{name}");
     }
 }
