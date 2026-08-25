@@ -11,7 +11,7 @@
 
 [package]
 edition = "2018"
-rust-version = "1.56"
+rust-version = "1.88"
 name = "markdown"
 version = "1.0.0"
 authors = ["Titus Wormer <tituswormer@gmail.com>"]
