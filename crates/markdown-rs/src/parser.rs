@@ -36,6 +36,9 @@ pub fn parse<'a>(
 ) -> Result<(Vec<Event>, ParseState<'a>), message::Message> {
     let bytes = value.as_bytes();
 
+    // 로컬 패치: 이전 parse 의 undefined reference 잔여물 제거.
+    crate::undefined_refs::clear();
+
     let mut parse_state = ParseState {
         options,
         bytes,

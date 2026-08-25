@@ -22,7 +22,6 @@
 //! * **`serde`**
 //!   — enable serde to serialize ASTs and configuration (includes `dep:serde`)
 
-#![no_std]
 #![allow(clippy::all, clippy::pedantic)]
 #![allow(clippy::doc_link_with_quotes)]
 #![allow(clippy::missing_panics_doc)]
@@ -45,6 +44,7 @@ mod to_html;
 mod to_mdast;
 mod tokenizer;
 mod util;
+pub mod undefined_refs;
 
 pub mod mdast; // To do: externalize?
 pub mod message; // To do: externalize.
