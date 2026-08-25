@@ -1,0 +1,6 @@
+{
+  // jsonc: 주석과 trailing comma 허용
+  "default": false,
+  "MD018": { "a": 1, "b": 2 },
+  "MD047": false,
+}

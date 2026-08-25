@@ -11,7 +11,7 @@ license = "MIT"
 markdown = { path = "crates/markdown-rs" }
 rust-markdownlint = { path = "crates/core" }
 serde = { version = "1", features = ["derive"] }
-serde_json = "1"
+serde_json = { version = "1", features = ["preserve_order"] }
 jsonc-parser = { version = "0.33", features = ["serde"] }
 serde-saphyr = "1"
 toml = "1"

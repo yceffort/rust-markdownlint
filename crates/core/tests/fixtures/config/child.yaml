@@ -1,0 +1,3 @@
+extends: ./base.jsonc
+MD018:
+  b: 3
