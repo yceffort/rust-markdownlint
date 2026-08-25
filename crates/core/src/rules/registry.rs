@@ -1,48 +1,9 @@
 use std::collections::HashMap;
 use std::sync::LazyLock;
 
-use super::{LintContext, Rule, RuleMeta};
-use crate::error::ErrorSink;
-
-// check 본문은 Task 4(md018.rs, md047.rs 포팅)에서 채운다.
-pub(crate) struct Md018;
-pub(crate) struct Md047;
-
-static MD018_META: RuleMeta = RuleMeta {
-    names: &["MD018", "no-missing-space-atx"],
-    description: "No space after hash on atx style heading",
-    tags: &["headings", "atx", "spaces"],
-    needs_tokens: true,
-    fixable: true,
-};
-
-static MD047_META: RuleMeta = RuleMeta {
-    names: &["MD047", "single-trailing-newline"],
-    description: "Files should end with a single newline character",
-    tags: &["blank_lines"],
-    needs_tokens: false,
-    fixable: true,
-};
-
-impl Rule for Md018 {
-    fn meta(&self) -> &'static RuleMeta {
-        &MD018_META
-    }
-
-    fn check(&self, _ctx: &LintContext, _out: &mut ErrorSink) {
-        todo!("Task 4: port lib/md018.mjs")
-    }
-}
-
-impl Rule for Md047 {
-    fn meta(&self) -> &'static RuleMeta {
-        &MD047_META
-    }
-
-    fn check(&self, _ctx: &LintContext, _out: &mut ErrorSink) {
-        todo!("Task 4: port lib/md047.mjs")
-    }
-}
+use super::Rule;
+use super::md018::Md018;
+use super::md047::Md047;
 
 static RULES: [&dyn Rule; 2] = [&Md018, &Md047];
 
