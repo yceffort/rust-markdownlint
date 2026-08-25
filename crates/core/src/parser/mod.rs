@@ -1,5 +1,5 @@
 mod adapt;
-mod build;
+pub(super) mod build;
 mod dump;
 mod helpers;
 mod token;

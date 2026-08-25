@@ -71,7 +71,7 @@ for f in sorted(glob.glob(os.path.join(oracle, "js", "*.md.json"))):
     total += 1
     if r.returncode != 0:
         bad["RUST PANIC"] += 1; ex.setdefault("RUST PANIC", name); continue
-    d = first_diff(json.load(open(rs_out)), norm_js(js_raw))
+    d = first_diff(norm_js(json.load(open(rs_out))), norm_js(js_raw))
     if d is None:
         ok += 1
     else:
