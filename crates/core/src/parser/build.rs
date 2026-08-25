@@ -96,22 +96,20 @@ fn append_undefined_references(
         r.data.retain(|d| d.1.1 < d.2.1);
         let mut outer = node_at("undefinedReferenceShortcut", r.start, r.end);
         // 직전 인공 토큰과 맞닿아 있으면 collapsed/full 로 병합
-        if arts.last().is_some_and(|p| p.end == r.start.1) {
-            if r.data.is_empty() {
-                let p = arts.last_mut().unwrap();
+        if r.data.is_empty() {
+            if let Some(p) = arts.last_mut().filter(|p| p.end == r.start.1) {
                 p.kind = "undefinedReferenceCollapsed".into();
                 p.end_line = outer.end_line;
                 p.end_column = outer.end_column;
                 p.end = outer.end;
                 p.text = text[p.start..p.end].to_string();
-            } else {
-                let p = arts.pop().unwrap();
-                outer.kind = "undefinedReferenceFull".into();
-                outer.start_line = p.start_line;
-                outer.start_column = p.start_column;
-                outer.start = p.start;
-                outer.text = text[outer.start..outer.end].to_string();
             }
+        } else if let Some(p) = arts.pop_if(|p| p.end == r.start.1) {
+            outer.kind = "undefinedReferenceFull".into();
+            outer.start_line = p.start_line;
+            outer.start_column = p.start_column;
+            outer.start = p.start;
+            outer.text = text[outer.start..outer.end].to_string();
         }
         let joined: String = r.data.iter().map(|(_, s, e)| &text[s.1..e.1]).collect();
         let joined = joined.trim();
