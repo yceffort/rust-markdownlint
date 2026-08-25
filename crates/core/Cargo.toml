@@ -13,6 +13,7 @@ jsonc-parser.workspace = true
 serde-saphyr.workspace = true
 toml.workspace = true
 regex.workspace = true
+fancy-regex.workspace = true
 thiserror.workspace = true
 
 [dev-dependencies]

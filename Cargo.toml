@@ -16,6 +16,7 @@ jsonc-parser = { version = "0.33", features = ["serde"] }
 serde-saphyr = "1"
 toml = "1"
 regex = "1"
+fancy-regex = "0.19"
 thiserror = "2"
 anyhow = "1"
 globset = "0.4"
