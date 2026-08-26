@@ -137,10 +137,18 @@ mod tests {
         dir
     }
 
+    // Windows 에서도 `/` 구분자로 비교
     fn rel(base: &Path, files: &[PathBuf]) -> Vec<String> {
         files
             .iter()
-            .map(|f| f.strip_prefix(base).unwrap().to_string_lossy().into_owned())
+            .map(|f| {
+                f.strip_prefix(base)
+                    .unwrap()
+                    .components()
+                    .map(|c| c.as_os_str().to_string_lossy())
+                    .collect::<Vec<_>>()
+                    .join("/")
+            })
             .collect()
     }
 
