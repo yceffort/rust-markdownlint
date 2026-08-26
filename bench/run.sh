@@ -34,7 +34,8 @@ if diff -q out.rs.txt out.js.txt > /dev/null; then
   echo "결과 diff: 없음 (오류 $(wc -l < out.rs.txt | tr -d ' ') 줄)"
 else
   echo "결과 diff: 있음"
-  diff out.rs.txt out.js.txt | head -20
+  # pipefail 상태라 diff 의 exit 1 이 스크립트를 죽이지 않게 한다
+  diff out.rs.txt out.js.txt | head -20 || true
 fi
 
 hyperfine --warmup 3 -i --export-json bench.json \
