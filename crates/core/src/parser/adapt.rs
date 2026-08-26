@@ -82,7 +82,7 @@ pub(super) fn adapt(nodes: Vec<Node>, text: &str, line_delta: usize) -> Vec<Node
     demote_autolinks(&mut nodes, text, false);
     let mut nodes = restructure(nodes, "root", false);
     fix_code_text(&mut nodes);
-    classify_whitespace(&mut nodes, "root", 0, false);
+    classify_whitespace(&mut nodes, "root", &[]);
     extend_line_endings(&mut nodes, "root", false);
     fix_list_spans(&mut nodes);
     merge_content(&mut nodes);
@@ -415,13 +415,14 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
                 out.push(n);
             }
             "setextHeading" | "tableHead" | "tableBody" => {
-                // 두 번째 이후 줄(밑줄, 구분자 행, 본문 행)의 들여쓰기는 행 밖 linePrefix
+                // 두 번째 이후 줄(밑줄, 구분자 행, 본문 행)의 들여쓰기는 행 밖 linePrefix.
+                // 테이블 첫 줄은 table 자체의 linePrefix 로 빠지지만 본문 첫 행은 아니다.
                 let mut k = 0;
                 while k < n.children.len() {
                     if matches!(
                         n.children[k].kind.as_str(),
                         "setextHeadingLine" | "tableDelimiterRow" | "tableRow"
-                    ) && n.children[k].start != n.start
+                    ) && (kind == "tableBody" || n.children[k].start != n.start)
                         && let Some(mut ws) = take_leading_ws(&mut n.children[k])
                     {
                         ws.kind = "linePrefix".into();
@@ -531,23 +532,67 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
     out
 }
 
-fn classify_whitespace(nodes: &mut [Node], parent: &str, list_depth: usize, in_footnote: bool) {
+/// 줄머리 접두를 소비하는 컨테이너 (조상 체인, 바깥→안쪽).
+#[derive(Clone, Copy, PartialEq)]
+enum Container {
+    BlockQuote,
+    List,
+    Footnote,
+}
+
+fn container_of(kind: &str) -> Option<Container> {
+    match kind {
+        "blockQuote" => Some(Container::BlockQuote),
+        "listUnordered" | "listOrdered" => Some(Container::List),
+        "gfmFootnoteDefinition" => Some(Container::Footnote),
+        _ => None,
+    }
+}
+
+/// 줄머리 공백이 어느 컨테이너의 continuation 에 소비됐는지 조상 체인 순서대로 배정한다.
+/// micromark 는 컨테이너를 바깥부터 순서대로 이어가며, blockQuote 는 `linePrefix` 와
+/// `blockQuotePrefix` 를, 리스트 아이템은 `listItemIndent` 를, footnote 는
+/// `gfmFootnoteDefinitionIndent` 를 소비한다. 체인이 끝나면 flow 의 `linePrefix` 다.
+fn line_start_kind(nodes: &[Node], i: usize, chain: &[Container]) -> &'static str {
+    let mut k = i;
+    while k > 0
+        && nodes[k].start_column != 1
+        && matches!(
+            nodes[k - 1].kind.as_str(),
+            "spaceOrTab" | "listItemIndent" | "linePrefix" | "blockQuotePrefix"
+        )
+    {
+        k -= 1;
+    }
+    let mut ptr = 0;
+    for node in &nodes[k..i] {
+        if node.kind == "blockQuotePrefix" {
+            while ptr < chain.len() && chain[ptr] != Container::BlockQuote {
+                ptr += 1;
+            }
+            ptr = (ptr + 1).min(chain.len());
+        } else if !matches!(chain.get(ptr), Some(Container::BlockQuote) | None) {
+            ptr += 1;
+        }
+    }
+    match chain.get(ptr) {
+        Some(Container::List) => "listItemIndent",
+        Some(Container::Footnote) if nodes[i].end - nodes[i].start == 4 => {
+            "gfmFootnoteDefinitionIndent"
+        }
+        _ => "linePrefix",
+    }
+}
+
+fn classify_whitespace(nodes: &mut [Node], parent: &str, chain: &[Container]) {
     for i in 0..nodes.len() {
         let kind = nodes[i].kind.clone();
-        let depth = list_depth + usize::from(kind == "listUnordered" || kind == "listOrdered");
-        let footnote = in_footnote || kind == "gfmFootnoteDefinition";
-        classify_whitespace(&mut nodes[i].children, &kind, depth, footnote);
+        let mut child_chain = chain.to_vec();
+        child_chain.extend(container_of(&kind));
+        classify_whitespace(&mut nodes[i].children, &kind, &child_chain);
         if kind == "listItemIndent" && matches!(parent, "listUnordered" | "listOrdered") {
-            // restructure 에서 일괄 변환된 리스트 직속 들여쓰기도 깊이를 넘으면 flow linePrefix
-            let mut run = 0;
-            let mut k = i;
-            while k > 0 && nodes[k - 1].kind == "listItemIndent" {
-                run += 1;
-                k -= 1;
-            }
-            if run >= list_depth {
-                nodes[i].kind = "linePrefix".into();
-            }
+            // restructure 에서 일괄 변환된 리스트 직속 들여쓰기를 컨테이너 순서로 다시 배정
+            nodes[i].kind = line_start_kind(nodes, i, chain).into();
             continue;
         }
         if kind != "spaceOrTab" {
@@ -562,16 +607,6 @@ fn classify_whitespace(nodes: &mut [Node], parent: &str, list_depth: usize, in_f
         let at_line_start = nodes[i].start_column == 1
             || matches!(prev, "blockQuotePrefix" | "listItemIndent" | "linePrefix")
             || prev == "lineEnding";
-        // 줄머리 연속 세그먼트 중 몇 번째인가: 리스트 중첩 깊이만큼만 listItemIndent
-        let seg = {
-            let mut k = i;
-            let mut run = 0;
-            while k > 0 && nodes[k - 1].kind == "listItemIndent" {
-                run += 1;
-                k -= 1;
-            }
-            run
-        };
         let new = match parent {
             "listItemPrefix" => "listItemPrefixWhitespace",
             "blockQuotePrefix" => "blockQuotePrefixWhitespace",
@@ -581,16 +616,7 @@ fn classify_whitespace(nodes: &mut [Node], parent: &str, list_depth: usize, in_f
             "resource" => "lineSuffix",
             "codeIndented" if at_line_start || prev.is_empty() => "linePrefix",
             "codeFencedFence" if prev.is_empty() => "linePrefix",
-            _ if at_line_start
-                && in_footnote
-                && seg == 0
-                && list_depth == 0
-                && nodes[i].end - nodes[i].start == 4 =>
-            {
-                "gfmFootnoteDefinitionIndent"
-            }
-            _ if at_line_start && list_depth > 0 && seg < list_depth => "listItemIndent",
-            _ if at_line_start => "linePrefix",
+            _ if at_line_start => line_start_kind(nodes, i, chain),
             _ if next == "lineEnding" || next.is_empty() => "lineSuffix",
             _ => "whitespace",
         };
