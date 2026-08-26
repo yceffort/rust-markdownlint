@@ -10,6 +10,7 @@ mod md005;
 mod md007;
 mod md009;
 mod md010;
+mod md011;
 mod md012;
 mod md013;
 mod md014;
