@@ -2,6 +2,7 @@ use crate::error::ErrorSink;
 use crate::parser::TokenTree;
 
 mod md009;
+mod md010;
 mod md018;
 mod md047;
 pub mod registry;
