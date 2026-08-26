@@ -153,6 +153,13 @@ use crate::util::{
 };
 use alloc::vec::Vec;
 
+/// micromark `previousUnbalanced`: 아직 `]` 로 닫히지 않은 `[` 가 앞에 있으면
+/// 그 안에서는 autolink literal 을 시작하지 않는다 (`[a][https://x]y` 의 라벨을 지킨다).
+/// 닫혔지만 링크가 못 된 시작은 `label_starts_loose` 로 옮겨지므로 여기 남은 것만 센다.
+fn previous_unbalanced(tokenizer: &Tokenizer) -> bool {
+    !tokenizer.tokenize_state.label_starts.is_empty()
+}
+
 /// Start of protocol autolink literal.
 ///
 /// ```markdown
@@ -168,6 +175,7 @@ pub fn protocol_start(tokenizer: &mut Tokenizer) -> State {
         matches!(tokenizer.current, Some(b'H' | b'h'))
             // Source: <https://github.com/github/cmark-gfm/blob/ef1cfcb/extensions/autolink.c#L214>.
             && !matches!(tokenizer.previous, Some(b'A'..=b'Z' | b'a'..=b'z'))
+            && !previous_unbalanced(tokenizer)
     {
         tokenizer.enter(Name::GfmAutolinkLiteralProtocol);
         tokenizer.attempt(
@@ -272,6 +280,7 @@ pub fn www_start(tokenizer: &mut Tokenizer) -> State {
         matches!(tokenizer.current, Some(b'W' | b'w'))
             // Source: <https://github.com/github/cmark-gfm/blob/ef1cfcb/extensions/autolink.c#L156>.
             && matches!(tokenizer.previous, None | Some(b'\t' | b'\n' | b' ' | b'(' | b'*' | b'_' | b'[' | b']' | b'~'))
+            && !previous_unbalanced(tokenizer)
     {
         tokenizer.enter(Name::GfmAutolinkLiteralWww);
         tokenizer.attempt(

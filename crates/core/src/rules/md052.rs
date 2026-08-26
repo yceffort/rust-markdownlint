@@ -122,6 +122,17 @@ mod tests {
         assert_eq!(errs[1].error_range, Some((21, 11)));
     }
 
+    /// 열린 `[` 안에서는 autolink literal 이 시작되지 않아야 라벨의 `]` 가 살아남는다 (micromark `previousUnbalanced`).
+    #[test]
+    fn md052_url_label_followed_by_text() {
+        let errs = lint_with(json!(true), "[a][https://e.com/x]y\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_context.as_deref(),
+            Some("[a][https://e.com/x]")
+        );
+    }
+
     #[test]
     fn md052_defined_reference_is_fine() {
         assert!(
