@@ -15,6 +15,7 @@ const BANNER: &str = concat!(
 
 const MD018: &str =
     "MD018/no-missing-space-atx No space after hash on atx style heading [Context: \"#x\"]";
+const MD041: &str = "MD041/first-line-heading/first-line-h1 First line in a file should be a top-level heading [Context: \"#x\"]";
 const MD047: &str =
     "MD047/single-trailing-newline Files should end with a single newline character";
 
@@ -76,9 +77,11 @@ fn error_output_format_and_exit_1() {
         .assert()
         .code(1)
         .stdout(format!(
-            "{BANNER}Finding: a.md\nLinting: 1 file(s)\nSummary: 2 error(s)\n"
+            "{BANNER}Finding: a.md\nLinting: 1 file(s)\nSummary: 3 error(s)\n"
         ))
-        .stderr(format!("a.md:1:1 error {MD018}\na.md:1:2 error {MD047}\n"));
+        .stderr(format!(
+            "a.md:1:1 error {MD018}\na.md:1 error {MD041}\na.md:1:2 error {MD047}\n"
+        ));
 }
 
 #[test]
@@ -114,9 +117,9 @@ fn stdin_dash() {
         .assert()
         .code(1)
         .stdout(format!(
-            "{BANNER}Finding: \nLinting: 1 file(s)\nSummary: 1 error(s)\n"
+            "{BANNER}Finding: \nLinting: 1 file(s)\nSummary: 2 error(s)\n"
         ))
-        .stderr(format!("stdin:1:1 error {MD018}\n"));
+        .stderr(format!("stdin:1:1 error {MD018}\nstdin:1 error {MD041}\n"));
 }
 
 #[test]
@@ -128,10 +131,10 @@ fn stdin_and_file_sorted_together() {
         .assert()
         .code(1)
         .stdout(format!(
-            "{BANNER}Finding: a.md\nLinting: 2 file(s)\nSummary: 3 error(s)\n"
+            "{BANNER}Finding: a.md\nLinting: 2 file(s)\nSummary: 5 error(s)\n"
         ))
         .stderr(format!(
-            "a.md:1:1 error {MD018}\na.md:1:2 error {MD047}\nstdin:1:1 error {MD018}\n"
+            "a.md:1:1 error {MD018}\na.md:1 error {MD041}\na.md:1:2 error {MD047}\nstdin:1:1 error {MD018}\nstdin:1 error {MD041}\n"
         ));
 }
 
@@ -203,7 +206,7 @@ fn locale_sort_and_nested_ignores() {
     ];
     let stderr: String = files
         .iter()
-        .map(|f| format!("{f}:1:1 error {MD018}\n{f}:1:2 error {MD047}\n"))
+        .map(|f| format!("{f}:1:1 error {MD018}\n{f}:1 error {MD041}\n{f}:1:2 error {MD047}\n"))
         .collect();
     // Linting 수는 sub/b.md (하위 ignores) 를 포함하고 skip/ (base ignores) 는 제외
     cmd(t.path())
@@ -211,7 +214,7 @@ fn locale_sort_and_nested_ignores() {
         .assert()
         .code(1)
         .stdout(format!(
-            "{BANNER}Finding: **/*.md !skip\nLinting: 8 file(s)\nSummary: 14 error(s)\n"
+            "{BANNER}Finding: **/*.md !skip\nLinting: 8 file(s)\nSummary: 21 error(s)\n"
         ))
         .stderr(stderr);
 }
@@ -222,7 +225,7 @@ fn warning_severity_show_found_exit_0() {
         ("a.md", "#x"),
         (
             ".markdownlint-cli2.jsonc",
-            r#"{"config": {"MD018": {"severity": "warning"}, "MD047": false}, "showFound": true}"#,
+            r#"{"config": {"MD018": {"severity": "warning"}, "MD041": false, "MD047": false}, "showFound": true}"#,
         ),
     ]);
     cmd(t.path())
@@ -249,7 +252,9 @@ fn no_progress_no_banner() {
         .assert()
         .code(1)
         .stdout("")
-        .stderr(format!("a.md:1:1 error {MD018}\na.md:1:2 error {MD047}\n"));
+        .stderr(format!(
+            "a.md:1:1 error {MD018}\na.md:1 error {MD041}\na.md:1:2 error {MD047}\n"
+        ));
 }
 
 #[test]
@@ -287,9 +292,11 @@ fn literal_files() {
         .assert()
         .code(1)
         .stdout(format!(
-            "{BANNER}Finding: :./a.md\nLinting: 1 file(s)\nSummary: 2 error(s)\n"
+            "{BANNER}Finding: :./a.md\nLinting: 1 file(s)\nSummary: 3 error(s)\n"
         ))
-        .stderr(format!("a.md:1:1 error {MD018}\na.md:1:2 error {MD047}\n"));
+        .stderr(format!(
+            "a.md:1:1 error {MD018}\na.md:1 error {MD041}\na.md:1:2 error {MD047}\n"
+        ));
     cmd(t.path())
         .arg(":missing.md")
         .assert()
@@ -310,10 +317,10 @@ fn config_globs_and_no_globs() {
         .assert()
         .code(1)
         .stdout(format!(
-            "{BANNER}Finding: docs/*.md\nLinting: 1 file(s)\nSummary: 2 error(s)\n"
+            "{BANNER}Finding: docs/*.md\nLinting: 1 file(s)\nSummary: 3 error(s)\n"
         ))
         .stderr(format!(
-            "docs/x.md:1:1 error {MD018}\ndocs/x.md:1:2 error {MD047}\n"
+            "docs/x.md:1:1 error {MD018}\ndocs/x.md:1 error {MD041}\ndocs/x.md:1:2 error {MD047}\n"
         ));
     cmd(t.path())
         .arg("--no-globs")
