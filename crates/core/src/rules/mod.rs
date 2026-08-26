@@ -44,6 +44,7 @@ mod md045;
 mod md046;
 mod md047;
 mod md048;
+mod md049;
 mod md051;
 mod md052;
 pub mod registry;
