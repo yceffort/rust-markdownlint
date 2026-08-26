@@ -26,6 +26,7 @@ use super::md028::Md028;
 use super::md029::Md029;
 use super::md030::Md030;
 use super::md033::Md033;
+use super::md034::Md034;
 use super::md035::Md035;
 use super::md036::Md036;
 use super::md040::Md040;
@@ -34,10 +35,10 @@ use super::md043::Md043;
 use super::md046::Md046;
 use super::md047::Md047;
 
-static RULES: [&dyn Rule; 31] = [
+static RULES: [&dyn Rule; 32] = [
     &Md001, &Md003, &Md004, &Md005, &Md007, &Md009, &Md010, &Md012, &Md013, &Md014, &Md018, &Md019,
     &Md020, &Md021, &Md022, &Md023, &Md024, &Md025, &Md026, &Md027, &Md028, &Md029, &Md030, &Md033,
-    &Md035, &Md036, &Md040, &Md041, &Md043, &Md046, &Md047,
+    &Md034, &Md035, &Md036, &Md040, &Md041, &Md043, &Md046, &Md047,
 ];
 
 pub fn all_rules() -> &'static [&'static dyn Rule] {
