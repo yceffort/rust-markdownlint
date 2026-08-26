@@ -80,6 +80,12 @@ mod tests {
         assert!(lint_rule("MD003", "# H1\n\n## H2\n").is_empty());
     }
 
+    /// 본문 첫 글자가 `#` 이어도 (micromark `resolveHeadingAtx`) 닫는 시퀀스가 아니다.
+    #[test]
+    fn md003_hash_at_start_of_text_is_not_closed() {
+        assert!(lint_rule("MD003", "# H1\n\n## # a\n").is_empty());
+    }
+
     #[test]
     fn md003_consistent_mismatch() {
         let errs = lint_rule("MD003", "# H1\n\n## H2 ##\n");
