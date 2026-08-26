@@ -22,6 +22,7 @@ thiserror = "2"
 anyhow = "1"
 globset = "0.4"
 ignore = "0.4"
+rayon = "1"
 insta = { version = "1", features = ["yaml", "json"] }
 assert_cmd = "2"
 predicates = "3"

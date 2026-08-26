@@ -3,13 +3,14 @@ use std::io::{Read, Write};
 use std::path::{Component, Path, PathBuf};
 
 use anyhow::Result;
+use rayon::prelude::*;
 use rust_markdownlint::config::GitIgnore;
-use rust_markdownlint::error::Severity;
+use rust_markdownlint::error::{LintError, Severity};
 use rust_markdownlint::fix::apply_fixes;
 use rust_markdownlint::lint::{LintOptions, lint_content};
 use rust_markdownlint_cli::argv::parse_argv;
 use rust_markdownlint_cli::dirs::{
-    create_dir_infos, read_base_options, remove_ignored_files, resolve_globs,
+    DirInfo, create_dir_infos, read_base_options, remove_ignored_files, resolve_globs,
 };
 use rust_markdownlint_cli::globs::enumerate_files;
 use rust_markdownlint_cli::output::{
@@ -47,6 +48,55 @@ fn resolve(base: &Path, p: &str) -> PathBuf {
 
 fn warn(message: &str) {
     eprintln!("{message}");
+}
+
+struct FileOutcome {
+    name: String,
+    errors: Vec<LintError>,
+    /// `--format` 일 때 stdin 을 고친 결과
+    formatted: Option<String>,
+}
+
+/// 파일 하나의 lint(+fix). `--format` 은 stdin 만 고치고 결과는 버린다.
+fn lint_file(
+    base: &Path,
+    info: &DirInfo,
+    file: &Path,
+    non_file: &HashMap<PathBuf, String>,
+    formatting: bool,
+) -> Result<FileOutcome> {
+    let opts = LintOptions {
+        config: info.effective_config.as_ref(),
+        front_matter: info.options.front_matter.as_deref(),
+        no_inline_config: info.options.no_inline_config == Some(true),
+    };
+    let name = relative_posix(base, file);
+    let mut formatted = None;
+    let errors = if let Some(content) = non_file.get(file) {
+        let errors = lint_content(&name, content, &opts)?;
+        if formatting {
+            formatted = Some(apply_fixes(content, &errors));
+            Vec::new()
+        } else {
+            errors
+        }
+    } else {
+        let content = std::fs::read_to_string(file)?;
+        let mut errors = lint_content(&name, &content, &opts)?;
+        if formatting {
+            errors = Vec::new();
+        } else if info.options.fix == Some(true) && errors.iter().any(|e| e.fix_info.is_some()) {
+            let fixed = apply_fixes(&content, &errors);
+            std::fs::write(file, &fixed)?;
+            errors = lint_content(&name, &fixed, &opts)?;
+        }
+        errors
+    };
+    Ok(FileOutcome {
+        name,
+        errors,
+        formatted,
+    })
 }
 
 /// 원본 `main` 순서: 배너 → base 옵션 → glob → dirInfos → lint(+fix) → 정렬 → Summary → 포매터 → exit.
@@ -133,44 +183,34 @@ fn run(args: &[String]) -> Result<i32> {
         println!("Linting: {count} file(s)");
     }
 
-    // lintFiles: --format 은 stdin 만 고치고 결과는 버린다
+    // lintFiles: 파일 단위로 병렬 실행하되 결과는 파일 순서대로 모은 뒤 정렬하므로 출력은 순차 실행과 같다.
+    let jobs: Vec<(&DirInfo, PathBuf)> = dir_infos
+        .iter()
+        .flat_map(|info| {
+            info.files_after_ignores()
+                .into_iter()
+                .map(move |f| (info, f))
+        })
+        .collect();
+    let outcomes: Vec<Result<FileOutcome>> = jobs
+        .par_iter()
+        .map(|(info, file)| lint_file(&base, info, file, &non_file, formatting))
+        .collect();
+
     let mut results = Vec::new();
     let mut errors_present = false;
     let mut formatted = None;
-    for info in &dir_infos {
-        let opts = LintOptions {
-            config: info.effective_config.as_ref(),
-            front_matter: info.options.front_matter.as_deref(),
-            no_inline_config: info.options.no_inline_config == Some(true),
-        };
-        for file in info.files_after_ignores() {
-            let name = relative_posix(&base, &file);
-            let errors = if let Some(content) = non_file.get(&file) {
-                let errors = lint_content(&name, content, &opts)?;
-                if formatting {
-                    formatted = Some(apply_fixes(content, &errors));
-                    continue;
-                }
-                errors
-            } else {
-                let content = std::fs::read_to_string(&file)?;
-                let mut errors = lint_content(&name, &content, &opts)?;
-                if formatting {
-                    continue;
-                }
-                if info.options.fix == Some(true) && errors.iter().any(|e| e.fix_info.is_some()) {
-                    let fixed = apply_fixes(&content, &errors);
-                    std::fs::write(&file, &fixed)?;
-                    errors = lint_content(&name, &fixed, &opts)?;
-                }
-                errors
-            };
-            errors_present |= errors.iter().any(|e| e.severity != Severity::Warning);
-            results.extend(errors.into_iter().map(|error| LintResult {
-                file_name: name.clone(),
-                error,
-            }));
-        }
+    for outcome in outcomes {
+        let outcome = outcome?;
+        formatted = outcome.formatted.or(formatted);
+        errors_present |= outcome
+            .errors
+            .iter()
+            .any(|e| e.severity != Severity::Warning);
+        results.extend(outcome.errors.into_iter().map(|error| LintResult {
+            file_name: outcome.name.clone(),
+            error,
+        }));
     }
 
     sort_results(&mut results);
