@@ -10,41 +10,54 @@ pub enum ConfigError {
     Parse(String),
 }
 
+/// cli2 `parsers/*.mjs`.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Format {
+    Jsonc,
+    Toml,
+    Yaml,
+}
+
+/// 파서 하나로 파싱. 결과를 객체로 강제하지 않는다.
+pub fn parse_config_as(format: Format, content: &str) -> Result<ConfigValue, ConfigError> {
+    match format {
+        // cli2 jsonc-parse.mjs: 주석과 trailing comma 만 허용
+        Format::Jsonc => {
+            let jsonc_options = jsonc_parser::ParseOptions {
+                allow_comments: true,
+                allow_trailing_commas: true,
+                allow_loose_object_property_names: false,
+                allow_missing_commas: false,
+                allow_single_quoted_strings: false,
+                allow_hexadecimal_numbers: false,
+                allow_unary_plus_numbers: false,
+            };
+            jsonc_parser::parse_to_serde_value::<ConfigValue>(content, &jsonc_options)
+                .map_err(|e| ConfigError::Parse(e.to_string()))
+        }
+        Format::Toml => toml::from_str::<toml::Value>(content)
+            .map_err(ConfigError::from_toml)
+            .and_then(|value| {
+                serde_json::to_value(value).map_err(|e| ConfigError::Parse(e.to_string()))
+            }),
+        Format::Yaml => serde_saphyr::from_str::<ConfigValue>(content)
+            .map_err(|e| ConfigError::Parse(e.to_string())),
+    }
+}
+
 /// markdownlint `parse-configuration.mjs` + cli2 `parsers/parsers.mjs`.
 /// 파서 우선순위는 원본 그대로 jsonc, toml, yaml 순.
 fn parse_configuration(name: &str, content: &str) -> Result<ConfigValue, ConfigError> {
     let mut errors: Vec<String> = Vec::new();
-
-    // Parser 0: jsonc (cli2 jsonc-parse.mjs: 주석과 trailing comma 만 허용)
-    let jsonc_options = jsonc_parser::ParseOptions {
-        allow_comments: true,
-        allow_trailing_commas: true,
-        allow_loose_object_property_names: false,
-        allow_missing_commas: false,
-        allow_single_quoted_strings: false,
-        allow_hexadecimal_numbers: false,
-        allow_unary_plus_numbers: false,
-    };
-    match jsonc_parser::parse_to_serde_value::<ConfigValue>(content, &jsonc_options) {
-        Ok(value) => return Ok(coerce_to_object(value)),
-        Err(e) => errors.push(format!("Parser 0: {e}")),
-    }
-
-    // Parser 1: toml
-    match toml::from_str::<toml::Value>(content).map_err(ConfigError::from_toml) {
-        Ok(value) => match serde_json::to_value(value) {
+    for (index, format) in [Format::Jsonc, Format::Toml, Format::Yaml]
+        .into_iter()
+        .enumerate()
+    {
+        match parse_config_as(format, content) {
             Ok(value) => return Ok(coerce_to_object(value)),
-            Err(e) => errors.push(format!("Parser 1: {e}")),
-        },
-        Err(e) => errors.push(format!("Parser 1: {e}")),
+            Err(e) => errors.push(format!("Parser {index}: {e}")),
+        }
     }
-
-    // Parser 2: yaml
-    match serde_saphyr::from_str::<ConfigValue>(content) {
-        Ok(value) => return Ok(coerce_to_object(value)),
-        Err(e) => errors.push(format!("Parser 2: {e}")),
-    }
-
     Err(ConfigError::Parse(format!(
         "Unable to parse '{name}'; {}",
         errors.join("; ")
@@ -78,7 +91,7 @@ fn expand_tilde(path: &str) -> String {
 
 /// markdownlint `extendConfig`: `extends` 를 설정 파일 기준 상대 경로로 재귀 해석하고
 /// `{...extendsConfig, ...config}` 얕은 병합 후 `extends` 를 제거한다.
-fn extend_config(config: ConfigValue, file: &Path) -> Result<ConfigValue, ConfigError> {
+pub fn extend_config(config: ConfigValue, file: &Path) -> Result<ConfigValue, ConfigError> {
     let extends = config
         .get("extends")
         .filter(|v| truthy(v))

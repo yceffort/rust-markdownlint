@@ -3,13 +3,15 @@ mod load;
 mod options;
 
 pub use effective::{EffectiveConfig, effective_config};
-pub use load::{ConfigError, parse_config_str, read_config_file};
+pub use load::{
+    ConfigError, Format, extend_config, parse_config_as, parse_config_str, read_config_file,
+};
 pub use options::{GitIgnore, OPTIONS_KEYS, Options, merge_options, options_from_value};
 
 pub type ConfigValue = serde_json::Value;
 
 /// JS 의 truthiness.
-pub(crate) fn truthy(value: &ConfigValue) -> bool {
+pub fn truthy(value: &ConfigValue) -> bool {
     match value {
         ConfigValue::Null => false,
         ConfigValue::Bool(b) => *b,
