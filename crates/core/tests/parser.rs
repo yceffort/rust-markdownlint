@@ -39,6 +39,7 @@ fn matches_micromark_token_dumps() {
         "code-blocks-and-spans",
         "simple-table",
         "empty-links",
+        "list-syntax-in-paragraph-text",
     ] {
         let md = std::fs::read_to_string(format!("{dir}/{name}.md")).unwrap();
         let expected: serde_json::Value = serde_json::from_str(

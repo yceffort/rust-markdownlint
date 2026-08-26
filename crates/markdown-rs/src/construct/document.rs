@@ -527,7 +527,12 @@ fn exit_containers(tokenizer: &mut Tokenizer, phase: &Phase) -> Result<(), messa
         tokenizer.tokenize_state.document_exits[index] = Some(exits);
     }
 
-    child.interrupt = false;
+    // `Phase::After` 는 현재 줄을 이미 flow 에 먹인 뒤라, 그 줄이 남긴 `interrupt`
+    // 상태(예: 새 문단이 진행 중)를 지우면 다음 줄에서 `2.` 같은 목록이 문단을
+    // 끊게 된다. micromark 는 flow 를 닫을 때만 리셋한다.
+    if *phase != Phase::After {
+        child.interrupt = false;
+    }
 
     Ok(())
 }
