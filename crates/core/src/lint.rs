@@ -69,6 +69,9 @@ pub(crate) fn clear_html_comment_text(text: &str) -> String {
                         .collect::<String>()
                 });
                 text = format!("{}{}{}", &text[..i + BEGIN.len()], cleared, &text[j..]);
+                // 비 ASCII 문자가 "." 로 바뀌면 바이트 길이가 줄어드므로 치환 결과 기준으로 재계산
+                i += BEGIN.len() + cleared.len() + END.len();
+                continue;
             }
         }
         i = j + END.len();
@@ -184,5 +187,10 @@ mod tests {
         );
         // ">" 판정은 앞 공백을 포함한 원문 기준
         assert_eq!(clear_html_comment_text("a <!-- >x -->"), "a <!-- .. -->");
+        // 비 ASCII 본문은 문자당 "." 하나로 줄어들어도 뒤따르는 주석과 본문을 건드리지 않는다
+        assert_eq!(
+            clear_html_comment_text("<!-- 한 -->\n한\n<!-- x -->"),
+            "<!-- . -->\n한\n<!-- . -->"
+        );
     }
 }

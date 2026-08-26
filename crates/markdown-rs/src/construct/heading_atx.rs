@@ -215,61 +215,23 @@ pub fn data(tokenizer: &mut Tokenizer) -> State {
 }
 
 /// Resolve heading (atx).
+///
+/// micromark `resolveHeadingAtx` 와 동일: 여는 시퀀스(와 공백) 뒤부터, 닫는 시퀀스(앞 공백 포함)
+/// 전까지를 하나의 `HeadingAtxText` 로 묶는다. 본문 안의 `#` 시퀀스(`## # a`)도 본문에 포함된다.
 pub fn resolve(tokenizer: &mut Tokenizer) -> Option<Subresult> {
     let mut index = 0;
-    let mut heading_inside = false;
-    let mut data_start: Option<usize> = None;
-    let mut data_end: Option<usize> = None;
 
     while index < tokenizer.events.len() {
         let event = &tokenizer.events[index];
 
-        if event.name == Name::HeadingAtx {
-            if event.kind == Kind::Enter {
-                heading_inside = true;
-            } else {
-                if let Some(start) = data_start {
-                    // If `start` is some, `end` is too.
-                    let end = data_end.unwrap();
-
-                    tokenizer.map.add(
-                        start,
-                        0,
-                        vec![Event {
-                            kind: Kind::Enter,
-                            name: Name::HeadingAtxText,
-                            point: tokenizer.events[start].point.clone(),
-                            link: None,
-                        }],
-                    );
-
-                    // Remove everything between the start and the end.
-                    tokenizer.map.add(start + 1, end - start - 1, vec![]);
-
-                    tokenizer.map.add(
-                        end + 1,
-                        0,
-                        vec![Event {
-                            kind: Kind::Exit,
-                            name: Name::HeadingAtxText,
-                            point: tokenizer.events[end].point.clone(),
-                            link: None,
-                        }],
-                    );
-                }
-
-                heading_inside = false;
-                data_start = None;
-                data_end = None;
+        if event.kind == Kind::Enter && event.name == Name::HeadingAtx {
+            let start = index;
+            let mut end = start + 1;
+            while tokenizer.events[end].name != Name::HeadingAtx {
+                end += 1;
             }
-        } else if heading_inside && event.name == Name::Data {
-            if event.kind == Kind::Enter {
-                if data_start.is_none() {
-                    data_start = Some(index);
-                }
-            } else {
-                data_end = Some(index);
-            }
+            resolve_one(tokenizer, start, end);
+            index = end;
         }
 
         index += 1;
@@ -277,4 +239,86 @@ pub fn resolve(tokenizer: &mut Tokenizer) -> Option<Subresult> {
 
     tokenizer.map.consume(&mut tokenizer.events);
     None
+}
+
+/// `start`..=`end` 는 한 heading 의 Enter/Exit `HeadingAtx` 인덱스.
+fn resolve_one(tokenizer: &mut Tokenizer, start: usize, end: usize) {
+    let name = |offset: isize| -> Option<&Name> {
+        let i = start as isize + offset;
+        if i < 0 || i as usize > end {
+            None
+        } else {
+            Some(&tokenizer.events[i as usize].name)
+        }
+    };
+    let mut content_end = (end - start) as isize - 1;
+    // micromark 는 들여쓰기를 heading 밖의 linePrefix 로 두지만 여기서는 안쪽 `SpaceOrTab` 이다.
+    let mut content_start: isize = if name(1) == Some(&Name::SpaceOrTab) {
+        5
+    } else {
+        3
+    };
+
+    // Prefix whitespace, part of the opening.
+    if name(content_start) == Some(&Name::SpaceOrTab) {
+        content_start += 2;
+    }
+
+    // Suffix whitespace, part of the closing.
+    if content_end - 2 > content_start && name(content_end) == Some(&Name::SpaceOrTab) {
+        content_end -= 2;
+    }
+
+    if name(content_end) == Some(&Name::HeadingAtxSequence)
+        && (content_start == content_end - 1
+            || (content_end - 4 > content_start
+                && name(content_end - 2) == Some(&Name::SpaceOrTab)))
+    {
+        content_end -= if content_start + 1 == content_end {
+            2
+        } else {
+            4
+        };
+    }
+
+    if content_end > content_start {
+        let content_start = start + content_start as usize;
+        let content_end = start + content_end as usize;
+        let start_point = tokenizer.events[content_start].point.clone();
+        let end_point = tokenizer.events[content_end].point.clone();
+        tokenizer.map.add(
+            content_start,
+            content_end - content_start + 1,
+            vec![
+                Event {
+                    kind: Kind::Enter,
+                    name: Name::HeadingAtxText,
+                    point: start_point.clone(),
+                    link: None,
+                },
+                Event {
+                    kind: Kind::Enter,
+                    name: Name::Data,
+                    point: start_point,
+                    link: Some(Link {
+                        previous: None,
+                        next: None,
+                        content: Content::Text,
+                    }),
+                },
+                Event {
+                    kind: Kind::Exit,
+                    name: Name::Data,
+                    point: end_point.clone(),
+                    link: None,
+                },
+                Event {
+                    kind: Kind::Exit,
+                    name: Name::HeadingAtxText,
+                    point: end_point,
+                    link: None,
+                },
+            ],
+        );
+    }
 }

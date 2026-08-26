@@ -72,7 +72,10 @@ pub fn enumerate_files(base: &Path, patterns: &[String], gitignore: &GitIgnore) 
     };
 
     let mut walk = ignore::WalkBuilder::new(base);
-    walk.standard_filters(false).hidden(false);
+    // fast-glob 기본값 followSymbolicLinks:true (pnpm node_modules 등)
+    walk.standard_filters(false)
+        .hidden(false)
+        .follow_links(true);
     match gitignore {
         GitIgnore::Enabled(true) => {
             walk.git_ignore(true).require_git(false);
@@ -166,6 +169,20 @@ mod tests {
 
         let files = enumerate_files(&base, &["docs".into()], &GitIgnore::Enabled(false));
         assert_eq!(rel(&base, &files), ["docs/a.md", "docs/sub/b.txt"]);
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn enumerate_follows_symlinks() {
+        let dir = fixture();
+        let base = dir.path().canonicalize().unwrap();
+        std::os::unix::fs::symlink(base.join("docs"), base.join("linked")).unwrap();
+        let files = enumerate_files(
+            &base,
+            &["linked/**/*.md".into()],
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(rel(&base, &files), ["linked/a.md"]);
     }
 
     #[test]

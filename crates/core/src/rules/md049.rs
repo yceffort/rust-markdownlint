@@ -197,6 +197,15 @@ mod tests {
         assert!(lint_rule("MD049", "*one* and `_two_`\n").is_empty());
     }
 
+    /// 컬럼은 JS 와 같은 UTF-16 단위라 이모지(서로게이트 쌍) 뒤에서는 코드 포인트 수보다 크다.
+    #[test]
+    fn md049_column_after_astral_char_is_utf16() {
+        let errs = lint_with(json!({ "style": "underscore" }), "👉 *a*\n");
+        assert_eq!(errs.len(), 2);
+        assert_eq!(errs[0].error_range, Some((4, 1)));
+        assert_eq!(errs[1].error_range, Some((6, 1)));
+    }
+
     #[test]
     fn md049_non_string_style() {
         let errs = lint_with(json!({ "style": 1 }), "*one*\n");

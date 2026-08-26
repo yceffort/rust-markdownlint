@@ -18,10 +18,18 @@ fn normalize(fix: &FixInfo, line_number: usize) -> NormalizedFix {
     }
 }
 
-/// 코드포인트 인덱스를 바이트 오프셋으로 (JS slice 처럼 줄 길이로 클램프).
-fn byte_index(line: &str, char_index: usize) -> usize {
+/// UTF-16 단위 인덱스(JS 문자열 인덱스)를 바이트 오프셋으로 (JS slice 처럼 줄 길이로 클램프).
+/// 서로게이트 쌍 가운데를 가리키면 그 문자의 시작으로 본다.
+fn byte_index(line: &str, utf16_index: usize) -> usize {
+    let mut units = 0;
     line.char_indices()
-        .nth(char_index)
+        .find(|(_, c)| {
+            if units >= utf16_index {
+                return true;
+            }
+            units += c.len_utf16();
+            false
+        })
         .map_or(line.len(), |(i, _)| i)
 }
 
@@ -205,6 +213,18 @@ mod tests {
             fix_info: Some(fix),
             ..err_fix(line, 1, 0, "")
         }
+    }
+
+    /// editColumn 은 JS 문자열 인덱스(UTF-16)라 이모지 뒤에서는 코드 포인트보다 하나 더 크다.
+    #[test]
+    fn edit_column_is_utf16() {
+        let f = FixInfo {
+            line_number: Some(1),
+            edit_column: Some(4),
+            delete_count: Some(1),
+            insert_text: Some("_".into()),
+        };
+        assert_eq!(apply_fix("👉 *a*", &f, "\n"), Some("👉 _a*".into()));
     }
 
     #[test]

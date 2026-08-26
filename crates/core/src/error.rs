@@ -2,6 +2,11 @@ use std::fmt::Display;
 
 use crate::rules::RuleMeta;
 
+/// JS `String.length`: 컬럼과 같은 UTF-16 단위.
+fn utf16_len(s: &str) -> usize {
+    s.encode_utf16().count()
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Severity {
     Error,
@@ -118,9 +123,7 @@ impl<'a> ErrorSink<'a> {
         }
         let line_number = line + self.front_matter_lines;
         if let Some((column, length)) = range
-            && (column < 1
-                || length < 1
-                || column + length - 1 > self.lines[line - 1].chars().count())
+            && (column < 1 || length < 1 || column + length - 1 > utf16_len(self.lines[line - 1]))
         {
             self.fail("range");
         }
@@ -132,7 +135,7 @@ impl<'a> ErrorSink<'a> {
                 n + self.front_matter_lines
             });
             let effective_line = fix.line_number.unwrap_or(line);
-            let line_len = self.lines[effective_line - 1].chars().count();
+            let line_len = utf16_len(self.lines[effective_line - 1]);
             if let Some(edit_column) = fix.edit_column
                 && (edit_column < 1 || edit_column > line_len + 1)
             {
