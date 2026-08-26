@@ -2,46 +2,106 @@
 
 [![CI](https://github.com/yceffort/rust-markdownlint/actions/workflows/ci.yml/badge.svg)](https://github.com/yceffort/rust-markdownlint/actions/workflows/ci.yml)
 
-[markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) 와 동일하게 동작하는 것을 목표로 하는 Rust 구현입니다. 기존 `.markdownlint-cli2.{jsonc,yaml}`, `.markdownlint.{jsonc,json,yaml,yml}` 설정을 그대로 사용할 수 있는 drop-in 대체를 지향합니다.
+A Rust implementation of [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) v0.22.1 (markdownlint v0.40.0). It is meant to be a drop-in replacement: the same command line, the same `.markdownlint-cli2.{jsonc,yaml}` and `.markdownlint.{jsonc,json,yaml,yml}` configuration files, the same inline comments (`<!-- markdownlint-disable -->` and friends), and byte-identical output.
 
-아직 개발 초기 단계입니다. 진행 상황은 [마일스톤](https://github.com/yceffort/rust-markdownlint/milestones) 을 참고하시기 바랍니다.
+- All 53 rules of markdownlint v0.40.0 are implemented. Linting the original `test/*.md` corpus (388 files) with the default configuration produces 3218 errors that match the original byte for byte. A real-world repository with 20966 markdown files (including `node_modules`) produces 264114 identical errors.
+- Files are linted in parallel. 3x to 9x faster than markdownlint-cli2 depending on the corpus and the machine (see [Performance](#performance)).
+- A single static binary. No Node.js required.
 
-## 설치
+## Installation
+
+Download a binary for your platform from [Releases](https://github.com/yceffort/rust-markdownlint/releases): macOS (arm64, x86_64), Linux (x86_64, arm64, statically linked with musl), Windows (x86_64). Each archive comes with a `.sha256` file.
 
 ```bash
-cargo install --path crates/cli
+curl -LO https://github.com/yceffort/rust-markdownlint/releases/latest/download/rust-markdownlint-v0.1.0-aarch64-apple-darwin.tar.gz
+tar xzf rust-markdownlint-v0.1.0-aarch64-apple-darwin.tar.gz
+./rust-markdownlint --help
 ```
 
-`rust-markdownlint` 바이너리가 설치됩니다.
+To build from source you need Rust 1.88 or later:
 
-## 사용법
+```bash
+cargo install --git https://github.com/yceffort/rust-markdownlint rust-markdownlint-cli
+```
 
-명령줄 인터페이스는 markdownlint-cli2 v0.22.1 과 같습니다.
+Either way you get a `rust-markdownlint` binary.
+
+## Usage
+
+The command line is the same as markdownlint-cli2. Replace the executable name in your existing commands and scripts.
 
 ```bash
 rust-markdownlint "**/*.md" "#node_modules"
 rust-markdownlint --fix "docs/**/*.md"
 rust-markdownlint --config .markdownlint-cli2.jsonc "*.md"
-cat README.md | rust-markdownlint -          # stdin 을 lint
-cat README.md | rust-markdownlint --format   # stdin 을 고쳐 stdout 으로
+rust-markdownlint --config .markdownlint.yaml --configPointer /config "*.md"
+rust-markdownlint --no-globs "README.md"
+cat README.md | rust-markdownlint -          # lint stdin
+cat README.md | rust-markdownlint --format   # fix stdin and print the result to stdout
 rust-markdownlint --help
 ```
 
-- glob 은 globby 규칙을 따릅니다. `!` 또는 `#` 으로 시작하면 제외, `:` 로 시작하면 리터럴 경로입니다.
-- 설정은 디렉토리별로 cascade 됩니다. 각 디렉토리의 `.markdownlint-cli2.{jsonc,yaml}` 은 부모 옵션과 병합되고, `.markdownlint.{jsonc,json,yaml,yml}` 은 부모 설정을 대체합니다.
-- 출력은 배너 한 줄을 제외하고 markdownlint-cli2 와 바이트 단위로 같습니다. 결과는 stderr, 진행 상황은 stdout 입니다.
-- exit code: 0 (문제 없음 또는 경고만), 1 (오류 있음), 2 (도움말, 잘못된 설정, 예외).
+| Argument | Description |
+|----------|-------------|
+| `glob0 [glob1] ...` | globby-style globs. A leading `!` or `#` excludes, a leading `:` is a literal path, everything after `--` is a glob |
+| `-` | Lint stdin as a file named `stdin` |
+| `--config <file>` | Top-level configuration file. The name must be a supported one (`.markdownlint-cli2.jsonc` etc.) or end with `.jsonc`, `.json`, `.toml`, `.yaml`, `.yml` |
+| `--configPointer <pointer>` | JSON Pointer into the `--config` file |
+| `--fix` | Write fixable errors back to the files |
+| `--format` | Fix stdin and print it to stdout (no banner, progress, or results) |
+| `--no-globs` | Ignore `globs` from configuration files and use only the command line globs |
+| `--help` | Show help |
 
-## 원본과 다른 점
+- Configuration cascades per directory exactly like the original: `.markdownlint-cli2.{jsonc,yaml}` merges with the parent options, `.markdownlint.{jsonc,json,yaml,yml}` replaces the parent rule configuration.
+- Output is byte-identical to markdownlint-cli2 except for the banner line. Results go to stderr, progress (`Finding:`, `Linting:`, `Summary:`) goes to stdout.
+- Exit codes: 0 (no errors, or warnings only), 1 (errors), 2 (help, invalid configuration, exception).
 
-JavaScript 모듈 로딩이 필요한 기능은 지원하지 않습니다.
+### Supported options
 
-- `.markdownlint-cli2.{cjs,mjs}`, `.markdownlint.{cjs,mjs}` 설정 파일을 발견하면 오류로 종료합니다 (exit 2).
-- 옵션의 `customRules`, `markdownItPlugins`, `outputFormatters`, `modulePaths` 는 stderr 에 경고 한 줄을 출력하고 무시합니다. 기본 포매터만 제공합니다.
-- 결과의 파일명 정렬은 ICU `localeCompare` 를 ASCII 범위에서 근사합니다. 비 ASCII 파일명은 코드 포인트 순입니다.
-- 현재 구현된 규칙은 M0 뼈대 범위인 MD018, MD047 뿐입니다. 나머지 규칙은 마일스톤에 따라 추가됩니다.
+Options in `.markdownlint-cli2.{jsonc,yaml}`:
 
-## 개발
+| Option | Supported | Notes |
+|--------|-----------|-------|
+| `config` | Yes | Rule configuration, including `extends` |
+| `fix` | Yes | Same as `--fix`. `false` in a configuration file overrides the flag |
+| `frontMatter` | Yes | Front matter regular expression (JavaScript syntax) |
+| `gitignore` | Yes | `true` or a gitignore-style string |
+| `globs` | Yes | |
+| `ignores` | Yes | |
+| `noBanner` | Yes | |
+| `noInlineConfig` | Yes | |
+| `noProgress` | Yes | |
+| `showFound` | Yes | |
+| `customRules` | No | A one-line warning on stderr, then ignored |
+| `markdownItPlugins` | No | A one-line warning on stderr, then ignored |
+| `outputFormatters` | No | A one-line warning on stderr, then ignored. Only the default formatter is available |
+| `modulePaths` | No | A one-line warning on stderr, then ignored |
+
+Rule configuration supports all 53 rules of markdownlint v0.40.0 (MD001 through MD060, excluding the deprecated ones) with their parameters, aliases, and tags.
+
+## Differences from markdownlint-cli2
+
+- The banner reads `rust-markdownlint v0.1.0 (markdownlint-cli2 v0.22.1 / markdownlint v0.40.0 compatible)`. Turn on `noBanner` if something parses it.
+- Anything that requires loading JavaScript modules is not supported. `.markdownlint-cli2.{cjs,mjs}` and `.markdownlint.{cjs,mjs}` configuration files are an error (exit 2), and `customRules`, `markdownItPlugins`, `outputFormatters`, `modulePaths` are ignored as listed above. Use the original if you need custom rules or markdown-it plugins.
+- File names in the results are sorted with an approximation of ICU `localeCompare` that is exact for ASCII. Non-ASCII file names sort by code point.
+- MD060 measures character width with `unicode-width` instead of `string-width`. A handful of characters (for example half-width katakana voiced marks) may differ.
+- The markdown parser is a modified [markdown-rs](https://github.com/wooorm/markdown-rs) rather than micromark. 12 of the 388 original fixtures have slightly different token structure (lazy continuation lines after fenced code inside lists, for example); rule results are unaffected.
+
+## Performance
+
+`hyperfine --warmup 3`, mean ± σ in milliseconds, ratio is markdownlint-cli2 / rust-markdownlint. The results of both tools are identical (no diff) in every row.
+
+| Corpus | Machine | markdownlint-cli2 | rust-markdownlint | Ratio |
+|--------|---------|-------------------|-------------------|-------|
+| markdownlint `test/*.md`, 388 files, all rules | Apple M-series, 10 cores | 366.5 ± 7.0 | 57.5 ± 1.6 | 6.4x |
+| markdownlint `test/*.md`, 388 files, all rules | GitHub Actions ubuntu-latest | 1267.3 ± 90.4 | 178.4 ± 1.3 | 7.1x |
+| Same corpus copied 10 times, 3880 files | Apple M-series, 10 cores | 2956.7 ± 199.6 | 682.6 ± 10.0 | 4.3x |
+| A blog repository, `apps/blog/posts/**/*.md`, 441 posts, project config | Apple M-series, 10 cores | 1853.9 ± 14.7 | 210.2 ± 6.4 | 8.8x |
+| The same repository, `**/*.md` including `node_modules`, 20966 files (single run) | Apple M-series, 10 cores | 48306 | 14419 | 3.4x |
+
+The 388-file corpus is small enough that process startup dominates both tools. Parallel linting alone made the Rust binary 2.8x faster than its own sequential version on that corpus (159.8 ms to 57.5 ms) and 2.9x on the 10x corpus (1516 ms to 524 ms). Per-rule results and the parallelization comparison are in [bench/RESULTS.md](bench/RESULTS.md).
+
+## Development
 
 ```bash
 cargo fmt --all --check
@@ -49,16 +109,20 @@ cargo clippy --workspace --all-targets -- -D warnings
 cargo test --workspace
 ```
 
-규칙 하나의 결과를 원본 markdownlint 기대값과 대조하려면 `cargo test -p rust-markdownlint --test rules_snapshot -- MD047` 처럼 규칙 이름으로 필터합니다. 기대값은 `node scripts/dump-expected.mjs <markdownlint@0.40.0 패키지 경로>` 로 다시 생성합니다.
+To compare one rule against the original markdownlint expectations, filter the snapshot test by rule name: `cargo test -p rust-markdownlint --test rules_snapshot -- MD047`. Regenerate the expectations with `node scripts/dump-expected.mjs bench/node_modules/markdownlint bench/node_modules/markdownlint-cli2`.
 
-### 벤치마크
+### Benchmarks
 
-원본 markdownlint-cli2 v0.22.1 과 같은 코퍼스에서 결과를 diff 하고 속도를 비교합니다 (`hyperfine`, `node` 필요).
+`bench/run.sh` runs both tools on the same corpus, diffs the results, and times them with `hyperfine` (needs `node` and `hyperfine`).
 
 ```bash
-bench/run.sh MD047   # 규칙 하나
-bench/run.sh all     # 포팅된 규칙 전체
-SCALE=10 bench/run.sh all   # 코퍼스 10배 복제
+bench/run.sh MD047          # one rule
+bench/run.sh all            # default configuration (all rules, inline config honored)
+SCALE=10 bench/run.sh all   # corpus copied 10 times
 ```
 
-결과는 `bench/RESULTS.md` 에 기록합니다.
+Results are recorded in `bench/RESULTS.md`. On pull requests, CI benchmarks the changed rules and posts the numbers as a comment.
+
+### Releases
+
+Bump `version` in `crates/cli/Cargo.toml` and push a matching `v*` tag. The [release workflow](.github/workflows/release.yml) builds the five platform binaries and uploads them to a GitHub Release. It fails if the tag and the crate version differ.
