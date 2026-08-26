@@ -1,0 +1,1082 @@
+{
+  "MD011-MD021.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 99",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        19
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 40; Actual: 62",
+      "errorContext": null,
+      "errorRange": [
+        41,
+        22
+      ],
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 97",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        17
+      ],
+      "fixInfo": null
+    }
+  ],
+  "code-blocks-prefixed-by-spaces.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 98",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 98",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 98",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        18
+      ],
+      "fixInfo": null
+    }
+  ],
+  "inline-configure-file-single-line.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 70; Actual: 78",
+      "errorContext": null,
+      "errorRange": [
+        71,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 70; Actual: 85",
+      "errorContext": null,
+      "errorRange": [
+        71,
+        15
+      ],
+      "fixInfo": null
+    }
+  ],
+  "long-heading-exceptions.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 127",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        47
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 127",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        47
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 127",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        47
+      ],
+      "fixInfo": null
+    }
+  ],
+  "long-lines-short-code.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 92",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        12
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 30; Actual: 46",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 30; Actual: 47",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        17
+      ],
+      "fixInfo": null
+    }
+  ],
+  "long-lines-short-headings.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 92",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        12
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 30; Actual: 38",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 30; Actual: 36",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 30; Actual: 53",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        23
+      ],
+      "fixInfo": null
+    }
+  ],
+  "long-lines-stern.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 82",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        2
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 81",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 87",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        7
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 30; Actual: 31",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 20; Actual: 21",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 84",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 84",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 38,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 85",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 84",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        4
+      ],
+      "fixInfo": null
+    }
+  ],
+  "long-lines-strict.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 82",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        2
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 86",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 81",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 30; Actual: 31",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 20; Actual: 21",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "long-lines-thresholds.md": [
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 40; Actual: 44",
+      "errorContext": null,
+      "errorRange": [
+        41,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 40; Actual: 45",
+      "errorContext": null,
+      "errorRange": [
+        41,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 40; Actual: 46",
+      "errorContext": null,
+      "errorRange": [
+        41,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 33; Actual: 37",
+      "errorContext": null,
+      "errorRange": [
+        34,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 33; Actual: 38",
+      "errorContext": null,
+      "errorRange": [
+        34,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 33; Actual: 39",
+      "errorContext": null,
+      "errorRange": [
+        34,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 20; Actual: 24",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 20; Actual: 25",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 20; Actual: 26",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 20; Actual: 24",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 20; Actual: 25",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 20; Actual: 26",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        6
+      ],
+      "fixInfo": null
+    }
+  ],
+  "long_lines.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 97",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        17
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 110",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        30
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 117",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        37
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 107",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        27
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 112",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        32
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 104",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        24
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 109",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        29
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 64,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 96",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 96",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 96",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 105",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        25
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 74,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 105",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        25
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 80,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 113",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        33
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 82,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 116",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        36
+      ],
+      "fixInfo": null
+    }
+  ],
+  "long_lines_100.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 100; Actual: 111",
+      "errorContext": null,
+      "errorRange": [
+        101,
+        11
+      ],
+      "fixInfo": null
+    }
+  ],
+  "long_lines_code-default.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 128",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        48
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 139",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        59
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 111",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        31
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 111",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        31
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 111",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        31
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 111",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        31
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 20,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 111",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        31
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 128",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        48
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 111",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        31
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 111",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        31
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 111",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        31
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 111",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        31
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 111",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        31
+      ],
+      "fixInfo": null
+    }
+  ],
+  "long_lines_code.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 128",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        48
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 128",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        48
+      ],
+      "fixInfo": null
+    }
+  ],
+  "wrong-types-in-config-file.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 80; Actual: 107",
+      "errorContext": null,
+      "errorRange": [
+        81,
+        27
+      ],
+      "fixInfo": null
+    }
+  ]
+}

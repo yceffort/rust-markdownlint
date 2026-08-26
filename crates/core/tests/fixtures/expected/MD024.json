@@ -1,0 +1,177 @@
+{
+  "MD022-MD030.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Heading",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Heading 8",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "heading-duplicate-content-siblings-only.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "B",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "C",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "G",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "E",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "A",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "B",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Heading duplicate content sibl...",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "BB",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "BBB",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 100,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Headings",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "heading_duplicate_content.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Heading 1",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Heading 2",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "heading_duplicate_content_no_different_nesting.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD024",
+        "no-duplicate-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Bug fixes",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "MD001-MD010.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx; Actual: atx_closed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx; Actual: atx_closed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx; Actual: atx_closed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "headings_good_setext_with_atx.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: setext; Actual: atx",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx; Actual: atx_closed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "headings_good_setext_with_atx_closed.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: setext; Actual: atx_closed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx_closed; Actual: atx",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "incorrect_heading_atx.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx; Actual: atx_closed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx; Actual: setext",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "incorrect_heading_atx_closed.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx_closed; Actual: atx",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx_closed; Actual: setext",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "incorrect_heading_setext.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: setext; Actual: atx_closed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: setext; Actual: atx",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "markdown-in-html.md": [
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx; Actual: atx_closed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "md003-escaped-trailing-hash.md": [
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx; Actual: atx_closed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "mixed_heading_types_atx.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx; Actual: atx_closed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx; Actual: setext",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "mixed_heading_types_atx_closed.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx_closed; Actual: atx",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: atx_closed; Actual: setext",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "mixed_heading_types_setext.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: setext; Actual: atx",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD003",
+        "heading-style"
+      ],
+      "errorDetail": "Expected: setext; Actual: atx_closed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ]
+}

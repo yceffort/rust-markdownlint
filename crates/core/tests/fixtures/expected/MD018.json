@@ -1,0 +1,203 @@
+{
+  "MD011-MD021.md": [
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD018",
+        "no-missing-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##No space A {MD018}",
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "insertText": " "
+      }
+    }
+  ],
+  "atx-heading-spacing-trailing-spaces.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD018",
+        "no-missing-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##Heading 1 {MD018}",
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "insertText": " "
+      }
+    }
+  ],
+  "atx_heading_spacing.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD018",
+        "no-missing-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "#Heading 1 {MD018}",
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "insertText": " "
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD018",
+        "no-missing-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "#Heading 4 {MD018}",
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "insertText": " "
+      }
+    }
+  ],
+  "emoji-headings.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD018",
+        "no-missing-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##️⃣ Keycap Number Sign {MD018...",
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "insertText": " "
+      }
+    }
+  ],
+  "headings-with-invalid-spaces.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD018",
+        "no-missing-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "## Non-breaking space {MD018}",
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD018",
+        "no-missing-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##  Extra non-breaking space {...",
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "insertText": " "
+      }
+    }
+  ],
+  "short-headings.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD018",
+        "no-missing-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "#A",
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD018",
+        "no-missing-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##G",
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD018",
+        "no-missing-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "#MM",
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD018",
+        "no-missing-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##SS",
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "insertText": " "
+      }
+    }
+  ]
+}

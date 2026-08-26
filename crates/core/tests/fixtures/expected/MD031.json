@@ -1,0 +1,1037 @@
+{
+  "MD031-MD040.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 4,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "blanks-around-fences-in-lists.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 6,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "2. ```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 6,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 9,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "3. ```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 9,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 18,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "- ```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 18,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 20,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 21,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "- ```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 21,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": ">    ```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 30,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> 2. ```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 30,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": ">    ```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 33,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> 3. ```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 33,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   ```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 42,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> - ```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 42,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   ```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 45,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> - ```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 45,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> >    ```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 54,
+        "insertText": "> >\n"
+      }
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> > 2. ```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 54,
+        "insertText": "> >\n"
+      }
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> >    ```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 57,
+        "insertText": "> >\n"
+      }
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> > 3. ```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 57,
+        "insertText": "> >\n"
+      }
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> >   ```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 66,
+        "insertText": "> >\n"
+      }
+    },
+    {
+      "lineNumber": 66,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> > - ```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 66,
+        "insertText": "> >\n"
+      }
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> >   ```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 69,
+        "insertText": "> >\n"
+      }
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> > - ```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 69,
+        "insertText": "> >\n"
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 51,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "code-fences-in-blockquotes.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```markdown",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 4,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 7,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> ```markdown",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 10,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> ```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 13,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> > ```markdown",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 15,
+        "insertText": "> >\n"
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "> > ```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 18,
+        "insertText": "> >\n"
+      }
+    }
+  ],
+  "fenced_code_with_nesting.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```fence",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 4,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 7,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "~~~fence",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 8,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "~~~",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 11,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```fence",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 12,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 17,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "~~~fence",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 18,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "~~~",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 23,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```fence",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 24,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 31,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "~~~fence",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 32,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 38,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "~~~",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 39,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```fence",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 40,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 44,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "~~~fence",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 45,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 48,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "~~~",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 49,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "````fence",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 50,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "````",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 55,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "~~~~fence",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 56,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "~~~~",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 61,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 62,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "````fence",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 62,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 66,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "`````",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 67,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "~~~~fence",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 68,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "~~~~~",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 73,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "fenced_code_without_blank_lines.md": [
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 12,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 15,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 20,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 23,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "lists-with-fenced-code.md": [
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 21,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 24,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 26,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 29,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 51,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 54,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```text",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 56,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 59,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```shell",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 71,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "fence {MD031:-1} {MD031} {MD03...",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 73,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "lists_without_blank_lines.md": [
+    {
+      "lineNumber": 64,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 64,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD031",
+        "blanks-around-fences"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 73,
+        "insertText": "\n"
+      }
+    }
+  ]
+}

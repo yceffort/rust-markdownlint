@@ -1,0 +1,2428 @@
+{
+  "MD001-MD010.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    }
+  ],
+  "bulleted_list_2_space_indent.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 8; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "    "
+      }
+    }
+  ],
+  "bulleted_list_4_space_indent.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 8",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 4,
+        "insertText": ""
+      }
+    }
+  ],
+  "bulleted_list_not_at_beginning_of_line.md": [
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 20,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    }
+  ],
+  "inconsistent_bullet_indent_same_level.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    }
+  ],
+  "list-indentation-start-indent-indent.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 7; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 7; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    }
+  ],
+  "list-indentation-start-indent-no-indent.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 5; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 5; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 5; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    }
+  ],
+  "list-indentation-start-indented-indent.md": [
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 0",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 0",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 9; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 0",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 9; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 5",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 36,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 5",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 9; Actual: 8",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 38,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 5",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    }
+  ],
+  "list-indentation-start-indented-no-indent.md": [
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 0",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 0",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 5",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 0",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 36,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 38,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 9",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        11
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 3,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    }
+  ],
+  "list-indentation.md": [
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 20,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 38,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    }
+  ],
+  "lists-in-blockquote.md": [
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 5",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        11
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 185,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 188,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    }
+  ],
+  "lists-inside-footnote.md": [
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 5",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    }
+  ],
+  "lists-on-a-line.md": [
+    {
+      "lineNumber": 36,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 36,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 48,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 3,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 5",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 3,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 3,
+        "insertText": ""
+      }
+    }
+  ],
+  "lists-with-nesting.md": [
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 98,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 99,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    }
+  ],
+  "markdown-in-html.md": [
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD007",
+        "ul-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    }
+  ]
+}

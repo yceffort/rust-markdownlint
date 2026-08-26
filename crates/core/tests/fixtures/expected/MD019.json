@@ -1,0 +1,290 @@
+{
+  "MD011-MD021.md": [
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##  Multiple spaces B {MD019}",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "atx-heading-spacing-trailing-spaces.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##    Heading 2 {MD019}",
+      "errorRange": [
+        4,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 3
+      }
+    }
+  ],
+  "atx_heading_spacing.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##  Heading 2 {MD019}",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##   Heading 3 {MD019}",
+      "errorRange": [
+        4,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 2
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "#  Heading 5 {MD019}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "headings-with-invalid-spaces.md": [
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##  Extra normal space {MD019}",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##\t\tExtra Tab {MD019}",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "headings-without-content.md": [
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "#",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "#",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 20,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##",
+      "errorRange": [
+        4,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 2
+      }
+    }
+  ],
+  "markdown-in-html.md": [
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##  Heading 2b {MD019} {MD022}",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "short-headings.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "#  C",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##  I",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "#  OO",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD019",
+        "no-multiple-space-atx"
+      ],
+      "errorDetail": null,
+      "errorContext": "##  UU",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    }
+  ]
+}

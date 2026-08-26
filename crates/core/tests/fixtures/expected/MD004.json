@@ -1,0 +1,1476 @@
+{
+  "MD001-MD010.md": [
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "*"
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1,
+        "insertText": "*"
+      }
+    }
+  ],
+  "configure-file-off-enable-inline.md": [
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    }
+  ],
+  "configure-file-with-severity-alias.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    }
+  ],
+  "configure-file-with-severity-name.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    }
+  ],
+  "inconsistent_bullet_styles_asterisk.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "*"
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "*"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": "*"
+      }
+    },
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": "*"
+      }
+    }
+  ],
+  "inconsistent_bullet_styles_dash.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    }
+  ],
+  "inconsistent_bullet_styles_plus.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    }
+  ],
+  "incorrect_bullet_style_asterisk.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "*"
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "*"
+      }
+    }
+  ],
+  "incorrect_bullet_style_dash.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    }
+  ],
+  "incorrect_bullet_style_plus.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    }
+  ],
+  "invalid-ul-style-style.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    }
+  ],
+  "list-syntax-in-paragraph-text.md": [
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    }
+  ],
+  "lists-in-blockquote.md": [
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 64,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 66,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 70,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 78,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 90,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 91,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 98,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 99,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 100,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 122,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 123,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 140,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 141,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    }
+  ],
+  "lists-with-nesting.md": [
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 98,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 99,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    }
+  ],
+  "markdown-in-html.md": [
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    }
+  ],
+  "sublist-bullet-style.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 20,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "*"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "*"
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: dash; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1,
+        "insertText": "-"
+      }
+    },
+    {
+      "lineNumber": 66,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: plus; Actual: dash",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 13,
+        "deleteCount": 1,
+        "insertText": "+"
+      }
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD004",
+        "ul-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: plus",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 15,
+        "deleteCount": 1,
+        "insertText": "*"
+      }
+    }
+  ]
+}

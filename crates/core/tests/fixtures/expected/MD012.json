@@ -1,0 +1,248 @@
+{
+  "MD011-MD021.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    }
+  ],
+  "blockquote_blank_lines.md": [
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    }
+  ],
+  "consecutive_blank_lines.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    }
+  ],
+  "no-multiple-blanks-maximum.md": [
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 3; Actual: 4",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 3; Actual: 4",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 3; Actual: 5",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 3; Actual: 4",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 3; Actual: 5",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 3; Actual: 6",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 36,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 3; Actual: 4",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    }
+  ],
+  "no-multiple-blanks.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 1; Actual: 3",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 1; Actual: 3",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 1; Actual: 4",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD012",
+        "no-multiple-blanks"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    }
+  ]
+}

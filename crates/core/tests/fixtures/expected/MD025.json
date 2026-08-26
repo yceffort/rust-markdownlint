@@ -1,0 +1,308 @@
+{
+  "MD022-MD030.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Heading",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "alternate_top_level_heading.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Another one {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "blockquote-headings.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Quoted heading {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Double-quoted heading {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Quoted heading in list {MD022}...",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Double-quoted heading in list ...",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "front-matter-alt-title-h1.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Top level heading {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "front-matter-empty.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Another {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "front-matter-title-h1.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Top level heading {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "heading-duplicate-content-siblings-only.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "A",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "A",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Heading duplicate content sibl...",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "AA",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 78,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "BB",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "heading-multiple-top-level-preceding-blank-and-comment.md": [
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Heading 2 {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "heading-multiple-top-level-preceding-blank.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Heading 2 {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "heading-multiple-top-level-preceding-comment.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Heading 2 {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "heading_multiple_toplevel.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Heading 2 {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "headings_surrounding_space_setext.md": [
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Some text {MD022} {MD025} Head...",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Some text {MD022} {MD025} Head...",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "hugo-quickstart-example-json.md": [
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Heading {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "jekyll_post.md": [
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "heading1 {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "jekyll_post_2.md": [
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD025",
+        "single-title",
+        "single-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "header1 {MD025}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ]
+}

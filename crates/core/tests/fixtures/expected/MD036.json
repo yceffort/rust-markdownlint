@@ -1,0 +1,120 @@
+{
+  "MD031-MD040.md": [
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD036",
+        "no-emphasis-as-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Emphasis {MD036}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD036",
+        "no-emphasis-as-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Section {MD036} Heading",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "emphasis_instead_of_headings.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD036",
+        "no-emphasis-as-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Section 1: the first section {...",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD036",
+        "no-emphasis-as-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Section 1.1: another section {...",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD036",
+        "no-emphasis-as-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Section 2: yet more sections {...",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD036",
+        "no-emphasis-as-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Section 3: oh no more sections...",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 48,
+      "ruleNames": [
+        "MD036",
+        "no-emphasis-as-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Section 4: emphasis as heading...",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD036",
+        "no-emphasis-as-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Section 5: emphasis as heading...",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "md036-emphasis-as-heading.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD036",
+        "no-emphasis-as-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Emphasis as heading {MD036}",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD036",
+        "no-emphasis-as-heading"
+      ],
+      "errorDetail": null,
+      "errorContext": "Emphasis as heading {MD036}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ]
+}

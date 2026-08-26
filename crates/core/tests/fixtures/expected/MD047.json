@@ -1,0 +1,135 @@
+{
+  "MD041-MD050.md": [
+    {
+      "lineNumber": 64,
+      "ruleNames": [
+        "MD047",
+        "single-trailing-newline"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        41,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 42,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 144,
+      "ruleNames": [
+        "MD047",
+        "single-trailing-newline"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "fenced_code_without_blank_lines.md": [
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD047",
+        "single-trailing-newline"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "fixing-with-front-matter.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD047",
+        "single-trailing-newline"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 13,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "lists-incomplete.md": [
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD047",
+        "single-trailing-newline"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "lists_without_blank_lines.md": [
+    {
+      "lineNumber": 103,
+      "ruleNames": [
+        "MD047",
+        "single-trailing-newline"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        45,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 46,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "required-headings-missing-last.md": [
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD047",
+        "single-trailing-newline"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 16,
+        "insertText": "\n"
+      }
+    }
+  ]
+}

@@ -1,0 +1,818 @@
+{
+  "MD051-MD060.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link with a missing](#fragment)",
+      "errorRange": [
+        3,
+        32
+      ],
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Missing link fragment](#missing)",
+      "errorRange": [
+        1,
+        33
+      ],
+      "fixInfo": null
+    }
+  ],
+  "link-fragments-default-case.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": "Expected: #heading-name; Actual: #Heading-Name",
+      "errorContext": "[Invalid](#Heading-Name)",
+      "errorRange": [
+        1,
+        24
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 13,
+        "insertText": "#heading-name"
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": "Expected: #valid-heading-with-emphasis; Actual: #Valid-Heading-With-Emphasis",
+      "errorContext": "[Invalid](#Valid-Heading-With-Emphasis)",
+      "errorRange": [
+        1,
+        39
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 28,
+        "insertText": "#valid-heading-with-emphasis"
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": "Expected: #-valid-heading-with-emoji; Actual: #-Valid-Heading-With-Emoji",
+      "errorContext": "[Invalid](#-Valid-Heading-With-Emoji)",
+      "errorRange": [
+        1,
+        37
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 26,
+        "insertText": "#-valid-heading-with-emoji"
+      }
+    }
+  ],
+  "link-fragments-ignored-pattern-default.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Ignored](#ignored)",
+      "errorRange": [
+        1,
+        19
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Missing](#missing)",
+      "errorRange": [
+        1,
+        19
+      ],
+      "fixInfo": null
+    }
+  ],
+  "link-fragments-ignored-pattern-empty.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Ignored](#ignored)",
+      "errorRange": [
+        1,
+        19
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Missing](#missing)",
+      "errorRange": [
+        1,
+        19
+      ],
+      "fixInfo": null
+    }
+  ],
+  "link-fragments-ignored-pattern-present.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Missing](#missing)",
+      "errorRange": [
+        1,
+        19
+      ],
+      "fixInfo": null
+    }
+  ],
+  "link-fragments.md": [
+    {
+      "lineNumber": 218,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#valid-heading-is-an-image)",
+      "errorRange": [
+        1,
+        37
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 220,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#valid-heading-2004-)",
+      "errorRange": [
+        1,
+        31
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 222,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#valid-repeated-heading-3)",
+      "errorRange": [
+        1,
+        36
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 224,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#invalid-fragment)",
+      "errorRange": [
+        1,
+        28
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 226,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#myname)",
+      "errorRange": [
+        1,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 228,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": "Expected: #HREFandID; Actual: #hrefandid",
+      "errorContext": "[Invalid](#hrefandid)",
+      "errorRange": [
+        1,
+        21
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 10,
+        "insertText": "#HREFandID"
+      }
+    },
+    {
+      "lineNumber": 230,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#name-for-other-element)",
+      "errorRange": [
+        1,
+        34
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 232,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#name-should-be-ignored)",
+      "errorRange": [
+        1,
+        34
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 234,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#not-an-id-should-be-ignored)",
+      "errorRange": [
+        1,
+        39
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 236,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 241,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[badref]: #missing \"{MD051}\"",
+      "errorRange": [
+        1,
+        28
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 245,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": "Expected: #valid-fragments; Actual: #Valid-Fragments",
+      "errorContext": "[Title](#Valid-Fragments)",
+      "errorRange": [
+        1,
+        25
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 16,
+        "insertText": "#valid-fragments"
+      }
+    },
+    {
+      "lineNumber": 247,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": "Expected: #namedlink; Actual: #NAMEDLINK",
+      "errorContext": "[ALL CAPS](#NAMEDLINK)",
+      "errorRange": [
+        1,
+        22
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "deleteCount": 10,
+        "insertText": "#namedlink"
+      }
+    },
+    {
+      "lineNumber": 249,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": "Expected: #namedlink; Actual: #NAMEDLINK",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 254,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": "Expected: #idlink; Actual: #idLINK",
+      "errorContext": "[mixedref]: #idLINK \"{MD051}\"",
+      "errorRange": [
+        1,
+        29
+      ],
+      "fixInfo": {
+        "editColumn": 13,
+        "deleteCount": 7,
+        "insertText": "#idlink"
+      }
+    },
+    {
+      "lineNumber": 289,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#embedded-space)",
+      "errorRange": [
+        1,
+        26
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 291,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#embedded_space)",
+      "errorRange": [
+        1,
+        26
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 293,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#embedded)",
+      "errorRange": [
+        1,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 295,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#hyphen--run)",
+      "errorRange": [
+        1,
+        23
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 297,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#hyphen-run)",
+      "errorRange": [
+        1,
+        22
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 299,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#named-fragment-outside-heading)",
+      "errorRange": [
+        1,
+        42
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 301,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#UpperCase)",
+      "errorRange": [
+        1,
+        21
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 303,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#uppercase)",
+      "errorRange": [
+        1,
+        21
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 305,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": "Expected: #l12-not-a-line-link; Actual: #L12-not-a-line-link",
+      "errorContext": "[Invalid](#L12-not-a-line-link)",
+      "errorRange": [
+        1,
+        31
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 20,
+        "insertText": "#l12-not-a-line-link"
+      }
+    },
+    {
+      "lineNumber": 307,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#l7)",
+      "errorRange": [
+        1,
+        14
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 309,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#L)",
+      "errorRange": [
+        1,
+        13
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 311,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#L7extra)",
+      "errorRange": [
+        1,
+        19
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 313,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#L30C)",
+      "errorRange": [
+        1,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 315,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#L30Cextra)",
+      "errorRange": [
+        1,
+        21
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 317,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#L30L12)",
+      "errorRange": [
+        1,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 319,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#L30C12)",
+      "errorRange": [
+        1,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 321,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#L30C11-)",
+      "errorRange": [
+        1,
+        19
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 323,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#L30C11-L)",
+      "errorRange": [
+        1,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 325,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#L30C11-L31C)",
+      "errorRange": [
+        1,
+        23
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 327,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#L30C11-C31)",
+      "errorRange": [
+        1,
+        22
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 329,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#C30)",
+      "errorRange": [
+        1,
+        15
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 331,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#C11-C31)",
+      "errorRange": [
+        1,
+        19
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 333,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Invalid](#C11-L4C31)",
+      "errorRange": [
+        1,
+        21
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 339,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": "Expected: #top; Actual: #ToP",
+      "errorContext": "[Invalid](#ToP)",
+      "errorRange": [
+        1,
+        15
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 4,
+        "insertText": "#top"
+      }
+    }
+  ],
+  "spaces_inside_codespan_elements.md": [
+    {
+      "lineNumber": 81,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link](#link`link)",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link](#link`link)",
+      "errorRange": [
+        11,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link(link](#link`link)",
+      "errorRange": [
+        6,
+        23
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link)link](#link`link)",
+      "errorRange": [
+        6,
+        23
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 91,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link](#link[link`link)",
+      "errorRange": [
+        6,
+        23
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD051",
+        "link-fragments"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link](#link]link`link)",
+      "errorRange": [
+        6,
+        23
+      ],
+      "fixInfo": null
+    }
+  ]
+}

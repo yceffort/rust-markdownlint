@@ -1,0 +1,564 @@
+{
+  "MD011-MD021.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(reversed)[link]",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        16
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 16,
+        "insertText": "[reversed](link)"
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(reversed)[link]",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        16
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 16,
+        "insertText": "[reversed](link)"
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(name)[link]",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 12,
+        "insertText": "[name](link)"
+      }
+    }
+  ],
+  "configure-file-off-enable-inline.md": [
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(text)[.]",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 9,
+        "insertText": "[text](.)"
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(text)[.]",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 9,
+        "insertText": "[text](.)"
+      }
+    }
+  ],
+  "configure-file-with-severity-alias.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(text)[.]",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 9,
+        "insertText": "[text](.)"
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(text)[.]",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 9,
+        "insertText": "[text](.)"
+      }
+    }
+  ],
+  "configure-file-with-severity-name.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(text)[.]",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 9,
+        "insertText": "[text](.)"
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(text)[.]",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 9,
+        "insertText": "[text](.)"
+      }
+    }
+  ],
+  "configure-file-with-severity-tag.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(text)[.]",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 9,
+        "insertText": "[text](.)"
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(text)[.]",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 9,
+        "insertText": "[text](.)"
+      }
+    }
+  ],
+  "links-alternate.md": [
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(Incorrect link syntax)[https://www.example.com/]",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        49
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 49,
+        "insertText": "[Incorrect link syntax](https://www.example.com/)"
+      }
+    }
+  ],
+  "markdown-extra-footnote.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(parenthesized footnote)[x^y]",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        29
+      ],
+      "fixInfo": {
+        "editColumn": 15,
+        "deleteCount": 29,
+        "insertText": "[parenthesized footnote](x^y)"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(is this)[z]",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 12,
+        "insertText": "[is this](z)"
+      }
+    }
+  ],
+  "reversed-link-issue-with-markdownlint-12.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(?<1>\\[^\"'\\]*)[\"']",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        18
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "deleteCount": 18,
+        "insertText": "[?<1>\\[^\"'\\]*](\"')"
+      }
+    }
+  ],
+  "reversed_link.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(this website)[https://www.example.com]",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        39
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 39,
+        "insertText": "[this website](https://www.example.com)"
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(issues)[https://www.example.com/one]",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        37
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 37,
+        "insertText": "[issues](https://www.example.com/one)"
+      }
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(same text)[https://www.example.com/two]",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        40
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 40,
+        "insertText": "[same text](https://www.example.com/two)"
+      }
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(issues)[https://www.example.com/three]",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        39
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 39,
+        "insertText": "[issues](https://www.example.com/three)"
+      }
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(same line)[https://www.example.com/four]",
+      "errorContext": null,
+      "errorRange": [
+        52,
+        41
+      ],
+      "fixInfo": {
+        "editColumn": 52,
+        "deleteCount": 41,
+        "insertText": "[same line](https://www.example.com/four)"
+      }
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(reversed)[link]",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        16
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 16,
+        "insertText": "[reversed](link)"
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(reversed)[link]",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        16
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 16,
+        "insertText": "[reversed](link)"
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "([a-zA-Z]|\\\\.[a-zA-Z.])[a-zA-Z0-9._]",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        36
+      ],
+      "fixInfo": {
+        "editColumn": 17,
+        "deleteCount": 36,
+        "insertText": "[[a-zA-Z]|\\\\.[a-zA-Z.]](a-zA-Z0-9._)"
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "([\\/.])[\\w\\-.\\/=]",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        17
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "deleteCount": 17,
+        "insertText": "[[\\/.]](\\w\\-.\\/=)"
+      }
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(^|\\/)[!.]",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 15,
+        "deleteCount": 10,
+        "insertText": "[^|\\/](!.)"
+      }
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(xxx)[xxx]",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 10,
+        "insertText": "[xxx](xxx)"
+      }
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(reversed)[link]",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        16
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 16,
+        "insertText": "[reversed](link)"
+      }
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(reversed)[link]",
+      "errorContext": null,
+      "errorRange": [
+        28,
+        16
+      ],
+      "fixInfo": {
+        "editColumn": 28,
+        "deleteCount": 16,
+        "insertText": "[reversed](link)"
+      }
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(reversed)[link]",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        16
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 16,
+        "insertText": "[reversed](link)"
+      }
+    }
+  ],
+  "table-content-with-issues.md": [
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD011",
+        "no-reversed-links"
+      ],
+      "errorDetail": "(link)[https://example.com]",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        27
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 27,
+        "insertText": "[link](https://example.com)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "MD041-MD050.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD041",
+        "first-line-heading",
+        "first-line-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Not a heading {MD041}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD041",
+        "first-line-heading",
+        "first-line-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "## Heading 1 {MD041:1}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "first-line-heading-allow-preamble-false.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD041",
+        "first-line-heading",
+        "first-line-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Text {MD041}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "first-line-heading-allow-preamble-violation.md": [
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD041",
+        "first-line-heading",
+        "first-line-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "## Heading {MD041}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "front-matter-alternate.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD041",
+        "first-line-heading",
+        "first-line-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Text {MD041}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "front-matter-empty-title-no-h1.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD041",
+        "first-line-heading",
+        "first-line-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Front matter from [Jekyll docu...",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "front-matter-no-title-no-h1.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD041",
+        "first-line-heading",
+        "first-line-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Front matter from [Jekyll docu...",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "h3-as-top-level-heading.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD041",
+        "first-line-heading",
+        "first-line-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "<h3>H3 as Top-Level Heading {M...",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "md041-ignore-leading-comments-violation.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD041",
+        "first-line-heading",
+        "first-line-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "Text text text {MD041}",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "no_first_line_heading.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD041",
+        "first-line-heading",
+        "first-line-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "This is a file without a top l...",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "no_first_line_top_level_heading.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD041",
+        "first-line-heading",
+        "first-line-h1"
+      ],
+      "errorDetail": null,
+      "errorContext": "## Second level heading {MD041...",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ]
+}

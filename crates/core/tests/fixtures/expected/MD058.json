@@ -1,0 +1,182 @@
+{
+  "blanks-around-tables.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "| Header | {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "| Cell   | {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 20,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "> | Header | {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "> | Cell   | {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 28,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "> | Cell   | {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 33,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 36,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "| Header | {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 38,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "| Cell   | {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 39,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "| Header | {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "| Cell   | {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 45,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 48,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "| Header | {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "| Cell   | {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 51,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 119,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "| table {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 121,
+      "ruleNames": [
+        "MD058",
+        "blanks-around-tables"
+      ],
+      "errorDetail": null,
+      "errorContext": "| cell  {MD058} |",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 122,
+        "insertText": "\n"
+      }
+    }
+  ]
+}

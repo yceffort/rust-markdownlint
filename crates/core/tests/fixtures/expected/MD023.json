@@ -1,0 +1,146 @@
+{
+  "MD022-MD030.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD023",
+        "heading-start-left"
+      ],
+      "errorDetail": null,
+      "errorContext": " # Heading",
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "blockquote-headings.md": [
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD023",
+        "heading-start-left"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  ## Quoted indented sub-head...",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD023",
+        "heading-start-left"
+      ],
+      "errorDetail": null,
+      "errorContext": "  >  ## Quoted indented sub-he...",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD023",
+        "heading-start-left"
+      ],
+      "errorDetail": null,
+      "errorContext": " # Heading 9 {MD023} {MD026}.",
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "headings_with_spaces_at_the_beginning.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD023",
+        "heading-start-left"
+      ],
+      "errorDetail": null,
+      "errorContext": " # Heading 1 {MD023}",
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD023",
+        "heading-start-left"
+      ],
+      "errorDetail": null,
+      "errorContext": " Setext style fully indented {...",
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD023",
+        "heading-start-left"
+      ],
+      "errorDetail": null,
+      "errorContext": " Setext style title only inden...",
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 20,
+      "ruleNames": [
+        "MD023",
+        "heading-start-left"
+      ],
+      "errorDetail": null,
+      "errorContext": "    # Test {MD022} {MD023} Als...",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    }
+  ]
+}

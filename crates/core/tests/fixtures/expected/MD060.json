@@ -1,0 +1,8684 @@
+{
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 110,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-column-style-aligned-delimiter.md": [
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 36,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 80,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 102,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for option \"aligned_delimiter\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-column-style-aligned.md": [
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        24,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        27,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        37,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 46,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 46,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 46,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        27,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 48,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 48,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 48,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        37,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        29,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 66,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 66,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        28,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 74,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 74,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        28,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 80,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 80,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 81,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 82,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 82,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        28,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 83,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 83,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 91,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 91,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 91,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 92,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 92,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        26,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 92,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 98,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 98,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 98,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 99,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 99,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 99,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 100,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 100,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        26,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 100,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 106,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 107,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 107,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 108,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 108,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        27,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 108,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 109,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 109,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 117,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 117,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 118,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 118,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 119,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 119,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 124,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 124,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 125,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 125,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 126,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 126,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 127,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 127,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 132,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 133,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 133,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 134,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 134,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 135,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 135,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-column-style-compact.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        29,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 88,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 88,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 88,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 88,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        26,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 88,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        26,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 88,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 95,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 95,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 95,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 95,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 95,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 95,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        26,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        26,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        26,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 102,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 102,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 102,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 102,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 102,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 103,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 103,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 103,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 103,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 104,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 104,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 104,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        27,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 104,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        27,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 104,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 105,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 105,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 105,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 105,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 111,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 111,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 111,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 111,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 112,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 112,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 112,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 112,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 113,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 113,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 113,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 113,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 114,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 114,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 114,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 114,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 115,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 115,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 115,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 115,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 119,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 119,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 119,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 119,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 120,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 120,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 120,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 120,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 121,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 121,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 121,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 121,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 122,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 122,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 122,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 122,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 123,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 123,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 123,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 123,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 127,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 127,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 127,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 128,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 128,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 128,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 129,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 129,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 129,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 130,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 130,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 130,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 130,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 131,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 131,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-column-style-default.md": [
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        24,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        29,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the right for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        26,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 95,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 95,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 115,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 116,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 117,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 119,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 119,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-column-style-emoji.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has extra space to the left for style \"compact\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-column-style-irregular-trailing-pipe.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        35,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        40,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        35,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        40,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        35,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 38,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        37,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        38,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+      "errorContext": null,
+      "errorRange": [
+        38,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-column-style-tight.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        24,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        24,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        27,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        37,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        27,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        37,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        29,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 70,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 70,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 70,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        28,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 70,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        28,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 78,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 78,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 78,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        28,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 78,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        28,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 83,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 83,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 83,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 83,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 84,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 84,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 84,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 84,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        28,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        28,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 105,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 106,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        26,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 107,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 107,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 108,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 109,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 109,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 127,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 128,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 129,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 131,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the right for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 131,
+      "ruleNames": [
+        "MD060",
+        "table-column-style"
+      ],
+      "errorDetail": "Table pipe has space to the left for style \"tight\"",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    }
+  ]
+}

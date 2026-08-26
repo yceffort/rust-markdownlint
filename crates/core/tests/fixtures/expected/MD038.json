@@ -1,0 +1,1974 @@
+{
+  "MD031-MD040.md": [
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` inside`",
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`` inside``",
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` code`",
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 20,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` elements`",
+      "errorRange": [
+        27,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 27,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`` code``",
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 23,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "``  ` embedded backtick``",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "``embedded backtick`  ``",
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 22,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 38,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` code {MD038} span`",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`code span  `",
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "...``code span code span code ```",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "```` code {MD038} span code sp...",
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 15,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`with `",
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "configure-file-with-severity-alias.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` text`",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` text`",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "configure-file-with-severity-name.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` text`",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` text`",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "configure-file-with-severity-tag.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` text`",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` text`",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "html-comment-in-code-and-table.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`{MD038} `",
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`{MD038} `",
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`{MD038} `",
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`{MD038} `",
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 13,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "html-comment-in-markdown-table.md": [
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`{MD038} `",
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`{MD038} `",
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`{MD038} `",
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`{MD038} `",
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 19,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 46,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`{MD038} `",
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 19,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`{MD038} `",
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 19,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "inline-capture-restore.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 48,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 66,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 78,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 84,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 90,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "inline-disable-enable-file.md": [
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "inline-disable-enable.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        52,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 52,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 82,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        52,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 52,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 90,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        52,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 52,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 95,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 99,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        60,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 60,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 103,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        52,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 52,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 105,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`in `",
+      "errorRange": [
+        52,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 52,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "inline_html.md": [
+    {
+      "lineNumber": 112,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`code <element `",
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 20,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "line-breaks-inside-code-spans.md": [
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` code {MD038} span`",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`code span `",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` code {MD038} span code span`",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`code span code span `",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 63,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`code span code span `",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` code {MD038} span code span`",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`code code code `",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "markdown-in-html.md": [
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`  text  `",
+      "errorRange": [
+        64,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 64,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`  text  `",
+      "errorRange": [
+        70,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 70,
+        "deleteCount": 2
+      }
+    }
+  ],
+  "md038-scenarios.md": [
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`code  `",
+      "errorRange": [
+        6,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`  code`",
+      "errorRange": [
+        2,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "``code`  ``",
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "``  `code``",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`  code  `",
+      "errorRange": [
+        2,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`  code  `",
+      "errorRange": [
+        8,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "``  code`  ``",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "``  code`  ``",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "``  `code  ``",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "``  `code  ``",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "``  `code`  ``",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "``  `code`  ``",
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "md040-allowed_languages.md": [
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` scss`",
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 18,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "spaces_inside_codespan_elements.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` codespan element with space ...",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "...ment with space inside right `",
+      "errorRange": [
+        42,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 42,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`` code``",
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "``code ``",
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`` code``",
+      "errorRange": [
+        24,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 24,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "``code ``",
+      "errorRange": [
+        28,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 28,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "```  ` multiple leading spaces...",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "...iling spaces not allowed `  ``",
+      "errorRange": [
+        42,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 42,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 83,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`link) text `",
+      "errorRange": [
+        30,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 30,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 95,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`link) text `",
+      "errorRange": [
+        34,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 34,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 103,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` code`",
+      "errorRange": [
+        29,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 29,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 105,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`code `",
+      "errorRange": [
+        33,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 33,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 114,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`  code `",
+      "errorRange": [
+        38,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 38,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 116,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` code  `",
+      "errorRange": [
+        43,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 43,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 118,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`  code  `",
+      "errorRange": [
+        31,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 31,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 118,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "`  code  `",
+      "errorRange": [
+        37,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 37,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 132,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "```  ` multiple leading {MD038...",
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 139,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "...iling spaces not allowed `  ``",
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 15,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 153,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "```     Code {MD038}     ```",
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 4
+      }
+    },
+    {
+      "lineNumber": 163,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "```     Code {MD038}     ```",
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 4
+      }
+    }
+  ],
+  "table-content-with-issues.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD038",
+        "no-space-in-code"
+      ],
+      "errorDetail": null,
+      "errorContext": "` code`",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    }
+  ]
+}

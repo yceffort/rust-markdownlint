@@ -1,0 +1,130 @@
+{
+  "MD001-MD010.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD001",
+        "heading-increment"
+      ],
+      "errorDetail": "Expected: h3; Actual: h4",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD001",
+        "heading-increment"
+      ],
+      "errorDetail": "Expected: h3; Actual: h4",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "heading-duplicate-content-siblings-only.md": [
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD001",
+        "heading-increment"
+      ],
+      "errorDetail": "Expected: h4; Actual: h5",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "heading_increment-alt_title_level3_bad.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD001",
+        "heading-increment"
+      ],
+      "errorDetail": "Expected: h2; Actual: h3",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "heading_increment-title_level3_bad.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD001",
+        "heading-increment"
+      ],
+      "errorDetail": "Expected: h2; Actual: h3",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "headings_bad.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD001",
+        "heading-increment"
+      ],
+      "errorDetail": "Expected: h2; Actual: h3",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD001",
+        "heading-increment"
+      ],
+      "errorDetail": "Expected: h3; Actual: h4",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "jekyll_post.md": [
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD001",
+        "heading-increment"
+      ],
+      "errorDetail": "Expected: h2; Actual: h3",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "jekyll_post_2.md": [
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD001",
+        "heading-increment"
+      ],
+      "errorDetail": "Expected: h2; Actual: h3",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "required-headings-missing-middle.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD001",
+        "heading-increment"
+      ],
+      "errorDetail": "Expected: h2; Actual: h3",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ]
+}

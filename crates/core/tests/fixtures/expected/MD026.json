@@ -1,0 +1,403 @@
+{
+  "MD022-MD030.md": [
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: '.'",
+      "errorContext": null,
+      "errorRange": [
+        27,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 27,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: '.'",
+      "errorContext": null,
+      "errorRange": [
+        29,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 29,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "heading_trailing_punctuation.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ' .'",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 19,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ' ,'",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 19,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ' ;'",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 19,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ' :'",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 19,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ' !'",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 19,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ' 。'",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 30,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ' ，'",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 30,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ' ；'",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 30,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ' ：'",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 30,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ' ！'",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 30,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ' !'",
+      "errorContext": null,
+      "errorRange": [
+        29,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 29,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ' !'",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 30,
+        "deleteCount": 2
+      }
+    }
+  ],
+  "heading_trailing_punctuation_customized.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: '.'",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 20,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ','",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 21,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ':'",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 21,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ';'",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 21,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: '?'",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 21,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ']'",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 21,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "headings-with-html-entities.md": [
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ';'",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 31,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ';'",
+      "errorContext": null,
+      "errorRange": [
+        34,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 34,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD026",
+        "no-trailing-punctuation"
+      ],
+      "errorDetail": "Punctuation: ';'",
+      "errorContext": null,
+      "errorRange": [
+        31,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 31,
+        "deleteCount": 1
+      }
+    }
+  ]
+}

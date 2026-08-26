@@ -1,0 +1,157 @@
+{
+  "MD041-MD050.md": [
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: backtick; Actual: tilde",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: backtick; Actual: tilde",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "code_fence_style_backtick.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: backtick; Actual: tilde",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: backtick; Actual: tilde",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "code_fence_style_tilde.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: tilde; Actual: backtick",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: tilde; Actual: backtick",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "fenced_code_blocks.md": [
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: backtick; Actual: tilde",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "fenced_code_with_nesting.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: backtick; Actual: tilde",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: backtick; Actual: tilde",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: backtick; Actual: tilde",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: backtick; Actual: tilde",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 56,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: backtick; Actual: tilde",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD048",
+        "code-fence-style"
+      ],
+      "errorDetail": "Expected: backtick; Actual: tilde",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ]
+}

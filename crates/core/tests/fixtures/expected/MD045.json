@@ -1,0 +1,229 @@
+{
+  "MD041-MD050.md": [
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        33,
+        14
+      ],
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        1,
+        14
+      ],
+      "fixInfo": null
+    }
+  ],
+  "no-alt-text.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        1,
+        14
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        1,
+        22
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        30,
+        14
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        40,
+        12
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        50,
+        10
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        39,
+        14
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        1,
+        25
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        33,
+        23
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 48,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        37,
+        21
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        3,
+        23
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD045",
+        "no-alt-text"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": [
+        24,
+        42
+      ],
+      "fixInfo": null
+    }
+  ]
+}

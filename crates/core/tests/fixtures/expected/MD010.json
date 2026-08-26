@@ -1,0 +1,1638 @@
+{
+  "4-tabs-MD010.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        13
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 13,
+        "insertText": "                                                    "
+      }
+    },
+    {
+      "lineNumber": 2,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 2,
+        "insertText": "        "
+      }
+    },
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 35",
+      "errorContext": null,
+      "errorRange": [
+        35,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 35,
+        "deleteCount": 3,
+        "insertText": "            "
+      }
+    }
+  ],
+  "MD001-MD010.md": [
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "code-block-with-language-allowed.md": [
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 36,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 3,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 38,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 10",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 46,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 48,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "code-block-with-tabs-allowed.md": [
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 10",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "code-block-with-tabs.md": [
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 3,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 10",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "code-with-tabs-allowed.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "code-with-tabs-blocked.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 11",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 7",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 11",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 18",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 18,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 14",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 14",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "default-spaces-MD010.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        13
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 13,
+        "insertText": "             "
+      }
+    },
+    {
+      "lineNumber": 2,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 2,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 35",
+      "errorContext": null,
+      "errorRange": [
+        35,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 35,
+        "deleteCount": 3,
+        "insertText": "   "
+      }
+    }
+  ],
+  "front-matter-embedded.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 6",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "front-matter-with-dashes.md": [
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "ignore-comments.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 10",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 2,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 16",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 16,
+        "deleteCount": 3,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "inline-capture-restore.md": [
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 64,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 70,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 82,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 88,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 104,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 116,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "inline-disable-enable-file.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "inline-disable-enable.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 64,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 82,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 95,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 99,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ],
+  "no-tabs-edge-case-MD010.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        13
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 13,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 2,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 2,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 34",
+      "errorContext": null,
+      "errorRange": [
+        34,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 34,
+        "deleteCount": 3,
+        "insertText": ""
+      }
+    }
+  ],
+  "whitespace_issues.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD010",
+        "no-hard-tabs"
+      ],
+      "errorDetail": "Column: 5",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1,
+        "insertText": " "
+      }
+    }
+  ]
+}

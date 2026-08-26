@@ -1,0 +1,716 @@
+{
+  "MD001-MD010.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 0; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: (3); Actual: (4)",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    }
+  ],
+  "inconsistent_bullet_indent_same_level.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    }
+  ],
+  "list-indentation-start-indent-indent.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    }
+  ],
+  "list-indentation-start-indent-no-indent.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    }
+  ],
+  "list-indentation.md": [
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 44,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 3; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    }
+  ],
+  "list-item-prefix-alignment.md": [
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: (4); Actual: (5)",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 95,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: (4); Actual: (3)",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 107,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 5; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 110,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 5; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 114,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 118,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 5",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 122,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1,
+        "insertText": ""
+      }
+    },
+    {
+      "lineNumber": 127,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 0,
+        "insertText": " "
+      }
+    }
+  ],
+  "lists-in-blockquote.md": [
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 7; Actual: 8",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 5; Actual: 6",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 9; Actual: 10",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        12
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 8; Actual: 9",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 87,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 90,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 8; Actual: 9",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 91,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 8; Actual: 9",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 98,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 100,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 8; Actual: 9",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 8; Actual: 9",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 106,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 109,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 114,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 116,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 185,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 5",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 188,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": null
+    }
+  ],
+  "lists-inside-footnote.md": [
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 5",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": null
+    }
+  ],
+  "lists-on-a-line.md": [
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 6; Actual: 7",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 4; Actual: 5",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    }
+  ],
+  "markdown-in-html.md": [
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD005",
+        "list-indent"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": null
+    }
+  ]
+}
