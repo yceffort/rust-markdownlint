@@ -31,11 +31,37 @@ fn replace_special_backslashes(s: &str) -> String {
     out
 }
 
+fn has_glob_meta(segment: &str) -> bool {
+    segment.contains(['*', '?', '[', ']', '{', '}', '\\'])
+}
+
+/// 패턴 앞쪽의 glob 메타문자 없는 세그먼트들 (fast-glob 의 static prefix). 이 밖의
+/// 디렉토리는 어떤 파일도 매치할 수 없어 순회하지 않는다.
+fn static_prefix(pattern: &str) -> Vec<String> {
+    pattern
+        .split('/')
+        .take_while(|s| !has_glob_meta(s))
+        .map(str::to_string)
+        .collect()
+}
+
+fn build_glob(pattern: &str) -> Option<globset::Glob> {
+    globset::GlobBuilder::new(pattern)
+        .literal_separator(true)
+        .backslash_escape(true)
+        .build()
+        .ok()
+}
+
 /// globby 의미론(absolute, dot:true, 디렉토리 확장, 부정, gitignore)으로 base 아래 파일 열거.
 /// 결과는 정렬된 절대 경로.
 pub fn enumerate_files(base: &Path, patterns: &[String], gitignore: &GitIgnore) -> Vec<PathBuf> {
     let mut positive = globset::GlobSetBuilder::new();
     let mut negative = globset::GlobSetBuilder::new();
+    // fast-glob DeepFilter: `/**` 로 끝나거나 마지막 세그먼트가 정적인 부정 패턴은 그 디렉토리 자체를
+    // 순회하지 않는다 (`!**/node_modules` 는 아래 파일까지 제외, `!a/*` 는 아니다).
+    let mut prune = globset::GlobSetBuilder::new();
+    let mut prefixes: Vec<Vec<String>> = Vec::new();
     let mut has_positive = false;
     for pattern in patterns {
         let (negated, pattern) = match pattern.strip_prefix('!') {
@@ -49,17 +75,20 @@ pub fn enumerate_files(base: &Path, patterns: &[String], gitignore: &GitIgnore) 
             pattern.to_string()
         };
         // suppressErrors: 잘못된 패턴은 무시
-        let Ok(glob) = globset::GlobBuilder::new(&pattern)
-            .literal_separator(true)
-            .backslash_escape(true)
-            .build()
-        else {
+        let Some(glob) = build_glob(&pattern) else {
             continue;
         };
         if negated {
             negative.add(glob);
+            if let Some(dir) = pattern.strip_suffix("/**") {
+                prune.add(build_glob(dir).expect("prefix of a valid glob"));
+                prune.add(build_glob(&pattern).expect("valid glob"));
+            } else if !pattern.rsplit('/').next().is_some_and(has_glob_meta) {
+                prune.add(build_glob(&pattern).expect("valid glob"));
+            }
         } else {
             positive.add(glob);
+            prefixes.push(static_prefix(&pattern));
             has_positive = true;
         }
     }
@@ -67,15 +96,41 @@ pub fn enumerate_files(base: &Path, patterns: &[String], gitignore: &GitIgnore) 
     if !has_positive {
         return Vec::new();
     }
-    let (Ok(positive), Ok(negative)) = (positive.build(), negative.build()) else {
+    let (Ok(positive), Ok(negative), Ok(prune)) =
+        (positive.build(), negative.build(), prune.build())
+    else {
         return Vec::new();
     };
 
+    let base_owned = base.to_path_buf();
     let mut walk = ignore::WalkBuilder::new(base);
     // fast-glob 기본값 followSymbolicLinks:true (pnpm node_modules 등)
     walk.standard_filters(false)
         .hidden(false)
-        .follow_links(true);
+        .follow_links(true)
+        .filter_entry(move |entry| {
+            if !entry.file_type().is_some_and(|t| t.is_dir()) {
+                return true;
+            }
+            let Ok(rel) = entry.path().strip_prefix(&base_owned) else {
+                return true;
+            };
+            if rel.as_os_str().is_empty() {
+                return true;
+            }
+            if prune.is_match(rel) {
+                return false;
+            }
+            let dir: Vec<String> = rel
+                .components()
+                .map(|c| c.as_os_str().to_string_lossy().into_owned())
+                .collect();
+            // 어떤 양의 패턴의 static prefix 와도 같은 줄기에 있어야 한다
+            prefixes.iter().any(|p| {
+                let n = p.len().min(dir.len());
+                p[..n] == dir[..n]
+            })
+        });
     match gitignore {
         GitIgnore::Enabled(true) => {
             walk.git_ignore(true).require_git(false);
@@ -183,6 +238,26 @@ mod tests {
             &GitIgnore::Enabled(false),
         );
         assert_eq!(rel(&base, &files), ["linked/a.md"]);
+    }
+
+    /// fast-glob DeepFilter: 마지막 세그먼트가 정적인 부정 패턴은 디렉토리 아래 전체를 제외한다.
+    #[test]
+    fn enumerate_negative_static_basename_prunes_directory() {
+        let dir = fixture();
+        let base = dir.path().canonicalize().unwrap();
+        let files = enumerate_files(
+            &base,
+            &["**/*.md".into(), "!**/node_modules".into()],
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(rel(&base, &files), [".hidden/c.md", "docs/a.md"]);
+        // 동적 basename 은 디렉토리를 끊지 않는다
+        let files = enumerate_files(
+            &base,
+            &["**/*".into(), "!docs/s*".into()],
+            &GitIgnore::Enabled(false),
+        );
+        assert!(rel(&base, &files).contains(&"docs/sub/b.txt".to_string()));
     }
 
     #[test]
