@@ -3,6 +3,7 @@ use std::sync::LazyLock;
 
 use super::Rule;
 use super::md004::Md004;
+use super::md005::Md005;
 use super::md007::Md007;
 use super::md009::Md009;
 use super::md010::Md010;
@@ -12,8 +13,8 @@ use super::md020::Md020;
 use super::md023::Md023;
 use super::md047::Md047;
 
-static RULES: [&dyn Rule; 9] = [
-    &Md004, &Md007, &Md009, &Md010, &Md012, &Md018, &Md020, &Md023, &Md047,
+static RULES: [&dyn Rule; 10] = [
+    &Md004, &Md005, &Md007, &Md009, &Md010, &Md012, &Md018, &Md020, &Md023, &Md047,
 ];
 
 pub fn all_rules() -> &'static [&'static dyn Rule] {
