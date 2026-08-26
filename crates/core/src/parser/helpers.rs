@@ -1,11 +1,20 @@
 use super::token::{TokenId, TokenTree};
 
 impl TokenTree {
-    /// 원본 `filterByTypes`: 깊이 우선, 문서 순서. 매치된 토큰의 자식도 계속 탐색한다.
+    /// 원본 `filterByTypes(tokens, types)`: htmlFlow 재파싱으로 생긴 토큰은 제외한다.
     pub fn filter_by_types(&self, kinds: &[&str]) -> Vec<TokenId> {
+        self.filter_by_types_html_flow(kinds, false)
+    }
+
+    /// 원본 `filterByTypes(tokens, types, htmlFlow)`: 깊이 우선, 문서 순서.
+    /// 매치된 토큰의 자식도 계속 탐색한다. `html_flow` 가 참이면 htmlFlow 안의 토큰도 포함한다.
+    pub fn filter_by_types_html_flow(&self, kinds: &[&str], html_flow: bool) -> Vec<TokenId> {
         let mut out = Vec::new();
         for &r in &self.roots {
             self.collect(r, kinds, &mut out);
+        }
+        if !html_flow {
+            out.retain(|&id| !self.tokens[id].in_html_flow);
         }
         out
     }

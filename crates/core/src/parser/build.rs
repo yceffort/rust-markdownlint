@@ -36,7 +36,7 @@ pub fn parse(text: &str) -> TokenTree {
     let nodes = parse_nodes(text, true, 0);
     let mut tree = TokenTree::default();
     for n in nodes {
-        let id = flatten(&mut tree, n, None);
+        let id = flatten(&mut tree, n, None, false);
         tree.roots.push(id);
     }
     tree
@@ -160,7 +160,10 @@ fn nest(text: &str, events: &[Event], line_delta: usize) -> Vec<Node> {
     roots
 }
 
-fn flatten(tree: &mut TokenTree, n: Node, parent: Option<usize>) -> usize {
+fn flatten(tree: &mut TokenTree, n: Node, parent: Option<usize>, in_html_flow: bool) -> usize {
+    // 원본은 htmlFlow 재파싱으로 만든 토큰에만 htmlFlowSymbol 을 붙인다 (htmlFlow 자신은 제외).
+    let children_in_html_flow =
+        in_html_flow || (n.kind == "htmlFlow" && !adapt::is_html_flow_comment(&n));
     let id = tree.tokens.len();
     tree.tokens.push(Token {
         kind: n.kind,
@@ -171,11 +174,12 @@ fn flatten(tree: &mut TokenTree, n: Node, parent: Option<usize>) -> usize {
         text: n.text,
         parent,
         children: Vec::new(),
+        in_html_flow,
     });
     let children: Vec<usize> = n
         .children
         .into_iter()
-        .map(|c| flatten(tree, c, Some(id)))
+        .map(|c| flatten(tree, c, Some(id), children_in_html_flow))
         .collect();
     tree.tokens[id].children = children;
     id

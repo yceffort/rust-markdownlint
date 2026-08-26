@@ -288,7 +288,7 @@ fn extend_line_endings(nodes: &mut [Node], parent: &str, interrupt: bool) {
 const SPLIT_LF: char = 0x0A as char;
 const SPLIT_CR: char = 0x0D as char;
 
-fn is_html_flow_comment(n: &Node) -> bool {
+pub(super) fn is_html_flow_comment(n: &Node) -> bool {
     let t = n.text.as_str();
     if n.kind == "htmlFlow" && t.starts_with("<!--") && t.ends_with("-->") && t.len() >= 7 {
         let c = &t[4..t.len() - 3];
