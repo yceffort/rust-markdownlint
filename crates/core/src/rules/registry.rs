@@ -52,14 +52,15 @@ use super::md053::Md053;
 use super::md054::Md054;
 use super::md055::Md055;
 use super::md056::Md056;
+use super::md058::Md058;
 use super::md059::Md059;
 
-static RULES: [&dyn Rule; 51] = [
+static RULES: [&dyn Rule; 52] = [
     &Md001, &Md003, &Md004, &Md005, &Md007, &Md009, &Md010, &Md011, &Md012, &Md013, &Md014, &Md018,
     &Md019, &Md020, &Md021, &Md022, &Md023, &Md024, &Md025, &Md026, &Md027, &Md028, &Md029, &Md030,
     &Md031, &Md032, &Md033, &Md034, &Md035, &Md036, &Md037, &Md038, &Md039, &Md040, &Md041, &Md042,
     &Md043, &Md044, &Md045, &Md046, &Md047, &Md048, &Md049, &Md050, &Md051, &Md052, &Md053, &Md054,
-    &Md055, &Md056, &Md059,
+    &Md055, &Md056, &Md058, &Md059,
 ];
 
 pub fn all_rules() -> &'static [&'static dyn Rule] {
