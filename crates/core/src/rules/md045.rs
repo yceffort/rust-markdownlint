@@ -2,7 +2,7 @@ use std::sync::LazyLock;
 
 use regex::Regex;
 
-use super::{LintContext, Rule, RuleMeta};
+use super::{LintContext, NEXT_LINES_RE, Rule, RuleMeta};
 use crate::error::ErrorSink;
 use crate::parser::html_attribute_re;
 
@@ -21,10 +21,6 @@ static ALT_RE: LazyLock<Regex> = LazyLock::new(|| html_attribute_re("alt"));
 
 /// 원본 `ariaHiddenRe = getHtmlAttributeRe("aria-hidden")`.
 static ARIA_HIDDEN_RE: LazyLock<Regex> = LazyLock::new(|| html_attribute_re("aria-hidden"));
-
-/// shared.cjs `nextLinesRe`: 첫 줄바꿈부터 끝까지.
-static NEXT_LINES_RE: LazyLock<Regex> =
-    LazyLock::new(|| Regex::new(r"[\r\n][\s\S]*$").expect("next lines regex"));
 
 impl Rule for Md045 {
     fn meta(&self) -> &'static RuleMeta {

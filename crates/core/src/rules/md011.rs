@@ -3,7 +3,7 @@ use std::sync::LazyLock;
 
 use fancy_regex::Regex;
 
-use super::{LintContext, Rule, RuleMeta, add_range_to_set};
+use super::{FileRange, LintContext, Rule, RuleMeta, add_range_to_set, has_overlap};
 use crate::error::{ErrorSink, FixInfo};
 
 pub(crate) struct Md011;
@@ -15,31 +15,6 @@ static META: RuleMeta = RuleMeta {
     needs_tokens: true,
     fixable: true,
 };
-
-/// helpers.cjs `FileRange`
-struct FileRange {
-    start_line: usize,
-    start_column: usize,
-    end_line: usize,
-    end_column: usize,
-}
-
-fn position_less_than_or_equal(line_a: usize, col_a: usize, line_b: usize, col_b: usize) -> bool {
-    line_a < line_b || (line_a == line_b && col_a <= col_b)
-}
-
-/// helpers.cjs `hasOverlap`
-fn has_overlap(a: &FileRange, b: &FileRange) -> bool {
-    let lte =
-        position_less_than_or_equal(a.start_line, a.start_column, b.start_line, b.start_column);
-    let (first, second) = if lte { (a, b) } else { (b, a) };
-    position_less_than_or_equal(
-        second.start_line,
-        second.start_column,
-        first.end_line,
-        first.end_column,
-    )
-}
 
 /// 원본 `reversedLinkRe`. 부정 룩어헤드 `(?!\()` 때문에 `fancy_regex` 로 컴파일한다.
 static REVERSED_LINK_RE: LazyLock<Regex> = LazyLock::new(|| {

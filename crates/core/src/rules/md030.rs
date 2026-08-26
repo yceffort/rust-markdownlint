@@ -1,7 +1,7 @@
 use serde_json::Value;
 
 use super::{LintContext, Rule, RuleMeta};
-use crate::config::truthy;
+use crate::config::{to_number, truthy};
 use crate::error::{ErrorSink, FixInfo};
 
 pub(crate) struct Md030;
@@ -13,30 +13,6 @@ static META: RuleMeta = RuleMeta {
     needs_tokens: true,
     fixable: true,
 };
-
-/// JS `Number(value)` 상당의 변환. 변환 불가는 NaN.
-fn to_number(value: &Value) -> f64 {
-    match value {
-        Value::Null => 0.0,
-        Value::Bool(b) => {
-            if *b {
-                1.0
-            } else {
-                0.0
-            }
-        }
-        Value::Number(n) => n.as_f64().unwrap_or(f64::NAN),
-        Value::String(s) => {
-            let trimmed = s.trim();
-            if trimmed.is_empty() {
-                0.0
-            } else {
-                trimmed.parse::<f64>().unwrap_or(f64::NAN)
-            }
-        }
-        _ => f64::NAN,
-    }
-}
 
 /// 원본 `Number(params.config.x || 1)`: falsy 면 1, 아니면 Number 변환.
 fn config_spaces(config: &serde_json::Map<String, Value>, key: &str) -> f64 {

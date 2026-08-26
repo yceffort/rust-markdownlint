@@ -1,7 +1,5 @@
-use serde_json::Value;
-
 use super::{LintContext, Rule, RuleMeta};
-use crate::config::truthy;
+use crate::config::{js_string, truthy};
 use crate::error::{ErrorSink, FixInfo};
 
 pub(crate) struct Md049;
@@ -30,14 +28,6 @@ fn emphasis_or_strong_style_for(markup: &str) -> &'static str {
     match markup.chars().next() {
         Some('*') => "asterisk",
         _ => "underscore",
-    }
-}
-
-/// JS `String(value)` 상당의 표기.
-fn js_string(value: &Value) -> String {
-    match value {
-        Value::String(s) => s.clone(),
-        other => other.to_string(),
     }
 }
 

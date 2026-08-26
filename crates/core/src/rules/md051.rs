@@ -1,10 +1,9 @@
 use std::sync::LazyLock;
 
 use regex::Regex;
-use serde_json::Value;
 
 use super::{LintContext, Rule, RuleMeta};
-use crate::config::truthy;
+use crate::config::{js_string, truthy};
 use crate::error::{ErrorSink, FixInfo};
 use crate::parser::{OrderedMap, TokenId, TokenTree, html_attribute_re};
 
@@ -43,14 +42,6 @@ const TOKENS_INCLUDE: &[&str] = &[
     "data",
     "mathTextData",
 ];
-
-/// JS `String(value)` 상당의 표기. md043 에도 같은 helper 가 있다.
-fn js_string(value: &Value) -> String {
-    match value {
-        Value::String(s) => s.clone(),
-        other => other.to_string(),
-    }
-}
 
 /// JS `encodeURIComponent`: UTF-8 바이트 단위 percent-encoding. 예외 문자는
 /// `A-Z a-z 0-9 - _ . ! ~ * ' ( )`, 16진수는 대문자.

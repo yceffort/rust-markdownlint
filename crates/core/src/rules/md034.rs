@@ -81,27 +81,15 @@ fn transform_children(tree: &TokenTree, id: TokenId) -> Vec<TokenId> {
     result
 }
 
-/// 원본 `filterByPredicate(tokens, allowed, transformChildren)`: 전위 순회.
-fn filter_by_predicate(tree: &TokenTree, tokens: &[TokenId], result: &mut Vec<TokenId>) {
-    for &id in tokens {
-        if allowed(tree, id) {
-            result.push(id);
-        }
-        if !tree.get(id).children.is_empty() {
-            let transformed = transform_children(tree, id);
-            filter_by_predicate(tree, &transformed, result);
-        }
-    }
-}
-
 impl Rule for Md034 {
     fn meta(&self) -> &'static RuleMeta {
         &META
     }
 
     fn check(&self, ctx: &LintContext, out: &mut ErrorSink) {
-        let mut literal_autolinks = Vec::new();
-        filter_by_predicate(ctx.tokens, &ctx.tokens.roots, &mut literal_autolinks);
+        let literal_autolinks =
+            ctx.tokens
+                .filter_by_predicate(&ctx.tokens.roots, allowed, transform_children);
         for id in literal_autolinks {
             let token = ctx.tokens.get(id);
             let range = (token.start_column, token.end_column - token.start_column);

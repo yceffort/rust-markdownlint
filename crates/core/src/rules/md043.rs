@@ -1,7 +1,7 @@
 use serde_json::Value;
 
 use super::{LintContext, Rule, RuleMeta};
-use crate::config::truthy;
+use crate::config::{js_string, truthy};
 use crate::error::ErrorSink;
 
 pub(crate) struct Md043;
@@ -13,14 +13,6 @@ static META: RuleMeta = RuleMeta {
     needs_tokens: true,
     fixable: false,
 };
-
-/// JS `String(value)` 상당의 표기.
-fn js_string(value: &Value) -> String {
-    match value {
-        Value::String(s) => s.clone(),
-        other => other.to_string(),
-    }
-}
 
 /// 원본 `getExpected`: 다음 요소를 쓰고 커서를 전진시킨다. falsy 면 "[None]".
 fn get_expected(required_headings: &[Value], i: &mut usize) -> String {

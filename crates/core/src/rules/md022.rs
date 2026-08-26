@@ -1,6 +1,7 @@
 use serde_json::Value;
 
 use super::{LintContext, Rule, RuleMeta, is_blank_line};
+use crate::config::to_number;
 use crate::error::{ErrorSink, FixInfo};
 
 pub(crate) struct Md022;
@@ -14,30 +15,6 @@ static META: RuleMeta = RuleMeta {
 };
 
 const DEFAULT_LINES: f64 = 1.0;
-
-/// JS `Number(value)` 상당의 변환. 변환 불가는 NaN.
-fn to_number(value: &Value) -> f64 {
-    match value {
-        Value::Null => 0.0,
-        Value::Bool(b) => {
-            if *b {
-                1.0
-            } else {
-                0.0
-            }
-        }
-        Value::Number(n) => n.as_f64().unwrap_or(f64::NAN),
-        Value::String(s) => {
-            let trimmed = s.trim();
-            if trimmed.is_empty() {
-                0.0
-            } else {
-                trimmed.parse::<f64>().unwrap_or(f64::NAN)
-            }
-        }
-        _ => f64::NAN,
-    }
-}
 
 /// JS `String(number)` 상당의 표기. 정수는 소수점 없이 찍는다.
 fn number_to_string(n: f64) -> String {
