@@ -45,7 +45,9 @@ fn check(id: &str) {
         &fs::read_to_string(format!("{FIXTURES}/expected/{id}.json")).unwrap(),
     )
     .unwrap();
-    let config = json!({ "default": false, id: true });
+    // 기대값은 모든 규칙을 켠 채 생성됐다. 원본 `parser: "none"` 규칙(MD052)은 다른
+    // micromark 규칙이 켜져 있어야 토큰을 받으므로 MD001 을 함께 켠다 (결과는 이름으로 거른다).
+    let config = json!({ "default": false, id: true, "MD001": true });
     let opts = LintOptions {
         config: Some(&config),
         ..Default::default()

@@ -12,8 +12,10 @@ static META: RuleMeta = RuleMeta {
     names: &["MD052", "reference-links-images"],
     description: "Reference links and images should use a label that is defined",
     tags: &["images", "links"],
-    // 원본은 `parser: "none"` 이지만 캐시된 micromark 토큰(`getReferenceLinkImageData`)을 쓴다.
-    needs_tokens: true,
+    // 원본은 `parser: "none"` 이라 micromark 토큰을 요구하지 않는다. 캐시된 토큰
+    // (`getReferenceLinkImageData`) 을 쓰지만, `parser: "micromark"` 인 다른 규칙이 켜져
+    // 있지 않으면 토큰이 비어 아무것도 보고하지 않는다 (cli2 와 동일).
+    needs_tokens: false,
     fixable: false,
 };
 
@@ -87,18 +89,27 @@ mod tests {
     use crate::rules::lint_rule;
     use serde_json::json;
 
+    /// 원본처럼 micromark 규칙(MD001)이 함께 켜져 있어야 토큰을 받으므로 같이 켜고 MD052 만 거른다.
     fn lint_with(params: serde_json::Value, content: &str) -> Vec<crate::error::LintError> {
-        let config = json!({ "default": false, "MD052": params });
+        let config = json!({ "default": false, "MD052": params, "MD001": true });
         let opts = LintOptions {
             config: Some(&config),
             ..Default::default()
         };
-        lint_content("test.md", content, &opts).unwrap()
+        let mut errs = lint_content("test.md", content, &opts).unwrap();
+        errs.retain(|e| e.rule_names[0] == "MD052");
+        errs
+    }
+
+    #[test]
+    fn md052_alone_reports_nothing_like_original() {
+        // 원본은 `parser: "none"` 이라 다른 micromark 규칙이 없으면 토큰이 비어 아무것도 보고하지 않는다
+        assert!(lint_rule("MD052", "[text][missing]\n").is_empty());
     }
 
     #[test]
     fn md052_undefined_full_and_collapsed_reference() {
-        let errs = lint_rule("MD052", "[text][missing] and [Missing][] here\n");
+        let errs = lint_with(json!(true), "[text][missing] and [Missing][] here\n");
         assert_eq!(errs.len(), 2);
         assert_eq!(errs[0].line_number, 1);
         assert_eq!(
@@ -114,8 +125,8 @@ mod tests {
     #[test]
     fn md052_defined_reference_is_fine() {
         assert!(
-            lint_rule(
-                "MD052",
+            lint_with(
+                json!(true),
                 "[text][label] and ![img][label]\n\n[label]: https://example.com\n"
             )
             .is_empty()
@@ -125,7 +136,7 @@ mod tests {
     #[test]
     fn md052_shortcut_only_with_shortcut_syntax() {
         let content = "Text [shortcut] text\n";
-        assert!(lint_rule("MD052", content).is_empty());
+        assert!(lint_with(json!(true), content).is_empty());
         let errs = lint_with(json!({ "shortcut_syntax": true }), content);
         assert_eq!(errs.len(), 1);
         assert_eq!(errs[0].error_context.as_deref(), Some("[shortcut]"));
@@ -135,8 +146,8 @@ mod tests {
     #[test]
     fn md052_ignored_labels_default_and_custom() {
         // 기본값 ["x"] 는 체크박스 스타일 `[x]` 를 무시한다
-        assert!(lint_rule("MD052", "[x][] done\n").is_empty());
-        assert_eq!(lint_rule("MD052", "[todo][] later\n").len(), 1);
+        assert!(lint_with(json!(true), "[x][] done\n").is_empty());
+        assert_eq!(lint_with(json!(true), "[todo][] later\n").len(), 1);
         assert!(lint_with(json!({ "ignored_labels": ["todo"] }), "[todo][] later\n").is_empty());
         // 사용자 목록으로 바꾸면 기본 "x" 는 더 이상 무시되지 않는다
         assert_eq!(
@@ -147,7 +158,7 @@ mod tests {
 
     #[test]
     fn md052_multiline_reference_reports_first_line_only() {
-        let errs = lint_rule("MD052", "[multi\nline][missing]\n");
+        let errs = lint_with(json!(true), "[multi\nline][missing]\n");
         assert_eq!(errs.len(), 1);
         assert_eq!(errs[0].line_number, 1);
         assert_eq!(errs[0].error_context.as_deref(), Some("[multi"));
