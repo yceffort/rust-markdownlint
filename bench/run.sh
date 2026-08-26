@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # rust-markdownlint 와 markdownlint-cli2@0.22.1 을 같은 코퍼스에 실행해 결과 diff 와 속도를 비교한다.
 #
-# 사용법: bench/run.sh <MD0XX|all>   (all = 현재 포팅된 규칙 전체)
+# 사용법: bench/run.sh <MD0XX|all>   (all = 원본 기본 설정, 규칙 전체 + inline config)
 #   SCALE=N 으로 코퍼스를 N 배 복제 (기본 1)
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -16,12 +16,11 @@ for ((i = 1; i <= SCALE; i++)); do
 done
 
 if [ "$RULE" = all ]; then
-  RULES=$(ls ../crates/core/src/rules/md*.rs | sed -E 's|.*/md([0-9]+)\.rs|"MD\1": true,|' | tr -d '\n')
+  echo '{ "noBanner": true }' > corpus/.markdownlint-cli2.jsonc
 else
-  RULES="\"$RULE\": true,"
+  # noInlineConfig: fixture 의 configure-file 주석이 다른 규칙을 켜는 것을 막는다
+  echo "{ \"noBanner\": true, \"noInlineConfig\": true, \"config\": { \"default\": false, \"$RULE\": true } }" > corpus/.markdownlint-cli2.jsonc
 fi
-# noInlineConfig: fixture 의 configure-file 주석이 포팅되지 않은 규칙을 켜는 것을 막는다
-echo "{ \"noBanner\": true, \"noInlineConfig\": true, \"config\": { \"default\": false, $RULES } }" > corpus/.markdownlint-cli2.jsonc
 
 [ -d node_modules ] || npm install --no-audit --no-fund
 cargo build --release -q --manifest-path ../Cargo.toml
