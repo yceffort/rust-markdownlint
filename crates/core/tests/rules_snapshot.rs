@@ -104,7 +104,7 @@ macro_rules! rule_tests {
     };
 }
 
-rule_tests!(MD009, MD010, MD018, MD020, MD023, MD047);
+rule_tests!(MD009, MD010, MD012, MD018, MD020, MD023, MD047);
 
 #[test]
 fn every_registered_rule_has_a_test() {

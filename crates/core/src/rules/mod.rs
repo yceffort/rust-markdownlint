@@ -1,8 +1,11 @@
+use std::collections::HashSet;
+
 use crate::error::ErrorSink;
 use crate::parser::TokenTree;
 
 mod md009;
 mod md010;
+mod md012;
 mod md018;
 mod md020;
 mod md023;
@@ -62,6 +65,13 @@ pub(crate) fn is_blank_line(line: &str) -> bool {
     line.is_empty()
         || line.trim().is_empty()
         || remove_comments(line).replace('>', "").trim().is_empty()
+}
+
+/// helpers/micromark-helpers.cjs `addRangeToSet`: `start`..=`end` (양 끝 포함) 를 set 에 채운다.
+pub(crate) fn add_range_to_set(set: &mut HashSet<usize>, start: usize, end: usize) {
+    for line in start..=end {
+        set.insert(line);
+    }
 }
 
 /// 규칙 하나만 활성화해 `lint_content` 로 lint 하는 테스트 helper.
