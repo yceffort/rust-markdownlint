@@ -89,6 +89,36 @@
       "fixInfo": null
     }
   ],
+  "inline-configure-file-invalid.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 70; Actual: 78",
+      "errorContext": null,
+      "errorRange": [
+        71,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD013",
+        "line-length"
+      ],
+      "errorDetail": "Expected: 70; Actual: 75",
+      "errorContext": null,
+      "errorRange": [
+        71,
+        5
+      ],
+      "fixInfo": null
+    }
+  ],
   "inline-configure-file-single-line.md": [
     {
       "lineNumber": 3,
