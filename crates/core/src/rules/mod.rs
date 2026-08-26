@@ -55,6 +55,7 @@ mod md052;
 mod md053;
 mod md054;
 mod md055;
+mod md056;
 mod md059;
 pub mod registry;
 
