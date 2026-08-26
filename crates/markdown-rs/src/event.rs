@@ -847,6 +847,31 @@ pub enum Name {
     ///             ^
     /// ```
     DefinitionTitleString,
+    /// 로컬 확장: directive (container) 전체 (`:::name` ~ `:::`).
+    ///
+    /// * **Context**: [flow content][crate::construct::flow]
+    /// * **Construct**: [`directive_container`][crate::construct::directive_container]
+    DirectiveContainer,
+    /// 로컬 확장: directive (container) 의 attributes (`{...}`).
+    DirectiveContainerAttributes,
+    /// 로컬 확장: directive (container) 의 attributes 여닫는 `{`/`}`.
+    DirectiveContainerAttributesMarker,
+    /// 로컬 확장: directive (container) 본문 한 줄 (`chunkDocument`, document 로 연결).
+    DirectiveContainerChunk,
+    /// 로컬 확장: directive (container) 본문 전체.
+    DirectiveContainerContent,
+    /// 로컬 확장: directive (container) 여는/닫는 fence 줄.
+    DirectiveContainerFence,
+    /// 로컬 확장: directive (container) 의 label (`[...]`).
+    DirectiveContainerLabel,
+    /// 로컬 확장: directive (container) 의 label 여닫는 `[`/`]`.
+    DirectiveContainerLabelMarker,
+    /// 로컬 확장: directive (container) 의 label 문자열.
+    DirectiveContainerLabelString,
+    /// 로컬 확장: directive (container) 의 이름.
+    DirectiveContainerName,
+    /// 로컬 확장: directive (container) fence 의 `:` 시퀀스.
+    DirectiveContainerSequence,
     /// Emphasis.
     ///
     /// ## Info
@@ -3381,7 +3406,7 @@ pub enum Name {
 }
 
 /// List of void events, used to make sure everything is working well.
-pub const VOID_EVENTS: [Name; 76] = [
+pub const VOID_EVENTS: [Name; 81] = [
     Name::AttentionSequence,
     Name::AutolinkEmail,
     Name::AutolinkMarker,
@@ -3405,6 +3430,11 @@ pub const VOID_EVENTS: [Name; 76] = [
     Name::DefinitionLabelMarker,
     Name::DefinitionMarker,
     Name::DefinitionTitleMarker,
+    Name::DirectiveContainerAttributesMarker,
+    Name::DirectiveContainerChunk,
+    Name::DirectiveContainerLabelMarker,
+    Name::DirectiveContainerName,
+    Name::DirectiveContainerSequence,
     Name::EmphasisSequence,
     Name::FrontmatterChunk,
     Name::GfmAutolinkLiteralEmail,
@@ -3468,6 +3498,9 @@ pub enum Content {
     /// Represents [content][crate::construct::content].
     #[allow(clippy::enum_variant_names)]
     Content,
+    /// 로컬 확장: 중첩 [document content][crate::construct::document]
+    /// (directive container 본문의 `chunkDocument`).
+    Document,
     /// Represents [string content][crate::construct::string].
     String,
     /// Represents [text content][crate::construct::text].

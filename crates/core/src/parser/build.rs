@@ -11,6 +11,8 @@ fn parse_options(html_flow: bool) -> ParseOptions {
     opts.constructs.gfm_task_list_item = false;
     opts.constructs.math_flow = true;
     opts.constructs.math_text = true;
+    // 원본 micromark-parse.mjs 는 directive() 확장을 켠다 (container directive 만 지원)
+    opts.constructs.directive_container = true;
     // 원본 htmlFlow 재파싱: codeIndented, htmlFlow 비활성
     opts.constructs.html_flow = html_flow;
     opts.constructs.code_indented = html_flow;

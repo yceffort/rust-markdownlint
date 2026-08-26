@@ -157,6 +157,7 @@ pub mod character_reference;
 pub mod code_indented;
 pub mod content;
 pub mod definition;
+pub mod directive_container;
 pub mod document;
 pub mod flow;
 pub mod frontmatter;

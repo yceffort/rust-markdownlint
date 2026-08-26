@@ -40,14 +40,14 @@ pub fn start(tokenizer: &mut Tokenizer) -> State {
         Some(b'#') => {
             tokenizer.attempt(
                 State::Next(StateName::FlowAfter),
-                State::Next(StateName::FlowBeforeContent),
+                State::Next(StateName::FlowBeforeGfmTable),
             );
             State::Retry(StateName::HeadingAtxStart)
         }
         Some(b'$' | b'`' | b'~') => {
             tokenizer.attempt(
                 State::Next(StateName::FlowAfter),
-                State::Next(StateName::FlowBeforeContent),
+                State::Next(StateName::FlowBeforeGfmTable),
             );
             State::Retry(StateName::RawFlowStart)
         }
@@ -56,7 +56,7 @@ pub fn start(tokenizer: &mut Tokenizer) -> State {
         Some(b'*' | b'_') => {
             tokenizer.attempt(
                 State::Next(StateName::FlowAfter),
-                State::Next(StateName::FlowBeforeContent),
+                State::Next(StateName::FlowBeforeGfmTable),
             );
             State::Retry(StateName::ThematicBreakStart)
         }
@@ -67,17 +67,24 @@ pub fn start(tokenizer: &mut Tokenizer) -> State {
             );
             State::Retry(StateName::HtmlFlowStart)
         }
+        Some(b':') => {
+            tokenizer.attempt(
+                State::Next(StateName::FlowAfter),
+                State::Next(StateName::FlowBeforeGfmTable),
+            );
+            State::Retry(StateName::DirectiveContainerStart)
+        }
         Some(b'e' | b'i') => {
             tokenizer.attempt(
                 State::Next(StateName::FlowAfter),
-                State::Next(StateName::FlowBeforeContent),
+                State::Next(StateName::FlowBeforeGfmTable),
             );
             State::Retry(StateName::MdxEsmStart)
         }
         Some(b'{') => {
             tokenizer.attempt(
                 State::Next(StateName::FlowAfter),
-                State::Next(StateName::FlowBeforeContent),
+                State::Next(StateName::FlowBeforeGfmTable),
             );
             State::Retry(StateName::MdxExpressionFlowStart)
         }
@@ -125,9 +132,23 @@ pub fn before_code_indented(tokenizer: &mut Tokenizer) -> State {
 pub fn before_raw(tokenizer: &mut Tokenizer) -> State {
     tokenizer.attempt(
         State::Next(StateName::FlowAfter),
-        State::Next(StateName::FlowBeforeHtml),
+        State::Next(StateName::FlowBeforeDirectiveContainer),
     );
     State::Retry(StateName::RawFlowStart)
+}
+
+/// At directive container (로컬 확장).
+///
+/// ```markdown
+/// > | :::note
+///     ^
+/// ```
+pub fn before_directive_container(tokenizer: &mut Tokenizer) -> State {
+    tokenizer.attempt(
+        State::Next(StateName::FlowAfter),
+        State::Next(StateName::FlowBeforeHtml),
+    );
+    State::Retry(StateName::DirectiveContainerStart)
 }
 
 /// At html (flow).

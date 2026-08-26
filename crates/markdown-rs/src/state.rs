@@ -107,6 +107,39 @@ pub enum Name {
     DefinitionTitleAfter,
     DefinitionTitleAfterOptionalWhitespace,
 
+    DirectiveContainerStart,
+    DirectiveContainerBeforeSequenceOpen,
+    DirectiveContainerSequenceOpen,
+    DirectiveContainerNameStart,
+    DirectiveContainerName,
+    DirectiveContainerAfterName,
+    DirectiveContainerLabelStart,
+    DirectiveContainerLabelAfterStart,
+    DirectiveContainerLabelInside,
+    DirectiveContainerLabelEscape,
+    DirectiveContainerLabelAtClosing,
+    DirectiveContainerAfterLabel,
+    DirectiveContainerAttributesStart,
+    DirectiveContainerAttributesInside,
+    DirectiveContainerAttributesData,
+    DirectiveContainerAfterAttributes,
+    DirectiveContainerOpenAfter,
+    DirectiveContainerContentStart,
+    DirectiveContainerEmptyContentNonLazyLineAfter,
+    DirectiveContainerLineStart,
+    DirectiveContainerLinePrefix,
+    DirectiveContainerChunkStart,
+    DirectiveContainerChunkNonLazyStart,
+    DirectiveContainerContentContinue,
+    DirectiveContainerNonLazyLineAfter,
+    DirectiveContainerLineAfter,
+    DirectiveContainerAfterContent,
+    DirectiveContainerAfter,
+    DirectiveContainerClosingFenceStart,
+    DirectiveContainerClosingFenceBefore,
+    DirectiveContainerClosingSequence,
+    DirectiveContainerClosingSequenceAfter,
+
     DestinationStart,
     DestinationEnclosedBefore,
     DestinationEnclosed,
@@ -131,6 +164,7 @@ pub enum Name {
     FlowBeforeGfmTable,
     FlowBeforeCodeIndented,
     FlowBeforeRaw,
+    FlowBeforeDirectiveContainer,
     FlowBeforeHtml,
     FlowBeforeMdxExpression,
     FlowBeforeMdxJsx,
@@ -545,6 +579,56 @@ pub fn call(tokenizer: &mut Tokenizer, name: Name) -> State {
         Name::DestinationRaw => construct::partial_destination::raw,
         Name::DestinationRawEscape => construct::partial_destination::raw_escape,
 
+        Name::DirectiveContainerStart => construct::directive_container::start,
+        Name::DirectiveContainerBeforeSequenceOpen => {
+            construct::directive_container::before_sequence_open
+        }
+        Name::DirectiveContainerSequenceOpen => construct::directive_container::sequence_open,
+        Name::DirectiveContainerNameStart => construct::directive_container::name_start,
+        Name::DirectiveContainerName => construct::directive_container::name,
+        Name::DirectiveContainerAfterName => construct::directive_container::after_name,
+        Name::DirectiveContainerLabelStart => construct::directive_container::label_start,
+        Name::DirectiveContainerLabelAfterStart => {
+            construct::directive_container::label_after_start
+        }
+        Name::DirectiveContainerLabelInside => construct::directive_container::label_inside,
+        Name::DirectiveContainerLabelEscape => construct::directive_container::label_escape,
+        Name::DirectiveContainerLabelAtClosing => construct::directive_container::label_at_closing,
+        Name::DirectiveContainerAfterLabel => construct::directive_container::after_label,
+        Name::DirectiveContainerAttributesStart => construct::directive_container::attributes_start,
+        Name::DirectiveContainerAttributesInside => {
+            construct::directive_container::attributes_inside
+        }
+        Name::DirectiveContainerAttributesData => construct::directive_container::attributes_data,
+        Name::DirectiveContainerAfterAttributes => construct::directive_container::after_attributes,
+        Name::DirectiveContainerOpenAfter => construct::directive_container::open_after,
+        Name::DirectiveContainerContentStart => construct::directive_container::content_start,
+        Name::DirectiveContainerEmptyContentNonLazyLineAfter => {
+            construct::directive_container::empty_content_non_lazy_line_after
+        }
+        Name::DirectiveContainerLineStart => construct::directive_container::line_start,
+        Name::DirectiveContainerLinePrefix => construct::directive_container::line_prefix,
+        Name::DirectiveContainerChunkStart => construct::directive_container::chunk_start,
+        Name::DirectiveContainerChunkNonLazyStart => {
+            construct::directive_container::chunk_non_lazy_start
+        }
+        Name::DirectiveContainerContentContinue => construct::directive_container::content_continue,
+        Name::DirectiveContainerNonLazyLineAfter => {
+            construct::directive_container::non_lazy_line_after
+        }
+        Name::DirectiveContainerLineAfter => construct::directive_container::line_after,
+        Name::DirectiveContainerAfterContent => construct::directive_container::after_content,
+        Name::DirectiveContainerAfter => construct::directive_container::after,
+        Name::DirectiveContainerClosingFenceStart => {
+            construct::directive_container::closing_fence_start
+        }
+        Name::DirectiveContainerClosingFenceBefore => {
+            construct::directive_container::closing_fence_before
+        }
+        Name::DirectiveContainerClosingSequence => construct::directive_container::closing_sequence,
+        Name::DirectiveContainerClosingSequenceAfter => {
+            construct::directive_container::closing_sequence_after
+        }
         Name::DocumentStart => construct::document::start,
         Name::DocumentBeforeFrontmatter => construct::document::before_frontmatter,
         Name::DocumentContainerExistingBefore => construct::document::container_existing_before,
@@ -568,6 +652,7 @@ pub fn call(tokenizer: &mut Tokenizer, name: Name) -> State {
         Name::FlowBeforeGfmTable => construct::flow::before_gfm_table,
         Name::FlowBeforeCodeIndented => construct::flow::before_code_indented,
         Name::FlowBeforeRaw => construct::flow::before_raw,
+        Name::FlowBeforeDirectiveContainer => construct::flow::before_directive_container,
         Name::FlowBeforeHtml => construct::flow::before_html,
         Name::FlowBeforeMdxExpression => construct::flow::before_mdx_expression,
         Name::FlowBeforeMdxJsx => construct::flow::before_mdx_jsx,

@@ -111,6 +111,7 @@ pub fn subtokenize(
                 // Substate.
                 let mut state = State::Next(match link.content {
                     Content::Content => StateName::ContentDefinitionBefore,
+                    Content::Document => StateName::DocumentStart,
                     Content::String => StateName::StringStart,
                     _ => StateName::TextStart,
                 });
@@ -217,15 +218,11 @@ pub fn divide_events(
             if sublink_curr.previous.is_some() {
                 let old_prev = old_prev.unwrap();
                 let prev_event = &mut child_events[old_prev];
-                // The `index` in `events` where the current link is,
-                // minus one to get the previous link,
-                // minus 2 events (the enter and exit) for each removed
-                // link.
-                let new_link = if slices.is_empty() {
-                    old_prev + link_index + 2
-                } else {
-                    old_prev + link_index - (slices.len() - 1) * 2
-                };
+                // 로컬 패치: 원본은 이전 링크 바로 뒤에 현재 링크가 온다고 보고
+                // `old_prev + 2` 로 계산했다. 중첩 document(directive 본문)를 한 번 더
+                // 나누면 두 링크 사이에 컨테이너 접두 이벤트가 끼므로, 현재 이벤트의
+                // 새 위치(`child_index` 기준, 앞 슬롯마다 링크 2개 제거)를 직접 계산한다.
+                let new_link = child_index + link_index - slices.len() * 2;
                 prev_event.link.as_mut().unwrap().next =
                     Some(new_link + acc_before.1 - acc_before.0);
             }

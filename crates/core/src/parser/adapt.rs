@@ -321,6 +321,7 @@ const FLOW_WITH_PREFIX: &[&str] = &[
     "table",
     "mathFlow",
     "blockQuote",
+    "directiveContainer",
 ];
 
 /// 첫 자식 체인을 따라 내려가며 노드 시작의 spaceOrTab 을 꺼내고 시작 위치를 조정한다.
@@ -339,6 +340,22 @@ fn take_leading_ws(n: &mut Node) -> Option<Node> {
     n.text = n.text.split_off(ws.end - n.start);
     n.start = ws.end;
     Some(ws)
+}
+
+/// 첫 자식 체인의 선행 공백을 제자리에 둔 채 `linePrefix` 로 표기한다.
+fn mark_leading_ws_line_prefix(n: &mut Node) {
+    let start = n.start;
+    let mut cur = n;
+    while let Some(first) = cur.children.first_mut() {
+        if first.start != start {
+            return;
+        }
+        if first.kind == "spaceOrTab" {
+            first.kind = "linePrefix".into();
+            return;
+        }
+        cur = first;
+    }
 }
 
 fn rename_all(nodes: &mut [Node]) {
@@ -413,19 +430,23 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
                 out.push(n);
             }
             "setextHeading" | "tableHead" | "tableBody" => {
-                // 두 번째 이후 줄(밑줄, 구분자 행, 본문 행)의 들여쓰기는 행 밖 linePrefix.
+                // 두 번째 이후 줄(밑줄, 본문 행)의 들여쓰기는 행 밖 linePrefix.
                 // 테이블 첫 줄은 table 자체의 linePrefix 로 빠지지만 본문 첫 행은 아니다.
+                // 구분자 행은 micromark 가 table 구성요소 안에서 이어 읽으므로 선행 공백이
+                // 첫 tableDelimiter 셀 안에 남는다.
                 let mut k = 0;
                 while k < n.children.len() {
                     if matches!(
                         n.children[k].kind.as_str(),
-                        "setextHeadingLine" | "tableDelimiterRow" | "tableRow"
+                        "setextHeadingLine" | "tableRow"
                     ) && (kind == "tableBody" || n.children[k].start != n.start)
                         && let Some(mut ws) = take_leading_ws(&mut n.children[k])
                     {
                         ws.kind = "linePrefix".into();
                         n.children.insert(k, ws);
                         k += 1;
+                    } else if n.children[k].kind == "tableDelimiterRow" {
+                        mark_leading_ws_line_prefix(&mut n.children[k]);
                     }
                     k += 1;
                 }
@@ -614,6 +635,7 @@ fn classify_whitespace(nodes: &mut [Node], parent: &str, chain: &[Container]) {
             "resource" => "lineSuffix",
             "codeIndented" if at_line_start || prev.is_empty() => "linePrefix",
             "codeFencedFence" if prev.is_empty() => "linePrefix",
+            "directiveContainerFence" => "whitespace",
             _ if at_line_start => line_start_kind(nodes, i, chain),
             _ if next == "lineEnding" || next.is_empty() => "lineSuffix",
             _ => "whitespace",
