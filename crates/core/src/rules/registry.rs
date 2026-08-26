@@ -16,14 +16,15 @@ use super::md020::Md020;
 use super::md021::Md021;
 use super::md022::Md022;
 use super::md023::Md023;
+use super::md024::Md024;
 use super::md025::Md025;
 use super::md035::Md035;
 use super::md043::Md043;
 use super::md047::Md047;
 
-static RULES: [&dyn Rule; 18] = [
+static RULES: [&dyn Rule; 19] = [
     &Md001, &Md003, &Md004, &Md005, &Md007, &Md009, &Md010, &Md012, &Md018, &Md019, &Md020, &Md021,
-    &Md022, &Md023, &Md025, &Md035, &Md043, &Md047,
+    &Md022, &Md023, &Md024, &Md025, &Md035, &Md043, &Md047,
 ];
 
 pub fn all_rules() -> &'static [&'static dyn Rule] {

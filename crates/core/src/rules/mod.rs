@@ -17,6 +17,7 @@ mod md020;
 mod md021;
 mod md022;
 mod md023;
+mod md024;
 mod md025;
 mod md035;
 mod md043;
