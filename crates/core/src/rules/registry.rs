@@ -2,10 +2,11 @@ use std::collections::HashMap;
 use std::sync::LazyLock;
 
 use super::Rule;
+use super::md009::Md009;
 use super::md018::Md018;
 use super::md047::Md047;
 
-static RULES: [&dyn Rule; 2] = [&Md018, &Md047];
+static RULES: [&dyn Rule; 3] = [&Md009, &Md018, &Md047];
 
 pub fn all_rules() -> &'static [&'static dyn Rule] {
     &RULES
