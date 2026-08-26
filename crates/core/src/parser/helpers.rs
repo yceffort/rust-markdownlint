@@ -49,6 +49,68 @@ impl TokenTree {
         None
     }
 
+    /// 원본 `getHeadingLevel`: heading 의 sequence 자식 텍스트로 레벨(1~6)을 구한다.
+    pub fn heading_level(&self, id: TokenId) -> usize {
+        let mut level = 1;
+        let sequence = self.tokens[id]
+            .children
+            .iter()
+            .find(|&&c| {
+                matches!(
+                    self.tokens[c].kind.as_str(),
+                    "atxHeadingSequence" | "setextHeadingLine"
+                )
+            })
+            .expect("heading has a sequence child");
+        let text = &self.tokens[*sequence].text;
+        if text.starts_with('#') {
+            level = text.chars().count().min(6);
+        } else if text.starts_with('-') {
+            level = 2;
+        }
+        level
+    }
+
+    /// 원본 `getHeadingStyle`: "atx" | "atx_closed" | "setext".
+    pub fn heading_style(&self, id: TokenId) -> &'static str {
+        let heading = &self.tokens[id];
+        if heading.kind == "setextHeading" {
+            return "setext";
+        }
+        let atx_heading_sequence_length = heading
+            .children
+            .iter()
+            .filter(|&&c| self.tokens[c].kind == "atxHeadingSequence")
+            .count();
+        if atx_heading_sequence_length == 1 {
+            "atx"
+        } else {
+            "atx_closed"
+        }
+    }
+
+    /// 원본 `getBlockQuotePrefixText`: 주어진 토큰들에서 해당 줄의 blockQuotePrefix,
+    /// linePrefix 텍스트를 이어 붙이고 끝 공백을 지운 뒤 개행을 더해 `count` 번 반복한다.
+    pub fn block_quote_prefix_text(
+        &self,
+        tokens: &[TokenId],
+        line_number: usize,
+        count: usize,
+    ) -> String {
+        let mut prefixes = Vec::new();
+        for &id in tokens {
+            self.collect(id, &["blockQuotePrefix", "linePrefix"], &mut prefixes);
+        }
+        let joined: String = prefixes
+            .iter()
+            .filter(|&&id| {
+                !self.tokens[id].in_html_flow && self.tokens[id].start_line == line_number
+            })
+            .map(|&id| self.tokens[id].text.as_str())
+            .collect();
+        format!("{}\n", joined.trim_end()).repeat(count)
+    }
+
     fn collect(&self, id: TokenId, kinds: &[&str], out: &mut Vec<TokenId>) {
         if kinds.contains(&self.tokens[id].kind.as_str()) {
             out.push(id);

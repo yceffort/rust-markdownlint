@@ -105,7 +105,7 @@ macro_rules! rule_tests {
 }
 
 rule_tests!(
-    MD004, MD005, MD007, MD009, MD010, MD012, MD018, MD020, MD023, MD047
+    MD004, MD005, MD007, MD009, MD010, MD012, MD018, MD020, MD022, MD023, MD047
 );
 
 #[test]
