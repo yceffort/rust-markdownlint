@@ -1,0 +1,810 @@
+{
+  "MD041-MD050.md": [
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 30,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        36,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 36,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        62,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 62,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        70,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 70,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 22,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        30,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 30,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        43,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 43,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        51,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 51,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        59,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 59,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        62,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 62,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        75,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 75,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    }
+  ],
+  "emphasis-markers.md": [
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    }
+  ],
+  "emphasis_instead_of_headings.md": [
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        47,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 47,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    }
+  ],
+  "long_lines.md": [
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        110,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 110,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    }
+  ],
+  "mixed-emphasis-markers.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 16,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        50,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 50,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        28,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 28,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        35,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 35,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        29,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 29,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        36,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 36,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    }
+  ],
+  "strong_style_asterisk.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: asterisk; Actual: underscore",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 2,
+        "insertText": "**"
+      }
+    }
+  ],
+  "strong_style_underscore.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD050",
+        "strong-style"
+      ],
+      "errorDetail": "Expected: underscore; Actual: asterisk",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 2,
+        "insertText": "__"
+      }
+    }
+  ]
+}

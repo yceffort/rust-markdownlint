@@ -1,0 +1,85 @@
+{
+  "MD022-MD030.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD028",
+        "no-blanks-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "blockquote_blank_lines.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD028",
+        "no-blanks-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD028",
+        "no-blanks-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD028",
+        "no-blanks-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD028",
+        "no-blanks-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD028",
+        "no-blanks-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD028",
+        "no-blanks-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ]
+}

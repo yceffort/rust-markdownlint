@@ -1,0 +1,171 @@
+{
+  "MD041-MD050.md": [
+    {
+      "lineNumber": 64,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": null,
+      "errorContext": "# Heading",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": "Expected: # Broken; Actual: # Heading 3 {MD003} {MD043}",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "required-headings-missing-first.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": "Expected: # One; Actual: ## Two {MD043}",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "required-headings-missing-last-zero-or-more.md": [
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": null,
+      "errorContext": "### Five",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "required-headings-missing-last.md": [
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": null,
+      "errorContext": "### Three",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "required-headings-missing-middle-zero-or-more.md": [
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": null,
+      "errorContext": "### FOO",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "required-headings-missing-middle.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": "Expected: ## Two; Actual: ### Three {MD001} {MD043}",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "required-headings-none-one-or-more.md": [
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": null,
+      "errorContext": "+",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "required-headings-none.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": "Expected: [None]; Actual: # One {MD043}",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "required-headings-one-or-more.md": [
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": null,
+      "errorContext": "#### 7",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "required-headings-question-extra.md": [
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": null,
+      "errorContext": "?",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "required-headings-question-missing.md": [
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": null,
+      "errorContext": "## Examples",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "required-headings-wrong-match-case.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD043",
+        "required-headings"
+      ],
+      "errorDetail": "Expected: ## Second Heading; Actual: ## SECOND HEADING",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ]
+}

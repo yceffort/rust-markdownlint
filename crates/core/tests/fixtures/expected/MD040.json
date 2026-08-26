@@ -1,0 +1,113 @@
+{
+  "MD031-MD040.md": [
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD040",
+        "fenced-code-language"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD040",
+        "fenced-code-language"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "fenced_code_blocks.md": [
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD040",
+        "fenced-code-language"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "lists-with-fenced-code.md": [
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD040",
+        "fenced-code-language"
+      ],
+      "errorDetail": null,
+      "errorContext": "```",
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "md040-allowed_languages.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD040",
+        "fenced-code-language"
+      ],
+      "errorDetail": "\"html\" is not allowed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD040",
+        "fenced-code-language"
+      ],
+      "errorDetail": "\"css\" is not allowed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD040",
+        "fenced-code-language"
+      ],
+      "errorDetail": "\"MD\" is not allowed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD040",
+        "fenced-code-language"
+      ],
+      "errorDetail": "\"ts\" is not allowed",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "md040-language_only.md": [
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD040",
+        "fenced-code-language"
+      ],
+      "errorDetail": "Info string contains more than language: \"```html version=5\"",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ]
+}

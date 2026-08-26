@@ -1,0 +1,352 @@
+{
+  "MD051-MD060.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"undefined-label\"",
+      "errorContext": "[link with a][undefined-label]",
+      "errorRange": [
+        3,
+        30
+      ],
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 98,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"label\"",
+      "errorContext": "[Missing link][label]",
+      "errorRange": [
+        1,
+        21
+      ],
+      "fixInfo": null
+    }
+  ],
+  "long_lines.md": [
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"notlabel\"",
+      "errorContext": "[Link to broken label][notlabel]",
+      "errorRange": [
+        1,
+        32
+      ],
+      "fixInfo": null
+    }
+  ],
+  "reference-links-and-images-ignored-labels-empty.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"full\"",
+      "errorContext": "[full][full]",
+      "errorRange": [
+        1,
+        12
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"collapsed\"",
+      "errorContext": "[collapsed][]",
+      "errorRange": [
+        1,
+        13
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"shortcut\"",
+      "errorContext": "[shortcut]",
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"invalid\"",
+      "errorContext": "[invalid][invalid]",
+      "errorRange": [
+        1,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"x\"",
+      "errorContext": "[x]",
+      "errorRange": [
+        3,
+        3
+      ],
+      "fixInfo": null
+    }
+  ],
+  "reference-links-and-images-ignored-labels.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"invalid\"",
+      "errorContext": "[invalid][invalid]",
+      "errorRange": [
+        1,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"x\"",
+      "errorContext": "[x]",
+      "errorRange": [
+        3,
+        3
+      ],
+      "fixInfo": null
+    }
+  ],
+  "reference-links-and-images-shortcuts.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"missing\"",
+      "errorContext": "[missing]",
+      "errorRange": [
+        20,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"missing\"",
+      "errorContext": "[missing]",
+      "errorRange": [
+        10,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"missing\"",
+      "errorContext": "[missing]",
+      "errorRange": [
+        26,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"missing\"",
+      "errorContext": "![missing]",
+      "errorRange": [
+        10,
+        10
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"missing\"",
+      "errorContext": "![missing]",
+      "errorRange": [
+        26,
+        10
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"^2\"",
+      "errorContext": "[^2]",
+      "errorRange": [
+        8,
+        4
+      ],
+      "fixInfo": null
+    }
+  ],
+  "reference-links-and-images.md": [
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"missing\"",
+      "errorContext": "[text][missing]",
+      "errorRange": [
+        16,
+        15
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 74,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"missing\"",
+      "errorContext": "[text][missing]",
+      "errorRange": [
+        36,
+        15
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"missing label\"",
+      "errorContext": "[text][missing",
+      "errorRange": [
+        35,
+        14
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"missing\"",
+      "errorContext": "[text][missing]",
+      "errorRange": [
+        32,
+        15
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 125,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"missing\"",
+      "errorContext": "![text][missing]",
+      "errorRange": [
+        13,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 127,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"missing\"",
+      "errorContext": "![text][missing]",
+      "errorRange": [
+        17,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 222,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"missing\"",
+      "errorContext": "[![text][image]][missing]",
+      "errorRange": [
+        21,
+        25
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 236,
+      "ruleNames": [
+        "MD052",
+        "reference-links-images"
+      ],
+      "errorDetail": "Missing link or image reference definition: \"hidden\"",
+      "errorContext": "[hidden][]",
+      "errorRange": [
+        19,
+        10
+      ],
+      "fixInfo": null
+    }
+  ]
+}

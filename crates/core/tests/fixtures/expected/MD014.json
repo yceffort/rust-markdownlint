@@ -1,0 +1,299 @@
+{
+  "MD011-MD021.md": [
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ command with no output {MD01...",
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 2
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ dollar {MD014}",
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 2
+      }
+    }
+  ],
+  "code_block_dollar.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ ls {MD014}",
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ less foo {MD014}",
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ cat bar {MD014}",
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 74,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ mkdir test {MD014}",
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ cd test {MD014}",
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ ls test {MD014}",
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 80,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": " $ ls example {MD014}",
+      "errorRange": [
+        6,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 2
+      }
+    }
+  ],
+  "code_block_dollar_fence.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ code {MD014}",
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ code {MD014}",
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ code {MD014}",
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ code {MD014}",
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ code {MD014}",
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ code {MD014}",
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": "$ npm install --save multimatc...",
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 46,
+      "ruleNames": [
+        "MD014",
+        "commands-show-output"
+      ],
+      "errorDetail": null,
+      "errorContext": " $ ls example {MD014}",
+      "errorRange": [
+        2,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 2
+      }
+    }
+  ]
+}

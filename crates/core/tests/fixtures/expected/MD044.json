@@ -1,0 +1,1788 @@
+{
+  "MD041-MD050.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: MARKDOWNLINT",
+      "errorContext": null,
+      "errorRange": [
+        29,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 29,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: Markdownlint",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: MarkDownLint",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 83,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: markdownLint",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    }
+  ],
+  "code-blocks-and-spans.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: code; Actual: Code",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 4,
+        "insertText": "code"
+      }
+    },
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: code; Actual: CODE",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 4,
+        "insertText": "code"
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: code; Actual: CODE",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 4,
+        "insertText": "code"
+      }
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: code; Actual: CODE",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 4,
+        "insertText": "code"
+      }
+    }
+  ],
+  "proper-names-alternate.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: Markdownlint",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Node.js; Actual: node.JS",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 7,
+        "insertText": "Node.js"
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: .NET; Actual: .net",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 4,
+        "insertText": ".NET"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: .NET; Actual: .net",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 13,
+        "deleteCount": 4,
+        "insertText": ".NET"
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: Markdownlint",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Node.js; Actual: node.JS",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 7,
+        "insertText": "Node.js"
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: .NET; Actual: .net",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 4,
+        "insertText": ".NET"
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: .NET; Actual: .net",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 4,
+        "insertText": ".NET"
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: Markdownlint",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Node.js; Actual: node.JS",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 7,
+        "insertText": "Node.js"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: .NET; Actual: .net",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 4,
+        "insertText": ".NET"
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: .NET; Actual: .net",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 15,
+        "deleteCount": 4,
+        "insertText": ".NET"
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: Markdownlint",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Node.js; Actual: node.JS",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 7,
+        "insertText": "Node.js"
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: .NET; Actual: .net",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 4,
+        "insertText": ".NET"
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: .NET; Actual: .net",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 4,
+        "insertText": ".NET"
+      }
+    }
+  ],
+  "proper-names-links.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    }
+  ],
+  "proper-names-no-code.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: Markdownlint",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: Javascript",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Node.js; Actual: node.js",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 7,
+        "insertText": "Node.js"
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        24,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 24,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    }
+  ],
+  "proper-names-no-html.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    }
+  ],
+  "proper-names-non-word-boundaries.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: .NET; Actual: .net",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 4,
+        "insertText": ".NET"
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: NET.; Actual: net.",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 4,
+        "insertText": "NET."
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: .NET.; Actual: .net.",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 5,
+        "insertText": ".NET."
+      }
+    }
+  ],
+  "proper-names-projects.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: GitHub; Actual: github",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 6,
+        "insertText": "GitHub"
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Vue; Actual: vue",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 3,
+        "insertText": "Vue"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Vue; Actual: vue",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 3,
+        "insertText": "Vue"
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Vuex; Actual: vuex",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 4,
+        "insertText": "Vuex"
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: vue-router; Actual: Vue-router",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 10,
+        "insertText": "vue-router"
+      }
+    },
+    {
+      "lineNumber": 46,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: npm; Actual: Npm",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 3,
+        "insertText": "npm"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: npm; Actual: NPM",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 3,
+        "insertText": "npm"
+      }
+    }
+  ],
+  "proper-names-urls.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: HTTPS; Actual: https",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 5,
+        "insertText": "HTTPS"
+      }
+    },
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: EXAMPLE; Actual: example",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 7,
+        "insertText": "EXAMPLE"
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: COM; Actual: com",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 3,
+        "insertText": "COM"
+      }
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: DIRECTORY; Actual: directory",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 9,
+        "insertText": "DIRECTORY"
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: FILE; Actual: file",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 4,
+        "insertText": "FILE"
+      }
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: FILE; Actual: file",
+      "errorContext": null,
+      "errorRange": [
+        29,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 29,
+        "deleteCount": 4,
+        "insertText": "FILE"
+      }
+    }
+  ],
+  "proper-names.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: Markdownlint",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: Markdownlint",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: Markdownlint",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 13,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: Javascript",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: npm; Actual: NPM",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 22,
+        "deleteCount": 3,
+        "insertText": "npm"
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: npm; Actual: NPM",
+      "errorContext": null,
+      "errorRange": [
+        27,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 27,
+        "deleteCount": 3,
+        "insertText": "npm"
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: GitHub; Actual: Github",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 19,
+        "deleteCount": 6,
+        "insertText": "GitHub"
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Internet Explorer; Actual: internet explorer",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        17
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 17,
+        "insertText": "Internet Explorer"
+      }
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Node.js; Actual: node.js",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 7,
+        "insertText": "Node.js"
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Node.js; Actual: node.js",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 18,
+        "deleteCount": 7,
+        "insertText": "Node.js"
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: npm; Actual: NPM",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 3,
+        "insertText": "npm"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: markdownlint; Actual: Markdownlint",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 12,
+        "insertText": "markdownlint"
+      }
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Node.js; Actual: node.js",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 7,
+        "insertText": "Node.js"
+      }
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Node.js; Actual: node.js",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 7,
+        "insertText": "Node.js"
+      }
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: GitHub; Actual: github",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 21,
+        "deleteCount": 6,
+        "insertText": "GitHub"
+      }
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: GitHub; Actual: github",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "deleteCount": 6,
+        "insertText": "GitHub"
+      }
+    },
+    {
+      "lineNumber": 63,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: GitHub; Actual: github",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 6,
+        "insertText": "GitHub"
+      }
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: Node.js; Actual: node.js",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 7,
+        "insertText": "Node.js"
+      }
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 78,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 81,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 84,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: multiplecase; Actual: MULTIPLECASE",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 18,
+        "deleteCount": 12,
+        "insertText": "multiplecase"
+      }
+    },
+    {
+      "lineNumber": 92,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 15,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 20,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 99,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        24,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 24,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 104,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 107,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: HTTPS; Actual: https",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 5,
+        "insertText": "HTTPS"
+      }
+    },
+    {
+      "lineNumber": 109,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: HTTPS; Actual: https",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 15,
+        "deleteCount": 5,
+        "insertText": "HTTPS"
+      }
+    },
+    {
+      "lineNumber": 112,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: HTTPS; Actual: https",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "deleteCount": 5,
+        "insertText": "HTTPS"
+      }
+    },
+    {
+      "lineNumber": 116,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    },
+    {
+      "lineNumber": 117,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: HTTPS; Actual: https",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "deleteCount": 5,
+        "insertText": "HTTPS"
+      }
+    },
+    {
+      "lineNumber": 118,
+      "ruleNames": [
+        "MD044",
+        "proper-names"
+      ],
+      "errorDetail": "Expected: JavaScript; Actual: javascript",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        10
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 10,
+        "insertText": "JavaScript"
+      }
+    }
+  ]
+}

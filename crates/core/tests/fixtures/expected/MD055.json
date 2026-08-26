@@ -1,0 +1,2224 @@
+{
+  "blanks-around-tables.md": [
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        29,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 110,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-column-count.md": [
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 105,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 105,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 106,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 106,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 107,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 107,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        22,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-pipe-style-explicit-both.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-pipe-style-explicit-leading.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: leading_and_trailing; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: leading_and_trailing; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: leading_and_trailing; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: trailing_only; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: trailing_only; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: trailing_only; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-pipe-style-explicit-none.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_and_trailing; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_and_trailing; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_and_trailing; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_and_trailing; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_and_trailing; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_and_trailing; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_only; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_only; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_only; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: trailing_only; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: trailing_only; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: trailing_only; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-pipe-style-explicit-trailing.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_and_trailing; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_and_trailing; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_and_trailing; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_only; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_only; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_only; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-pipe-style-implicit-both.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-pipe-style-implicit-leading.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: leading_and_trailing; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: leading_and_trailing; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: leading_and_trailing; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: trailing_only; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: trailing_only; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_only; Actual: trailing_only; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-pipe-style-implicit-none.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_and_trailing; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_and_trailing; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_and_trailing; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_and_trailing; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_and_trailing; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_and_trailing; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_only; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_only; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: leading_only; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: trailing_only; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: trailing_only; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: no_leading_or_trailing; Actual: trailing_only; Unexpected trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-pipe-style-implicit-trailing.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_and_trailing; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_and_trailing; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_and_trailing; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_only; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_only; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_only; Unexpected leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: trailing_only; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-pipe-style.md": [
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 46,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 46,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 48,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 48,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 78,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 82,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 102,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 106,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 113,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 120,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 127,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 127,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: no_leading_or_trailing; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 131,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: leading_only; Missing trailing pipe",
+      "errorContext": null,
+      "errorRange": [
+        21,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 133,
+      "ruleNames": [
+        "MD055",
+        "table-pipe-style"
+      ],
+      "errorDetail": "Expected: leading_and_trailing; Actual: trailing_only; Missing leading pipe",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    }
+  ]
+}

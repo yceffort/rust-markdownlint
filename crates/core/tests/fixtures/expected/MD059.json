@@ -1,0 +1,289 @@
+{
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 124,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[click here]",
+      "errorRange": [
+        2,
+        10
+      ],
+      "fixInfo": null
+    }
+  ],
+  "descriptive-link-text-override.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Go here]",
+      "errorRange": [
+        2,
+        7
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[this]",
+      "errorRange": [
+        40,
+        4
+      ],
+      "fixInfo": null
+    }
+  ],
+  "descriptive-link-text.md": [
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[here]",
+      "errorRange": [
+        5,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[Click here]",
+      "errorRange": [
+        2,
+        10
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[here!]",
+      "errorRange": [
+        26,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[more]",
+      "errorRange": [
+        8,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[click here!!!!]",
+      "errorRange": [
+        17,
+        14
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[click-here!!!!]",
+      "errorRange": [
+        2,
+        14
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link]",
+      "errorRange": [
+        13,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link]",
+      "errorRange": [
+        2,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[click here]",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link]",
+      "errorRange": [
+        2,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        2,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 36,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[*link*]",
+      "errorRange": [
+        2,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[_link_]",
+      "errorRange": [
+        2,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 38,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[~~link~~]",
+      "errorRange": [
+        2,
+        8
+      ],
+      "fixInfo": null
+    }
+  ],
+  "fixing-with-front-matter.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        7,
+        6
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-content-with-issues.md": [
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link ]",
+      "errorRange": [
+        4,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD059",
+        "descriptive-link-text"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link]",
+      "errorRange": [
+        4,
+        4
+      ],
+      "fixInfo": null
+    }
+  ]
+}

@@ -1,0 +1,446 @@
+{
+  "MD022-MD030.md": [
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    }
+  ],
+  "MD030-warning-message.md": [
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    }
+  ],
+  "list-syntax-in-paragraph-text.md": [
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 3,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 3,
+        "insertText": " "
+      }
+    }
+  ],
+  "lists-in-blockquote.md": [
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 66,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 78,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    }
+  ],
+  "spaces_after_list_marker.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 3",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 3,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 3; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 3; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 3; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 2,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 3; Actual: 4",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 4,
+        "insertText": "   "
+      }
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2,
+        "insertText": " "
+      }
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "  "
+      }
+    },
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD030",
+        "list-marker-space"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1,
+        "insertText": "  "
+      }
+    }
+  ]
+}

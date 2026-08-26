@@ -1,0 +1,1038 @@
+{
+  "MD022-MD030.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  Multiple spaces {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "> >  Multiple spaces, multiple...",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "> > >  Multiple spaces, multip...",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  > > Multiple spaces, multip...",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "blockquote-headings.md": [
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  ## Quoted indented sub-head...",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "  >  ## Quoted indented sub-he...",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "blockquote-spaces-nested.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  A {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "> >  B {MD027}",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  C {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  A {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "> >  B {MD027}",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "> > >  C {MD027}",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "> >  D {MD027}",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  E {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  A {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">>  B {MD027}",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">>>  C {MD027}",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">>  D {MD027}",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  E {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "> >  Text {MD027}",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": " > >  Text {MD027}",
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "  > >  Text {MD027}",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  > Text {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "> >  > Text {MD027}",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "> >  > > Text {MD027}",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">>  >> Text {MD027}",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 63,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": " > >  Text {MD027}",
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "  > >  Text {MD027}",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "   > >  Text {MD027}",
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": " >  > Text {MD027}",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "blockquote_spaces.md": [
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  Foo {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  Bar {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  *foo* {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  **bar** {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   \"Baz\" {MD027}",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   `qux` {MD027}",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  Foo {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  Bar {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": " >  Text {MD027}",
+      "errorRange": [
+        4,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 4,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "  >  Text {MD027}",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "   >  Text {MD027}",
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  ",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">  {MD027}",
+      "errorRange": [
+        3,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "lists-in-blockquote-start-indented.md": [
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   + Item {MD027}",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   + Item {MD027}",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   + Item {MD027}",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   + Item {MD027}",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 76,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   1. Item {MD027}",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   1. Item {MD027}",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 80,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   1. Item {MD027}",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   1. Item {MD027}",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    }
+  ],
+  "lists-in-blockquote.md": [
+    {
+      "lineNumber": 68,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "   >  * Item {MD004} {MD005} {...",
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "  >  > - Item {MD004} {MD005} ...",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 90,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "  > >  > - Item {MD004} {MD005...",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 91,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "  >  > > - Item {MD004} {MD005...",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "  >  > - Item {MD004} {MD005} ...",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 100,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "  > >  > - Item {MD004} {MD005...",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "  >  > > - Item {MD004} {MD005...",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 185,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": "  >  + list in blockquote {MD0...",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "table-pipe-style.md": [
+    {
+      "lineNumber": 133,
+      "ruleNames": [
+        "MD027",
+        "no-multiple-space-blockquote"
+      ],
+      "errorDetail": null,
+      "errorContext": ">   {MD055} | {MD027} |",
+      "errorRange": [
+        3,
+        2
+      ],
+      "fixInfo": {
+        "editColumn": 3,
+        "deleteCount": 2
+      }
+    }
+  ]
+}

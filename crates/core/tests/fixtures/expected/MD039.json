@@ -1,0 +1,1445 @@
+{
+  "MD031-MD040.md": [
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ inside ]",
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ inside ]",
+      "errorRange": [
+        15,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 15,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ space]",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[space ]",
+      "errorRange": [
+        32,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 32,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ space ]",
+      "errorRange": [
+        47,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 47,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ space ]",
+      "errorRange": [
+        53,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 53,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link with space ]",
+      "errorRange": [
+        17,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 17,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "configure-file-with-severity-tag.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ text]",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ text]",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "descriptive-link-text.md": [
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "fixing-with-front-matter.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "links-alternate.md": [
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link ]",
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link]",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 36,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 36,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 38,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link ]",
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link]",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        12,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 12,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "links-with-markup.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "...k has `code` and right space ]",
+      "errorRange": [
+        38,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 38,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ This link has *emphasis* and...",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[too ]",
+      "errorRange": [
+        23,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 23,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "markdown-in-html.md": [
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        30,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 30,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        35,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 35,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "spaces-inside-link-text.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ \"link\" ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ \"link\" ]",
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ `link` ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ `link` ]",
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ *link* ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ *link* ]",
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 9,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ __link__ ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ __link__ ]",
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 11,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link \"link\" ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link \"link\" ]",
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link `link` ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link `link` ]",
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ *link* link ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ *link* link ]",
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "spaces_inside_link_text.md": [
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[foo ]",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ foo]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ foo ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ foo ]",
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ \"foo\" ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ \"foo\" ]",
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ `foo` ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ `foo` ]",
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ *foo* ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ *foo* ]",
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ __foo__ ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ __foo__ ]",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[- ]",
+      "errorRange": [
+        27,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 27,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[- ]",
+      "errorRange": [
+        28,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 28,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[- ]",
+      "errorRange": [
+        28,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 28,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[error ]",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link with leading space]",
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link with trailing space ]",
+      "errorRange": [
+        38,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 38,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link with leading and traili...",
+      "errorRange": [
+        14,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 14,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "...h leading and trailing space ]",
+      "errorRange": [
+        51,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 51,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 58,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link with leading space]",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link with leading space]",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 63,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link with trailing space ]",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link with trailing space ]",
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link with leading and traili...",
+      "errorRange": [
+        10,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 10,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "...h leading and trailing space ]",
+      "errorRange": [
+        1,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 74,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link with leading and traili...",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 74,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "...h leading and trailing space ]",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 81,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link ]",
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 83,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ link ]",
+      "errorRange": [
+        7,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 7,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ref ]",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 91,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ ref]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ ref ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 93,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ ref ]",
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 97,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ref ]",
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 5,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 99,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ ref]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ ref ]",
+      "errorRange": [
+        2,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 2,
+        "deleteCount": 1
+      }
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[ ref ]",
+      "errorRange": [
+        6,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 1
+      }
+    }
+  ],
+  "table-content-with-issues.md": [
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD039",
+        "no-space-in-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link ]",
+      "errorRange": [
+        8,
+        1
+      ],
+      "fixInfo": {
+        "editColumn": 8,
+        "deleteCount": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,828 @@
+{
+  "MD022-MD030.md": [
+    {
+      "lineNumber": 1,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "# Heading",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 2,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "blanks-around-headings--1-1.md": [
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "Elderberry {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 21,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "blanks-around-headings-0-2.md": [
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Below",
+      "errorContext": "## Banana {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 9,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 2; Actual: 0; Below",
+      "errorContext": "Elderberry {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 23,
+        "insertText": "\n\n"
+      }
+    }
+  ],
+  "blanks-around-headings-1--1.md": [
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "## Durian {MD022} ##",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    }
+  ],
+  "blanks-around-headings-3-0.md": [
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 3; Actual: 2; Above",
+      "errorContext": "## Durian {MD022} ##",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 3; Actual: 1; Above",
+      "errorContext": "Elderberry {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n\n"
+      }
+    }
+  ],
+  "blanks-around-headings-arrays.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "# Apple - Top {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Above",
+      "errorContext": "## Banana - Top {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Below",
+      "errorContext": "## Banana - Bottom {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 25,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 3; Actual: 2; Above",
+      "errorContext": "### Cherry - Top {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "### Cherry - Bottom {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 42,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 3; Actual: 1; Below",
+      "errorContext": "#### Durian - Bottom {MD022} ####",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 55,
+        "insertText": "\n\n"
+      }
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "##### Elderberry - Top {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 74,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "###### Fig - Top {MD022} ######",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 81,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 4; Actual: 1; Below",
+      "errorContext": "###### Fig - Bottom {MD022} ######",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 82,
+        "insertText": "\n\n\n"
+      }
+    },
+    {
+      "lineNumber": 89,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "Grape - Top {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 107,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Above",
+      "errorContext": "Honeycomb - Top {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 114,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Below",
+      "errorContext": "Honeycomb - Bottom {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 116,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "blanks-around-headings.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "## Banana {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 8,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "## Durian {MD022} ##",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "Elderberry {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "Elderberry {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 20,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "blockquote-headings.md": [
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "> # Quoted heading in list {MD022} {MD025}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "> # Quoted heading in list {MD022} {MD025}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 24,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "> > # Double-quoted heading in list {MD022} {MD025}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "> > # Double-quoted heading in list {MD022} {MD025}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 27,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "> ## Quoted sub-heading in list {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "> ## Quoted sub-heading in list {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 30,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": ">  ## Quoted indented sub-heading in list {MD022} {MD023} {MD027}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": ">  ## Quoted indented sub-heading in list {MD022} {MD023} {MD027}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 34,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "> ## Heading One {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 41,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 46,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "> ## Heading Two {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "> ## Heading Three {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "> ## Heading Three {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 54,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "> > ### Heading Four {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "> >\n"
+      }
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "> > ### Heading Four {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 60,
+        "insertText": "> >\n"
+      }
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "> > ### Heading Five {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "> > ### Heading Five {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 66,
+        "insertText": "> >\n"
+      }
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "> > ### Heading Six {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "> >\n"
+      }
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "> > ### Heading Six {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 72,
+        "insertText": ">\n"
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 86,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "## Heading 10 {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    }
+  ],
+  "fixing-with-front-matter.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "# Fixing with Front Matter {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 6,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "## Nested Heading {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    }
+  ],
+  "front-matter-embedded.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "layout: post {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    }
+  ],
+  "headings_surrounding_space_atx.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "## Heading 2 {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 4,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "## Heading 3 {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "## Heading 3 {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 6,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "## Heading 4 {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    }
+  ],
+  "headings_surrounding_space_setext.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "Heading 2 {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 6,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "Some text {MD022} {MD025}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "Some text {MD022} {MD025}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 9,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "Some text {MD022} {MD025}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "Some text {MD022} {MD025}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 12,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "headings_with_spaces_at_the_beginning.md": [
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "# Test {MD022} Valid heading for CommonMark (see section 5.2)",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "# Test {MD022} Valid heading for CommonMark (see section 5.2)",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 20,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 20,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Above",
+      "errorContext": "# Test {MD022} {MD023} Also valid heading for CommonMark",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    }
+  ],
+  "markdown-in-html.md": [
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "##  Heading 2b {MD019} {MD022}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 25,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD022",
+        "blanks-around-headings"
+      ],
+      "errorDetail": "Expected: 1; Actual: 0; Below",
+      "errorContext": "###  Heading 3b {MD003} {MD021} {MD022}  ###",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 33,
+        "insertText": "\n"
+      }
+    }
+  ]
+}

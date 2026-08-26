@@ -1,0 +1,967 @@
+{
+  "MD031-MD040.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "hr-in-blockquote-dash.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: - - -",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "hr-in-blockquote-star.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: * * *",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "hr-in-blockquote-under.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: _ _ _",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "hr-in-list-dash.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: - ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: * ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "hr-in-list-star.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: - ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: * ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "hr-in-list-under.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: - ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ___; Actual: * ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "hr-style-custom.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: -  -  -; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: -  -  -; Actual: - - -",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: -  -  -; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "hr_style_dashes.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: * * *",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: *****",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: - - -",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: -----",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: _ _ _",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: _____",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "hr_style_inconsistent.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: * * *",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: *****",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: - - -",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: -----",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: _ _ _",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: _____",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "hr_style_long.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: _____; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: _____; Actual: * * *",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: _____; Actual: *****",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: _____; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: _____; Actual: - - -",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: _____; Actual: -----",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: _____; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: _____; Actual: _ _ _",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: _____; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "hr_style_stars.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: * * *",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: *****",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ---",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: - - -",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: -----",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: ___",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: _ _ _",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ***; Actual: _____",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "inline-configure-file-multiple-instances.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 30,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "inline-configure-file-multiple-lines.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD035",
+        "hr-style"
+      ],
+      "errorDetail": "Expected: ---; Actual: ***",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ]
+}

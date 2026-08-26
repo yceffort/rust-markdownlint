@@ -1,0 +1,637 @@
+{
+  "MD030-warning-message.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "-",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 4,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1.",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 7,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "MD031-MD040.md": [
+    {
+      "lineNumber": 4,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "* List {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "* List {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 48,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "* list {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 8,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 8,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "+  list {MD004} {MD007} {MD030...",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 51,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "* list {MD032} {MD046:49}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    }
+  ],
+  "list-syntax-in-paragraph-text.md": [
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1. This is a list. {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1. This is a list. It also has...",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1.   This is a list. {MD030} {...",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 20,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "- in its list. {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "- in its list. It also has a p...",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "- in its list. It also has a p...",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 24,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "+ in its list. {MD004} {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "-   This is a list. {MD030} {M...",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1. which creates a list {MD032...",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1. before the list {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    }
+  ],
+  "lists-in-blockquote.md": [
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "> + Item {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "> + Item {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 54,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "> > - Item {MD004} {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "  > >\n"
+      }
+    },
+    {
+      "lineNumber": 98,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "> > - Item {MD004} {MD005} {MD...",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 99,
+        "insertText": "   > >\n"
+      }
+    },
+    {
+      "lineNumber": 99,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "> > > - Item {MD004} {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "  > > >\n"
+      }
+    },
+    {
+      "lineNumber": 114,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "> + Item {MD005} {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 115,
+        "insertText": ">\n"
+      }
+    },
+    {
+      "lineNumber": 115,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": ">>+ Item {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": ">>\n"
+      }
+    }
+  ],
+  "lists-with-fenced-code.md": [
+    {
+      "lineNumber": 72,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "fence {MD031:-1} {MD031} {MD03...",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 73,
+        "insertText": "\n"
+      }
+    }
+  ],
+  "lists-with-nesting.md": [
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "- one {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 18,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1. two {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1. two {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 19,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "- three {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1. one {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 22,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "- two {MD007} {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "- two {MD007} {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 23,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1. three {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    }
+  ],
+  "lists_without_blank_lines.md": [
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "* list {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "* list {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 11,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "+ list {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 12,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "+ list {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 13,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "- list {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "- list {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 15,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1. list {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1. list {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 17,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 20,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "* list {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 21,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "1. list {MD032}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 63,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "* list {MD032} {MD031:64}",
+      "errorRange": null,
+      "fixInfo": {
+        "lineNumber": 64,
+        "insertText": "\n"
+      }
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "* list {MD032} {MD031:72}",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    }
+  ],
+  "markdown-in-html.md": [
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD032",
+        "blanks-around-lists"
+      ],
+      "errorDetail": null,
+      "errorContext": "- Text *text* text * text * te...",
+      "errorRange": null,
+      "fixInfo": {
+        "insertText": "\n"
+      }
+    }
+  ]
+}

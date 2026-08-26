@@ -1,0 +1,346 @@
+{
+  "MD041-MD050.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[empty]()",
+      "errorRange": [
+        4,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[empty](#)",
+      "errorRange": [
+        4,
+        10
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[empty](<>)",
+      "errorRange": [
+        4,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[empty one]()",
+      "errorRange": [
+        25,
+        13
+      ],
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 81,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[empty link]()",
+      "errorRange": [
+        1,
+        14
+      ],
+      "fixInfo": null
+    }
+  ],
+  "empty-links.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text]()",
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text](<>)",
+      "errorRange": [
+        1,
+        10
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text]( <> )",
+      "errorRange": [
+        1,
+        12
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text](<> \"title\")",
+      "errorRange": [
+        1,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text]( <> \"title\" )",
+      "errorRange": [
+        1,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text](#)",
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text]( # )",
+      "errorRange": [
+        1,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text](# \"title\")",
+      "errorRange": [
+        1,
+        17
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text]( # \"title\" )",
+      "errorRange": [
+        1,
+        19
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text][frag]",
+      "errorRange": [
+        1,
+        12
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text][ frag ]",
+      "errorRange": [
+        1,
+        14
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[frag][]",
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[frag]",
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 74,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text]()",
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 78,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text]()",
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 80,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text]()",
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 83,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text]()",
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 85,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text]()",
+      "errorRange": [
+        1,
+        8
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-content-with-issues.md": [
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD042",
+        "no-empty-links"
+      ],
+      "errorDetail": null,
+      "errorContext": "[link]()",
+      "errorRange": [
+        3,
+        8
+      ],
+      "fixInfo": null
+    }
+  ]
+}

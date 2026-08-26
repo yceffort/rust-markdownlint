@@ -1,0 +1,239 @@
+{
+  "MD041-MD050.md": [
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: fenced; Actual: indented",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: indented; Actual: fenced",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: indented; Actual: fenced",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: indented; Actual: fenced",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "code-block-with-tabs-allowed.md": [
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: fenced; Actual: indented",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "code-block-with-tabs.md": [
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: fenced; Actual: indented",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "code-blocks-prefixed-by-spaces.md": [
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: fenced; Actual: indented",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "code_block_consistency.md": [
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: indented; Actual: fenced",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "code_block_dollar.md": [
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: indented; Actual: fenced",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "code_block_fenced.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: fenced; Actual: indented",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: fenced; Actual: indented",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "code_block_indented.md": [
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: indented; Actual: fenced",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "fenced_code_blocks_in_lists.md": [
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: fenced; Actual: indented",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: fenced; Actual: indented",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "inline_html.md": [
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: indented; Actual: fenced",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 114,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: indented; Actual: fenced",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "long_lines.md": [
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: indented; Actual: fenced",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "proper-names-no-code.md": [
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: indented; Actual: fenced",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ],
+  "proper-names.md": [
+    {
+      "lineNumber": 52,
+      "ruleNames": [
+        "MD046",
+        "code-block-style"
+      ],
+      "errorDetail": "Expected: indented; Actual: fenced",
+      "errorContext": null,
+      "errorRange": null,
+      "fixInfo": null
+    }
+  ]
+}

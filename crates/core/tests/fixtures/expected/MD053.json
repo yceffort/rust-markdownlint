@@ -1,0 +1,168 @@
+{
+  "MD051-MD060.md": [
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD053",
+        "link-image-reference-definitions"
+      ],
+      "errorDetail": "Unused link or image reference definition: \"unused-label\"",
+      "errorContext": "[unused-label]: {MD053}",
+      "errorRange": [
+        1,
+        23
+      ],
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 100,
+      "ruleNames": [
+        "MD053",
+        "link-image-reference-definitions"
+      ],
+      "errorDetail": "Unused link or image reference definition: \"unused\"",
+      "errorContext": "[unused]: link-destination",
+      "errorRange": [
+        1,
+        26
+      ],
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    }
+  ],
+  "reference-links-and-images.md": [
+    {
+      "lineNumber": 198,
+      "ruleNames": [
+        "MD053",
+        "link-image-reference-definitions"
+      ],
+      "errorDetail": "Duplicate link or image reference definition: \"label\"",
+      "errorContext": "[label]: {MD053}",
+      "errorRange": [
+        1,
+        16
+      ],
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 200,
+      "ruleNames": [
+        "MD053",
+        "link-image-reference-definitions"
+      ],
+      "errorDetail": "Unused link or image reference definition: \"unused\"",
+      "errorContext": "[unused]: {MD053}",
+      "errorRange": [
+        1,
+        17
+      ],
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 202,
+      "ruleNames": [
+        "MD053",
+        "link-image-reference-definitions"
+      ],
+      "errorDetail": "Unused link or image reference definition: \"^3\"",
+      "errorContext": "[^3]: {MD053}",
+      "errorRange": [
+        1,
+        13
+      ],
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 206,
+      "ruleNames": [
+        "MD053",
+        "link-image-reference-definitions"
+      ],
+      "errorDetail": "Unused link or image reference definition: \"duplicate unused multi-line label {md053}\"",
+      "errorContext": "[Duplicate unused multi-line l...",
+      "errorRange": [
+        1,
+        44
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 209,
+      "ruleNames": [
+        "MD053",
+        "link-image-reference-definitions"
+      ],
+      "errorDetail": "Duplicate link or image reference definition: \"duplicate unused multi-line label {md053}\"",
+      "errorContext": "[Duplicate unused multi-line l...",
+      "errorRange": [
+        1,
+        44
+      ],
+      "fixInfo": null
+    }
+  ],
+  "reference-links-ignored-definitions-empty.md": [
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD053",
+        "link-image-reference-definitions"
+      ],
+      "errorDetail": "Unused link or image reference definition: \"oops\"",
+      "errorContext": "[oops]: https://example.com/{M...",
+      "errorRange": [
+        1,
+        35
+      ],
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD053",
+        "link-image-reference-definitions"
+      ],
+      "errorDetail": "Unused link or image reference definition: \"//\"",
+      "errorContext": "[//]: <> ({MD053})",
+      "errorRange": [
+        1,
+        18
+      ],
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    }
+  ],
+  "reference-links-ignored-definitions.md": [
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD053",
+        "link-image-reference-definitions"
+      ],
+      "errorDetail": "Unused link or image reference definition: \"oops\"",
+      "errorContext": "[oops]: https://example.com/{M...",
+      "errorRange": [
+        1,
+        35
+      ],
+      "fixInfo": {
+        "deleteCount": -1
+      }
+    }
+  ]
+}

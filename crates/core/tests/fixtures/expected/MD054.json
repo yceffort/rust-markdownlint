@@ -1,0 +1,3466 @@
+{
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 103,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text][url]",
+      "errorRange": [
+        1,
+        11
+      ],
+      "fixInfo": {
+        "editColumn": 1,
+        "deleteCount": 11,
+        "insertText": "[text](https://example.com/page)"
+      }
+    }
+  ],
+  "link-style-autolink-only.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com)",
+      "errorRange": [
+        6,
+        26
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 26,
+        "insertText": "<https://example.com>"
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com)",
+      "errorRange": [
+        6,
+        27
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com>)",
+      "errorRange": [
+        6,
+        28
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 28,
+        "insertText": "<https://example.com>"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](<https://example.com>)",
+      "errorRange": [
+        6,
+        29
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com \"tit...",
+      "errorRange": [
+        6,
+        34
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 34,
+        "insertText": "<https://example.com>"
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com \"ti...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text][url]",
+      "errorRange": [
+        6,
+        11
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 11,
+        "insertText": "<https://example.com>"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![text][url]",
+      "errorRange": [
+        6,
+        12
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url][]",
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 7,
+        "insertText": "<https://example.com>"
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url][]",
+      "errorRange": [
+        6,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url]",
+      "errorRange": [
+        6,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 5,
+        "insertText": "<https://example.com>"
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url]",
+      "errorRange": [
+        6,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/embe...",
+      "errorRange": [
+        6,
+        46
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 46,
+        "insertText": "<https://example.com/embedded\\3backslash>"
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/back...",
+      "errorRange": [
+        6,
+        44
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 44,
+        "insertText": "<https://example.com/backslash[escape>"
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[embedded-backslash]",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 20,
+        "insertText": "<https://example.com/embedded\\3backslash>"
+      }
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[backslash-escape]",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 18,
+        "insertText": "<https://example.com/backslash[escape>"
+      }
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 43,
+        "insertText": "<https://example.com/embedded)paren>"
+      }
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/\\(pa...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 37,
+        "insertText": "<https://example.com/(parens)>"
+      }
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/pa(r...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 37,
+        "insertText": "<https://example.com/pa(re(ns))>"
+      }
+    },
+    {
+      "lineNumber": 63,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](relative/path)",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](#fragment)",
+      "errorRange": [
+        6,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/an>g...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com](user@exampl...",
+      "errorRange": [
+        6,
+        36
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com][email]",
+      "errorRange": [
+        6,
+        25
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[email][]",
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[email]",
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": null
+    }
+  ],
+  "link-style-autolink-or-inline.md": [
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text][url]",
+      "errorRange": [
+        6,
+        11
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 11,
+        "insertText": "[text](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![text][url]",
+      "errorRange": [
+        6,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 12,
+        "insertText": "![text](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url][]",
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 7,
+        "insertText": "[url](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url][]",
+      "errorRange": [
+        6,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 8,
+        "insertText": "![url](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url]",
+      "errorRange": [
+        6,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 5,
+        "insertText": "[url](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url]",
+      "errorRange": [
+        6,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 6,
+        "insertText": "![url](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[embedded-backslash]",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 20,
+        "insertText": "[embedded-backslash](https://example.com/embedded\\3backslash)"
+      }
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[backslash-escape]",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 18,
+        "insertText": "[backslash-escape](https://example.com/backslash\\[escape)"
+      }
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com][email]",
+      "errorRange": [
+        6,
+        25
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 25,
+        "insertText": "[user@example.com](user@example.com)"
+      }
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[email][]",
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 9,
+        "insertText": "[email](user@example.com)"
+      }
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[email]",
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 7,
+        "insertText": "[email](user@example.com)"
+      }
+    }
+  ],
+  "link-style-autolink-or-reference.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com)",
+      "errorRange": [
+        6,
+        26
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 26,
+        "insertText": "<https://example.com>"
+      }
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com)",
+      "errorRange": [
+        6,
+        27
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com>)",
+      "errorRange": [
+        6,
+        28
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 28,
+        "insertText": "<https://example.com>"
+      }
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](<https://example.com>)",
+      "errorRange": [
+        6,
+        29
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com \"tit...",
+      "errorRange": [
+        6,
+        34
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 34,
+        "insertText": "<https://example.com>"
+      }
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com \"ti...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/embe...",
+      "errorRange": [
+        6,
+        46
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 46,
+        "insertText": "<https://example.com/embedded\\3backslash>"
+      }
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/back...",
+      "errorRange": [
+        6,
+        44
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 44,
+        "insertText": "<https://example.com/backslash[escape>"
+      }
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 43,
+        "insertText": "<https://example.com/embedded)paren>"
+      }
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/\\(pa...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 37,
+        "insertText": "<https://example.com/(parens)>"
+      }
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/pa(r...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 37,
+        "insertText": "<https://example.com/pa(re(ns))>"
+      }
+    },
+    {
+      "lineNumber": 63,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](relative/path)",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](#fragment)",
+      "errorRange": [
+        6,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/an>g...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com](user@exampl...",
+      "errorRange": [
+        6,
+        36
+      ],
+      "fixInfo": null
+    }
+  ],
+  "link-style-collapsed-only.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com)",
+      "errorRange": [
+        6,
+        26
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com)",
+      "errorRange": [
+        6,
+        27
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com>)",
+      "errorRange": [
+        6,
+        28
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](<https://example.com>)",
+      "errorRange": [
+        6,
+        29
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com \"tit...",
+      "errorRange": [
+        6,
+        34
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com \"ti...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text][url]",
+      "errorRange": [
+        6,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![text][url]",
+      "errorRange": [
+        6,
+        12
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url]",
+      "errorRange": [
+        6,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url]",
+      "errorRange": [
+        6,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com>",
+      "errorRange": [
+        6,
+        21
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/embe...",
+      "errorRange": [
+        6,
+        46
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/back...",
+      "errorRange": [
+        6,
+        44
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[embedded-backslash]",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[backslash-escape]",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/embedded\\...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/backslash...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/\\(pa...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/pa(r...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 63,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](relative/path)",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](#fragment)",
+      "errorRange": [
+        6,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/pa)re(ns>",
+      "errorRange": [
+        6,
+        30
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/an>g...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<user@example.com>",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com](user@exampl...",
+      "errorRange": [
+        6,
+        36
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com][email]",
+      "errorRange": [
+        6,
+        25
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[email]",
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": null
+    }
+  ],
+  "link-style-full-only.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com)",
+      "errorRange": [
+        6,
+        26
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com)",
+      "errorRange": [
+        6,
+        27
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com>)",
+      "errorRange": [
+        6,
+        28
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](<https://example.com>)",
+      "errorRange": [
+        6,
+        29
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com \"tit...",
+      "errorRange": [
+        6,
+        34
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com \"ti...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url][]",
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url][]",
+      "errorRange": [
+        6,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url]",
+      "errorRange": [
+        6,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url]",
+      "errorRange": [
+        6,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com>",
+      "errorRange": [
+        6,
+        21
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/embe...",
+      "errorRange": [
+        6,
+        46
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/back...",
+      "errorRange": [
+        6,
+        44
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[embedded-backslash]",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[backslash-escape]",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/embedded\\...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/backslash...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/\\(pa...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/pa(r...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 63,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](relative/path)",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](#fragment)",
+      "errorRange": [
+        6,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/pa)re(ns>",
+      "errorRange": [
+        6,
+        30
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/an>g...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<user@example.com>",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com](user@exampl...",
+      "errorRange": [
+        6,
+        36
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[email][]",
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[email]",
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": null
+    }
+  ],
+  "link-style-inline-only.md": [
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text][url]",
+      "errorRange": [
+        6,
+        11
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 11,
+        "insertText": "[text](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![text][url]",
+      "errorRange": [
+        6,
+        12
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 12,
+        "insertText": "![text](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url][]",
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 7,
+        "insertText": "[url](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url][]",
+      "errorRange": [
+        6,
+        8
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 8,
+        "insertText": "![url](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url]",
+      "errorRange": [
+        6,
+        5
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 5,
+        "insertText": "[url](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url]",
+      "errorRange": [
+        6,
+        6
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 6,
+        "insertText": "![url](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com>",
+      "errorRange": [
+        6,
+        21
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 21,
+        "insertText": "[https://example.com](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[embedded-backslash]",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 20,
+        "insertText": "[embedded-backslash](https://example.com/embedded\\3backslash)"
+      }
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[backslash-escape]",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 18,
+        "insertText": "[backslash-escape](https://example.com/backslash\\[escape)"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/embedded\\...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 41,
+        "insertText": "[https://example.com/embedded\\3backslash](https://example.com/embedded\\3backslash)"
+      }
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/backslash...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 41,
+        "insertText": "[https://example.com/backslash\\[no-escape](https://example.com/backslash[no-escape)"
+      }
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/pa)re(ns>",
+      "errorRange": [
+        6,
+        30
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 30,
+        "insertText": "[https://example.com/pa)re(ns](https://example.com/pa\\)re\\(ns)"
+      }
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<user@example.com>",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 18,
+        "insertText": "[user@example.com](user@example.com)"
+      }
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com][email]",
+      "errorRange": [
+        6,
+        25
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 25,
+        "insertText": "[user@example.com](user@example.com)"
+      }
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[email][]",
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 9,
+        "insertText": "[email](user@example.com)"
+      }
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[email]",
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 7,
+        "insertText": "[email](user@example.com)"
+      }
+    }
+  ],
+  "link-style-inline-or-reference.md": [
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com>",
+      "errorRange": [
+        6,
+        21
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 21,
+        "insertText": "[https://example.com](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/embedded\\...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 41,
+        "insertText": "[https://example.com/embedded\\3backslash](https://example.com/embedded\\3backslash)"
+      }
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/backslash...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 41,
+        "insertText": "[https://example.com/backslash\\[no-escape](https://example.com/backslash[no-escape)"
+      }
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/pa)re(ns>",
+      "errorRange": [
+        6,
+        30
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 30,
+        "insertText": "[https://example.com/pa)re(ns](https://example.com/pa\\)re\\(ns)"
+      }
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<user@example.com>",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 18,
+        "insertText": "[user@example.com](user@example.com)"
+      }
+    }
+  ],
+  "link-style-no-url-inline-not-possible.md": [
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com>",
+      "errorRange": [
+        6,
+        21
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 21,
+        "insertText": "[https://example.com](https://example.com)"
+      }
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<user@example.com>",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 18,
+        "insertText": "[user@example.com](user@example.com)"
+      }
+    }
+  ],
+  "link-style-no-url-inline-possible.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[https://example.com](https://...",
+      "errorRange": [
+        6,
+        42
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 42,
+        "insertText": "<https://example.com>"
+      }
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[https://example.com](<https:/...",
+      "errorRange": [
+        6,
+        44
+      ],
+      "fixInfo": {
+        "editColumn": 6,
+        "deleteCount": 44,
+        "insertText": "<https://example.com>"
+      }
+    }
+  ],
+  "link-style-none.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com)",
+      "errorRange": [
+        6,
+        26
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com)",
+      "errorRange": [
+        6,
+        27
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com>)",
+      "errorRange": [
+        6,
+        28
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](<https://example.com>)",
+      "errorRange": [
+        6,
+        29
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com \"tit...",
+      "errorRange": [
+        6,
+        34
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com \"ti...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text][url]",
+      "errorRange": [
+        6,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![text][url]",
+      "errorRange": [
+        6,
+        12
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url][]",
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url][]",
+      "errorRange": [
+        6,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url]",
+      "errorRange": [
+        6,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url]",
+      "errorRange": [
+        6,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com>",
+      "errorRange": [
+        6,
+        21
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/embe...",
+      "errorRange": [
+        6,
+        46
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/back...",
+      "errorRange": [
+        6,
+        44
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[embedded-backslash]",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 45,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[backslash-escape]",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/embedded\\...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/backslash...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/\\(pa...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/pa(r...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 63,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](relative/path)",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](#fragment)",
+      "errorRange": [
+        6,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/pa)re(ns>",
+      "errorRange": [
+        6,
+        30
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/an>g...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<user@example.com>",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com](user@exampl...",
+      "errorRange": [
+        6,
+        36
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com][email]",
+      "errorRange": [
+        6,
+        25
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[email][]",
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[email]",
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": null
+    }
+  ],
+  "link-style-reference-only.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com)",
+      "errorRange": [
+        6,
+        26
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com)",
+      "errorRange": [
+        6,
+        27
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com>)",
+      "errorRange": [
+        6,
+        28
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](<https://example.com>)",
+      "errorRange": [
+        6,
+        29
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com \"tit...",
+      "errorRange": [
+        6,
+        34
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com \"ti...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com>",
+      "errorRange": [
+        6,
+        21
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/embe...",
+      "errorRange": [
+        6,
+        46
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/back...",
+      "errorRange": [
+        6,
+        44
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/embedded\\...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/backslash...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/\\(pa...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/pa(r...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 63,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](relative/path)",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](#fragment)",
+      "errorRange": [
+        6,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/pa)re(ns>",
+      "errorRange": [
+        6,
+        30
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/an>g...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<user@example.com>",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com](user@exampl...",
+      "errorRange": [
+        6,
+        36
+      ],
+      "fixInfo": null
+    }
+  ],
+  "link-style-shortcut-only.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com)",
+      "errorRange": [
+        6,
+        26
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com)",
+      "errorRange": [
+        6,
+        27
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com>)",
+      "errorRange": [
+        6,
+        28
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](<https://example.com>)",
+      "errorRange": [
+        6,
+        29
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com \"tit...",
+      "errorRange": [
+        6,
+        34
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 13,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com \"ti...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 18,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url](https://example.com",
+      "errorRange": null,
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[text][url]",
+      "errorRange": [
+        6,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![text][url]",
+      "errorRange": [
+        6,
+        12
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url][]",
+      "errorRange": [
+        6,
+        7
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "![url][]",
+      "errorRange": [
+        6,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 33,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com>",
+      "errorRange": [
+        6,
+        21
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 39,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/embe...",
+      "errorRange": [
+        6,
+        46
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/back...",
+      "errorRange": [
+        6,
+        44
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 47,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/embedded\\...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/backslash...",
+      "errorRange": [
+        6,
+        41
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 57,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](<https://example.com/emb...",
+      "errorRange": [
+        6,
+        43
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 59,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/\\(pa...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/pa(r...",
+      "errorRange": [
+        6,
+        37
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 63,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](relative/path)",
+      "errorRange": [
+        6,
+        20
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 65,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](#fragment)",
+      "errorRange": [
+        6,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 67,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<https://example.com/pa)re(ns>",
+      "errorRange": [
+        6,
+        30
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[url](https://example.com/an>g...",
+      "errorRange": [
+        6,
+        35
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 71,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "<user@example.com>",
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 73,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com](user@exampl...",
+      "errorRange": [
+        6,
+        36
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[user@example.com][email]",
+      "errorRange": [
+        6,
+        25
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 77,
+      "ruleNames": [
+        "MD054",
+        "link-image-style"
+      ],
+      "errorDetail": null,
+      "errorContext": "[email][]",
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": null
+    }
+  ]
+}

@@ -1,0 +1,1332 @@
+{
+  "MD031-MD040.md": [
+    {
+      "lineNumber": 6,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        5
+      ],
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    }
+  ],
+  "descriptive-link-text.md": [
+    {
+      "lineNumber": 40,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: link",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        6
+      ],
+      "fixInfo": null
+    }
+  ],
+  "front-matter-with-disable-next-line.md": [
+    {
+      "lineNumber": 10,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 20,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 22,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 26,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 28,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 32,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 34,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    }
+  ],
+  "html-tags.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: p",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        7,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 24,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        36,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        14,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 35,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 41,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        56,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 43,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        35,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 49,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: problem",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: problem",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        8,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 84,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: em",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 90,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: a",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        18
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 91,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: img",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        39
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: foo-bar-baz",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        13
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 109,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: details",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 116,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: details",
+      "errorContext": null,
+      "errorRange": [
+        2,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 120,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: custom-element",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        35
+      ],
+      "fixInfo": null
+    }
+  ],
+  "ignore-html-block.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: style",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": null
+    }
+  ],
+  "inline-disable-enable.md": [
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: b",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        3
+      ],
+      "fixInfo": null
+    }
+  ],
+  "inline_html-allowed_elements.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: h2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: h2",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: h2",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 21,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 23,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 25,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        15
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 27,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        16
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 29,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        23
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 31,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        24
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 37,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: article",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 42,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: article",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 46,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 50,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: Article",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 54,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: Br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 60,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        13,
+        4
+      ],
+      "fixInfo": null
+    }
+  ],
+  "inline_html-only_table_allowed_elements.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: h1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 14,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: h1",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: table",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        7
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 17,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        5
+      ],
+      "fixInfo": null
+    }
+  ],
+  "inline_html-table_allowed_elements.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: h2",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 16,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: h1",
+      "errorContext": null,
+      "errorRange": [
+        25,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 19,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        5
+      ],
+      "fixInfo": null
+    }
+  ],
+  "inline_html.md": [
+    {
+      "lineNumber": 3,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: h1",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: p",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 79,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: element",
+      "errorContext": null,
+      "errorRange": [
+        12,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 88,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        4
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 90,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 94,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: a",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        30
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 96,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: a",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        46
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 98,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: a",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        51
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 122,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: element",
+      "errorContext": null,
+      "errorRange": [
+        6,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 124,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: link-with",
+      "errorContext": null,
+      "errorRange": [
+        4,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 128,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: reference",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 130,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: reference",
+      "errorContext": null,
+      "errorRange": [
+        16,
+        11
+      ],
+      "fixInfo": null
+    }
+  ],
+  "md033-cannot-read-property-of-undefined.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: i",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        3
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 9,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: br",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        5
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 11,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: b",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        3
+      ],
+      "fixInfo": null
+    }
+  ],
+  "spaces_inside_emphasis_markers.md": [
+    {
+      "lineNumber": 380,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: b",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        3
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 382,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: p",
+      "errorContext": null,
+      "errorRange": [
+        1,
+        3
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 386,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: p",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        39
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 388,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: img",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        41
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 390,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: p",
+      "errorContext": null,
+      "errorRange": [
+        10,
+        24
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-content-with-issues.md": [
+    {
+      "lineNumber": 7,
+      "ruleNames": [
+        "MD033",
+        "no-inline-html"
+      ],
+      "errorDetail": "Element: hr",
+      "errorContext": null,
+      "errorRange": [
+        3,
+        4
+      ],
+      "fixInfo": null
+    }
+  ]
+}

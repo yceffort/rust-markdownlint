@@ -1,0 +1,334 @@
+{
+  "blanks-around-tables.md": [
+    {
+      "lineNumber": 15,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Too few cells, row will be missing data",
+      "errorContext": null,
+      "errorRange": [
+        29,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "break-all-the-rules.md": [
+    {
+      "lineNumber": 116,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Too few cells, row will be missing data",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "reversed-link-issue-with-markdownlint-12.md": [
+    {
+      "lineNumber": 5,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3; Too many cells, extra data will be missing",
+      "errorContext": null,
+      "errorRange": [
+        42,
+        16
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-column-count.md": [
+    {
+      "lineNumber": 53,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Too few cells, row will be missing data",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 55,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Too few cells, row will be missing data",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 61,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 3; Actual: 1; Too few cells, row will be missing data",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 62,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 3; Actual: 2; Too few cells, row will be missing data",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 69,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Too few cells, row will be missing data",
+      "errorContext": null,
+      "errorRange": [
+        5,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 75,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Too few cells, row will be missing data",
+      "errorContext": null,
+      "errorRange": [
+        11,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 84,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2; Too many cells, extra data will be missing",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        9
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 91,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 4; Too many cells, extra data will be missing",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        15
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 92,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3; Too many cells, extra data will be missing",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 99,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 3; Actual: 4; Too many cells, extra data will be missing",
+      "errorContext": null,
+      "errorRange": [
+        27,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 101,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 3; Actual: 5; Too many cells, extra data will be missing",
+      "errorContext": null,
+      "errorRange": [
+        27,
+        15
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 107,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3; Too many cells, extra data will be missing",
+      "errorContext": null,
+      "errorRange": [
+        17,
+        6
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 113,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3; Too many cells, extra data will be missing",
+      "errorContext": null,
+      "errorRange": [
+        19,
+        11
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 121,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2; Too many cells, extra data will be missing",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 123,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 1; Actual: 2; Too many cells, extra data will be missing",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 129,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 3; Too many cells, extra data will be missing",
+      "errorContext": null,
+      "errorRange": [
+        18,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 130,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Too few cells, row will be missing data",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 138,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 3; Actual: 4; Too many cells, extra data will be missing",
+      "errorContext": null,
+      "errorRange": [
+        27,
+        8
+      ],
+      "fixInfo": null
+    },
+    {
+      "lineNumber": 139,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 3; Actual: 1; Too few cells, row will be missing data",
+      "errorContext": null,
+      "errorRange": [
+        9,
+        1
+      ],
+      "fixInfo": null
+    }
+  ],
+  "table-pipe-style.md": [
+    {
+      "lineNumber": 127,
+      "ruleNames": [
+        "MD056",
+        "table-column-count"
+      ],
+      "errorDetail": "Expected: 2; Actual: 1; Too few cells, row will be missing data",
+      "errorContext": null,
+      "errorRange": [
+        20,
+        1
+      ],
+      "fixInfo": null
+    }
+  ]
+}
