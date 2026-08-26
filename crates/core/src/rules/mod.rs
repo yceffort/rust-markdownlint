@@ -19,6 +19,7 @@ mod md022;
 mod md023;
 mod md025;
 mod md035;
+mod md043;
 mod md047;
 pub mod registry;
 
