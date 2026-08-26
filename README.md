@@ -48,3 +48,17 @@ cargo fmt --all --check
 cargo clippy --workspace --all-targets -- -D warnings
 cargo test --workspace
 ```
+
+규칙 하나의 결과를 원본 markdownlint 기대값과 대조하려면 `cargo test -p rust-markdownlint --test rules_snapshot -- MD047` 처럼 규칙 이름으로 필터합니다. 기대값은 `node scripts/dump-expected.mjs <markdownlint@0.40.0 패키지 경로>` 로 다시 생성합니다.
+
+### 벤치마크
+
+원본 markdownlint-cli2 v0.22.1 과 같은 코퍼스에서 결과를 diff 하고 속도를 비교합니다 (`hyperfine`, `node` 필요).
+
+```bash
+bench/run.sh MD047   # 규칙 하나
+bench/run.sh all     # 포팅된 규칙 전체
+SCALE=10 bench/run.sh all   # 코퍼스 10배 복제
+```
+
+결과는 `bench/RESULTS.md` 에 기록합니다.

@@ -1,0 +1,7 @@
+{
+  "name": "rust-markdownlint-bench",
+  "private": true,
+  "devDependencies": {
+    "markdownlint-cli2": "0.22.1"
+  }
+}
