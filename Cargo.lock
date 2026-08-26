@@ -526,6 +526,7 @@ dependencies = [
  "serde_json",
  "thiserror",
  "toml",
+ "unicode-width",
 ]
 
 [[package]]
