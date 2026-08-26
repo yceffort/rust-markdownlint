@@ -3,6 +3,7 @@ use std::collections::HashSet;
 use crate::error::ErrorSink;
 use crate::parser::TokenTree;
 
+mod md004;
 mod md007;
 mod md009;
 mod md010;
