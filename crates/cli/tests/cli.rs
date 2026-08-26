@@ -1,0 +1,344 @@
+//! 기대값은 원본 markdownlint-cli2 v0.22.1 을 같은 입력으로 실행한 결과에서 M0 에 없는 규칙
+//! (MD041 등)의 줄만 제거한 것이다. 배너 한 줄만 원본과 다르다.
+
+use std::fs;
+use std::path::Path;
+
+use assert_cmd::Command;
+use predicates::prelude::*;
+
+const BANNER: &str = concat!(
+    "rust-markdownlint v",
+    env!("CARGO_PKG_VERSION"),
+    " (markdownlint-cli2 v0.22.1 / markdownlint v0.40.0 compatible)\n"
+);
+
+const MD018: &str =
+    "MD018/no-missing-space-atx No space after hash on atx style heading [Context: \"#x\"]";
+const MD047: &str =
+    "MD047/single-trailing-newline Files should end with a single newline character";
+
+fn cmd(dir: &Path) -> Command {
+    let mut c = Command::cargo_bin("rust-markdownlint").unwrap();
+    c.current_dir(dir);
+    c
+}
+
+fn tree(entries: &[(&str, &str)]) -> tempfile::TempDir {
+    let dir = tempfile::tempdir().unwrap();
+    for (path, content) in entries {
+        let full = dir.path().join(path);
+        fs::create_dir_all(full.parent().unwrap()).unwrap();
+        fs::write(full, content).unwrap();
+    }
+    dir
+}
+
+fn help_stdout() -> impl Predicate<str> {
+    predicate::str::starts_with(format!(
+        "{BANNER}https://github.com/DavidAnson/markdownlint-cli2\n\nSyntax: markdownlint-cli2 glob0"
+    ))
+    .and(predicate::str::ends_with(
+        "The most compatible syntax for cross-platform support:\n$ markdownlint-cli2 \"**/*.md\" \"#node_modules\"\n",
+    ))
+}
+
+#[test]
+fn no_args_prints_help_exit_2() {
+    let t = tree(&[]);
+    cmd(t.path())
+        .assert()
+        .code(2)
+        .stdout(help_stdout())
+        .stderr("");
+    cmd(t.path())
+        .arg("--help")
+        .assert()
+        .code(2)
+        .stdout(help_stdout());
+}
+
+#[test]
+fn config_without_value_exit_2() {
+    let t = tree(&[("a.md", "#x")]);
+    cmd(t.path())
+        .args(["a.md", "--config"])
+        .assert()
+        .code(2)
+        .stdout(help_stdout());
+}
+
+#[test]
+fn error_output_format_and_exit_1() {
+    let t = tree(&[("a.md", "#x")]);
+    cmd(t.path())
+        .arg("a.md")
+        .assert()
+        .code(1)
+        .stdout(format!(
+            "{BANNER}Finding: a.md\nLinting: 1 file(s)\nSummary: 2 error(s)\n"
+        ))
+        .stderr(format!("a.md:1:1 error {MD018}\na.md:1:2 error {MD047}\n"));
+}
+
+#[test]
+fn fix_rewrites_and_exit_0() {
+    let t = tree(&[("a.md", "#x")]);
+    cmd(t.path())
+        .args(["--fix", "a.md"])
+        .assert()
+        .code(0)
+        .stdout(format!(
+            "{BANNER}Finding: a.md\nLinting: 1 file(s)\nSummary: 0 error(s)\n"
+        ))
+        .stderr("");
+    assert_eq!(fs::read_to_string(t.path().join("a.md")).unwrap(), "# x\n");
+}
+
+#[test]
+fn fix_false_in_config_overrides_flag() {
+    let t = tree(&[
+        ("a.md", "#x"),
+        (".markdownlint-cli2.jsonc", r#"{"fix": false}"#),
+    ]);
+    cmd(t.path()).args(["--fix", "a.md"]).assert().code(1);
+    assert_eq!(fs::read_to_string(t.path().join("a.md")).unwrap(), "#x");
+}
+
+#[test]
+fn stdin_dash() {
+    let t = tree(&[]);
+    cmd(t.path())
+        .arg("-")
+        .write_stdin("#x\n")
+        .assert()
+        .code(1)
+        .stdout(format!(
+            "{BANNER}Finding: \nLinting: 1 file(s)\nSummary: 1 error(s)\n"
+        ))
+        .stderr(format!("stdin:1:1 error {MD018}\n"));
+}
+
+#[test]
+fn stdin_and_file_sorted_together() {
+    let t = tree(&[("a.md", "#x")]);
+    cmd(t.path())
+        .args(["-", "a.md"])
+        .write_stdin("#x\n")
+        .assert()
+        .code(1)
+        .stdout(format!(
+            "{BANNER}Finding: a.md\nLinting: 2 file(s)\nSummary: 3 error(s)\n"
+        ))
+        .stderr(format!(
+            "a.md:1:1 error {MD018}\na.md:1:2 error {MD047}\nstdin:1:1 error {MD018}\n"
+        ));
+}
+
+#[test]
+fn format_writes_fixed_to_stdout() {
+    let t = tree(&[]);
+    cmd(t.path())
+        .arg("--format")
+        .write_stdin("#x")
+        .assert()
+        .code(0)
+        .stdout("# x\n")
+        .stderr("");
+}
+
+#[test]
+fn cjs_config_is_error() {
+    let t = tree(&[
+        ("a.md", "#x"),
+        (".markdownlint-cli2.cjs", "module.exports = {};"),
+    ]);
+    cmd(t.path())
+        .arg("**/*.md")
+        .assert()
+        .code(2)
+        .stdout(BANNER)
+        .stderr(
+            predicate::str::starts_with("Error: Unable to use configuration file '")
+                .and(predicate::str::contains(".markdownlint-cli2.cjs")),
+        );
+}
+
+#[test]
+fn invalid_config_prints_banner_then_error() {
+    let t = tree(&[("a.md", "#x"), (".markdownlint-cli2.jsonc", "{")]);
+    cmd(t.path())
+        .arg("**/*.md")
+        .assert()
+        .code(2)
+        .stdout(BANNER)
+        .stderr(predicate::str::starts_with(
+            "Error: Unable to use configuration file '",
+        ));
+}
+
+#[test]
+fn locale_sort_and_nested_ignores() {
+    let t = tree(&[
+        (".markdownlint-cli2.jsonc", r#"{"ignores": ["skip"]}"#),
+        ("sub/.markdownlint-cli2.jsonc", r#"{"ignores": ["b.md"]}"#),
+        ("a.md", "#x"),
+        ("sub/a.md", "#x"),
+        ("sub/b.md", "#x"),
+        ("skip/s.md", "#x"),
+        ("README.md", "#x"),
+        ("a_b.md", "#x"),
+        ("a-b.md", "#x"),
+        ("Zed.md", "#x"),
+        ("B.md", "#x"),
+    ]);
+    let files = [
+        "a_b.md",
+        "a-b.md",
+        "a.md",
+        "B.md",
+        "README.md",
+        "sub/a.md",
+        "Zed.md",
+    ];
+    let stderr: String = files
+        .iter()
+        .map(|f| format!("{f}:1:1 error {MD018}\n{f}:1:2 error {MD047}\n"))
+        .collect();
+    // Linting 수는 sub/b.md (하위 ignores) 를 포함하고 skip/ (base ignores) 는 제외
+    cmd(t.path())
+        .arg("**/*.md")
+        .assert()
+        .code(1)
+        .stdout(format!(
+            "{BANNER}Finding: **/*.md !skip\nLinting: 8 file(s)\nSummary: 14 error(s)\n"
+        ))
+        .stderr(stderr);
+}
+
+#[test]
+fn warning_severity_show_found_exit_0() {
+    let t = tree(&[
+        ("a.md", "#x"),
+        (
+            ".markdownlint-cli2.jsonc",
+            r#"{"config": {"MD018": {"severity": "warning"}, "MD047": false}, "showFound": true}"#,
+        ),
+    ]);
+    cmd(t.path())
+        .arg("**/*.md")
+        .assert()
+        .code(0)
+        .stdout(format!(
+            "{BANNER}Finding: **/*.md\nFound:\n a.md\nLinting: 1 file(s)\nSummary: 1 error(s)\n"
+        ))
+        .stderr(format!("a.md:1:1 warning {MD018}\n"));
+}
+
+#[test]
+fn no_progress_no_banner() {
+    let t = tree(&[
+        ("a.md", "#x"),
+        (
+            ".markdownlint-cli2.jsonc",
+            r#"{"noProgress": true, "noBanner": true}"#,
+        ),
+    ]);
+    cmd(t.path())
+        .arg("**/*.md")
+        .assert()
+        .code(1)
+        .stdout("")
+        .stderr(format!("a.md:1:1 error {MD018}\na.md:1:2 error {MD047}\n"));
+}
+
+#[test]
+fn invalid_front_matter_exit_2_after_progress() {
+    let t = tree(&[
+        ("a.md", "#x"),
+        (".markdownlint-cli2.jsonc", r#"{"frontMatter": "(["}"#),
+    ]);
+    cmd(t.path())
+        .arg("**/*.md")
+        .assert()
+        .code(2)
+        .stdout(format!("{BANNER}Finding: **/*.md\nLinting: 1 file(s)\n"))
+        .stderr(predicate::str::starts_with("Error: "));
+}
+
+#[test]
+fn no_match_exit_0() {
+    let t = tree(&[]);
+    cmd(t.path())
+        .arg("nothing/*.md")
+        .assert()
+        .code(0)
+        .stdout(format!(
+            "{BANNER}Finding: nothing/*.md\nLinting: 0 file(s)\nSummary: 0 error(s)\n"
+        ))
+        .stderr("");
+}
+
+#[test]
+fn literal_files() {
+    let t = tree(&[("a.md", "#x")]);
+    cmd(t.path())
+        .arg(":./a.md")
+        .assert()
+        .code(1)
+        .stdout(format!(
+            "{BANNER}Finding: :./a.md\nLinting: 1 file(s)\nSummary: 2 error(s)\n"
+        ))
+        .stderr(format!("a.md:1:1 error {MD018}\na.md:1:2 error {MD047}\n"));
+    cmd(t.path())
+        .arg(":missing.md")
+        .assert()
+        .code(2)
+        .stdout(format!(
+            "{BANNER}Finding: :missing.md\nLinting: 1 file(s)\n"
+        ))
+        .stderr(predicate::str::starts_with("Error: "));
+}
+
+#[test]
+fn config_globs_and_no_globs() {
+    let t = tree(&[
+        ("docs/x.md", "#x"),
+        (".markdownlint-cli2.jsonc", r#"{"globs": ["docs/*.md"]}"#),
+    ]);
+    cmd(t.path())
+        .assert()
+        .code(1)
+        .stdout(format!(
+            "{BANNER}Finding: docs/*.md\nLinting: 1 file(s)\nSummary: 2 error(s)\n"
+        ))
+        .stderr(format!(
+            "docs/x.md:1:1 error {MD018}\ndocs/x.md:1:2 error {MD047}\n"
+        ));
+    cmd(t.path())
+        .arg("--no-globs")
+        .assert()
+        .code(2)
+        .stdout(help_stdout());
+}
+
+#[test]
+fn unsupported_option_warns_on_stderr() {
+    let t = tree(&[
+        ("a.md", "# x\n"),
+        (".markdownlint-cli2.jsonc", r#"{"customRules": ["x"]}"#),
+    ]);
+    cmd(t.path())
+        .arg("a.md")
+        .assert()
+        .code(0)
+        .stderr("Ignoring unsupported option: customRules\n");
+}
+
+#[test]
+fn front_matter_and_bom() {
+    let t = tree(&[("fm.md", "\u{FEFF}---\ntitle: x\n---\n#x")]);
+    cmd(t.path()).arg("fm.md").assert().code(1).stderr(format!(
+        "fm.md:4:1 error {MD018}\nfm.md:4:2 error {MD047}\n"
+    ));
+}
