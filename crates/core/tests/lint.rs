@@ -20,7 +20,10 @@ fn sorted_by_rule_then_line() {
         .iter()
         .map(|e| (e.rule_names[0].as_str(), e.line_number))
         .collect();
-    assert_eq!(names, [("MD018", 1), ("MD018", 2), ("MD047", 3)]);
+    assert_eq!(
+        names,
+        [("MD018", 1), ("MD018", 2), ("MD041", 1), ("MD047", 3)]
+    );
 }
 
 #[test]
@@ -42,7 +45,7 @@ fn inline_disable_drops_errors() {
 
 #[test]
 fn config_disables_rule() {
-    let config = serde_json::json!({"MD047": false});
+    let config = serde_json::json!({"MD041": false, "MD047": false});
     let opts = LintOptions {
         config: Some(&config),
         ..Default::default()
