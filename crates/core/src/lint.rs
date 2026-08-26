@@ -90,7 +90,8 @@ pub fn lint_content(
         .map(fancy_regex::Regex::new)
         .transpose()
         .map_err(Box::new)?;
-    let (content, front_matter_lines) = strip_front_matter(content, user_pattern.as_ref());
+    let (content, front_matter) = strip_front_matter(content, user_pattern.as_ref());
+    let front_matter_lines = front_matter.len();
 
     let raw_lines = split_lines(content);
     let empty_config = ConfigValue::Object(serde_json::Map::new());
@@ -130,6 +131,7 @@ pub fn lint_content(
             name,
             lines: &lines,
             tokens: &tokens,
+            front_matter: &front_matter,
             front_matter_lines,
             config: &params,
         };
