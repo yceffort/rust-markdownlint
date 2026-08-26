@@ -11,6 +11,8 @@ pub struct Token {
     pub text: String,
     pub parent: Option<TokenId>,
     pub children: Vec<TokenId>,
+    /// 원본 `htmlFlowSymbol`: htmlFlow 재파싱으로 생긴 토큰인지 (`inHtmlFlow`).
+    pub in_html_flow: bool,
 }
 
 #[derive(Debug, Default)]
