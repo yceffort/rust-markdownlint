@@ -385,9 +385,11 @@ fn base_globs_and_ignores() {
     let infos = run(&base, &["**/*.md"]).unwrap();
     assert_eq!(
         summary(&base, &infos),
-        pairs(&[("sub", &["sub/a.md"]), (".", &["a.md"])])
+        pairs(&[("sub", &["sub/a.md", "sub/b.md"]), (".", &["a.md"])])
     );
     assert_eq!(infos[0].options.ignores, Some(vec!["b.md".into()]));
+    // 하위 디렉토리 ignores 는 lint 시점에 적용
+    assert_eq!(infos[0].files_after_ignores(), [base.join("sub/a.md")]);
 }
 
 #[test]

@@ -18,11 +18,24 @@ use crate::globs::normalize_glob;
 #[derive(Debug)]
 pub struct DirInfo {
     pub dir: PathBuf,
+    /// `ignores` 적용 전 파일. 원본의 `Linting: N file(s)` 는 이 수를 센다.
     pub files: Vec<PathBuf>,
     pub options: Options,
     /// 같은 디렉토리(또는 상속된) `.markdownlint.*` 우선, 없으면 `options.config`.
     /// None 이면 markdownlint 기본 설정.
     pub effective_config: Option<ConfigValue>,
+}
+
+impl DirInfo {
+    /// 원본 `lintFiles` 의 `ignores` 적용 결과.
+    pub fn files_after_ignores(&self) -> Vec<PathBuf> {
+        match &self.options.ignores {
+            Some(ignores) if !ignores.is_empty() => {
+                remove_ignored_files(&self.dir, self.files.clone(), ignores)
+            }
+            _ => self.files.clone(),
+        }
+    }
 }
 
 const DOT_ONLY_SUBSTITUTE: &str = "*.{md,markdown}";
@@ -268,8 +281,8 @@ fn ensure_dir(
     Ok(())
 }
 
-/// 원본 `removeIgnoredFiles`: dirInfo 디렉토리 기준 상대 경로가 `ignores` 에 매치되면 제외.
-fn remove_ignored(dir: &Path, files: Vec<PathBuf>, ignores: &[String]) -> Vec<PathBuf> {
+/// 원본 `removeIgnoredFiles`: `dir` 기준 상대 경로가 `ignores` 에 매치되면 제외 (micromatch, dot:true).
+pub fn remove_ignored_files(dir: &Path, files: Vec<PathBuf>, ignores: &[String]) -> Vec<PathBuf> {
     let mut builder = globset::GlobSetBuilder::new();
     for pattern in ignores {
         if let Ok(glob) = globset::GlobBuilder::new(pattern)
@@ -302,9 +315,16 @@ pub fn create_dir_infos(
 ) -> Result<Vec<DirInfo>> {
     let mut nodes: BTreeMap<PathBuf, Node> = BTreeMap::new();
 
-    // getBaseOptions: base 의 옵션은 병합된 base 옵션으로 대체
-    ensure_dir(&mut nodes, base, warn)?;
-    nodes.get_mut(base).unwrap().options = Some(base_options.clone());
+    // getBaseOptions: base 의 옵션은 이미 read_base_options 가 읽어 병합했다
+    nodes.insert(
+        base.to_path_buf(),
+        Node {
+            parent: None,
+            files: Vec::new(),
+            config: read_dir_config(base)?,
+            options: Some(base_options.clone()),
+        },
+    );
 
     // enumerateFiles
     for file in files {
@@ -377,16 +397,10 @@ pub fn create_dir_infos(
             parent = pn.parent.as_deref();
         }
         let options = options.unwrap_or_default();
-        let files = match &options.ignores {
-            Some(ignores) if !ignores.is_empty() => {
-                remove_ignored(&dir, node.files.clone(), ignores)
-            }
-            _ => node.files.clone(),
-        };
         infos.push(DirInfo {
             effective_config: config.or_else(|| options.config.clone()),
             dir,
-            files,
+            files: node.files.clone(),
             options,
         });
     }
