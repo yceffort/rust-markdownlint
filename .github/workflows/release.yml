@@ -1,0 +1,72 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    name: ${{ matrix.target }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: macos-latest, target: aarch64-apple-darwin }
+          - { os: macos-latest, target: x86_64-apple-darwin }
+          - { os: ubuntu-latest, target: x86_64-unknown-linux-musl }
+          - { os: ubuntu-24.04-arm, target: aarch64-unknown-linux-musl }
+          - { os: windows-latest, target: x86_64-pc-windows-msvc }
+    steps:
+      - uses: actions/checkout@v4
+      - name: 태그와 Cargo.toml 버전 일치 확인
+        shell: bash
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          version=$(sed -nE 's/^version = "(.*)"/\1/p' crates/cli/Cargo.toml | head -1)
+          if [ "$tag" != "$version" ]; then
+            echo "tag v$tag != crates/cli/Cargo.toml version $version" >&2
+            exit 1
+          fi
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - if: runner.os == 'Linux'
+        run: sudo apt-get install -y musl-tools
+      - run: cargo build --release -p rust-markdownlint-cli --target ${{ matrix.target }}
+      - name: 아카이브와 sha256
+        shell: bash
+        run: |
+          name="rust-markdownlint-${GITHUB_REF_NAME}-${{ matrix.target }}"
+          mkdir -p dist
+          if [ "${{ runner.os }}" = Windows ]; then
+            asset="$name.zip"
+            7z a "dist/$asset" "./target/${{ matrix.target }}/release/rust-markdownlint.exe" > /dev/null
+          else
+            asset="$name.tar.gz"
+            tar czf "dist/$asset" -C "target/${{ matrix.target }}/release" rust-markdownlint
+          fi
+          cd dist && (sha256sum "$asset" 2> /dev/null || shasum -a 256 "$asset") > "$asset.sha256"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target }}
+          path: dist/*
+          if-no-files-found: error
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --generate-notes dist/*
