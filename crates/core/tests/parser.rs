@@ -23,6 +23,27 @@ fn column_is_codepoint_based() {
 }
 
 #[test]
+fn html_flow_reparse_positions_same_for_crlf() {
+    // htmlFlow 재파싱은 줄 범위로 잘라내므로 CRLF 를 줄바꿈 하나로 세야 한다
+    let lf = "<p>\n\nblock <em>b</em> block\n\n</p>\n\n<details>\n\n\t<details>\n";
+    let crlf = lf.replace('\n', "\r\n");
+    let positions = |text: &str| -> Vec<(usize, usize, usize, usize)> {
+        let tree = parse(text);
+        tree.filter_by_types_html_flow(&["htmlText"], true)
+            .into_iter()
+            .map(|id| {
+                let t = tree.get(id);
+                (t.start_line, t.start_column, t.end_line, t.end_column)
+            })
+            .collect()
+    };
+    let expected = positions(lf);
+    // `<em>` on line 3
+    assert!(expected.contains(&(3, 7, 3, 11)), "{expected:?}");
+    assert_eq!(positions(&crlf), expected);
+}
+
+#[test]
 fn nested_list_matches_inside_match() {
     let tree = parse("- a\n  - b\n");
     assert_eq!(tree.filter_by_types(&["listUnordered"]).len(), 2);

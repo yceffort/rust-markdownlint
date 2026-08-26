@@ -285,9 +285,6 @@ fn extend_line_endings(nodes: &mut [Node], parent: &str, interrupt: bool) {
     }
 }
 
-const SPLIT_LF: char = 0x0A as char;
-const SPLIT_CR: char = 0x0D as char;
-
 pub(super) fn is_html_flow_comment(n: &Node) -> bool {
     let t = n.text.as_str();
     if n.kind == "htmlFlow" && t.starts_with("<!--") && t.ends_with("-->") && t.len() >= 7 {
@@ -301,7 +298,8 @@ pub(super) fn is_html_flow_comment(n: &Node) -> bool {
 fn reparse_html_flow(nodes: &mut [Node], text: &str, line_delta: usize) {
     for n in nodes.iter_mut() {
         if n.kind == "htmlFlow" && !is_html_flow_comment(n) {
-            let lines: Vec<&str> = text.split([SPLIT_LF, SPLIT_CR]).collect();
+            // `\r\n` 을 줄바꿈 하나로 세야 CRLF 파일에서 줄 범위가 맞는다.
+            let lines = crate::fix::split_lines(text);
             let lo = n.start_line - line_delta - 1;
             let hi = n.end_line - line_delta;
             let sub = lines[lo..hi.min(lines.len())].join("\n");
