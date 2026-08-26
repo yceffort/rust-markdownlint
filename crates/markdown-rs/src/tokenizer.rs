@@ -193,6 +193,10 @@ pub struct TokenizeState<'a> {
     pub document_continued: usize,
     /// Index of last `data`.
     pub document_data_index: Option<usize>,
+    /// 로컬 확장: directive container 의 직전 본문 chunk 이벤트 인덱스 (링크용).
+    pub directive_container_chunk_index: Option<usize>,
+    /// 로컬 확장: document 가 방금 소비한 줄 끝 위치 (`flow_end` 가 flow 에 먹일 범위 끝).
+    pub document_flow_end: Option<(usize, usize)>,
     /// Container exits by line number.
     pub document_exits: Vec<Option<Vec<Event>>>,
     /// Whether the previous flow was a paragraph or a definition.
@@ -346,6 +350,8 @@ impl<'a> Tokenizer<'a> {
                 document_continued: 0,
                 document_lazy_accepting_before: false,
                 document_data_index: None,
+                directive_container_chunk_index: None,
+                document_flow_end: None,
                 document_child_state: None,
                 document_child: None,
                 document_at_first_paragraph_of_list_item: false,

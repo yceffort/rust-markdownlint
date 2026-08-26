@@ -321,6 +321,7 @@ const FLOW_WITH_PREFIX: &[&str] = &[
     "table",
     "mathFlow",
     "blockQuote",
+    "directiveContainer",
 ];
 
 /// 첫 자식 체인을 따라 내려가며 노드 시작의 spaceOrTab 을 꺼내고 시작 위치를 조정한다.
@@ -634,6 +635,7 @@ fn classify_whitespace(nodes: &mut [Node], parent: &str, chain: &[Container]) {
             "resource" => "lineSuffix",
             "codeIndented" if at_line_start || prev.is_empty() => "linePrefix",
             "codeFencedFence" if prev.is_empty() => "linePrefix",
+            "directiveContainerFence" => "whitespace",
             _ if at_line_start => line_start_kind(nodes, i, chain),
             _ if next == "lineEnding" || next.is_empty() => "lineSuffix",
             _ => "whitespace",

@@ -1,6 +1,6 @@
 //! Turn bytes of markdown into events.
 
-use crate::event::{Event, Point};
+use crate::event::{Content, Event, Point};
 use crate::message;
 use crate::state::{Name as StateName, State};
 use crate::subtokenize::subtokenize;
@@ -66,6 +66,23 @@ pub fn parse<'a>(
     );
     let mut result = tokenizer.flush(state, true)?;
     let mut events = tokenizer.events;
+
+    // 로컬 확장: 중첩 document(directive 본문)를 먼저 전부 풀어 그 안의 정의를
+    // `parse_state` 에 넣는다. micromark 는 하위 tokenizer 가 같은 `parser.defined` 를
+    // 즉시 갱신하지만 여기서는 pass 가 끝나야 합쳐지므로, 텍스트를 풀기 전에 끝낸다.
+    loop {
+        let fn_defs = &mut parse_state.gfm_footnote_definitions;
+        let defs = &mut parse_state.definitions;
+        fn_defs.append(&mut result.gfm_footnote_definitions);
+        defs.append(&mut result.definitions);
+
+        if result.done {
+            break;
+        }
+
+        result = subtokenize(&mut events, &parse_state, Some(&Content::Document))?;
+    }
+    result.done = false;
 
     loop {
         let fn_defs = &mut parse_state.gfm_footnote_definitions;

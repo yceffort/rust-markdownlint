@@ -341,6 +341,11 @@ pub fn flow_inside(tokenizer: &mut Tokenizer) -> State {
         Some(b'\n') => {
             tokenizer.consume();
             tokenizer.exit(Name::Data);
+            // 로컬 확장: 중첩 document(directive 본문)에서는 다음 chunk 의 skip 이
+            // `flow_end` 전에 정의돼 `tokenizer.point` 가 이미 건너뛴 위치일 수 있다.
+            // 줄 끝 위치를 여기서 기억해 flow 에 먹일 범위로 쓴다.
+            tokenizer.tokenize_state.document_flow_end =
+                Some((tokenizer.point.index, tokenizer.point.vs));
             State::Next(StateName::DocumentFlowEnd)
         }
         Some(_) => {
@@ -367,11 +372,12 @@ pub fn flow_end(tokenizer: &mut Tokenizer) -> State {
 
     tokenizer.tokenize_state.document_exits.push(None);
 
-    let state = child.push(
-        (child.point.index, child.point.vs),
-        (tokenizer.point.index, tokenizer.point.vs),
-        state,
-    );
+    let to = tokenizer
+        .tokenize_state
+        .document_flow_end
+        .take()
+        .unwrap_or((tokenizer.point.index, tokenizer.point.vs));
+    let state = child.push((child.point.index, child.point.vs), to, state);
 
     tokenizer.tokenize_state.document_child_state = Some(state);
 
@@ -544,13 +550,29 @@ fn resolve(tokenizer: &mut Tokenizer) {
     // First, add the container exits into `child`.
     let mut child_index = 0;
     let mut line = 0;
+    let mut chunk_line = 0;
 
     while child_index < child.events.len() {
-        if child.events[child_index].kind == Kind::Exit
-            && matches!(
-                child.events[child_index].name,
-                Name::LineEnding | Name::BlankLineEnding
-            )
+        let event = &child.events[child_index];
+        if event.name == Name::DirectiveContainerChunk {
+            // 로컬 확장: directive 본문 chunk 는 줄 끝(`\n`)까지 포함할 수 있어
+            // flow 에 `LineEnding` 이 없다. 그런 chunk 도 한 줄로 세어 exit 위치를 맞춘다.
+            if event.kind == Kind::Enter {
+                chunk_line = event.point.line;
+            } else if event.point.line > chunk_line && event.point.column == 1 {
+                if line < tokenizer.tokenize_state.document_exits.len() {
+                    if let Some(mut exits) = tokenizer.tokenize_state.document_exits[line].take() {
+                        let point = event.point.clone();
+                        for exit in &mut exits {
+                            exit.point = point.clone();
+                        }
+                        child.map.add(child_index + 1, 0, exits);
+                    }
+                }
+                line += 1;
+            }
+        } else if event.kind == Kind::Exit
+            && matches!(event.name, Name::LineEnding | Name::BlankLineEnding)
         {
             // Inject before `Enter:LineEnding`.
             let mut inject_index = child_index - 1;
