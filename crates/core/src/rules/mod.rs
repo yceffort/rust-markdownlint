@@ -41,6 +41,7 @@ mod md043;
 mod md045;
 mod md046;
 mod md047;
+mod md048;
 pub mod registry;
 
 pub struct RuleMeta {
