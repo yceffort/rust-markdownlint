@@ -3,6 +3,7 @@ use std::collections::HashSet;
 use crate::error::ErrorSink;
 use crate::parser::TokenTree;
 
+mod md001;
 mod md003;
 mod md004;
 mod md005;
@@ -33,6 +34,8 @@ pub struct LintContext<'a> {
     pub name: &'a str,
     pub lines: &'a [&'a str],
     pub tokens: &'a TokenTree,
+    /// `params.frontMatterLines`: 제거된 front matter 의 줄 내용.
+    pub front_matter: &'a [&'a str],
     pub front_matter_lines: usize,
     pub config: &'a RuleParams,
 }
@@ -79,6 +82,32 @@ pub(crate) fn add_range_to_set(set: &mut HashSet<usize>, start: usize, end: usiz
     for line in start..=end {
         set.insert(line);
     }
+}
+
+/// helpers.cjs `frontMatterHasTitle`: title 패턴에 맞는 front matter 줄이 있는지.
+/// 패턴이 지정됐지만 falsy 면 front matter 를 무시한다. 패턴은 사용자 정규식이라
+/// JS 문법에 가까운 `fancy_regex` 로 컴파일하고, 컴파일에 실패하면 false 로 본다
+/// (원본은 예외를 던진다).
+pub(crate) fn front_matter_has_title(
+    front_matter_lines: &[&str],
+    front_matter_title_pattern: Option<&serde_json::Value>,
+) -> bool {
+    let ignore_front_matter =
+        front_matter_title_pattern.is_some_and(|value| !crate::config::truthy(value));
+    let pattern = front_matter_title_pattern
+        .filter(|value| crate::config::truthy(value))
+        .map(|value| match value {
+            serde_json::Value::String(s) => s.clone(),
+            other => other.to_string(),
+        })
+        .unwrap_or_else(|| r#"^\s*"?title"?\s*[:=]"#.to_string());
+    let Ok(front_matter_title_re) = fancy_regex::Regex::new(&format!("(?i){pattern}")) else {
+        return false;
+    };
+    !ignore_front_matter
+        && front_matter_lines
+            .iter()
+            .any(|line| front_matter_title_re.is_match(line).unwrap_or(false))
 }
 
 /// 규칙 하나만 활성화해 `lint_content` 로 lint 하는 테스트 helper.
