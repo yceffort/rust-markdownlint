@@ -25,7 +25,7 @@ fn sorted_by_rule_then_line() {
 
 #[test]
 fn bom_is_stripped() {
-    let errs = lint_content("a.md", "\u{FEFF}# a\ntext\n", &LintOptions::default()).unwrap();
+    let errs = lint_content("a.md", "\u{FEFF}# a\n\ntext\n", &LintOptions::default()).unwrap();
     assert!(errs.is_empty());
 }
 

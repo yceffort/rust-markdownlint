@@ -10,11 +10,12 @@ use super::md010::Md010;
 use super::md012::Md012;
 use super::md018::Md018;
 use super::md020::Md020;
+use super::md022::Md022;
 use super::md023::Md023;
 use super::md047::Md047;
 
-static RULES: [&dyn Rule; 10] = [
-    &Md004, &Md005, &Md007, &Md009, &Md010, &Md012, &Md018, &Md020, &Md023, &Md047,
+static RULES: [&dyn Rule; 11] = [
+    &Md004, &Md005, &Md007, &Md009, &Md010, &Md012, &Md018, &Md020, &Md022, &Md023, &Md047,
 ];
 
 pub fn all_rules() -> &'static [&'static dyn Rule] {
