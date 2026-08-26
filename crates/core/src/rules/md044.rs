@@ -5,7 +5,7 @@ use std::sync::{LazyLock, Mutex};
 use regex::Regex;
 use serde_json::Value;
 
-use super::{LintContext, Rule, RuleMeta};
+use super::{FileRange, LintContext, Rule, RuleMeta, has_overlap};
 use crate::config::truthy;
 use crate::error::{ErrorSink, FixInfo};
 use crate::parser::TokenId;
@@ -22,32 +22,6 @@ static META: RuleMeta = RuleMeta {
 
 /// 원본 `ignoredChildTypes`
 const IGNORED_CHILD_TYPES: &[&str] = &["codeFencedFence", "definition", "reference", "resource"];
-
-/// helpers.cjs `FileRange`
-#[derive(Clone)]
-struct FileRange {
-    start_line: usize,
-    start_column: usize,
-    end_line: usize,
-    end_column: usize,
-}
-
-fn position_less_than_or_equal(line_a: usize, col_a: usize, line_b: usize, col_b: usize) -> bool {
-    line_a < line_b || (line_a == line_b && col_a <= col_b)
-}
-
-/// helpers.cjs `hasOverlap`
-fn has_overlap(a: &FileRange, b: &FileRange) -> bool {
-    let lte =
-        position_less_than_or_equal(a.start_line, a.start_column, b.start_line, b.start_column);
-    let (first, second) = if lte { (a, b) } else { (b, a) };
-    position_less_than_or_equal(
-        second.start_line,
-        second.start_column,
-        first.end_line,
-        first.end_column,
-    )
-}
 
 /// JS `\W` (ASCII 의미) 인지.
 fn is_non_word(c: char) -> bool {

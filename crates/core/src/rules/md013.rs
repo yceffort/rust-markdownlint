@@ -2,11 +2,11 @@ use std::collections::HashSet;
 use std::sync::LazyLock;
 
 use regex::Regex;
-use serde_json::Value;
 
 use super::{LintContext, Rule, RuleMeta, add_range_to_set};
-use crate::config::truthy;
+use crate::config::{to_number, truthy};
 use crate::error::ErrorSink;
+use crate::parser::JS_WHITESPACE;
 
 pub(crate) struct Md013;
 
@@ -17,9 +17,6 @@ static META: RuleMeta = RuleMeta {
     needs_tokens: true,
     fixable: false,
 };
-
-/// JS 정규식의 `\s`. Rust 의 `\s` (Unicode White_Space) 와 달리 U+0085 를 빼고 U+FEFF 를 넣는다.
-const JS_WHITESPACE: &str = r"[\t\n\x0B\f\r \u{a0}\u{1680}\u{2000}-\u{200a}\u{2028}\u{2029}\u{202f}\u{205f}\u{3000}\u{feff}]";
 
 fn is_js_whitespace(c: char) -> bool {
     matches!(
@@ -37,38 +34,11 @@ fn is_js_whitespace(c: char) -> bool {
 
 /// 원본 `notWrappableRe`: 줄바꿈으로 줄일 수 없는 줄.
 static NOT_WRAPPABLE_RE: LazyLock<Regex> = LazyLock::new(|| {
-    let ws = JS_WHITESPACE;
-    let non_ws = format!("[^{}]", &ws[1..ws.len() - 1]);
     Regex::new(&format!(
-        r"^(?:[#>{}]*{ws})?{non_ws}*$",
-        &ws[1..ws.len() - 1]
+        r"^(?:[#>{JS_WHITESPACE}]*[{JS_WHITESPACE}])?[^{JS_WHITESPACE}]*$"
     ))
     .expect("not wrappable regex")
 });
-
-/// JS `Number(value)` 상당의 변환. 변환 불가는 NaN.
-fn to_number(value: &Value) -> f64 {
-    match value {
-        Value::Null => 0.0,
-        Value::Bool(b) => {
-            if *b {
-                1.0
-            } else {
-                0.0
-            }
-        }
-        Value::Number(n) => n.as_f64().unwrap_or(f64::NAN),
-        Value::String(s) => {
-            let trimmed = s.trim();
-            if trimmed.is_empty() {
-                0.0
-            } else {
-                trimmed.parse::<f64>().unwrap_or(f64::NAN)
-            }
-        }
-        _ => f64::NAN,
-    }
-}
 
 /// JS `String(number)` 상당의 표기. 정수는 소수점 없이 찍는다.
 fn number_to_string(n: f64) -> String {

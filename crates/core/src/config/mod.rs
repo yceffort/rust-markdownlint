@@ -20,3 +20,35 @@ pub fn truthy(value: &ConfigValue) -> bool {
         ConfigValue::Array(_) | ConfigValue::Object(_) => true,
     }
 }
+
+/// JS `String(value)` 상당의 표기.
+pub fn js_string(value: &ConfigValue) -> String {
+    match value {
+        ConfigValue::String(s) => s.clone(),
+        other => other.to_string(),
+    }
+}
+
+/// JS `Number(value)` 상당의 변환. 변환 불가는 NaN.
+pub fn to_number(value: &ConfigValue) -> f64 {
+    match value {
+        ConfigValue::Null => 0.0,
+        ConfigValue::Bool(b) => {
+            if *b {
+                1.0
+            } else {
+                0.0
+            }
+        }
+        ConfigValue::Number(n) => n.as_f64().unwrap_or(f64::NAN),
+        ConfigValue::String(s) => {
+            let trimmed = s.trim();
+            if trimmed.is_empty() {
+                0.0
+            } else {
+                trimmed.parse::<f64>().unwrap_or(f64::NAN)
+            }
+        }
+        _ => f64::NAN,
+    }
+}

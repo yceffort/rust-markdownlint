@@ -1,4 +1,7 @@
 use std::collections::HashSet;
+use std::sync::LazyLock;
+
+use regex::Regex;
 
 use crate::error::ErrorSink;
 use crate::parser::TokenTree;
@@ -106,6 +109,36 @@ pub(crate) fn is_blank_line(line: &str) -> bool {
     line.is_empty()
         || line.trim().is_empty()
         || remove_comments(line).replace('>', "").trim().is_empty()
+}
+
+/// shared.cjs `nextLinesRe`: 첫 줄바꿈부터 끝까지.
+pub(crate) static NEXT_LINES_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r"[\r\n][\s\S]*$").expect("next lines regex"));
+
+/// helpers.cjs `FileRange`
+#[derive(Debug, Clone)]
+pub(crate) struct FileRange {
+    pub start_line: usize,
+    pub start_column: usize,
+    pub end_line: usize,
+    pub end_column: usize,
+}
+
+fn position_less_than_or_equal(line_a: usize, col_a: usize, line_b: usize, col_b: usize) -> bool {
+    line_a < line_b || (line_a == line_b && col_a <= col_b)
+}
+
+/// helpers.cjs `hasOverlap`
+pub(crate) fn has_overlap(a: &FileRange, b: &FileRange) -> bool {
+    let lte =
+        position_less_than_or_equal(a.start_line, a.start_column, b.start_line, b.start_column);
+    let (first, second) = if lte { (a, b) } else { (b, a) };
+    position_less_than_or_equal(
+        second.start_line,
+        second.start_column,
+        first.end_line,
+        first.end_column,
+    )
 }
 
 /// helpers/micromark-helpers.cjs `addRangeToSet`: `start`..=`end` (양 끝 포함) 를 set 에 채운다.

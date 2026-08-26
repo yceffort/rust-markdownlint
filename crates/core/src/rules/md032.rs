@@ -17,28 +17,6 @@ fn is_list(tree: &TokenTree, id: TokenId) -> bool {
     matches!(tree.get(id).kind.as_str(), "listOrdered" | "listUnordered")
 }
 
-/// helpers/micromark-helpers.cjs `filterByPredicate`: 전위 순회로 `allowed` 를 만족하는
-/// 토큰을 모은다. `descend` 가 false 인 토큰의 자식은 탐색하지 않는다 (원본의
-/// `transformChildren` 이 빈 배열을 돌려주는 경우).
-fn filter_by_predicate(
-    tree: &TokenTree,
-    roots: &[TokenId],
-    allowed: impl Fn(&TokenTree, TokenId) -> bool,
-    descend: impl Fn(&TokenTree, TokenId) -> bool,
-) -> Vec<TokenId> {
-    let mut result = Vec::new();
-    let mut stack: Vec<TokenId> = roots.iter().rev().copied().collect();
-    while let Some(id) = stack.pop() {
-        if allowed(tree, id) {
-            result.push(id);
-        }
-        if descend(tree, id) {
-            stack.extend(tree.get(id).children.iter().rev().copied());
-        }
-    }
-    result
-}
-
 fn is_non_content(tree: &TokenTree, id: TokenId) -> bool {
     NON_CONTENT_TOKENS.contains(&tree.get(id).kind.as_str())
 }
@@ -61,8 +39,13 @@ impl Rule for Md032 {
         let block_quote_prefixes = tokens.filter_by_types(&["blockQuotePrefix", "linePrefix"]);
 
         // For every top-level list...
-        let top_level_lists = filter_by_predicate(tokens, &tokens.roots, is_list, |tree, id| {
-            !(is_list(tree, id) || tree.get(id).kind == "htmlFlow")
+        let top_level_lists = tokens.filter_by_predicate(&tokens.roots, is_list, |tree, id| {
+            // 목록과 htmlFlow 아래로는 내려가지 않는다
+            if is_list(tree, id) || tree.get(id).kind == "htmlFlow" {
+                Vec::new()
+            } else {
+                tree.get(id).children.clone()
+            }
         });
         for list in top_level_lists {
             // Look for a blank line above the list
@@ -86,11 +69,16 @@ impl Rule for Md032 {
             }
 
             // Find the "visual" end of the list
-            let flattened_children = filter_by_predicate(
-                tokens,
+            let flattened_children = tokens.filter_by_predicate(
                 &tokens.get(list).children,
                 |tree, id| !is_non_content(tree, id),
-                |tree, id| !is_non_content(tree, id),
+                |tree, id| {
+                    if is_non_content(tree, id) {
+                        Vec::new()
+                    } else {
+                        tree.get(id).children.clone()
+                    }
+                },
             );
             let mut end_line = tokens.get(list).end_line;
             if let Some(&last) = flattened_children.last() {

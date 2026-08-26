@@ -1,7 +1,5 @@
-use serde_json::Value;
-
 use super::{LintContext, Rule, RuleMeta};
-use crate::config::truthy;
+use crate::config::{js_string, truthy};
 use crate::error::ErrorSink;
 
 pub(crate) struct Md048;
@@ -13,14 +11,6 @@ static META: RuleMeta = RuleMeta {
     needs_tokens: true,
     fixable: false,
 };
-
-/// JS `String(value)` 상당의 표기. md043/md033 에도 같은 helper 가 있다.
-fn js_string(value: &Value) -> String {
-    match value {
-        Value::String(s) => s.clone(),
-        other => other.to_string(),
-    }
-}
 
 /// 원본 `fencedCodeBlockStyleFor`: 펜스 문자열의 스타일 이름.
 fn fenced_code_block_style_for(markup: &str) -> &'static str {

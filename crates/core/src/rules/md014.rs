@@ -4,6 +4,7 @@ use regex::Regex;
 
 use super::{LintContext, Rule, RuleMeta};
 use crate::error::{ErrorSink, FixInfo};
+use crate::parser::JS_WHITESPACE;
 
 pub(crate) struct Md014;
 
@@ -15,12 +16,10 @@ static META: RuleMeta = RuleMeta {
     fixable: true,
 };
 
-/// JS 정규식의 `\s`. Rust 의 `\s` (Unicode White_Space) 와 달리 U+0085 를 빼고 U+FEFF 를 넣는다.
-const JS_WHITESPACE: &str = r"[\t\n\x0B\f\r \u{a0}\u{1680}\u{2000}-\u{200a}\u{2028}\u{2029}\u{202f}\u{205f}\u{3000}\u{feff}]";
-
 /// 원본 `dollarCommandRe`: `/^(\s*)(\$\s+)/`.
 static DOLLAR_COMMAND_RE: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(&format!("^({JS_WHITESPACE}*)(\\${JS_WHITESPACE}+)")).expect("dollar command regex")
+    Regex::new(&format!("^([{JS_WHITESPACE}]*)(\\$[{JS_WHITESPACE}]+)"))
+        .expect("dollar command regex")
 });
 
 impl Rule for Md014 {

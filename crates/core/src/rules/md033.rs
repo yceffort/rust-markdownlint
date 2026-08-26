@@ -1,10 +1,7 @@
-use std::sync::LazyLock;
-
-use regex::Regex;
 use serde_json::Value;
 
-use super::{LintContext, Rule, RuleMeta};
-use crate::config::truthy;
+use super::{LintContext, NEXT_LINES_RE, Rule, RuleMeta};
+use crate::config::{js_string, truthy};
 use crate::error::ErrorSink;
 
 pub(crate) struct Md033;
@@ -16,18 +13,6 @@ static META: RuleMeta = RuleMeta {
     needs_tokens: true,
     fixable: false,
 };
-
-/// shared.cjs `nextLinesRe`: 첫 줄바꿈부터 끝까지.
-static NEXT_LINES_RE: LazyLock<Regex> =
-    LazyLock::new(|| Regex::new(r"[\r\n][\s\S]*$").expect("next lines regex"));
-
-/// JS `String(value)` 상당의 표기. md043 에도 같은 helper 가 있다.
-fn js_string(value: &Value) -> String {
-    match value {
-        Value::String(s) => s.clone(),
-        other => other.to_string(),
-    }
-}
 
 /// 원본 `toLowerCaseStringArray`: 배열이면 각 원소를 `String()` 후 소문자로, 아니면 빈 배열.
 fn to_lower_case_string_array(value: Option<&Value>) -> Vec<String> {

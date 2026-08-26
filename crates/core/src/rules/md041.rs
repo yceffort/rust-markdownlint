@@ -1,6 +1,5 @@
-use serde_json::Value;
-
 use super::{LintContext, Rule, RuleMeta, front_matter_has_title};
+use crate::config::to_number;
 use crate::error::ErrorSink;
 use crate::parser::{NON_CONTENT_TOKENS, TokenId, TokenTree};
 
@@ -13,30 +12,6 @@ static META: RuleMeta = RuleMeta {
     needs_tokens: true,
     fixable: false,
 };
-
-/// JS `Number(value)` 상당의 변환. 변환 불가는 NaN.
-fn to_number(value: &Value) -> f64 {
-    match value {
-        Value::Null => 0.0,
-        Value::Bool(b) => {
-            if *b {
-                1.0
-            } else {
-                0.0
-            }
-        }
-        Value::Number(n) => n.as_f64().unwrap_or(f64::NAN),
-        Value::String(s) => {
-            let trimmed = s.trim();
-            if trimmed.is_empty() {
-                0.0
-            } else {
-                trimmed.parse::<f64>().unwrap_or(f64::NAN)
-            }
-        }
-        _ => f64::NAN,
-    }
-}
 
 /// JS `` `h${level}` `` 의 표기. 정수는 소수점 없이 찍는다.
 fn heading_tag_name(level: f64) -> String {
