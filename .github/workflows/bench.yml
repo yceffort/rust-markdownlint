@@ -1,0 +1,39 @@
+name: Bench
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: bench/package-lock.json
+      - run: sudo apt-get install -y hyperfine
+      - name: 변경된 규칙 벤치
+        run: BASE=origin/${{ github.base_ref }} bench/pr-comment.sh
+      - name: PR 댓글 갱신
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          id=$(gh api "repos/$REPO/issues/$PR/comments" --paginate \
+            --jq '.[] | select(.body | startswith("<!-- bench -->")) | .id' | head -1)
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$id" -F body=@bench/comment.md
+          else
+            gh pr comment "$PR" --repo "$REPO" --body-file bench/comment.md
+          fi
