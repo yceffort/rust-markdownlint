@@ -19,13 +19,22 @@ impl TokenTree {
         out
     }
 
-    /// 원본 `getDescendantsByType`: `id` 자신은 제외한 후손 중 매치.
-    pub fn descendants_by_type(&self, id: TokenId, kinds: &[&str]) -> Vec<TokenId> {
-        let mut out = Vec::new();
-        for &c in &self.tokens[id].children {
-            self.collect(c, kinds, &mut out);
+    /// 원본 `getDescendantsByType`: 타입 경로(typePath)를 따라 한 단계씩 직계 자식만 걸러
+    /// 내려간다. 경로의 각 원소는 그 단계에서 허용하는 타입 목록이다.
+    pub fn descendants_by_type(&self, id: TokenId, type_path: &[&[&str]]) -> Vec<TokenId> {
+        let mut tokens = vec![id];
+        for kinds in type_path {
+            let mut next = Vec::new();
+            for t in tokens {
+                for &c in &self.tokens[t].children {
+                    if kinds.contains(&self.tokens[c].kind.as_str()) {
+                        next.push(c);
+                    }
+                }
+            }
+            tokens = next;
         }
-        out
+        tokens
     }
 
     /// 원본 `getParentOfType`: 가장 가까운 조상 중 매치.

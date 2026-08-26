@@ -83,7 +83,7 @@ impl Rule for Md010 {
                 let token = tokens.get(id);
                 if token.kind == "codeFenced" && !ignore_code_languages.is_empty() {
                     return tokens
-                        .descendants_by_type(id, &["codeFencedFenceInfo"])
+                        .descendants_by_type(id, &[&["codeFencedFence"], &["codeFencedFenceInfo"]])
                         .iter()
                         .all(|&info| {
                             ignore_code_languages.contains(&tokens.get(info).text.to_lowercase())
