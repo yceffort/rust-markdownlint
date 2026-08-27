@@ -10,7 +10,9 @@ pub enum State {
     /// Syntax error.
     ///
     /// Only used by MDX.
-    Error(message::Message),
+    /// 로컬 패치: `Message` 를 Box 로 감싸 `State` 를 16바이트로 줄이고 상태 전이마다 붙던
+    /// drop glue 를 가볍게 한다 (프로파일에서 `drop_in_place<State>` 가 self 7%).
+    Error(Box<message::Message>),
     /// Move to [`Name`][] next.
     Next(Name),
     /// Retry in [`Name`][].
@@ -34,7 +36,7 @@ impl State {
                 unreachable!("cannot turn intermediate state into result")
             }
             State::Ok => Ok(()),
-            State::Error(x) => Err(x.clone()),
+            State::Error(x) => Err((**x).clone()),
         }
     }
 }

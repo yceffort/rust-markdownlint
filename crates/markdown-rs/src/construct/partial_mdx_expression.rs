@@ -92,12 +92,12 @@ pub fn before(tokenizer: &mut Tokenizer) -> State {
             let problem = tokenizer.tokenize_state.mdx_last_parse_error.take()
                         .unwrap_or_else(|| ("Unexpected end of file in expression, expected a corresponding closing brace for `{`".into(), "markdown-rs".into(), "unexpected-eof".into()));
 
-            State::Error(message::Message {
+            State::Error(Box::new(message::Message {
                 place: Some(Box::new(message::Place::Point(tokenizer.point.to_unist()))),
                 reason: problem.0,
                 rule_id: Box::new(problem.2),
                 source: Box::new(problem.1),
-            })
+            }))
         }
         Some(b'\n') => {
             tokenizer.enter(Name::LineEnding);
@@ -170,14 +170,14 @@ pub fn eol_after(tokenizer: &mut Tokenizer) -> State {
         || tokenizer.tokenize_state.token_2 == Name::MdxJsxFlowTag)
         && tokenizer.lazy
     {
-        State::Error(
+        State::Error(Box::new(
             message::Message {
                 place: Some(Box::new(message::Place::Point(tokenizer.point.to_unist()))),
                 reason: "Unexpected lazy line in expression in container, expected line to be prefixed with `>` when in a block quote, whitespace when in a list, etc".into(),
                 source: Box::new("markdown-rs".into()),
                 rule_id: Box::new("unexpected-lazy".into()),
             }
-        )
+        ))
     } else if matches!(tokenizer.current, Some(b'\t' | b' ')) {
         // Idea: investigate if we’d need to use more complex stripping.
         // Take this example:
@@ -246,12 +246,12 @@ fn parse_expression(tokenizer: &mut Tokenizer, parse: &MdxExpressionParse) -> St
                 .relative_to_point(&result.stops, relative)
                 .unwrap_or_else(|| tokenizer.point.to_unist());
 
-            State::Error(message::Message {
+            State::Error(Box::new(message::Message {
                 place: Some(Box::new(message::Place::Point(point))),
                 reason,
                 rule_id,
                 source,
-            })
+            }))
         }
         MdxSignal::Eof(reason, source, rule_id) => {
             tokenizer.tokenize_state.mdx_last_parse_error = Some((reason, *source, *rule_id));

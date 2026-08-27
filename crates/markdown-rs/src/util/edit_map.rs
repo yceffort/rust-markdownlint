@@ -9,7 +9,7 @@
 //! through another tokenizer and inject the result.
 
 use crate::event::Event;
-use alloc::{vec, vec::Vec};
+use alloc::{collections::BTreeMap, vec::Vec};
 
 /// Shift `previous` and `next` links according to `jumps`.
 ///
@@ -55,16 +55,22 @@ fn shift_links(events: &mut [Event], jumps: &[(usize, usize, usize)]) {
 }
 
 /// Tracks a bunch of edits.
+///
+/// 로컬 패치: 원본은 `Vec<(at, remove, add)>` 를 추가마다 선형 탐색하고(O(K²)) `consume` 에서
+/// `split_off`/`append` 로 이벤트 전체를 두 번 복사했다. 인덱스 순서를 유지하는 맵과
+/// 한 번에 새 벡터를 만드는 `consume` 으로 바꿨다. 결과는 같다.
 #[derive(Debug)]
 pub struct EditMap {
-    /// Record of changes.
-    map: Vec<(usize, usize, Vec<Event>)>,
+    /// Record of changes: index → (remove, add).
+    map: BTreeMap<usize, (usize, Vec<Event>)>,
 }
 
 impl EditMap {
     /// Create a new edit map.
     pub fn new() -> EditMap {
-        EditMap { map: vec![] }
+        EditMap {
+            map: BTreeMap::new(),
+        }
     }
     /// Create an edit: a remove and/or add at a certain place.
     pub fn add(&mut self, index: usize, remove: usize, add: Vec<Event>) {
@@ -76,73 +82,60 @@ impl EditMap {
     }
     /// Done, change the events.
     pub fn consume(&mut self, events: &mut Vec<Event>) {
-        self.map
-            .sort_unstable_by(|a, b| a.0.partial_cmp(&b.0).unwrap());
-
         if self.map.is_empty() {
             return;
         }
 
         // Calculate jumps: where items in the current list move to.
         let mut jumps = Vec::with_capacity(self.map.len());
-        let mut index = 0;
         let mut add_acc = 0;
         let mut remove_acc = 0;
-        while index < self.map.len() {
-            let (at, remove, add) = &self.map[index];
+        for (at, (remove, add)) in &self.map {
             remove_acc += remove;
             add_acc += add.len();
             jumps.push((*at, remove_acc, add_acc));
-            index += 1;
         }
 
         shift_links(events, &jumps);
 
-        let len_before = events.len();
-        let mut index = self.map.len();
-        let mut vecs = Vec::with_capacity(index * 2 + 1);
-        while index > 0 {
-            index -= 1;
-            vecs.push(events.split_off(self.map[index].0 + self.map[index].1));
-            vecs.push(self.map[index].2.split_off(0));
-            events.truncate(self.map[index].0);
+        // Rebuild in one pass: keep, skip removed, insert added.
+        let old = core::mem::take(events);
+        let len_before = old.len();
+        let mut new = Vec::with_capacity(len_before + add_acc - remove_acc);
+        let mut iter = old.into_iter();
+        let mut pos = 0;
+        for (at, (remove, add)) in core::mem::take(&mut self.map) {
+            debug_assert!(at >= pos, "expected edits not to overlap");
+            new.extend(iter.by_ref().take(at - pos));
+            for _ in 0..remove {
+                iter.next();
+            }
+            pos = at + remove;
+            new.extend(add);
         }
-        vecs.push(events.split_off(0));
-
-        events.reserve(len_before + add_acc - remove_acc);
-
-        while let Some(mut slice) = vecs.pop() {
-            events.append(&mut slice);
-        }
-
-        self.map.truncate(0);
+        new.extend(iter);
+        *events = new;
     }
 }
 
 /// Create an edit.
 fn add_impl(edit_map: &mut EditMap, at: usize, remove: usize, mut add: Vec<Event>, before: bool) {
-    let mut index = 0;
-
     if remove == 0 && add.is_empty() {
         return;
     }
 
-    while index < edit_map.map.len() {
-        if edit_map.map[index].0 == at {
-            edit_map.map[index].1 += remove;
-
+    match edit_map.map.get_mut(&at) {
+        Some(entry) => {
+            entry.0 += remove;
             if before {
-                add.append(&mut edit_map.map[index].2);
-                edit_map.map[index].2 = add;
+                add.append(&mut entry.1);
+                entry.1 = add;
             } else {
-                edit_map.map[index].2.append(&mut add);
+                entry.1.append(&mut add);
             }
-
-            return;
         }
-
-        index += 1;
+        None => {
+            edit_map.map.insert(at, (remove, add));
+        }
     }
-
-    edit_map.map.push((at, remove, add));
 }

@@ -214,21 +214,21 @@ fn parse_esm(tokenizer: &mut Tokenizer) -> State {
                 .expect("expected location index if aware mdx is on")
                 .relative_to_point(&result.stops, relative)
                 .expect("expected non-empty string");
-            State::Error(message::Message {
+            State::Error(Box::new(message::Message {
                 place: Some(Box::new(message::Place::Point(point))),
                 reason: message,
                 source,
                 rule_id,
-            })
+            }))
         }
         MdxSignal::Eof(message, source, rule_id) => {
             if tokenizer.current.is_none() {
-                State::Error(message::Message {
+                State::Error(Box::new(message::Message {
                     place: Some(Box::new(message::Place::Point(tokenizer.point.to_unist()))),
                     reason: message,
                     source,
                     rule_id,
-                })
+                }))
             } else {
                 tokenizer.tokenize_state.mdx_last_parse_error = Some((message, *source, *rule_id));
                 State::Retry(StateName::MdxEsmContinuationStart)
