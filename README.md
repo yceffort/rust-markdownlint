@@ -90,6 +90,7 @@ Rule configuration supports all 53 rules of markdownlint v0.40.0 (MD001 through 
 
 - The banner reads `rust-markdownlint v0.1.0 (markdownlint-cli2 v0.22.1 / markdownlint v0.40.0 compatible)`. Turn on `noBanner` if something parses it.
 - Anything that requires loading JavaScript modules is not supported. `.markdownlint-cli2.{cjs,mjs}` and `.markdownlint.{cjs,mjs}` configuration files are an error (exit 2), and `customRules`, `markdownItPlugins`, `outputFormatters`, `modulePaths` are ignored as listed above. Use the original if you need custom rules or markdown-it plugins.
+- Configuration files are parsed with Rust parsers (jsonc-parser, toml, serde-saphyr). Error messages for invalid files keep the original wording where the original tests rely on it (`Unable to parse JSONC content`, `Invalid TOML document`, `duplicated mapping key`) but the details differ. serde-saphyr accepts a plain scalar that continues on the next line inside a YAML flow collection, which js-yaml rejects, so a JSONC document saved under a `.yaml` name is parsed as YAML instead of failing (see [docs/cli2-scenarios.md](docs/cli2-scenarios.md)).
 - File names in the results are sorted with an approximation of ICU `localeCompare` that is exact for ASCII. Non-ASCII file names sort by code point.
 - MD060 measures character width with `unicode-width` instead of `string-width`. A handful of characters (for example half-width katakana voiced marks) may differ.
 - The markdown parser is a modified [markdown-rs](https://github.com/wooorm/markdown-rs) rather than micromark. 12 of the 388 original fixtures have slightly different token structure (lazy continuation lines after fenced code inside lists, for example); rule results are unaffected.
@@ -117,6 +118,8 @@ cargo test --workspace
 ```
 
 To compare one rule against the original markdownlint expectations, filter the snapshot test by rule name: `cargo test -p rust-markdownlint --test rules_snapshot -- MD047`. Regenerate the expectations with `node scripts/dump-expected.mjs bench/node_modules/markdownlint bench/node_modules/markdownlint-cli2`.
+
+The command line behavior is checked against the markdownlint-cli2 test scenarios and their snapshots: `cargo test -p rust-markdownlint-cli --test cli2_scenarios` (one scenario: `CLI2_SCENARIO=<name>`). `scripts/compare-fix.sh` runs `--fix` with both tools on the 388 fixtures and diffs the results. Scenario list, exclusions, and results are in [docs/cli2-scenarios.md](docs/cli2-scenarios.md).
 
 ### Benchmarks
 

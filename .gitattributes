@@ -1,0 +1,2 @@
+# cli2 시나리오 fixture 는 줄바꿈이 스냅샷(줄 번호, MD047 등)에 영향을 주므로 autocrlf 변환을 막는다
+crates/cli/tests/fixtures/cli2/** -text

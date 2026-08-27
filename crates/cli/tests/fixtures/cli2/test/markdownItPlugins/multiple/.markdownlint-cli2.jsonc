@@ -1,0 +1,20 @@
+{
+  "config": {
+    "assert-markdown-it-tokens": {
+      "file": "multiple.json"
+    },
+    "proper-names": {
+      "names": [
+        "SMILE",
+        "FROWNING"
+      ]
+    }
+  },
+  "customRules": [
+    "../custom-rule-assert-markdown-it-tokens.mjs"
+  ],
+  "markdownItPlugins": [
+    [ "markdown-it-emoji/dist/light.cjs.js", { "enabled": [ "smile" ] } ],
+    [ "../file/custom-markdown-it-plugin.cjs" ]
+  ]
+}

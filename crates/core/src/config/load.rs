@@ -33,7 +33,7 @@ pub fn parse_config_as(format: Format, content: &str) -> Result<ConfigValue, Con
                 allow_unary_plus_numbers: false,
             };
             jsonc_parser::parse_to_serde_value::<ConfigValue>(content, &jsonc_options)
-                .map_err(|e| ConfigError::Parse(e.to_string()))
+                .map_err(|e| ConfigError::Parse(format!("Unable to parse JSONC content, {e}")))
         }
         Format::Toml => toml::from_str::<toml::Value>(content)
             .map_err(ConfigError::from_toml)
@@ -41,7 +41,18 @@ pub fn parse_config_as(format: Format, content: &str) -> Result<ConfigValue, Con
                 serde_json::to_value(value).map_err(|e| ConfigError::Parse(e.to_string()))
             }),
         Format::Yaml => serde_saphyr::from_str::<ConfigValue>(content)
-            .map_err(|e| ConfigError::Parse(e.to_string())),
+            .map_err(|e| ConfigError::Parse(yaml_message(&e.to_string()))),
+    }
+}
+
+/// 원본 파서의 오류 문구를 앞에 붙인다. cli2 는 jsonc-parser 의 `Unable to parse JSONC content, ...`,
+/// smol-toml 의 `Invalid TOML document: ...`, js-yaml 의 `duplicated mapping key` 를 그대로 내보내며
+/// 원본 테스트는 이 문구로 오류를 식별한다.
+fn yaml_message(message: &str) -> String {
+    if message.contains("duplicate mapping key") {
+        format!("duplicated mapping key ({message})")
+    } else {
+        message.to_string()
     }
 }
 
@@ -66,7 +77,7 @@ fn parse_configuration(name: &str, content: &str) -> Result<ConfigValue, ConfigE
 
 impl ConfigError {
     fn from_toml(e: toml::de::Error) -> ConfigError {
-        ConfigError::Parse(e.message().to_string())
+        ConfigError::Parse(format!("Invalid TOML document: {}", e.message()))
     }
 }
 

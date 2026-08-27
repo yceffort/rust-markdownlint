@@ -1,0 +1,7 @@
+{
+  "globs": [
+    "ignore*.md",
+    "!dir/viewme.md",
+    "!dir2/*"
+  ]
+}

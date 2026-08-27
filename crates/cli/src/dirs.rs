@@ -117,7 +117,7 @@ fn read_dir_options(dir: &Path, warn: &mut dyn FnMut(&str)) -> Result<Option<Opt
 }
 
 /// 디렉토리의 `.markdownlint.*`.
-fn read_dir_config(dir: &Path) -> Result<Option<ConfigValue>> {
+pub fn read_dir_config(dir: &Path) -> Result<Option<ConfigValue>> {
     let Some((file, reader)) = first_existing(dir, CONFIG_FILES) else {
         return Ok(None);
     };

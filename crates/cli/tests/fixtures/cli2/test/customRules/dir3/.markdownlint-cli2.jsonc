@@ -1,0 +1,7 @@
+{
+  "customRules": [
+    "../rules/all-rules.cjs",
+    "../node_modules/markdownlint-rule-sample-commonjs",
+    "../node_modules/markdownlint-rule-sample-module"
+  ]
+}

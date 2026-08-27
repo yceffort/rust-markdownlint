@@ -10,7 +10,8 @@ use rust_markdownlint::fix::apply_fixes;
 use rust_markdownlint::lint::{LintOptions, lint_content};
 use rust_markdownlint_cli::argv::parse_argv;
 use rust_markdownlint_cli::dirs::{
-    DirInfo, create_dir_infos, read_base_options, remove_ignored_files, resolve_globs,
+    DirInfo, create_dir_infos, read_base_options, read_dir_config, remove_ignored_files,
+    resolve_globs,
 };
 use rust_markdownlint_cli::globs::enumerate_files;
 use rust_markdownlint_cli::output::{
@@ -120,6 +121,8 @@ fn run(args: &[String]) -> Result<i32> {
         println!("{BANNER}");
     }
     let base_options = base_options?;
+    // 원본 getBaseOptions 는 base 의 `.markdownlint.*` 도 이 시점에 읽으므로 파싱 오류가 Finding 전에 난다
+    read_dir_config(&base)?;
     let patterns = resolve_globs(&argv, &base_options);
     if (patterns.is_empty() && !argv.use_stdin) || argv.config_path == Some(None) {
         println!("{HELP}");

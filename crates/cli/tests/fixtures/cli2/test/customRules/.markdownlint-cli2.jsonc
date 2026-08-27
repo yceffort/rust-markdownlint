@@ -1,0 +1,12 @@
+{
+  "customRules": [
+    "./rules/any-blockquote.cjs",
+    "./rules/every-n-lines.cjs",
+    "./rules/first-line.cjs"
+  ],
+  "config": {
+    "every-n-lines": {
+      "n": 3
+    }
+  }
+}

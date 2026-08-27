@@ -12,6 +12,26 @@ static DEFAULT_FRONT_MATTER_RE: LazyLock<Regex> = LazyLock::new(|| {
     .expect("front matter regex")
 });
 
+/// 사용자 `frontMatter` 패턴(JS 정규식) 컴파일. JS 의 `[^]` (개행 포함 아무 문자) 는 Rust 에
+/// 없으므로 `[\s\S]` 로 옮긴다.
+pub fn compile_js_pattern(pattern: &str) -> Result<Regex, fancy_regex::Error> {
+    let mut translated = String::with_capacity(pattern.len());
+    let mut chars = pattern.chars();
+    while let Some(c) = chars.next() {
+        if c == '\\' {
+            translated.push(c);
+            translated.extend(chars.next());
+        } else if c == '[' && chars.as_str().starts_with("^]") {
+            translated.push_str(r"[\s\S]");
+            chars.next();
+            chars.next();
+        } else {
+            translated.push(c);
+        }
+    }
+    Regex::new(&translated)
+}
+
 /// markdownlint.mjs `removeFrontMatter` 포팅. 매치가 문서 맨 앞일 때만 제거하고
 /// front matter 줄 목록을 반환한다.
 pub fn strip_front_matter<'a>(
