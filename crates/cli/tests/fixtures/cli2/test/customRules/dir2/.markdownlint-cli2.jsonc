@@ -1,0 +1,6 @@
+{
+  "customRules": [
+    "markdownlint-rule-sample-commonjs",
+    "markdownlint-rule-sample-module"
+  ]
+}

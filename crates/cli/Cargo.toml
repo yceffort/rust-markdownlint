@@ -22,3 +22,5 @@ assert_cmd.workspace = true
 predicates.workspace = true
 tempfile.workspace = true
 insta.workspace = true
+serde.workspace = true
+regex.workspace = true

@@ -630,7 +630,9 @@ dependencies = [
  "insta",
  "predicates 3.1.4",
  "rayon",
+ "regex",
  "rust-markdownlint",
+ "serde",
  "serde_json",
  "tempfile",
 ]

@@ -1,0 +1,8 @@
+{
+  "customRules": [
+    "../../../first-line.cjs"
+  ],
+  "config": {
+    "no-space-in-code": false
+  }
+}
