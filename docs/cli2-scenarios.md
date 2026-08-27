@@ -4,10 +4,10 @@ markdownlint-cli2 v0.22.1 ships 216 command line scenarios in `test/markdownlint
 
 | Category | Scenarios |
 |----------|-----------|
-| Pass (identical to the snapshot) | 147 |
+| Pass (identical to the snapshot) | 150 |
 | Excluded by design (JavaScript module loading) | 60 |
 | Excluded because the original does not snapshot them (`*-no-require`) | 6 |
-| Known differences | 3 |
+| Known differences | 0 |
 | Total | 216 |
 
 ## Running
@@ -71,7 +71,7 @@ Everything that needs JavaScript module loading is excluded, matching the README
 
 ## Known differences
 
-`markdownlint-cli2-yaml-mismatch`, `markdownlint-cli2-yaml-mismatch-config`, `markdownlint-yaml-mismatch-config`: the fixture is a JSONC document (with a `// Comment` line) saved under a `.yaml` name. js-yaml rejects it with `missed comma between flow collection entries` because it does not allow a plain scalar inside a flow collection to continue on the next line; serde-saphyr follows the YAML specification and parses it as `{ "// Comment \"config\"": { "default": false } }`, so the original exits 2 and `rust-markdownlint` lints with the (empty) configuration and exits 1. Emulating the js-yaml restriction would require a YAML scanner, so this stays a documented difference. The three scenarios are listed in `KNOWN_DIFFERENCES` in the test.
+None. `markdownlint-cli2-yaml-mismatch`, `markdownlint-cli2-yaml-mismatch-config`, `markdownlint-yaml-mismatch-config` (a JSONC document with a `// Comment` line saved under a `.yaml` name) used to differ: js-yaml rejects it with `missed comma between flow collection entries` while serde-saphyr follows the YAML specification and parses it as `{ "// Comment \"config\"": { "default": false } }`. `parse_config_as` now walks the granit-parser scanner tokens before parsing YAML and reproduces the js-yaml rule (inside a flow collection, an implicit key's `:` must be on the line where the key starts, and the continuation lines of a multi-line plain scalar must be indented at least one column past the enclosing block collection), so these scenarios exit 2 with the same message and position.
 
 ## `--fix` comparison
 

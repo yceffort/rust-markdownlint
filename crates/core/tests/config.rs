@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use rust_markdownlint::config::{
-    effective_config, merge_options, options_from_value, read_config_file,
+    Format, effective_config, merge_options, options_from_value, parse_config_as, read_config_file,
 };
 use rust_markdownlint::error::Severity;
 use serde_json::json;
@@ -62,6 +62,80 @@ fn merge_options_config_by_key() {
     let m = merge_options(&a, &b);
     assert_eq!(m.config.unwrap(), json!({"MD001": false, "MD002": true}));
     assert_eq!(m.fix, Some(true));
+}
+
+/// js-yaml 4.1.1 (`bench/node_modules/js-yaml`) 로 뽑은 기대값. flow collection 안의 여러 줄 plain scalar 는
+/// js-yaml 이 받아들이는 경우와 `missed comma between flow collection entries` 로 거부하는 경우가 갈린다 (#176).
+#[test]
+fn yaml_flow_multiline_plain_scalar_accepted_like_js_yaml() {
+    let accepted = [
+        ("{ a: foo\n  bar }", json!({"a": "foo bar"})),
+        ("[ foo\n  bar ]", json!(["foo bar"])),
+        ("{ foo\n  bar }", json!({"foo bar": null})),
+        ("{ ? foo\n  bar : 1 }", json!({"foo bar": 1})),
+        (
+            "key:\n  { a: foo\n    bar }",
+            json!({"key": {"a": "foo bar"}}),
+        ),
+        ("key:\n  { a: foo\n bar }", json!({"key": {"a": "foo bar"}})),
+        ("key:\n  [ foo\n, bar ]", json!({"key": ["foo", "bar"]})),
+        ("- { a: foo\n bar }", json!([{"a": "foo bar"}])),
+        (
+            "- key: { a: foo\n   bar }",
+            json!([{"key": {"a": "foo bar"}}]),
+        ),
+        ("{ a: 1,\n  b: 2 }", json!({"a": 1, "b": 2})),
+        ("{ a: 1\n, b: 2 }", json!({"a": 1, "b": 2})),
+        ("{ a: foo\n  bar, b: 1 }", json!({"a": "foo bar", "b": 1})),
+        ("{ a: foo\n\n  bar }", json!({"a": "foo\nbar"})),
+        ("{ a: [x,\n  z] }", json!({"a": ["x", "z"]})),
+        ("{ a: \"x\n  y\" }", json!({"a": "x y"})),
+        ("[ a: 1,\n  b: 2 ]", json!([{"a": 1}, {"b": 2}])),
+        ("k: { a:\n  1 }", json!({"k": {"a": 1}})),
+        ("{ a:\n  b }", json!({"a": "b"})),
+        ("--- { a: foo\nbar }", json!({"a": "foo bar"})),
+        ("!!map\n  { a: foo\nbar }", json!({"a": "foo bar"})),
+        ("a: foo\n  bar", json!({"a": "foo bar"})),
+        (
+            "default: true\nMD013:\n  line_length: 120\n",
+            json!({"default": true, "MD013": {"line_length": 120}}),
+        ),
+    ];
+    for (src, expected) in accepted {
+        let value = parse_config_as(Format::Yaml, src).unwrap_or_else(|e| panic!("{src:?}: {e}"));
+        assert_eq!(value, expected, "{src:?}");
+    }
+}
+
+#[test]
+fn yaml_flow_multiline_plain_scalar_rejected_like_js_yaml() {
+    let rejected = [
+        ("{\n  // Comment\n  \"config\": 1\n}", "3:11"),
+        (
+            "{\n  \"config\": {\n    // Comment\n    \"default\": false\n  }\n}\n",
+            "4:14",
+        ),
+        ("{ foo\n  bar: 1 }", "2:6"),
+        ("{ foo\n  : 1 }", "2:3"),
+        ("{ \"foo\n  bar\": 1 }", "2:7"),
+        ("{ !!str foo\n  : 1 }", "2:3"),
+        ("{ &x foo\n  : 1 }", "2:3"),
+        ("{ foo # x: y\n  : 1 }", "2:3"),
+        ("key:\n  { a: foo\nbar }", "3:1"),
+        ("key:\n  { foo\n  bar: 1 }", "3:6"),
+        ("key:\n  { foo\nbar: 1 }", "3:1"),
+        ("- key: { a: foo\n bar }", "2:2"),
+        ("  { a: foo\nbar }", "2:1"),
+        ("# c\n  { a: foo\nbar }", "3:1"),
+    ];
+    for (src, position) in rejected {
+        let error = parse_config_as(Format::Yaml, src).unwrap_err().to_string();
+        assert_eq!(
+            error,
+            format!("missed comma between flow collection entries ({position})"),
+            "{src:?}"
+        );
+    }
 }
 
 #[test]
