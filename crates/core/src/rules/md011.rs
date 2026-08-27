@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 use std::sync::LazyLock;
 
-use fancy_regex::Regex;
+use regex::{Captures, Regex};
 
 use super::{FileRange, LintContext, Rule, RuleMeta, add_range_to_set, has_overlap};
 use crate::error::{ErrorSink, FixInfo};
@@ -16,10 +16,29 @@ static META: RuleMeta = RuleMeta {
     fixable: true,
 };
 
-/// 원본 `reversedLinkRe`. 부정 룩어헤드 `(?!\()` 때문에 `fancy_regex` 로 컴파일한다.
+/// 원본 `reversedLinkRe` 에서 끝의 부정 룩어헤드 `(?!\()` 를 뺀 것. 룩어헤드는
+/// `reversed_links` 가 직접 검사한다 (fancy_regex 백트래킹 VM 보다 훨씬 빠르다).
 static REVERSED_LINK_RE: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r"(^|[^\\])\(([^()]+)\)\[([^\]^][^\]]*)\](?!\()").expect("reversed link regex")
+    Regex::new(r"(^|[^\\])\(([^()]+)\)\[([^\]^][^\]]*)\]").expect("reversed link regex")
 });
+
+/// 원본 `line.matchAll(reversedLinkRe)` 와 같은 매치 열. 매치 뒤가 `(` 면 룩어헤드 실패이므로
+/// 백트래킹처럼 한 문자 뒤에서 다시 찾는다 (`[^()]+`, `[^\]]*` 는 끝이 유일해 같은 시작점의 다른
+/// 매치는 없다).
+fn reversed_links(line: &str) -> Vec<Captures<'_>> {
+    let mut out = Vec::new();
+    let mut pos = 0;
+    while let Some(captures) = REVERSED_LINK_RE.captures_at(line, pos) {
+        let m = captures.get(0).expect("full match");
+        if line[m.end()..].starts_with('(') {
+            pos = m.start() + line[m.start()..].chars().next().map_or(1, char::len_utf8);
+            continue;
+        }
+        pos = m.end();
+        out.push(captures);
+    }
+    out
+}
 
 impl Rule for Md011 {
     fn meta(&self) -> &'static RuleMeta {
@@ -55,10 +74,7 @@ impl Rule for Md011 {
             if ignore_block_line_numbers.contains(&line_number) {
                 continue;
             }
-            for captures in REVERSED_LINK_RE.captures_iter(line) {
-                let Ok(captures) = captures else {
-                    break;
-                };
+            for captures in reversed_links(line) {
                 let reversed_link = captures.get(0).expect("full match");
                 let pre_char = captures.get(1).expect("preChar").as_str();
                 let link_text = captures.get(2).expect("linkText").as_str();
