@@ -1,5 +1,5 @@
 use markdown::ParseOptions;
-use markdown::event::{Event, Kind, Point};
+use markdown::event::{Event, Kind};
 
 use super::adapt::{self, Node};
 use super::token::{Token, TokenTree};
@@ -19,18 +19,40 @@ fn parse_options(html_flow: bool) -> ParseOptions {
     opts
 }
 
-/// 줄 시작 바이트부터 `index` 까지의 UTF-16 단위 수 + 1 (micromark JS 와 동일).
-fn column_at(text: &str, index: usize) -> usize {
-    let line_start = text[..index].rfind(['\n', '\r']).map_or(0, |i| i + 1);
-    text[line_start..index]
-        .chars()
-        .map(char::len_utf16)
-        .sum::<usize>()
-        + 1
+/// 바이트 인덱스 → 줄 안 UTF-16 컬럼(1 기준, micromark JS 와 동일). 이벤트마다 줄 시작부터
+/// 다시 세지 않도록 파일당 한 번 접두합을 만든다.
+struct ColumnIndex {
+    /// `utf16[i]` = `text[..i]` 의 UTF-16 단위 수 (문자 경계가 아닌 i 는 직전 경계 값)
+    utf16: Vec<u32>,
+    /// `line_start[i]` = i 가 속한 줄의 시작 바이트 (마지막 `\n`/`\r` 다음)
+    line_start: Vec<u32>,
 }
 
-fn codepoint_column(text: &str, point: &Point) -> usize {
-    column_at(text, point.index)
+impl ColumnIndex {
+    fn new(text: &str) -> Self {
+        let bytes = text.as_bytes();
+        let mut utf16 = Vec::with_capacity(bytes.len() + 1);
+        let mut line_start = Vec::with_capacity(bytes.len() + 1);
+        let (mut units, mut ls) = (0u32, 0u32);
+        for (i, &b) in bytes.iter().enumerate() {
+            utf16.push(units);
+            line_start.push(ls);
+            // 문자 시작 바이트에서만 증가: 4 바이트 문자(서로게이트 쌍)는 2 단위
+            if b & 0xC0 != 0x80 {
+                units += if b >= 0xF0 { 2 } else { 1 };
+            }
+            if b == b'\n' || b == b'\r' {
+                ls = i as u32 + 1;
+            }
+        }
+        utf16.push(units);
+        line_start.push(ls);
+        Self { utf16, line_start }
+    }
+
+    fn column(&self, index: usize) -> usize {
+        (self.utf16[index] - self.utf16[self.line_start[index] as usize]) as usize + 1
+    }
 }
 
 pub fn parse(text: &str) -> TokenTree {
@@ -41,6 +63,7 @@ pub fn parse(text: &str) -> TokenTree {
         let id = flatten(&mut tree, n, None, false);
         tree.roots.push(id);
     }
+    tree.index_kinds();
     tree
 }
 
@@ -49,9 +72,10 @@ pub(super) fn parse_nodes(text: &str, html_flow: bool, line_delta: usize) -> Vec
     let opts = parse_options(html_flow);
     let (events, _) = markdown::parser::parse(text, &opts).expect("markdown-rs parse");
     let refs = markdown::undefined_refs::take();
-    let nodes = nest(text, &events, line_delta);
+    let columns = ColumnIndex::new(text);
+    let nodes = nest(text, &events, line_delta, &columns);
     let mut nodes = adapt::adapt(nodes, text, line_delta);
-    append_undefined_references(&mut nodes, refs, text, line_delta);
+    append_undefined_references(&mut nodes, refs, text, line_delta, &columns);
     nodes
 }
 
@@ -61,6 +85,7 @@ fn append_undefined_references(
     refs: Vec<markdown::undefined_refs::UndefinedRef>,
     text: &str,
     line_delta: usize,
+    columns: &ColumnIndex,
 ) {
     let mut arts: Vec<Node> = Vec::new();
     let mut refs = refs;
@@ -87,9 +112,9 @@ fn append_undefined_references(
         let node_at = |kind: &str, s: (usize, usize), e: (usize, usize)| Node {
             kind: kind.to_string(),
             start_line: s.0 + line_delta,
-            start_column: column_at(text, s.1),
+            start_column: columns.column(s.1),
             end_line: e.0 + line_delta,
-            end_column: column_at(text, e.1),
+            end_column: columns.column(e.1),
             start: s.1,
             end: e.1,
             text: text[s.1..e.1].to_string(),
@@ -130,7 +155,7 @@ fn append_undefined_references(
     nodes.extend(arts);
 }
 
-fn nest(text: &str, events: &[Event], line_delta: usize) -> Vec<Node> {
+fn nest(text: &str, events: &[Event], line_delta: usize, columns: &ColumnIndex) -> Vec<Node> {
     let mut roots = Vec::new();
     let mut stack: Vec<Node> = Vec::new();
     for ev in events {
@@ -138,7 +163,7 @@ fn nest(text: &str, events: &[Event], line_delta: usize) -> Vec<Node> {
             Kind::Enter => stack.push(Node {
                 kind: format!("{:?}", ev.name),
                 start_line: ev.point.line + line_delta,
-                start_column: codepoint_column(text, &ev.point),
+                start_column: columns.column(ev.point.index),
                 end_line: 0,
                 end_column: 0,
                 start: ev.point.index,
@@ -149,7 +174,7 @@ fn nest(text: &str, events: &[Event], line_delta: usize) -> Vec<Node> {
             Kind::Exit => {
                 let mut n = stack.pop().expect("unbalanced exit");
                 n.end_line = ev.point.line + line_delta;
-                n.end_column = codepoint_column(text, &ev.point);
+                n.end_column = columns.column(ev.point.index);
                 n.end = ev.point.index;
                 n.text = text[n.start..n.end].to_string();
                 match stack.last_mut() {

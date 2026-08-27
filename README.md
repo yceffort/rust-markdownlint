@@ -5,7 +5,7 @@
 A Rust implementation of [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) v0.22.1 (markdownlint v0.40.0). It is meant to be a drop-in replacement: the same command line, the same `.markdownlint-cli2.{jsonc,yaml}` and `.markdownlint.{jsonc,json,yaml,yml}` configuration files, the same inline comments (`<!-- markdownlint-disable -->` and friends), and byte-identical output.
 
 - All 53 rules of markdownlint v0.40.0 are implemented. Linting the original `test/*.md` corpus (388 files) with the default configuration produces 3218 errors that match the original byte for byte. A real-world repository with 20966 markdown files (including `node_modules`) produces 264114 identical errors.
-- Files are linted in parallel. 3x to 9x faster than markdownlint-cli2 depending on the corpus and the machine (see [Performance](#performance)).
+- Files are linted in parallel. 3x to 12x faster than markdownlint-cli2 depending on the corpus and the machine (see [Performance](#performance)).
 - A single static binary. No Node.js required.
 
 ## Installation
@@ -96,7 +96,7 @@ Rule configuration supports all 53 rules of markdownlint v0.40.0 (MD001 through 
 | markdownlint `test/*.md`, 388 files, all rules | Apple M-series, 10 cores | 366.5 ± 7.0 | 57.5 ± 1.6 | 6.4x |
 | markdownlint `test/*.md`, 388 files, all rules | GitHub Actions ubuntu-latest | 1267.3 ± 90.4 | 178.4 ± 1.3 | 7.1x |
 | Same corpus copied 10 times, 3880 files | Apple M-series, 10 cores | 2956.7 ± 199.6 | 682.6 ± 10.0 | 4.3x |
-| A blog repository, `apps/blog/posts/**/*.md`, 441 posts, project config | Apple M-series, 10 cores | 1853.9 ± 14.7 | 210.2 ± 6.4 | 8.8x |
+| A blog repository, `apps/blog/posts/**/*.md`, 441 posts (7.2 MB), project config | Apple M-series, 10 cores | 1475.0 ± 48.0 | 123.7 ± 6.3 | 11.9x |
 | The same repository, `**/*.md` including `node_modules`, 20966 files (single run) | Apple M-series, 10 cores | 48306 | 14419 | 3.4x |
 
 The 388-file corpus is small enough that process startup dominates both tools. Parallel linting alone made the Rust binary 2.8x faster than its own sequential version on that corpus (159.8 ms to 57.5 ms) and 2.9x on the 10x corpus (1516 ms to 524 ms). Per-rule results and the parallelization comparison are in [bench/RESULTS.md](bench/RESULTS.md).
