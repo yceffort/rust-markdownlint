@@ -5,7 +5,7 @@ use regex::Regex;
 use crate::config::{ConfigValue, effective_config};
 use crate::error::{ErrorSink, LintError};
 use crate::fix::split_lines;
-use crate::front_matter::strip_front_matter;
+use crate::front_matter::{compile_js_pattern, strip_front_matter};
 use crate::inline::apply_inline_config;
 use crate::parser::{TokenTree, parse};
 use crate::rules::{LintContext, registry};
@@ -90,7 +90,7 @@ pub fn lint_content(
 
     let user_pattern = opts
         .front_matter
-        .map(fancy_regex::Regex::new)
+        .map(compile_js_pattern)
         .transpose()
         .map_err(Box::new)?;
     let (content, front_matter) = strip_front_matter(content, user_pattern.as_ref());
