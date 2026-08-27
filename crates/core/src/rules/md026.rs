@@ -3,7 +3,7 @@ use std::sync::LazyLock;
 use regex::Regex;
 
 use super::{LintContext, Rule, RuleMeta};
-use crate::error::{ErrorSink, FixInfo};
+use crate::error::{ErrorSink, FixInfo, utf16_len};
 use crate::parser::JS_WHITESPACE;
 
 pub(crate) struct Md026;
@@ -95,7 +95,8 @@ impl Rule for Md026 {
                 continue;
             }
             let full_match = matched.as_str();
-            let length = full_match.chars().count();
+            // 원본 `fullMatch.length`: UTF-16 단위 (punctuation 설정에 이모지가 올 수 있다)
+            let length = utf16_len(full_match);
             let column = heading.end_column - length;
             out.add_error(
                 heading.end_line,
@@ -164,5 +165,16 @@ mod tests {
     #[test]
     fn md026_empty_punctuation_disables_rule() {
         assert!(lint_with(json!({ "punctuation": "" }), "# Heading.\n").is_empty());
+    }
+
+    #[test]
+    fn md026_astral_punctuation_length_is_utf16() {
+        // 기대값은 cli2 0.22.1 실행 결과 (원본 `fullMatch.length` 는 UTF-16 단위)
+        let errs = lint_with(json!({ "punctuation": "🎸" }), "## Heading 🎸\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(errs[0].error_detail.as_deref(), Some("Punctuation: ' 🎸'"));
+        assert_eq!(errs[0].error_range, Some((11, 3)));
+        let f = errs[0].fix_info.as_ref().unwrap();
+        assert_eq!((f.edit_column, f.delete_count), (Some(11), Some(3)));
     }
 }

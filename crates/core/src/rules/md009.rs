@@ -2,7 +2,7 @@ use std::collections::HashSet;
 
 use super::{LintContext, Rule, RuleMeta};
 use crate::config::truthy;
-use crate::error::{ErrorSink, FixInfo};
+use crate::error::{ErrorSink, FixInfo, utf16_len};
 
 pub(crate) struct Md009;
 
@@ -96,8 +96,9 @@ impl Rule for Md009 {
             if trimmed.len() == line.len() {
                 continue;
             }
-            let line_len = line.chars().count();
-            let trailing_spaces = line_len - trimmed.chars().count();
+            // 원본 `line.length`: UTF-16 단위
+            let line_len = utf16_len(line);
+            let trailing_spaces = line_len - utf16_len(trimmed);
             if trailing_spaces > 0
                 && !code_block_line_numbers.contains(&line_number)
                 && !list_item_line_numbers.contains(&line_number)
@@ -192,5 +193,19 @@ mod tests {
         assert_eq!(errs.len(), 1);
         assert_eq!(errs[0].line_number, 4);
         assert_eq!(errs[0].error_range, Some((10, 2)));
+    }
+
+    #[test]
+    fn md009_column_counts_utf16_units() {
+        // 기대값은 cli2 0.22.1 실행 결과 (🎸 는 UTF-16 2단위라 열이 하나 밀린다)
+        let errs = lint_rule("MD009", "🎸 text   \n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("Expected: 0 or 2; Actual: 3")
+        );
+        assert_eq!(errs[0].error_range, Some((8, 3)));
+        let f = errs[0].fix_info.as_ref().unwrap();
+        assert_eq!((f.edit_column, f.delete_count), (Some(8), Some(3)));
     }
 }

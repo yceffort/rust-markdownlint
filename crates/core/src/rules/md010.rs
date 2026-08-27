@@ -87,16 +87,20 @@ impl Rule for Md010 {
             if !line.contains('\t') {
                 continue;
             }
-            let mut chars = line.chars().enumerate().peekable();
-            while let Some((index, c)) = chars.next() {
+            // 원본 `match.index`: UTF-16 단위 오프셋
+            let mut index = 0;
+            let mut chars = line.chars().peekable();
+            while let Some(c) = chars.next() {
                 if c != '\t' {
+                    index += c.len_utf16();
                     continue;
                 }
                 let mut length = 1;
-                while chars.next_if(|&(_, c)| c == '\t').is_some() {
+                while chars.next_if(|&c| c == '\t').is_some() {
                     length += 1;
                 }
                 let column = index + 1;
+                index += length;
                 let range = FileRange {
                     start_line: line_number,
                     start_column: column,
@@ -178,5 +182,19 @@ mod tests {
         let errs = lint_with(json!({ "ignore_code_languages": ["go"] }), content);
         assert_eq!(errs.len(), 1);
         assert_eq!(errs[0].line_number, 6);
+    }
+
+    #[test]
+    fn md010_column_counts_utf16_units() {
+        // 기대값은 cli2 0.22.1 실행 결과 (원본 `match.index` 는 UTF-16 단위)
+        let errs = lint_rule("MD010", "🎸\ttext\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(errs[0].error_detail.as_deref(), Some("Column: 3"));
+        assert_eq!(errs[0].error_range, Some((3, 1)));
+        let f = errs[0].fix_info.as_ref().unwrap();
+        assert_eq!(
+            (f.edit_column, f.delete_count, f.insert_text.as_deref()),
+            (Some(3), Some(1), Some(" "))
+        );
     }
 }

@@ -52,16 +52,16 @@ pub(crate) fn clear_html_comment_text(text: &str) -> String {
                     || content.ends_with('-')
                     || content.contains("--"));
             if is_valid {
-                let cleared: String = content
-                    .chars()
-                    .map(|c| {
-                        if c == ' ' || c == '\r' || c == '\n' {
-                            c
-                        } else {
-                            '.'
-                        }
-                    })
-                    .collect();
+                // 원본 `/[^ \r\n]/g` 는 `u` 플래그가 없어 UTF-16 단위마다 "." 하나로 바꾼다.
+                // 그래야 뒤따르는 토큰 컬럼과 줄 길이가 원본과 같다
+                let mut cleared = String::with_capacity(content.len());
+                for c in content.chars() {
+                    if c == ' ' || c == '\r' || c == '\n' {
+                        cleared.push(c);
+                    } else {
+                        cleared.extend(std::iter::repeat_n('.', c.len_utf16()));
+                    }
+                }
                 let cleared = TRAILING_SPACE_RE.replace_all(&cleared, |caps: &regex::Captures| {
                     caps[0]
                         .chars()
@@ -192,5 +192,7 @@ mod tests {
             clear_html_comment_text("<!-- 한 -->\n한\n<!-- x -->"),
             "<!-- . -->\n한\n<!-- . -->"
         );
+        // BMP 밖 문자는 원본 `/[^ \r\n]/g` 가 서로게이트 단위마다 잡아 "." 두 개가 된다
+        assert_eq!(clear_html_comment_text("<!-- 🎸 -->"), "<!-- .. -->");
     }
 }

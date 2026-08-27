@@ -3,7 +3,7 @@ use std::sync::LazyLock;
 use regex::{Captures, Regex};
 
 use super::{FileRange, LineSet, LintContext, Rule, RuleMeta, add_range_to_set, has_overlap};
-use crate::error::{ErrorSink, FixInfo};
+use crate::error::{ErrorSink, FixInfo, utf16_len};
 
 pub(crate) struct Md011;
 
@@ -82,9 +82,10 @@ impl Rule for Md011 {
                 if link_text.ends_with('\\') || link_destination.ends_with('\\') {
                     continue;
                 }
-                let pre_char_length = pre_char.chars().count();
-                let column = line[..reversed_link.start()].chars().count() + pre_char_length + 1;
-                let length = reversed_link.as_str().chars().count() - pre_char_length;
+                // 원본 `match.index`, `.length`: UTF-16 단위
+                let pre_char_length = utf16_len(pre_char);
+                let column = utf16_len(&line[..reversed_link.start()]) + pre_char_length + 1;
+                let length = utf16_len(reversed_link.as_str()) - pre_char_length;
                 let range = FileRange {
                     start_line: line_number,
                     start_column: column,
@@ -167,5 +168,27 @@ mod tests {
     fn md011_ignores_code_blocks_and_code_spans() {
         let content = "```text\n(reversed)[link]\n```\n\nA `(reversed)[link]` span.\n";
         assert!(lint_rule("MD011", content).is_empty());
+    }
+
+    #[test]
+    fn md011_columns_count_utf16_units() {
+        // 기대값은 cli2 0.22.1 실행 결과. 원본은 `[^\\]` 가 서로게이트 한 단위만 잡지만
+        // `match.index + preChar.length` 라 열과 길이는 같다
+        let errs = lint_rule("MD011", "🎸(text)[url] and a🎸(text)[url]\n");
+        assert_eq!(errs.len(), 2);
+        assert_eq!(errs[0].error_range, Some((3, 11)));
+        assert_eq!(errs[1].error_range, Some((22, 11)));
+        for e in &errs {
+            assert_eq!(e.error_detail.as_deref(), Some("(text)[url]"));
+            let f = e.fix_info.as_ref().unwrap();
+            assert_eq!(
+                (f.edit_column, f.delete_count, f.insert_text.as_deref()),
+                (
+                    Some(e.error_range.unwrap().0),
+                    Some(11),
+                    Some("[text](url)")
+                )
+            );
+        }
     }
 }

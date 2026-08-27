@@ -7,7 +7,7 @@ use serde_json::Value;
 
 use super::{FileRange, LintContext, Rule, RuleMeta, has_overlap};
 use crate::config::truthy;
-use crate::error::{ErrorSink, FixInfo};
+use crate::error::{ErrorSink, FixInfo, utf16_len};
 use crate::parser::TokenId;
 
 pub(crate) struct Md044;
@@ -127,10 +127,11 @@ impl Rule for Md044 {
                     let full = captures.get(0).expect("full match");
                     let left_match = captures.get(1).expect("leftMatch").as_str();
                     let name_match = captures.get(2).expect("nameMatch").as_str();
+                    // 원본 `match.index`, `.length`: UTF-16 단위
                     let column = token.start_column
-                        + tokens.text(id)[..full.start()].chars().count()
-                        + left_match.chars().count();
-                    let length = name_match.chars().count();
+                        + utf16_len(&tokens.text(id)[..full.start()])
+                        + utf16_len(left_match);
+                    let length = utf16_len(name_match);
                     let line_number = token.start_line;
                     let name_range = FileRange {
                         start_line: line_number,
@@ -272,5 +273,22 @@ mod tests {
         let errs = lint_with(json!({ "names": [".NET"] }), "Use .net now\n");
         assert_eq!(errs.len(), 1);
         assert_eq!(errs[0].error_range, Some((5, 4)));
+    }
+
+    #[test]
+    fn md044_column_and_length_are_utf16() {
+        // 기대값은 cli2 0.22.1 실행 결과 (원본 `match.index`, `nameMatch.length` 는 UTF-16 단위)
+        let errs = lint_with(json!({ "names": ["Rock🎸"] }), "🎸 rock🎸 here\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("Expected: Rock🎸; Actual: rock🎸")
+        );
+        assert_eq!(errs[0].error_range, Some((4, 6)));
+        let f = errs[0].fix_info.as_ref().unwrap();
+        assert_eq!(
+            (f.edit_column, f.delete_count, f.insert_text.as_deref()),
+            (Some(4), Some(6), Some("Rock🎸"))
+        );
     }
 }

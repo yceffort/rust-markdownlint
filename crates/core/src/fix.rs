@@ -1,4 +1,4 @@
-use crate::error::{FixInfo, LintError};
+use crate::error::{FixInfo, LintError, utf16_len};
 
 /// markdownlint.mjs `normalizeFixInfo`. JS 의 `||` 기본값 규칙(0 도 falsy)을 따른다.
 #[derive(Clone, PartialEq)]
@@ -131,12 +131,8 @@ pub fn apply_fixes(input: &str, errors: &[LintError]) -> String {
             .cmp(&a.line_number)
             .then_with(|| (a.delete_count == -1).cmp(&(b.delete_count == -1)))
             .then_with(|| b.edit_column.cmp(&a.edit_column))
-            .then_with(|| {
-                b.insert_text
-                    .chars()
-                    .count()
-                    .cmp(&a.insert_text.chars().count())
-            })
+            // 원본 `b.insertText.length - a.insertText.length`: UTF-16 단위
+            .then_with(|| utf16_len(&b.insert_text).cmp(&utf16_len(&a.insert_text)))
     });
     fix_infos.dedup();
 
@@ -265,6 +261,26 @@ mod tests {
         let input = "a \r\nb \r\n";
         let errs = vec![err_fix(1, 2, 1, ""), err_fix(2, 2, 1, "")];
         assert_eq!(apply_fixes(input, &errs), "a\r\nb\r\n");
+    }
+
+    /// 같은 줄/열의 insert 는 insertText 가 긴 쪽이 먼저 적용되고 나머지는 겹침으로 스킵된다.
+    /// 그 길이는 JS `.length`(UTF-16) 라 "🎸🎸"(4) 가 "abc"(3) 를 이긴다. 기대값은 원본
+    /// markdownlint@0.40.0 `applyFixes` 를 Node 로 실행해 얻었다.
+    #[test]
+    fn insert_text_length_tie_break_is_utf16() {
+        let insert = |text: &str| {
+            err_raw(
+                1,
+                FixInfo {
+                    line_number: None,
+                    edit_column: Some(2),
+                    delete_count: None,
+                    insert_text: Some(text.to_string()),
+                },
+            )
+        };
+        let errs = vec![insert("abc"), insert("🎸🎸")];
+        assert_eq!(apply_fixes("ab\n", &errs), "a🎸🎸b\n");
     }
 
     /// 계획 문서는 "X\n" 을 기대했지만 원본 applyFixes 실행 결과는 "aYc\n" 이다.

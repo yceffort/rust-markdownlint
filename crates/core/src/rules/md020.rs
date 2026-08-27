@@ -3,7 +3,7 @@ use std::sync::LazyLock;
 use regex::Regex;
 
 use super::{LineSet, LintContext, Rule, RuleMeta, add_range_to_set};
-use crate::error::{ErrorSink, FixInfo};
+use crate::error::{ErrorSink, FixInfo, utf16_len};
 
 pub(crate) struct Md020;
 
@@ -64,7 +64,8 @@ impl Rule for Md020 {
             };
 
             if left || right {
-                let line_length = line.chars().count();
+                // 원본 `line.length`: UTF-16 단위
+                let line_length = utf16_len(line);
                 let range = if left {
                     (1usize, left_hash_length + 1)
                 } else {
@@ -149,6 +150,20 @@ mod tests {
         assert_eq!(
             errs[0].fix_info.as_ref().unwrap().insert_text.as_deref(),
             Some("# Heading \\# #")
+        );
+    }
+
+    #[test]
+    fn md020_range_and_delete_count_use_utf16_length() {
+        // 기대값은 cli2 0.22.1 실행 결과 (원본 `line.length` 는 UTF-16 단위)
+        let errs = lint_rule("MD020", "## Heading 🎸##\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(errs[0].error_context.as_deref(), Some("## Heading 🎸##"));
+        assert_eq!(errs[0].error_range, Some((13, 3)));
+        let f = errs[0].fix_info.as_ref().unwrap();
+        assert_eq!(
+            (f.edit_column, f.delete_count, f.insert_text.as_deref()),
+            (Some(1), Some(15), Some("## Heading 🎸 ##"))
         );
     }
 }
