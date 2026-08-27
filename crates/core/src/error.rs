@@ -3,8 +3,17 @@ use std::fmt::Display;
 use crate::rules::RuleMeta;
 
 /// JS `String.length`: 컬럼과 같은 UTF-16 단위.
-fn utf16_len(s: &str) -> usize {
+pub(crate) fn utf16_len(s: &str) -> usize {
     s.encode_utf16().count()
+}
+
+/// JS `str.slice(from, to)` 를 UTF-16 단위로 흉내 낸다 (범위는 길이로 잘린다). 서로게이트 쌍
+/// 가운데가 잘리면 원본은 짝 없는 서로게이트를 남기고 stdout 에서 U+FFFD 가 되므로 lossy 변환과 같다.
+pub(crate) fn slice_utf16(text: &str, from: usize, to: Option<usize>) -> String {
+    let units: Vec<u16> = text.encode_utf16().collect();
+    let from = from.min(units.len());
+    let to = to.map_or(units.len(), |t| t.clamp(from, units.len()));
+    String::from_utf16_lossy(&units[from..to])
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -35,20 +44,21 @@ pub struct LintError {
     pub severity: Severity,
 }
 
-/// helpers.cjs `ellipsify`: 30자 초과 시 중요한 쪽을 남기고 "..." 처리.
+/// helpers.cjs `ellipsify`: 30자 초과 시 중요한 쪽을 남기고 "..." 처리. 길이와 절단은 JS
+/// `.length`/`.slice` 와 같은 UTF-16 단위다.
 pub fn ellipsify(text: &str, start: bool, end: bool) -> String {
-    let chars: Vec<char> = text.chars().collect();
-    if chars.len() <= 30 {
+    let len = utf16_len(text);
+    if len <= 30 {
         text.to_string()
     } else if start && end {
-        let head: String = chars[..15].iter().collect();
-        let tail: String = chars[chars.len() - 15..].iter().collect();
+        let head = slice_utf16(text, 0, Some(15));
+        let tail = slice_utf16(text, len - 15, None);
         format!("{head}...{tail}")
     } else if end {
-        let tail: String = chars[chars.len() - 30..].iter().collect();
+        let tail = slice_utf16(text, len - 30, None);
         format!("...{tail}")
     } else {
-        let head: String = chars[..30].iter().collect();
+        let head = slice_utf16(text, 0, Some(30));
         format!("{head}...")
     }
 }
@@ -233,6 +243,22 @@ mod tests {
         assert_eq!(
             ellipsify(long, false, false),
             "abcdefghijklmnopqrstuvwxyz0123..."
+        );
+    }
+
+    #[test]
+    fn ellipsify_counts_utf16_units() {
+        // cli2 0.22.1: 📚 는 2 단위라 뒤에 28 자만 남는다
+        let heading = "📚 Request documentation enhancements";
+        assert_eq!(
+            ellipsify(heading, false, false),
+            "📚 Request documentation enhan..."
+        );
+        // 15 번째 단위가 서로게이트 쌍 가운데면 원본은 짝 없는 서로게이트(출력 시 U+FFFD)를 남긴다
+        let split = format!("{}🎸{}", "a".repeat(14), "b".repeat(20));
+        assert_eq!(
+            ellipsify(&split, true, true),
+            format!("{}\u{FFFD}...{}", "a".repeat(14), "b".repeat(15))
         );
     }
 

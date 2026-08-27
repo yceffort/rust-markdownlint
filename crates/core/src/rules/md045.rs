@@ -3,7 +3,7 @@ use std::sync::LazyLock;
 use regex::Regex;
 
 use super::{LintContext, NEXT_LINES_RE, Rule, RuleMeta};
-use crate::error::ErrorSink;
+use crate::error::{ErrorSink, utf16_len};
 use crate::parser::html_attribute_re;
 
 pub(crate) struct Md045;
@@ -58,9 +58,10 @@ impl Rule for Md045 {
                     .captures(text)
                     .is_none_or(|c| c[1].to_lowercase() != "true")
             {
+                // 원본 `text.replace(nextLinesRe, "").length`: UTF-16 단위
                 let range = (
                     html_text.start_column,
-                    NEXT_LINES_RE.replace(text, "").chars().count(),
+                    utf16_len(&NEXT_LINES_RE.replace(text, "")),
                 );
                 out.add_error(html_text.start_line, None, None, Some(range), None);
             }
@@ -120,5 +121,13 @@ mod tests {
         assert_eq!(errs.len(), 1);
         assert_eq!(errs[0].line_number, 1);
         assert_eq!(errs[0].error_range, Some((6, 4)));
+    }
+
+    #[test]
+    fn md045_html_img_range_length_is_utf16() {
+        // 기대값은 cli2 0.22.1 실행 결과 (`<img src="🎸.png">` 는 UTF-16 18단위)
+        let errs = lint_rule("MD045", "<img src=\"🎸.png\">\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(errs[0].error_range, Some((1, 18)));
     }
 }

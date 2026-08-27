@@ -2,7 +2,7 @@ use serde_json::Value;
 
 use super::{LintContext, NEXT_LINES_RE, Rule, RuleMeta};
 use crate::config::{js_string, truthy};
-use crate::error::ErrorSink;
+use crate::error::{ErrorSink, utf16_len};
 
 pub(crate) struct Md033;
 
@@ -49,12 +49,10 @@ impl Rule for Md033 {
             if (in_table || !allowed_elements.contains(&element_name))
                 && (!in_table || !table_allowed_elements.contains(&element_name))
             {
+                // 원본 `token.text.replace(nextLinesRe, "").length`: UTF-16 단위
                 let range = (
                     token.start_column,
-                    NEXT_LINES_RE
-                        .replace(ctx.tokens.text(id), "")
-                        .chars()
-                        .count(),
+                    utf16_len(&NEXT_LINES_RE.replace(ctx.tokens.text(id), "")),
                 );
                 out.add_error(
                     token.start_line,
@@ -123,5 +121,14 @@ mod tests {
         let errs = lint_rule("MD033", "<hr>\n");
         assert_eq!(errs.len(), 1);
         assert_eq!(errs[0].error_detail.as_deref(), Some("Element: hr"));
+    }
+
+    #[test]
+    fn md033_range_length_is_utf16() {
+        // 기대값은 cli2 0.22.1 실행 결과 (`<a title="🎸">` 는 UTF-16 14단위)
+        let errs = lint_rule("MD033", "<a title=\"🎸\">x</a>\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(errs[0].error_detail.as_deref(), Some("Element: a"));
+        assert_eq!(errs[0].error_range, Some((1, 14)));
     }
 }

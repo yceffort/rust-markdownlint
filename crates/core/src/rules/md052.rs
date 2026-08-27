@@ -4,7 +4,7 @@ use serde_json::Value;
 
 use super::{LintContext, Rule, RuleMeta};
 use crate::config::truthy;
-use crate::error::ErrorSink;
+use crate::error::{ErrorSink, slice_utf16, utf16_len};
 
 pub(crate) struct Md052;
 
@@ -62,19 +62,15 @@ impl Rule for Md052 {
         for (label, datas) in entries {
             if !definitions.contains_key(label) && !ignored_labels.contains(label) {
                 for &[line_index, index, length] in datas {
-                    // 여러 줄에 걸친 링크면 context 가 잘린다
-                    let context: String = ctx.lines[line_index]
-                        .chars()
-                        .skip(index)
-                        .take(length)
-                        .collect();
+                    // 여러 줄에 걸친 링크면 context 가 잘린다. index/length 는 컬럼과 같은 UTF-16 단위
+                    let context = slice_utf16(ctx.lines[line_index], index, Some(index + length));
                     out.add_error(
                         line_index + 1,
                         Some(&format!(
                             "Missing link or image reference definition: \"{label}\""
                         )),
                         Some(&context),
-                        Some((index + 1, context.chars().count())),
+                        Some((index + 1, utf16_len(&context))),
                         None,
                     );
                 }
@@ -174,5 +170,14 @@ mod tests {
         assert_eq!(errs[0].line_number, 1);
         assert_eq!(errs[0].error_context.as_deref(), Some("[multi"));
         assert_eq!(errs[0].error_range, Some((1, 6)));
+    }
+
+    #[test]
+    fn md052_context_slices_utf16_units() {
+        // 기대값은 cli2 0.22.1 실행 결과 (index/length 가 UTF-16 단위라 이모지 뒤에서도 문맥이 맞는다)
+        let errs = lint_with(json!(true), "🎸 [text][missing] x\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(errs[0].error_context.as_deref(), Some("[text][missing]"));
+        assert_eq!(errs[0].error_range, Some((4, 15)));
     }
 }

@@ -3,7 +3,7 @@ use std::sync::LazyLock;
 use regex::Regex;
 
 use super::{LintContext, Rule, RuleMeta};
-use crate::error::{ErrorSink, FixInfo};
+use crate::error::{ErrorSink, FixInfo, slice_utf16, utf16_len};
 use crate::parser::JS_WHITESPACE;
 
 pub(crate) struct Md037;
@@ -51,14 +51,6 @@ struct BareToken {
     start_line: usize,
     start_column: usize,
     end_column: usize,
-}
-
-/// JS `str.slice(from, to)` 를 UTF-16 단위로 흉내 낸다 (범위는 길이로 잘린다).
-fn slice_utf16(text: &str, from: usize, to: Option<usize>) -> String {
-    let units: Vec<u16> = text.encode_utf16().collect();
-    let from = from.min(units.len());
-    let to = to.map_or(units.len(), |t| t.clamp(from, units.len()));
-    String::from_utf16_lossy(&units[from..to])
 }
 
 impl Rule for Md037 {
@@ -110,9 +102,13 @@ impl Rule for Md037 {
                     let start_slice = slice_utf16(start_line, start_token.end_column - 1, None);
                     if let Some(start_match) = START_RE.find(&start_slice) {
                         let start_space_character = start_match.as_str();
-                        let start_context = format!("{marker}{start_space_character}");
-                        let column = start_token.end_column;
+                        // 원본 `/^\s+\S/` 는 `u` 플래그가 없어 `\S` 가 서로게이트 한 단위만 잡는다
                         let count = start_space_character.chars().count() - 1;
+                        let start_context = format!(
+                            "{marker}{}",
+                            slice_utf16(start_space_character, 0, Some(count + 1))
+                        );
+                        let column = start_token.end_column;
                         out.add_error(
                             start_token.start_line,
                             None,
@@ -132,8 +128,16 @@ impl Rule for Md037 {
                     let end_slice = slice_utf16(end_line, 0, Some(end_token.start_column - 1));
                     if let Some(end_match) = END_RE.find(&end_slice) {
                         let end_space_character = end_match.as_str();
-                        let end_context = format!("{end_space_character}{marker}");
+                        // 원본 `/\S\s+$/` 도 마찬가지로 `\S` 가 마지막 서로게이트 한 단위만 잡는다
                         let count = end_space_character.chars().count() - 1;
+                        let end_context = format!(
+                            "{}{marker}",
+                            slice_utf16(
+                                end_space_character,
+                                utf16_len(end_space_character) - (count + 1),
+                                None
+                            )
+                        );
                         let column = end_token.start_column - count;
                         out.add_error(
                             end_token.start_line,
@@ -230,5 +234,21 @@ mod tests {
         let ranges: Vec<_> = errs.iter().map(|e| e.error_range.unwrap()).collect();
         assert_eq!(ranges, vec![(5, 1), (8, 1), (19, 1), (21, 1)]);
         assert_eq!(errs[0].error_context.as_deref(), Some("* 강"));
+    }
+
+    #[test]
+    fn md037_context_keeps_only_one_surrogate_of_astral_char() {
+        // 기대값은 cli2 0.22.1 실행 결과. 원본 `/^\s+\S/`, `/\S\s+$/` 는 `u` 플래그가 없어
+        // 🎸 의 서로게이트 한 단위만 잡고, 짝 없는 서로게이트는 출력에서 U+FFFD 가 된다
+        let errs = lint_rule("MD037", "a * 🎸 * b\n");
+        assert_eq!(errs.len(), 2);
+        assert_eq!(errs[0].error_context.as_deref(), Some("* \u{FFFD}"));
+        assert_eq!(errs[0].error_range, Some((4, 1)));
+        assert_eq!(errs[1].error_context.as_deref(), Some("\u{FFFD} *"));
+        assert_eq!(errs[1].error_range, Some((7, 1)));
+        let errs = lint_rule("MD037", "a *🎸 * b\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(errs[0].error_context.as_deref(), Some("\u{FFFD} *"));
+        assert_eq!(errs[0].error_range, Some((6, 1)));
     }
 }

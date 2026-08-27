@@ -6,7 +6,7 @@ use serde_json::Value;
 
 use super::{LintContext, Rule, RuleMeta};
 use crate::config::truthy;
-use crate::error::{ErrorSink, FixInfo, ellipsify};
+use crate::error::{ErrorSink, FixInfo, ellipsify, utf16_len};
 
 pub(crate) struct Md053;
 
@@ -82,7 +82,7 @@ impl Rule for Md053 {
                 line_index + 1,
                 Some(&detail),
                 Some(&ellipsify(line, false, false)),
-                Some((1, line.chars().count())),
+                Some((1, utf16_len(line))),
                 single_line_definition(line).then(|| delete_fix_info.clone()),
             );
         };
@@ -225,5 +225,17 @@ mod tests {
         assert_eq!(errs.len(), 1);
         assert_eq!(errs[0].line_number, 3);
         assert!(errs[0].fix_info.is_none());
+    }
+
+    #[test]
+    fn md053_context_and_range_use_utf16_length() {
+        // 기대값은 cli2 0.22.1 실행 결과 (ellipsify 30단위 절단과 `line.length` 모두 UTF-16 단위)
+        let errs = lint_with(json!(true), "[unused🎸]: https://example.com\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_context.as_deref(),
+            Some("[unused🎸]: https://example.co...")
+        );
+        assert_eq!(errs[0].error_range, Some((1, 31)));
     }
 }

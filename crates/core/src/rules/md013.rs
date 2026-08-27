@@ -4,7 +4,7 @@ use regex::Regex;
 
 use super::{LineSet, LintContext, Rule, RuleMeta, add_range_to_set};
 use crate::config::{to_number, truthy};
-use crate::error::ErrorSink;
+use crate::error::{ErrorSink, utf16_len};
 use crate::parser::JS_WHITESPACE;
 
 pub(crate) struct Md013;
@@ -129,18 +129,20 @@ impl Rule for Md013 {
             } else {
                 line_length
             };
-            let length = line.chars().count();
+            // 원본 `line.length`: UTF-16 단위
+            let length = utf16_len(line);
             // If not strict/stern, the last run of non-whitespace is allowed to go
             // beyond the limit as long as it begins within the limit
             let text_length = if strict || stern {
                 length
             } else {
-                // `line.replace(/\S*$/u, "#")`
-                let trailing = line
+                // `line.replace(/\S*$/u, "#").length`
+                let trailing: usize = line
                     .chars()
                     .rev()
                     .take_while(|c| !is_js_whitespace(*c))
-                    .count();
+                    .map(char::len_utf16)
+                    .sum();
                 length - trailing + 1
             };
             if max_length > 0.0
@@ -245,5 +247,28 @@ mod tests {
         // 0 은 falsy 라 기본값 80 으로 돌아가고, 음수여야 비활성이다
         assert_eq!(lint_with(json!({ "line_length": 0 }), &content).len(), 3);
         assert!(lint_with(json!({ "line_length": -1 }), &content).is_empty());
+    }
+
+    #[test]
+    fn md013_length_counts_utf16_units() {
+        // 기대값은 cli2 0.22.1 실행 결과 (원본 `line.length` 는 UTF-16 단위라 🎸 가 2 로 센다)
+        let content = format!("{} 🎸 bbb\n", "a".repeat(78));
+        let errs = lint_rule("MD013", &content);
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("Expected: 80; Actual: 85")
+        );
+        assert_eq!(errs[0].error_range, Some((81, 5)));
+        // 마지막 단어 🎸🎸 는 79열에서 시작해 82열까지: 기본 모드는 허용, strict 는 82 로 보고
+        let content = format!("{} 🎸🎸\n", "a".repeat(77));
+        assert!(lint_rule("MD013", &content).is_empty());
+        let errs = lint_with(json!({ "strict": true }), &content);
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("Expected: 80; Actual: 82")
+        );
+        assert_eq!(errs[0].error_range, Some((81, 2)));
     }
 }
