@@ -349,3 +349,44 @@ fn front_matter_and_bom() {
         "fm.md:4:1 error {MD018}\nfm.md:4:2 error {MD047}\n"
     ));
 }
+
+// 원본은 fs.readFile(file, "utf8") 이라 잘못된 바이트가 U+FFFD 로 치환되고 lint 는 계속된다.
+// 치환 단위(잘못된 시퀀스 하나당 U+FFFD 하나)가 같아야 컬럼이 맞는다: 잘린 3바이트/4바이트 1개,
+// overlong C0 AF 와 FF FE 는 각각 2개.
+const BAD_UTF8: &[u8] = b"# T\n\nab\xe2\x82cd\xf0\x9f\x98e\xc0\xaff\xff\xfe\tx\n";
+const MD010: &str = "MD010/no-hard-tabs Hard tabs [Column: 13]";
+
+#[test]
+fn invalid_utf8_file_is_decoded_lossily_like_cli2() {
+    let t = tree(&[]);
+    fs::write(t.path().join("bad.md"), BAD_UTF8).unwrap();
+    fs::write(
+        t.path().join("img.png"),
+        b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00",
+    )
+    .unwrap();
+    cmd(t.path())
+        .args(["bad.md", "img.png"])
+        .assert()
+        .code(1)
+        .stdout(format!(
+            "{BANNER}Finding: bad.md img.png\nLinting: 2 file(s)\nSummary: 3 error(s)\n"
+        ))
+        .stderr(format!(
+            "bad.md:3:13 error {MD010}\nimg.png:1 error MD041/first-line-heading/first-line-h1 First line in a file should be a top-level heading [Context: \"\u{FFFD}PNG\"]\nimg.png:4:5 error {MD047}\n"
+        ));
+}
+
+#[test]
+fn invalid_utf8_stdin_is_decoded_lossily_like_cli2() {
+    let t = tree(&[]);
+    cmd(t.path())
+        .arg("-")
+        .write_stdin(BAD_UTF8)
+        .assert()
+        .code(1)
+        .stdout(format!(
+            "{BANNER}Finding: \nLinting: 1 file(s)\nSummary: 1 error(s)\n"
+        ))
+        .stderr(format!("stdin:3:13 error {MD010}\n"));
+}

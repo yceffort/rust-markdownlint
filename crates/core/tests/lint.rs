@@ -33,6 +33,31 @@ fn bom_is_stripped() {
 }
 
 #[test]
+fn nul_is_punctuation_for_emphasis_like_micromark() {
+    // micromark preprocess 는 NUL 을 U+FFFD(구두점) 로 바꾼 뒤 토크나이즈하므로 `_` 뒤의 NUL 이 강조를 닫는다.
+    // 컬럼은 원본 기준(NUL 도 U+FFFD 도 UTF-16 1단위)이다.
+    let errs = lint_content("a.md", "# T\n\n*a* _y_\0 z\n", &LintOptions::default()).unwrap();
+    let md049: Vec<_> = errs
+        .iter()
+        .filter(|e| e.rule_names[0] == "MD049")
+        .map(|e| (e.line_number, e.error_range.map(|r| r.0)))
+        .collect();
+    assert_eq!(md049, [(3, Some(5)), (3, Some(7))]);
+}
+
+#[test]
+fn nul_stays_in_token_text() {
+    // 원본 token.text 는 markdown.slice(...) 라 NUL 이 그대로 남는다 (MD038 컨텍스트 `a^@ `)
+    let errs = lint_content("a.md", "# T\n\n`a\0 `\n", &LintOptions::default()).unwrap();
+    let md038: Vec<_> = errs
+        .iter()
+        .filter(|e| e.rule_names[0] == "MD038")
+        .map(|e| e.error_context.as_deref())
+        .collect();
+    assert_eq!(md038, [Some("`a\0 `")]);
+}
+
+#[test]
 fn inline_disable_drops_errors() {
     let errs = lint_content(
         "a.md",

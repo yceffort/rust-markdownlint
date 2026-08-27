@@ -75,3 +75,12 @@ cli2: md025.md:5 error MD025/single-title/single-h1 Multiple top-level headings 
 ```
 
 수정은 별도 PR. 같은 계열로 `crates/core/src/rules/` 에 `chars().count()` 가 20개 규칙 36곳 있는데, 그중 원본이 `.length` 로 세는 값을 사용자에게 보이는 자리(오류 detail, range) 에 쓰는 곳은 같은 문제가 있을 수 있다. 이번 코퍼스에서는 MD013 과 `ellipsify` 만 드러났고 나머지는 확인하지 않았다.
+
+### 2. 바이너리 파일이 섞인 인자: mkdocs 원본 인자 그대로 (#178)
+
+위 표의 mkdocs 는 `!docs/**/*.png` 등으로 바이너리를 제외한 결과다. 원본 테스트 인자 그대로 `README.md CONTRIBUTING.md docs` 를 주면 `docs/**` 에 png, css, svg 가 섞이는데, cli2 는 `fs.readFile(file, "utf8")` 이라 잘못된 바이트를 U+FFFD 로 치환하고 36 파일을 끝까지 lint 해 2605건을 낸다. rust 는 `read_to_string` 이라 `Error: stream did not contain valid UTF-8` 로 exit 2 였다 (#178).
+
+#178 수정(2026-08-27) 후 같은 인자로 36 파일, rust 2607 / cli2 2605, diff 2줄. 디코딩은 png 3개를 Rust `from_utf8_lossy` 와 Node `utf8` 로 각각 풀어 바이트 단위로 같음을 확인했고(둘 다 WHATWG maximal subpart 당 U+FFFD 하나), 남은 차이 두 가지는 파서 쪽이었다.
+
+- NUL: micromark 는 `preprocess.js` 에서 NUL 을 U+FFFD(구두점)로 바꿔 토크나이즈하지만 `token.text` 는 원본 슬라이스라 NUL 이 남는다. markdown-rs 는 HTML 출력에서만 바꾸므로 `_` 옆의 NUL 이 강조 판정(flanking)에서 "기타" 로 분류돼 MD049 4줄이 어긋났다. `crates/core/src/parser/build.rs` 의 `parse_nodes` 가 치환본을 파싱하고 이벤트 바이트 인덱스를 원본으로 되돌리도록 고쳤다 (같은 PR).
+- 텍스트 directive (남은 2줄): `docs/img/search.png` 357행의 `:F[...]` 를 micromark-extension-directive 가 `:name[label]` 텍스트 directive 로 먹어 라벨 안의 `_` 가 바깥 `_` 와 짝지어지지 않는다. markdown-rs 는 container directive(`:::`) 만 구현돼 있어 `[`…`]` 를 정의 안 된 참조로 보고 강조를 만든다. 최소 재현은 `*a* :F[x _y] z_ w` (cli2 MD049 0건, rust 2건). 실제 문서에서 `:이름[` 이 나오는 경우는 드물어 토큰 오라클의 알려진 불일치(directive) 로 두고 고치지 않았다.
