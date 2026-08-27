@@ -62,15 +62,6 @@ struct Expected {
     formatter_sarif: String,
 }
 
-/// 알려진 차이로 제외하는 시나리오. js-yaml 은 flow collection 안에서 여러 줄에 걸친 plain scalar 를
-/// 거부하지만 (YAML 명세와 다름) serde-saphyr 는 받아들여, JSONC 문서를 `.yaml` 로 저장한 경우
-/// 오류 대신 엉뚱한 키로 파싱된다. docs/cli2-scenarios.md 참고.
-const KNOWN_DIFFERENCES: &[&str] = &[
-    "markdownlint-cli2-yaml-mismatch",
-    "markdownlint-cli2-yaml-mismatch-config",
-    "markdownlint-yaml-mismatch-config",
-];
-
 /// JavaScript 모듈 로딩이 필요해 설계상 제외하는 시나리오. README "Differences" 절과 맞춘다.
 fn skip_reason(s: &Scenario) -> Option<&'static str> {
     if s.no_import {
@@ -79,8 +70,6 @@ fn skip_reason(s: &Scenario) -> Option<&'static str> {
         Some("needs JavaScript module loading")
     } else if s.uses_env {
         Some("outputFormatters (JavaScript) with FORCE_COLOR")
-    } else if KNOWN_DIFFERENCES.contains(&s.name.as_str()) {
-        Some("known difference: YAML parser leniency")
     } else {
         None
     }

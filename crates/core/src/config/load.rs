@@ -40,9 +40,96 @@ pub fn parse_config_as(format: Format, content: &str) -> Result<ConfigValue, Con
             .and_then(|value| {
                 serde_json::to_value(value).map_err(|e| ConfigError::Parse(e.to_string()))
             }),
-        Format::Yaml => serde_saphyr::from_str::<ConfigValue>(content)
-            .map_err(|e| ConfigError::Parse(yaml_message(&e.to_string()))),
+        Format::Yaml => {
+            check_flow_collections_like_js_yaml(content)?;
+            serde_saphyr::from_str::<ConfigValue>(content)
+                .map_err(|e| ConfigError::Parse(yaml_message(&e.to_string())))
+        }
     }
+}
+
+/// js-yaml `readFlowCollection` 은 YAML 명세보다 엄격하다. flow collection 안에서 (1) 암시적 키의 `:` 가
+/// 키가 시작한 줄에 없거나 (2) 여러 줄 plain scalar 의 이어지는 줄이 flow collection 의 들여쓰기
+/// (감싸는 블록 컬렉션 들여쓰기 + 1, 최상위는 문서 첫 내용 줄의 들여쓰기)보다 얕으면
+/// `missed comma between flow collection entries` 를 낸다. serde-saphyr 는 둘 다 받아들이므로
+/// 스캐너 토큰을 훑어 같은 경우에 같은 오류를 낸다. 스캔 오류는 serde-saphyr 에 맡긴다.
+fn check_flow_collections_like_js_yaml(content: &str) -> Result<(), ConfigError> {
+    use serde_saphyr::granit_parser::{ScalarStyle, Scanner, StrInput, TokenType};
+
+    // js-yaml `lineIndent`: 앞선 공백(space)만 센다. 빈 줄은 None.
+    let line_indent = |line: usize| {
+        let text = content.lines().nth(line - 1)?;
+        let rest = text.trim_start_matches(' ');
+        (!rest.is_empty()).then_some(text.len() - rest.len())
+    };
+    let missed_comma = |line: usize, col: usize| {
+        Err(ConfigError::Parse(format!(
+            "missed comma between flow collection entries ({line}:{col})"
+        )))
+    };
+
+    let mut block_indents: Vec<usize> = Vec::new();
+    let mut flow_depth = 0usize;
+    let mut flow_indent = 0usize;
+    let mut document_line: Option<usize> = None;
+    let mut pending_key: Option<(usize, bool)> = None;
+
+    for token in Scanner::new(StrInput::new(content)) {
+        let Ok(token) = token else { break };
+        let (span, kind) = token.into_parts();
+        let (line, col) = (span.start.line(), span.start.col());
+        match &kind {
+            TokenType::StreamStart | TokenType::DocumentStart | TokenType::DocumentEnd => {
+                document_line = None;
+                continue;
+            }
+            TokenType::Comment(_) => continue,
+            _ => {
+                document_line.get_or_insert(line);
+            }
+        }
+        match kind {
+            TokenType::BlockMappingStart | TokenType::BlockSequenceStart => block_indents.push(col),
+            TokenType::BlockEnd => {
+                block_indents.pop();
+            }
+            TokenType::FlowMappingStart | TokenType::FlowSequenceStart => {
+                if flow_depth == 0 {
+                    flow_indent = match block_indents.last() {
+                        Some(indent) => indent + 1,
+                        None => document_line.and_then(line_indent).unwrap_or(0),
+                    };
+                }
+                flow_depth += 1;
+                pending_key = None;
+            }
+            TokenType::FlowMappingEnd | TokenType::FlowSequenceEnd => {
+                flow_depth = flow_depth.saturating_sub(1);
+                pending_key = None;
+            }
+            TokenType::FlowEntry => pending_key = None,
+            // 명시적 `?` 키는 토큰이 `?` 를 덮고, 암시적 키는 빈 span 이다.
+            TokenType::Key if flow_depth > 0 => pending_key = Some((line, !span.is_empty())),
+            TokenType::Value if flow_depth > 0 => {
+                if let Some((key_line, false)) = pending_key.take()
+                    && key_line != line
+                {
+                    return missed_comma(line, col + 1);
+                }
+            }
+            TokenType::Scalar(ScalarStyle::Plain, _) if flow_depth > 0 => {
+                for continued in line + 1..=span.end.line() {
+                    if let Some(indent) = line_indent(continued)
+                        && indent < flow_indent
+                    {
+                        return missed_comma(continued, indent + 1);
+                    }
+                }
+            }
+            _ => {}
+        }
+    }
+    Ok(())
 }
 
 /// 원본 파서의 오류 문구를 앞에 붙인다. cli2 는 jsonc-parser 의 `Unable to parse JSONC content, ...`,
