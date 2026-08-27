@@ -152,6 +152,17 @@ mod tests {
         assert!(lint_rule("MD011", "Text \\(reversed)[link] here.\n").is_empty());
     }
 
+    /// 원본 `(?!\()`: 뒤에 `(` 가 오면 매치가 아니고, 그 다음 후보는 한 문자 뒤부터 다시 찾는다.
+    #[test]
+    fn md011_lookahead_rejects_and_continues() {
+        assert!(lint_rule("MD011", "Text (a)[b](c) here.\n").is_empty());
+        let errs = lint_rule("MD011", "Text (a)[b](c) and (d)[e] here.\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(errs[0].error_range, Some((20, 6)));
+        // 거부된 매치 안에서 시작하는 후보: `(a)[b(c)[d]` 는 `[^\]]*` 가 `(` 를 포함할 수 있다
+        assert_eq!(lint_rule("MD011", "(a)[b(c)[d]\n").len(), 1);
+    }
+
     #[test]
     fn md011_ignores_code_blocks_and_code_spans() {
         let content = "```text\n(reversed)[link]\n```\n\nA `(reversed)[link]` span.\n";
