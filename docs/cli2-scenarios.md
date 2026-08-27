@@ -23,6 +23,7 @@ The fixtures live in `crates/cli/tests/fixtures/cli2/` (MIT, see the README ther
 git clone --depth 1 --branch v0.22.1 --filter=blob:none --sparse https://github.com/DavidAnson/markdownlint-cli2.git
 (cd markdownlint-cli2 && git sparse-checkout set test)
 node scripts/dump-cli2-scenarios.mjs markdownlint-cli2/test
+git add -f crates/cli/tests/fixtures/cli2   # the gitignore scenarios' own .gitignore files hide 4 fixture files from a plain git add
 ```
 
 The test copies the fixture tree to a temporary directory (scenarios reference sibling directories such as `../config-files`, and `isolate` scenarios create and remove `<name>-copy-exec`), runs the binary, and normalizes the output exactly like the original `sanitize` function: `\r` removed, `vX.Y.Z` for version strings, `:[PATH]` for the absolute `sentinel` path. The only extra step is replacing the banner line with the original `markdownlint-cli2 vX.Y.Z (markdownlint vX.Y.Z)` banner, which the README lists as a difference. Scenarios with a `stderrRe` in the original are checked with the same regular expression instead of a `stderr` snapshot.
