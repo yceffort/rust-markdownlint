@@ -2,6 +2,7 @@ use markdown::ParseOptions;
 use markdown::event::{Event, Kind};
 
 use super::adapt::{self, Node};
+use super::kinds::kind_of;
 use super::token::{Token, TokenTree};
 
 fn parse_options(html_flow: bool) -> ParseOptions {
@@ -57,8 +58,12 @@ impl ColumnIndex {
 
 pub fn parse(text: &str) -> TokenTree {
     let text = text.strip_prefix('\u{feff}').unwrap_or(text);
-    let nodes = parse_nodes(text, true, 0);
-    let mut tree = TokenTree::default();
+    let mut sources = vec![text.to_string()];
+    let nodes = parse_nodes(text, true, 0, 0, &mut sources);
+    let mut tree = TokenTree {
+        sources,
+        ..TokenTree::default()
+    };
     for n in nodes {
         let id = flatten(&mut tree, n, None, false);
         tree.roots.push(id);
@@ -67,15 +72,21 @@ pub fn parse(text: &str) -> TokenTree {
     tree
 }
 
-/// markdown-rs 이벤트 → 중첩 노드 → micromark 형태로 변환.
-pub(super) fn parse_nodes(text: &str, html_flow: bool, line_delta: usize) -> Vec<Node> {
+/// markdown-rs 이벤트 → 중첩 노드 → micromark 형태로 변환. `src` 는 `text` 의 `sources` 인덱스.
+pub(super) fn parse_nodes(
+    text: &str,
+    html_flow: bool,
+    line_delta: usize,
+    src: usize,
+    sources: &mut Vec<String>,
+) -> Vec<Node> {
     let opts = parse_options(html_flow);
     let (events, _) = markdown::parser::parse(text, &opts).expect("markdown-rs parse");
     let refs = markdown::undefined_refs::take();
     let columns = ColumnIndex::new(text);
-    let nodes = nest(text, &events, line_delta, &columns);
-    let mut nodes = adapt::adapt(nodes, text, line_delta);
-    append_undefined_references(&mut nodes, refs, text, line_delta, &columns);
+    let nodes = nest(&events, line_delta, src, &columns);
+    let mut nodes = adapt::adapt(nodes, text, line_delta, sources);
+    append_undefined_references(&mut nodes, refs, text, line_delta, src, &columns);
     nodes
 }
 
@@ -85,6 +96,7 @@ fn append_undefined_references(
     refs: Vec<markdown::undefined_refs::UndefinedRef>,
     text: &str,
     line_delta: usize,
+    src: usize,
     columns: &ColumnIndex,
 ) {
     let mut arts: Vec<Node> = Vec::new();
@@ -109,15 +121,15 @@ fn append_undefined_references(
                 d.1.1 = ns;
             }
         }
-        let node_at = |kind: &str, s: (usize, usize), e: (usize, usize)| Node {
-            kind: kind.to_string(),
+        let node_at = |kind: &'static str, s: (usize, usize), e: (usize, usize)| Node {
+            kind,
             start_line: s.0 + line_delta,
             start_column: columns.column(s.1),
             end_line: e.0 + line_delta,
             end_column: columns.column(e.1),
+            src,
             start: s.1,
             end: e.1,
-            text: text[s.1..e.1].to_string(),
             children: Vec::new(),
         };
         r.data.retain(|d| d.1.1 < d.2.1);
@@ -125,18 +137,16 @@ fn append_undefined_references(
         // 직전 인공 토큰과 맞닿아 있으면 collapsed/full 로 병합
         if r.data.is_empty() {
             if let Some(p) = arts.last_mut().filter(|p| p.end == r.start.1) {
-                p.kind = "undefinedReferenceCollapsed".into();
+                p.kind = "undefinedReferenceCollapsed";
                 p.end_line = outer.end_line;
                 p.end_column = outer.end_column;
                 p.end = outer.end;
-                p.text = text[p.start..p.end].to_string();
             }
         } else if let Some(p) = arts.pop_if(|p| p.end == r.start.1) {
-            outer.kind = "undefinedReferenceFull".into();
+            outer.kind = "undefinedReferenceFull";
             outer.start_line = p.start_line;
             outer.start_column = p.start_column;
             outer.start = p.start;
-            outer.text = text[outer.start..outer.end].to_string();
         }
         let joined: String = r.data.iter().map(|(_, s, e)| &text[s.1..e.1]).collect();
         let joined = joined.trim();
@@ -155,20 +165,20 @@ fn append_undefined_references(
     nodes.extend(arts);
 }
 
-fn nest(text: &str, events: &[Event], line_delta: usize, columns: &ColumnIndex) -> Vec<Node> {
+fn nest(events: &[Event], line_delta: usize, src: usize, columns: &ColumnIndex) -> Vec<Node> {
     let mut roots = Vec::new();
     let mut stack: Vec<Node> = Vec::new();
     for ev in events {
         match ev.kind {
             Kind::Enter => stack.push(Node {
-                kind: format!("{:?}", ev.name),
+                kind: kind_of(&ev.name),
                 start_line: ev.point.line + line_delta,
                 start_column: columns.column(ev.point.index),
                 end_line: 0,
                 end_column: 0,
+                src,
                 start: ev.point.index,
                 end: ev.point.index,
-                text: String::new(),
                 children: Vec::new(),
             }),
             Kind::Exit => {
@@ -176,7 +186,6 @@ fn nest(text: &str, events: &[Event], line_delta: usize, columns: &ColumnIndex) 
                 n.end_line = ev.point.line + line_delta;
                 n.end_column = columns.column(ev.point.index);
                 n.end = ev.point.index;
-                n.text = text[n.start..n.end].to_string();
                 match stack.last_mut() {
                     Some(p) => p.children.push(n),
                     None => roots.push(n),
@@ -189,8 +198,8 @@ fn nest(text: &str, events: &[Event], line_delta: usize, columns: &ColumnIndex) 
 
 fn flatten(tree: &mut TokenTree, n: Node, parent: Option<usize>, in_html_flow: bool) -> usize {
     // 원본은 htmlFlow 재파싱으로 만든 토큰에만 htmlFlowSymbol 을 붙인다 (htmlFlow 자신은 제외).
-    let children_in_html_flow =
-        in_html_flow || (n.kind == "htmlFlow" && !adapt::is_html_flow_comment(&n));
+    let children_in_html_flow = in_html_flow
+        || (n.kind == "htmlFlow" && !adapt::is_html_flow_comment(&n, &tree.sources[n.src]));
     let id = tree.tokens.len();
     tree.tokens.push(Token {
         kind: n.kind,
@@ -198,7 +207,9 @@ fn flatten(tree: &mut TokenTree, n: Node, parent: Option<usize>, in_html_flow: b
         start_column: n.start_column,
         end_line: n.end_line,
         end_column: n.end_column,
-        text: n.text,
+        src: n.src,
+        start: n.start,
+        end: n.end,
         parent,
         children: Vec::new(),
         in_html_flow,

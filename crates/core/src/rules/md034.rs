@@ -43,8 +43,8 @@ fn allowed(tree: &TokenTree, id: TokenId) -> bool {
     let next = tree.get(next);
     !(prev.kind == "data"
         && next.kind == "data"
-        && prev.text.ends_with('<')
-        && next.text.starts_with('>'))
+        && tree.text_of(prev).ends_with('<')
+        && tree.text_of(next).starts_with('>'))
 }
 
 /// 원본 `literalAutolinks` 의 `transformChildren`: 인라인 HTML 태그 안의 내용은 건너뛴다.
@@ -95,14 +95,14 @@ impl Rule for Md034 {
             let range = (token.start_column, token.end_column - token.start_column);
             out.add_error_context(
                 token.start_line,
-                &token.text,
+                ctx.tokens.text(id),
                 false,
                 false,
                 Some(range),
                 Some(FixInfo {
                     edit_column: Some(range.0),
                     delete_count: Some(range.1 as isize),
-                    insert_text: Some(format!("<{}>", token.text)),
+                    insert_text: Some(format!("<{}>", ctx.tokens.text(id))),
                     ..Default::default()
                 }),
             );

@@ -29,7 +29,7 @@ impl Rule for Md029 {
         let ordered_list_item_value = |list_item_prefix| {
             let id = tokens.descendants_by_type(list_item_prefix, &[&["listItemValue"]])[0];
             let token = tokens.get(id);
-            (token.start_column, token.text.parse::<i64>().unwrap())
+            (token.start_column, tokens.text(id).parse::<i64>().unwrap())
         };
         for list_ordered in tokens.filter_by_types(&["listOrdered"]) {
             let list_item_prefixes =

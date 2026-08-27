@@ -85,7 +85,7 @@ impl Rule for Md026 {
             .filter_by_types(&["atxHeadingText", "setextHeadingText"])
         {
             let heading = ctx.tokens.get(id);
-            let text = &heading.text;
+            let text = ctx.tokens.text(id);
             let Some(matched) = trailing_punctuation_re.find(text) else {
                 continue;
             };

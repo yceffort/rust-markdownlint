@@ -21,7 +21,7 @@ fn ignore_whitespace(tokens: &TokenTree, children: &[TokenId]) -> Vec<TokenId> {
     children
         .iter()
         .copied()
-        .filter(|&id| !WHITESPACE_TYPES.contains(&tokens.get(id).kind.as_str()))
+        .filter(|&id| !WHITESPACE_TYPES.contains(&tokens.get(id).kind))
         .collect()
 }
 

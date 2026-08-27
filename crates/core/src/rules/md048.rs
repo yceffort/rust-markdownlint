@@ -47,7 +47,10 @@ impl Rule for Md048 {
                 continue;
             };
             let token = ctx.tokens.get(code_fenced_fence_sequence);
-            let (start_line, text) = (token.start_line, token.text.as_str());
+            let (start_line, text) = (
+                token.start_line,
+                ctx.tokens.text(code_fenced_fence_sequence),
+            );
             if expected_style == "consistent" {
                 expected_style = fenced_code_block_style_for(text).to_string();
             }

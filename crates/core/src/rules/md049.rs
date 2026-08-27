@@ -69,7 +69,7 @@ pub(super) fn check_style(
         let start_sequence = sequences.first().map(|&id| tokens.get(id));
         let end_sequence = sequences.last().map(|&id| tokens.get(id));
         if let (Some(start_sequence), Some(end_sequence)) = (start_sequence, end_sequence) {
-            let markup_style = emphasis_or_strong_style_for(&start_sequence.text);
+            let markup_style = emphasis_or_strong_style_for(tokens.text_of(start_sequence));
             if style == "consistent" {
                 style = markup_style.to_string();
             }
@@ -84,7 +84,7 @@ pub(super) fn check_style(
                     ));
                 if !underscore_intraword {
                     for sequence in [start_sequence, end_sequence] {
-                        let length = sequence.text.chars().count();
+                        let length = tokens.text_of(sequence).chars().count();
                         out.add_error(
                             sequence.start_line,
                             Some(&format!("Expected: {style}; Actual: {markup_style}")),

@@ -46,7 +46,7 @@ impl Rule for Md005 {
                         // No fixInfo; MD007 handles this scenario better
                     );
                 } else {
-                    let marker_length = list_item_prefix.text.trim().chars().count();
+                    let marker_length = tokens.text_of(list_item_prefix).trim().chars().count();
                     let actual_end = list_item_prefix.start_column + marker_length - 1;
                     if expected_end == 0 {
                         expected_end = actual_end;

@@ -74,9 +74,7 @@ impl Rule for Md041 {
         let mut error_line_number = 0;
         for &id in &ctx.tokens.roots {
             let token = ctx.tokens.get(id);
-            if NON_CONTENT_TOKENS.contains(&token.kind.as_str())
-                || ctx.tokens.is_html_flow_comment(id)
-            {
+            if NON_CONTENT_TOKENS.contains(&token.kind) || ctx.tokens.is_html_flow_comment(id) {
                 continue;
             }
             if token.kind == "atxHeading" || token.kind == "setextHeading" {

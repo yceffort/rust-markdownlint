@@ -144,7 +144,7 @@ impl TokenTree {
                     .children
                     .iter()
                     .filter(|&&c| self.tokens[c].kind != "blockQuotePrefix")
-                    .map(|&c| self.tokens[c].text.as_str())
+                    .map(|&c| self.text(c))
                     .collect()
             })
         };
@@ -155,7 +155,7 @@ impl TokenTree {
                 let datum = [
                     token.start_line - 1,
                     token.start_column - 1,
-                    token.text.chars().count(),
+                    self.text(id).chars().count(),
                 ];
                 let dictionary = if is_shortcut {
                     &mut data.shortcuts
@@ -182,7 +182,7 @@ impl TokenTree {
         ]);
         for id in filtered {
             let token = &self.tokens[id];
-            match token.kind.as_str() {
+            match token.kind {
                 "definition" | "gfmFootnoteDefinition" => {
                     for line in token.start_line..=token.end_line {
                         data.definition_line_indices.push(line - 1);
@@ -194,7 +194,8 @@ impl TokenTree {
                     } else {
                         ""
                     };
-                    let reference = normalize_reference(&format!("{label_prefix}{}", token.text));
+                    let reference =
+                        normalize_reference(&format!("{label_prefix}{}", self.text(id)));
                     if data.definitions.contains_key(&reference) {
                         data.duplicate_definitions
                             .push((reference, token.start_line - 1));
@@ -211,7 +212,7 @@ impl TokenTree {
                                     ],
                                 )
                                 .first()
-                                .map(|&d| self.tokens[d].text.clone())
+                                .map(|&d| self.text(d).to_string())
                             })
                             .unwrap_or_default();
                         data.definitions
@@ -237,13 +238,12 @@ impl TokenTree {
                     if !is_shortcut && !is_full_or_collapsed {
                         let mut call = children.iter().filter(|&&c| {
                             matches!(
-                                self.tokens[c].kind.as_str(),
+                                self.tokens[c].kind,
                                 "gfmFootnoteCallMarker" | "gfmFootnoteCallString"
                             )
                         });
                         if let (Some(&marker), Some(&string)) = (call.next(), call.next()) {
-                            label =
-                                format!("{}{}", self.tokens[marker].text, self.tokens[string].text);
+                            label = format!("{}{}", self.text(marker), self.text(string));
                             is_shortcut = true;
                         }
                     }
@@ -263,7 +263,7 @@ impl TokenTree {
                     let label: String = self.tokens[undefined_reference]
                         .children
                         .iter()
-                        .map(|&c| self.tokens[c].text.as_str())
+                        .map(|&c| self.text(c))
                         .collect();
                     let is_shortcut = kind == "undefinedReferenceShortcut";
                     add_reference_to_dictionary(&mut data, id, &label, is_shortcut);
@@ -305,7 +305,7 @@ impl TokenTree {
             let mut next = Vec::new();
             for t in tokens {
                 for &c in &self.tokens[t].children {
-                    if kinds.contains(&self.tokens[c].kind.as_str()) {
+                    if kinds.contains(&self.tokens[c].kind) {
                         next.push(c);
                     }
                 }
@@ -319,7 +319,7 @@ impl TokenTree {
     pub fn parent_of_type(&self, id: TokenId, kinds: &[&str]) -> Option<TokenId> {
         let mut cur = self.tokens[id].parent;
         while let Some(p) = cur {
-            if kinds.contains(&self.tokens[p].kind.as_str()) {
+            if kinds.contains(&self.tokens[p].kind) {
                 return Some(p);
             }
             cur = self.tokens[p].parent;
@@ -335,12 +335,12 @@ impl TokenTree {
             .iter()
             .find(|&&c| {
                 matches!(
-                    self.tokens[c].kind.as_str(),
+                    self.tokens[c].kind,
                     "atxHeadingSequence" | "setextHeadingLine"
                 )
             })
             .expect("heading has a sequence child");
-        let text = &self.tokens[*sequence].text;
+        let text = self.text(*sequence);
         if text.starts_with('#') {
             level = text.chars().count().min(6);
         } else if text.starts_with('-') {
@@ -376,7 +376,7 @@ impl TokenTree {
         for t in self.descendants_by_type(id, &[&["atxHeadingText", "setextHeadingText"]]) {
             for &c in &self.tokens[t].children {
                 if self.tokens[c].kind != "htmlText" {
-                    text.push_str(&self.tokens[c].text);
+                    text.push_str(self.text(c));
                 }
             }
         }
@@ -386,7 +386,7 @@ impl TokenTree {
     /// 원본 `isHtmlFlowComment`: HTML 주석을 담은 htmlFlow 토큰인지.
     pub fn is_html_flow_comment(&self, id: TokenId) -> bool {
         let token = &self.tokens[id];
-        let text = token.text.as_str();
+        let text = self.text(id);
         if token.kind == "htmlFlow" && text.starts_with("<!--") && text.ends_with("-->") {
             // JS `slice(4, -3)` 은 짧은 문자열에서 빈 문자열을 준다.
             let comment = if text.len() >= 7 {
@@ -409,7 +409,7 @@ impl TokenTree {
         if token.kind != "htmlText" {
             return None;
         }
-        let name = HTML_TAG_NAME_RE.captures(&token.text)?[1].to_string();
+        let name = HTML_TAG_NAME_RE.captures(self.text(id))?[1].to_string();
         let close = name.starts_with('/');
         Some(HtmlTagInfo {
             close,
@@ -434,7 +434,7 @@ impl TokenTree {
         for &c in &self.tokens[children[0]].children {
             self.collect(c, &["resourceDestinationString"], &mut destinations);
         }
-        destinations.len() == 1 && self.tokens[destinations[0]].text.starts_with("#tab/")
+        destinations.len() == 1 && self.text(destinations[0]).starts_with("#tab/")
     }
 
     /// 원본 `getBlockQuotePrefixText`: 주어진 토큰들에서 해당 줄의 blockQuotePrefix,
@@ -454,13 +454,13 @@ impl TokenTree {
             .filter(|&&id| {
                 !self.tokens[id].in_html_flow && self.tokens[id].start_line == line_number
             })
-            .map(|&id| self.tokens[id].text.as_str())
+            .map(|&id| self.text(id))
             .collect();
         format!("{}\n", joined.trim_end()).repeat(count)
     }
 
     fn collect(&self, id: TokenId, kinds: &[&str], out: &mut Vec<TokenId>) {
-        if kinds.contains(&self.tokens[id].kind.as_str()) {
+        if kinds.contains(&self.tokens[id].kind) {
             out.push(id);
         }
         for &c in &self.tokens[id].children {

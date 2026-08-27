@@ -2,99 +2,63 @@
 
 #[derive(Debug, Clone)]
 pub(super) struct Node {
-    pub kind: String,
+    pub kind: &'static str,
     pub start_line: usize,
     pub start_column: usize,
     pub end_line: usize,
     pub end_column: usize,
+    /// `TokenTree::sources` 인덱스. 본문은 `sources[src][start..end]`.
+    pub src: usize,
     pub start: usize,
     pub end: usize,
-    pub text: String,
     pub children: Vec<Node>,
 }
 
 impl Node {
-    fn wrapper(kind: &str, inner: Node) -> Node {
+    fn wrapper(kind: &'static str, inner: Node) -> Node {
         Node {
-            kind: kind.to_string(),
+            kind,
             start_line: inner.start_line,
             start_column: inner.start_column,
             end_line: inner.end_line,
             end_column: inner.end_column,
+            src: inner.src,
             start: inner.start,
             end: inner.end,
-            text: inner.text.clone(),
             children: vec![inner],
         }
     }
-}
 
-/// markdown-rs `Name` (Debug 문자열) → micromark 타입 이름
-fn rename(name: &str) -> &str {
-    match name {
-        "HeadingAtx" => "atxHeading",
-        "HeadingAtxSequence" => "atxHeadingSequence",
-        "HeadingAtxText" => "atxHeadingText",
-        "HeadingSetext" => "setextHeading",
-        "HeadingSetextText" => "setextHeadingText",
-        "HeadingSetextUnderline" => "setextHeadingLine",
-        "HeadingSetextUnderlineSequence" => "setextHeadingLineSequence",
-        "BlankLineEnding" => "lineEndingBlank",
-        "CharacterEscapeMarker" => "escapeMarker",
-        "CharacterReferenceMarkerSemi" => "characterReferenceMarker",
-        "CodeFlowChunk" => "codeFlowValue",
-        "MathFlowChunk" => "mathFlowValue",
-        "GfmTable" => "table",
-        "GfmTableBody" => "tableBody",
-        "GfmTableHead" => "tableHead",
-        "GfmTableRow" => "tableRow",
-        "GfmTableCellDivider" => "tableCellDivider",
-        "GfmTableCellText" => "tableContent",
-        "GfmTableDelimiterRow" => "tableDelimiterRow",
-        "GfmTableDelimiterCell" => "tableDelimiter",
-        "GfmTableDelimiterFiller" => "tableDelimiterFiller",
-        "GfmTableDelimiterMarker" => "tableDelimiterMarker",
-        "GfmTableCell" => "tableCell",
-        "GfmTableDelimiterCellValue" => "tableContent",
-        "GfmAutolinkLiteralProtocol" => "literalAutolinkHttp",
-        "GfmAutolinkLiteralWww" => "literalAutolinkWww",
-        "GfmAutolinkLiteralEmail" => "literalAutolinkEmail",
-        "SpaceOrTab" => "spaceOrTab",
-        _ => "",
+    fn text<'a>(&self, text: &'a str) -> &'a str {
+        &text[self.start..self.end]
     }
-}
-
-fn camel(name: &str) -> String {
-    let mut s = String::with_capacity(name.len());
-    let mut chars = name.chars();
-    if let Some(c) = chars.next() {
-        s.extend(c.to_lowercase());
-    }
-    s.extend(chars);
-    s
 }
 
 const HOIST: &[&str] = &["labelLink", "labelImage", "labelEnd"];
 
-pub(super) fn adapt(nodes: Vec<Node>, text: &str, line_delta: usize) -> Vec<Node> {
+pub(super) fn adapt(
+    nodes: Vec<Node>,
+    text: &str,
+    line_delta: usize,
+    sources: &mut Vec<String>,
+) -> Vec<Node> {
     let mut nodes = nodes;
-    rename_all(&mut nodes);
     demote_autolinks(&mut nodes, text, false);
     let mut nodes = restructure(nodes, "root", false);
-    fix_code_text(&mut nodes);
+    fix_code_text(&mut nodes, text);
     classify_whitespace(&mut nodes, "root", &[]);
     extend_line_endings(&mut nodes, "root", false);
     fix_list_spans(&mut nodes);
     merge_content(&mut nodes);
-    reparse_html_flow(&mut nodes, text, line_delta);
+    reparse_html_flow(&mut nodes, text, line_delta, sources);
     nodes
 }
 
 /// micromark `resolveCodeText`: 인접 codeTextData 병합 후, 양끝이 공백/줄바꿈이고
 /// 사이에 내용이 있으면 한 글자씩 codeTextPadding 으로 분리한다.
-fn fix_code_text(nodes: &mut [Node]) {
+fn fix_code_text(nodes: &mut [Node], text: &str) {
     for n in nodes.iter_mut() {
-        fix_code_text(&mut n.children);
+        fix_code_text(&mut n.children, text);
     }
     for n in nodes.iter_mut() {
         if n.kind != "codeText" {
@@ -113,7 +77,6 @@ fn fix_code_text(nodes: &mut [Node]) {
                 cur.end_line = nx.end_line;
                 cur.end_column = nx.end_column;
                 cur.end = nx.end;
-                cur.text.push_str(&nx.text);
             } else {
                 k += 1;
             }
@@ -124,14 +87,14 @@ fn fix_code_text(nodes: &mut [Node]) {
         }
         let (h, t) = (1, kids.len() - 2);
         let head_pad = kids[h].kind == "lineEnding"
-            || (kids[h].kind == "codeTextData" && kids[h].text.starts_with(' '));
+            || (kids[h].kind == "codeTextData" && kids[h].text(text).starts_with(' '));
         let tail_pad = kids[t].kind == "lineEnding"
-            || (kids[t].kind == "codeTextData" && kids[t].text.ends_with(' '));
+            || (kids[t].kind == "codeTextData" && kids[t].text(text).ends_with(' '));
         if !head_pad || !tail_pad {
             continue;
         }
         // 패딩 1 글자씩 제외한 내부에 공백 아닌 내용이 있어야 한다
-        let inner: String = kids[h..=t].iter().map(|c| c.text.as_str()).collect();
+        let inner: String = kids[h..=t].iter().map(|c| c.text(text)).collect();
         if inner.len() < 2
             || inner[1..inner.len() - 1]
                 .trim_matches([' ', '\n', '\r'])
@@ -140,40 +103,38 @@ fn fix_code_text(nodes: &mut [Node]) {
             continue;
         }
         // 꼬리 먼저 처리 (인덱스 보존)
-        if kids[t].kind == "lineEnding" || kids[t].text == " " {
-            kids[t].kind = "codeTextPadding".into();
+        if kids[t].kind == "lineEnding" || kids[t].text(text) == " " {
+            kids[t].kind = "codeTextPadding";
         } else {
             let d = &mut kids[t];
-            d.text.pop();
             d.end -= 1;
             d.end_column -= 1;
             let pad = Node {
-                kind: "codeTextPadding".into(),
+                kind: "codeTextPadding",
                 start_line: d.end_line,
                 start_column: d.end_column,
                 end_line: d.end_line,
                 end_column: d.end_column + 1,
+                src: d.src,
                 start: d.end,
                 end: d.end + 1,
-                text: " ".into(),
                 children: Vec::new(),
             };
             kids.insert(t + 1, pad);
         }
-        if kids[h].kind == "lineEnding" || kids[h].text == " " {
-            kids[h].kind = "codeTextPadding".into();
+        if kids[h].kind == "lineEnding" || kids[h].text(text) == " " {
+            kids[h].kind = "codeTextPadding";
         } else {
             let d = &mut kids[h];
-            d.text.remove(0);
             let pad = Node {
-                kind: "codeTextPadding".into(),
+                kind: "codeTextPadding",
                 start_line: d.start_line,
                 start_column: d.start_column,
                 end_line: d.start_line,
                 end_column: d.start_column + 1,
+                src: d.src,
                 start: d.start,
                 end: d.start + 1,
-                text: " ".into(),
                 children: Vec::new(),
             };
             d.start += 1;
@@ -190,7 +151,7 @@ fn demote_autolinks(nodes: &mut [Node], text: &str, in_label: bool) {
         if n.kind.starts_with("literalAutolink")
             && (in_label || (n.start > 0 && text.as_bytes()[n.start - 1] == b'['))
         {
-            n.kind = "data".into();
+            n.kind = "data";
             n.children.clear();
         }
         let label = in_label || n.kind == "label";
@@ -203,14 +164,14 @@ fn demote_autolinks(nodes: &mut [Node], text: &str, in_label: bool) {
 /// 블록이 그 줄에서 끝났으면(다음이 새 블록/컨테이너) 이어지지 않는다.
 fn extend_line_endings(nodes: &mut [Node], parent: &str, interrupt: bool) {
     for i in 0..nodes.len() {
-        let kind = nodes[i].kind.clone();
+        let kind = nodes[i].kind;
         // table 이 문단을 인터럽트하며 시작했는지: tableHead 내부 lineEnding 확장 여부를 가른다
         let child_interrupt = if kind == "table" {
             let mut k = i;
             let mut found = false;
             while k > 0 {
                 k -= 1;
-                match nodes[k].kind.as_str() {
+                match nodes[k].kind {
                     "blockQuotePrefix" | "listItemIndent" | "linePrefix" | "lineEnding" => {}
                     other => {
                         found = other == "content";
@@ -224,7 +185,7 @@ fn extend_line_endings(nodes: &mut [Node], parent: &str, interrupt: bool) {
         } else {
             false
         };
-        extend_line_endings(&mut nodes[i].children, &kind, child_interrupt);
+        extend_line_endings(&mut nodes[i].children, kind, child_interrupt);
     }
     for i in 0..nodes.len() {
         if nodes[i].kind != "lineEnding" {
@@ -232,18 +193,16 @@ fn extend_line_endings(nodes: &mut [Node], parent: &str, interrupt: bool) {
         }
         let mut j = i + 1;
         let mut last_container = None;
-        while nodes.get(j).is_some_and(|c| {
-            matches!(
-                c.kind.as_str(),
-                "blockQuotePrefix" | "listItemIndent" | "linePrefix"
-            )
-        }) {
+        while nodes
+            .get(j)
+            .is_some_and(|c| matches!(c.kind, "blockQuotePrefix" | "listItemIndent" | "linePrefix"))
+        {
             if nodes[j].kind != "linePrefix" {
                 last_container = Some(j);
             }
             j += 1;
         }
-        let next = nodes.get(j).map(|c| c.kind.as_str()).unwrap_or("");
+        let next = nodes.get(j).map(|c| c.kind).unwrap_or("");
         // 다음 줄이 빈 줄(또는 부모의 끝)이면 flow linePrefix 까지 포함해 이어지고,
         // 플로우 내용이 이어지면 컨테이너 접두까지만 이어진다.
         let blank_next = next == "lineEndingBlank" || next.is_empty();
@@ -285,8 +244,8 @@ fn extend_line_endings(nodes: &mut [Node], parent: &str, interrupt: bool) {
     }
 }
 
-pub(super) fn is_html_flow_comment(n: &Node) -> bool {
-    let t = n.text.as_str();
+pub(super) fn is_html_flow_comment(n: &Node, text: &str) -> bool {
+    let t = n.text(text);
     if n.kind == "htmlFlow" && t.starts_with("<!--") && t.ends_with("-->") && t.len() >= 7 {
         let c = &t[4..t.len() - 3];
         return !c.starts_with('>') && !c.starts_with("->") && !c.ends_with('-');
@@ -295,17 +254,21 @@ pub(super) fn is_html_flow_comment(n: &Node) -> bool {
 }
 
 /// 원본 markdownlint: htmlFlow 는 codeIndented/htmlFlow 를 끈 채 해당 줄들을 재파싱해 자식으로 붙인다.
-fn reparse_html_flow(nodes: &mut [Node], text: &str, line_delta: usize) {
+fn reparse_html_flow(nodes: &mut [Node], text: &str, line_delta: usize, sources: &mut Vec<String>) {
     for n in nodes.iter_mut() {
-        if n.kind == "htmlFlow" && !is_html_flow_comment(n) {
+        if n.kind == "htmlFlow" && !is_html_flow_comment(n, text) {
             // `\r\n` 을 줄바꿈 하나로 세야 CRLF 파일에서 줄 범위가 맞는다.
             let lines = crate::fix::split_lines(text);
             let lo = n.start_line - line_delta - 1;
             let hi = n.end_line - line_delta;
             let sub = lines[lo..hi.min(lines.len())].join("\n");
-            n.children = super::build::parse_nodes(&sub, false, n.start_line - 1);
+            // 재파싱 본문은 원문과 다를 수 있으므로(CRLF) 별도 source 로 보관한다
+            let src = sources.len();
+            sources.push(String::new());
+            n.children = super::build::parse_nodes(&sub, false, n.start_line - 1, src, sources);
+            sources[src] = sub;
         } else {
-            reparse_html_flow(&mut n.children, text, line_delta);
+            reparse_html_flow(&mut n.children, text, line_delta, sources);
         }
     }
 }
@@ -337,7 +300,6 @@ fn take_leading_ws(n: &mut Node) -> Option<Node> {
     };
     n.start_line = ws.end_line;
     n.start_column = ws.end_column;
-    n.text = n.text.split_off(ws.end - n.start);
     n.start = ws.end;
     Some(ws)
 }
@@ -351,22 +313,10 @@ fn mark_leading_ws_line_prefix(n: &mut Node) {
             return;
         }
         if first.kind == "spaceOrTab" {
-            first.kind = "linePrefix".into();
+            first.kind = "linePrefix";
             return;
         }
         cur = first;
-    }
-}
-
-fn rename_all(nodes: &mut [Node]) {
-    for n in nodes.iter_mut() {
-        let r = rename(&n.kind);
-        n.kind = if r.is_empty() {
-            camel(&n.kind)
-        } else {
-            r.to_string()
-        };
-        rename_all(&mut n.children);
     }
 }
 
@@ -374,20 +324,20 @@ fn rename_all(nodes: &mut [Node]) {
 fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
     let mut out: Vec<Node> = Vec::new();
     for mut n in nodes {
-        let kind = n.kind.clone();
+        let kind = n.kind;
         n.children = restructure(
             std::mem::take(&mut n.children),
-            &kind,
+            kind,
             in_head || kind == "tableHead",
         );
         // 플로우 구성요소 앞 들여쓰기는 linePrefix 로 밖에 둔다 (중첩 첫 자식 체인 포함)
-        if FLOW_WITH_PREFIX.contains(&kind.as_str())
+        if FLOW_WITH_PREFIX.contains(&kind)
             && let Some(mut ws) = take_leading_ws(&mut n)
         {
-            ws.kind = "linePrefix".into();
+            ws.kind = "linePrefix";
             out.push(ws);
         }
-        match kind.as_str() {
+        match kind {
             "literalAutolinkHttp" | "literalAutolinkWww" | "literalAutolinkEmail" => {
                 out.push(Node::wrapper("literalAutolink", n))
             }
@@ -395,8 +345,7 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
                 for k in 0..n.children.len() {
                     if n.children[k].kind == "spaceOrTab" {
                         let after_le = k > 0 && n.children[k - 1].kind == "lineEnding";
-                        n.children[k].kind =
-                            if after_le { "linePrefix" } else { "lineSuffix" }.into();
+                        n.children[k].kind = if after_le { "linePrefix" } else { "lineSuffix" };
                     }
                 }
                 out.push(Node::wrapper("content", n));
@@ -414,14 +363,12 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
                         t.start_line = seq.start_line;
                         t.start_column = seq.start_column;
                         t.start = seq.start;
-                        t.text = format!("{}{}", seq.text, t.text);
                         if let Some(d) = t.children.first_mut()
                             && d.kind == "data"
                         {
                             d.start_line = seq.start_line;
                             d.start_column = seq.start_column;
                             d.start = seq.start;
-                            d.text = format!("{}{}", seq.text, d.text);
                         }
                     } else {
                         k += 1;
@@ -436,13 +383,11 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
                 // 첫 tableDelimiter 셀 안에 남는다.
                 let mut k = 0;
                 while k < n.children.len() {
-                    if matches!(
-                        n.children[k].kind.as_str(),
-                        "setextHeadingLine" | "tableRow"
-                    ) && (kind == "tableBody" || n.children[k].start != n.start)
+                    if matches!(n.children[k].kind, "setextHeadingLine" | "tableRow")
+                        && (kind == "tableBody" || n.children[k].start != n.start)
                         && let Some(mut ws) = take_leading_ws(&mut n.children[k])
                     {
-                        ws.kind = "linePrefix".into();
+                        ws.kind = "linePrefix";
                         n.children.insert(k, ws);
                         k += 1;
                     } else if n.children[k].kind == "tableDelimiterRow" {
@@ -469,16 +414,16 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
             "gfmFootnoteCall" => {
                 fn flatten_call(children: Vec<Node>, out: &mut Vec<Node>) {
                     for mut c in children {
-                        match c.kind.as_str() {
+                        match c.kind {
                             "label" | "gfmFootnoteCallLabel" => {
                                 flatten_call(std::mem::take(&mut c.children), out)
                             }
                             "labelMarker" => {
-                                c.kind = "gfmFootnoteCallLabelMarker".into();
+                                c.kind = "gfmFootnoteCallLabelMarker";
                                 out.push(c);
                             }
                             "labelText" => {
-                                c.kind = "gfmFootnoteCallString".into();
+                                c.kind = "gfmFootnoteCallString";
                                 out.push(c);
                             }
                             _ => out.push(c),
@@ -493,7 +438,7 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
             "gfmFootnoteDefinitionPrefix" => {
                 for c in n.children.iter_mut() {
                     if c.kind == "spaceOrTab" {
-                        c.kind = "gfmFootnoteDefinitionWhitespace".into();
+                        c.kind = "gfmFootnoteDefinitionWhitespace";
                     }
                 }
                 out.extend(n.children);
@@ -503,7 +448,7 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
                 // 첫 아이템의 prefix 앞 공백은 리스트 밖(앞)으로 나간다. 호출부(list)에서 처리.
                 for c in n.children.iter_mut() {
                     if c.kind == "spaceOrTab" {
-                        c.kind = "listItemIndent".into();
+                        c.kind = "listItemIndent";
                     }
                 }
                 // prefix 바로 앞 공백은 linePrefix
@@ -512,7 +457,7 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
                     && p > 0
                     && n.children[p - 1].kind == "listItemIndent"
                 {
-                    n.children[p - 1].kind = "linePrefix".into();
+                    n.children[p - 1].kind = "linePrefix";
                 }
                 out.extend(n.children);
             }
@@ -520,7 +465,7 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
                 // 리스트 직속 공백(아이템 사이 continuation) → listItemIndent
                 for c in n.children.iter_mut() {
                     if c.kind == "spaceOrTab" {
-                        c.kind = "listItemIndent".into();
+                        c.kind = "listItemIndent";
                     }
                 }
                 // 첫 아이템 prefix 앞 linePrefix 는 리스트 앞으로
@@ -538,11 +483,7 @@ fn restructure(nodes: Vec<Node>, parent: &str, in_head: bool) -> Vec<Node> {
             }
             "paragraph" if parent != "setextHeading" => out.push(Node::wrapper("content", n)),
             "tableCell" => {
-                n.kind = if in_head {
-                    "tableHeader".into()
-                } else {
-                    "tableData".into()
-                };
+                n.kind = if in_head { "tableHeader" } else { "tableData" };
                 out.push(n);
             }
             _ => out.push(n),
@@ -577,7 +518,7 @@ fn line_start_kind(nodes: &[Node], i: usize, chain: &[Container]) -> &'static st
     while k > 0
         && nodes[k].start_column != 1
         && matches!(
-            nodes[k - 1].kind.as_str(),
+            nodes[k - 1].kind,
             "spaceOrTab" | "listItemIndent" | "linePrefix" | "blockQuotePrefix"
         )
     {
@@ -605,24 +546,20 @@ fn line_start_kind(nodes: &[Node], i: usize, chain: &[Container]) -> &'static st
 
 fn classify_whitespace(nodes: &mut [Node], parent: &str, chain: &[Container]) {
     for i in 0..nodes.len() {
-        let kind = nodes[i].kind.clone();
+        let kind = nodes[i].kind;
         let mut child_chain = chain.to_vec();
-        child_chain.extend(container_of(&kind));
-        classify_whitespace(&mut nodes[i].children, &kind, &child_chain);
+        child_chain.extend(container_of(kind));
+        classify_whitespace(&mut nodes[i].children, kind, &child_chain);
         if kind == "listItemIndent" && matches!(parent, "listUnordered" | "listOrdered") {
             // restructure 에서 일괄 변환된 리스트 직속 들여쓰기를 컨테이너 순서로 다시 배정
-            nodes[i].kind = line_start_kind(nodes, i, chain).into();
+            nodes[i].kind = line_start_kind(nodes, i, chain);
             continue;
         }
         if kind != "spaceOrTab" {
             continue;
         }
-        let prev = if i > 0 {
-            nodes[i - 1].kind.as_str()
-        } else {
-            ""
-        };
-        let next = nodes.get(i + 1).map(|n| n.kind.as_str()).unwrap_or("");
+        let prev = if i > 0 { nodes[i - 1].kind } else { "" };
+        let next = nodes.get(i + 1).map(|n| n.kind).unwrap_or("");
         let at_line_start = nodes[i].start_column == 1
             || matches!(prev, "blockQuotePrefix" | "listItemIndent" | "linePrefix")
             || prev == "lineEnding";
@@ -640,14 +577,14 @@ fn classify_whitespace(nodes: &mut [Node], parent: &str, chain: &[Container]) {
             _ if next == "lineEnding" || next.is_empty() => "lineSuffix",
             _ => "whitespace",
         };
-        nodes[i].kind = new.into();
+        nodes[i].kind = new;
     }
 }
 
 /// micromark 가 `_container` 로 표시하는 토큰: postprocess 의 exit 이동 대상.
 fn is_list(n: &Node) -> bool {
     matches!(
-        n.kind.as_str(),
+        n.kind,
         "listUnordered" | "listOrdered" | "gfmFootnoteDefinition"
     )
 }
@@ -655,7 +592,7 @@ fn is_list(n: &Node) -> bool {
 /// 노드가 (컨테이너를 파고들었을 때) 문단 content 로 끝나는가.
 /// 그 경우 micromark 문단 lazy 연속 검사가 다음 줄 접두까지 lineEnding 을 소비한다.
 fn ends_with_content(n: &Node) -> bool {
-    match n.kind.as_str() {
+    match n.kind {
         "content" | "codeIndented" => true,
         "blockQuote" | "listUnordered" | "listOrdered" => n
             .children
@@ -663,7 +600,7 @@ fn ends_with_content(n: &Node) -> bool {
             .rev()
             .find(|c| {
                 !matches!(
-                    c.kind.as_str(),
+                    c.kind,
                     "lineEnding"
                         | "lineEndingBlank"
                         | "linePrefix"
@@ -704,7 +641,7 @@ fn fix_list_spans(nodes: &mut Vec<Node>) {
                 .get(i + 1)
                 .is_some_and(|c| c.kind == "lineEndingBlank" && c.start == nodes[i].end)
         {
-            nodes[i + 1].kind = "lineEnding".into();
+            nodes[i + 1].kind = "lineEnding";
         }
         if !is_list(&nodes[i]) {
             i += 1;
@@ -713,7 +650,7 @@ fn fix_list_spans(nodes: &mut Vec<Node>) {
         // 1. 이동 전 상태 복원: 뒤따르는 접두류 흡수
         while nodes.get(i + 1).is_some_and(|c| {
             matches!(
-                c.kind.as_str(),
+                c.kind,
                 "lineEnding" | "linePrefix" | "listItemIndent" | "blockQuotePrefix"
             )
         }) {
@@ -724,7 +661,7 @@ fn fix_list_spans(nodes: &mut Vec<Node>) {
         // blockQuotePrefix 도 건너뛰어 백데이트한다.
         let allow_bq = nodes.get(i + 1).is_some_and(|c| {
             !matches!(
-                c.kind.as_str(),
+                c.kind,
                 "lineEndingBlank"
                     | "listUnordered"
                     | "listOrdered"
@@ -737,16 +674,16 @@ fn fix_list_spans(nodes: &mut Vec<Node>) {
         let mut k = children.len();
         while k > 0 {
             k -= 1;
-            match children[k].kind.as_str() {
+            match children[k].kind {
                 "lineEnding" | "lineEndingBlank" => {
                     // 빈 인용 줄(`>` 만 있는 줄) 끝의 blank 에서는 멈춘다
                     let stop = children[k].kind == "lineEndingBlank"
                         && k > 0
                         && children[k - 1].kind == "blockQuotePrefix";
                     if let Some(prev) = line_index {
-                        children[prev].kind = "lineEndingBlank".into();
+                        children[prev].kind = "lineEndingBlank";
                     }
-                    children[k].kind = "lineEnding".into();
+                    children[k].kind = "lineEnding";
                     line_index = Some(k);
                     if stop {
                         break;
@@ -774,7 +711,7 @@ fn fix_list_spans(nodes: &mut Vec<Node>) {
             .get(i + 1)
             .is_some_and(|c| c.kind == "lineEndingBlank" && c.start == nodes[i].end)
         {
-            nodes[i + 1].kind = "lineEnding".into();
+            nodes[i + 1].kind = "lineEnding";
         }
         i += 1;
     }

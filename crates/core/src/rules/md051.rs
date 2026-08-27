@@ -72,9 +72,9 @@ fn convert_heading_to_html_fragment(tokens: &TokenTree, heading_text: TokenId) -
     let inline_text: String = tokens
         .filter_by_predicate(
             &tokens.get(heading_text).children,
-            |t, id| TOKENS_INCLUDE.contains(&t.get(id).kind.as_str()),
+            |t, id| TOKENS_INCLUDE.contains(&t.get(id).kind),
             |t, id| {
-                if CHILDREN_EXCLUDE.contains(&t.get(id).kind.as_str()) {
+                if CHILDREN_EXCLUDE.contains(&t.get(id).kind) {
                     vec![]
                 } else {
                     t.get(id).children.clone()
@@ -82,7 +82,7 @@ fn convert_heading_to_html_fragment(tokens: &TokenTree, heading_text: TokenId) -
             },
         )
         .into_iter()
-        .map(|id| tokens.get(id).text.as_str())
+        .map(|id| tokens.text(id))
         .collect();
     format!(
         "#{}",
@@ -99,7 +99,7 @@ fn convert_heading_to_html_fragment(tokens: &TokenTree, heading_text: TokenId) -
 fn filter_children_by_types(tokens: &TokenTree, token: TokenId, types: &[&str]) -> Vec<TokenId> {
     tokens.filter_by_predicate(
         &tokens.get(token).children,
-        |t, id| types.contains(&t.get(id).kind.as_str()) && !t.get(id).in_html_flow,
+        |t, id| types.contains(&t.get(id).kind) && !t.get(id).in_html_flow,
         |t, id| t.get(id).children.clone(),
     )
 }
@@ -108,7 +108,7 @@ fn filter_children_by_types(tokens: &TokenTree, token: TokenId, types: &[&str]) 
 fn unescape_string_token_text(tokens: &TokenTree, token: TokenId) -> String {
     filter_children_by_types(tokens, token, &["characterEscapeValue", "data"])
         .into_iter()
-        .map(|child| tokens.get(child).text.as_str())
+        .map(|child| tokens.text(child))
         .collect()
 }
 
@@ -149,7 +149,7 @@ impl Rule for Md051 {
                     fragments.set(format!("{fragment}-{count}"), 0);
                 }
                 fragments.set(fragment, count + 1);
-                for m in ANCHOR_RE.captures_iter(&ctx.tokens.get(heading_text).text) {
+                for m in ANCHOR_RE.captures_iter(ctx.tokens.text(heading_text)) {
                     let anchor = &m[1];
                     if !fragments.contains_key(anchor) {
                         fragments.set(anchor.to_string(), 1);
@@ -166,7 +166,7 @@ impl Rule for Md051 {
             if html_tag_info.close {
                 continue;
             }
-            let text = &ctx.tokens.get(token).text;
+            let text = ctx.tokens.text(token);
             let anchor_match = ID_RE.captures(text).or_else(|| {
                 if html_tag_info.name.to_lowercase() == "a" {
                     NAME_RE.captures(text)
@@ -222,7 +222,7 @@ impl Rule for Md051 {
                         let mut range = None;
                         let mut fix_info = None;
                         if link_token.start_line == link_token.end_line {
-                            context = Some(link_token.text.as_str());
+                            context = Some(ctx.tokens.text(link));
                             range = Some((
                                 link_token.start_column,
                                 link_token.end_column - link_token.start_column,

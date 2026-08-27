@@ -51,8 +51,8 @@ impl Rule for Md027 {
             }
 
             let allowed_by_list_items = include_list_items || {
-                let next_is_list = sibling_at(1)
-                    .is_some_and(|id| LIST_TYPES.contains(&tokens.get(id).kind.as_str()));
+                let next_is_list =
+                    sibling_at(1).is_some_and(|id| LIST_TYPES.contains(&tokens.get(id).kind));
                 !next_is_list && tokens.parent_of_type(token_id, LIST_TYPES).is_none()
             };
 
@@ -62,7 +62,7 @@ impl Rule for Md027 {
 
             let start_column = token.start_column;
             let start_line = token.start_line;
-            let length = token.text.chars().count();
+            let length = tokens.text_of(token).chars().count();
             let line = ctx.lines[start_line - 1];
             out.add_error_context(
                 start_line,

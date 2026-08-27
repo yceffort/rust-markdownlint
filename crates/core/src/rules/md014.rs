@@ -42,7 +42,7 @@ impl Rule for Md014 {
                 .iter()
                 .filter_map(|code_flow_value| {
                     DOLLAR_COMMAND_RE
-                        .captures(&code_flow_value.text)
+                        .captures(ctx.tokens.text_of(code_flow_value))
                         .map(|result| (result, *code_flow_value))
                 })
                 .collect();
@@ -54,7 +54,7 @@ impl Rule for Md014 {
                     let length = result.get(2).map_or(0, |m| m.as_str().chars().count());
                     out.add_error_context(
                         code_flow_value.start_line,
-                        &code_flow_value.text,
+                        ctx.tokens.text_of(code_flow_value),
                         false,
                         false,
                         Some((column, length)),

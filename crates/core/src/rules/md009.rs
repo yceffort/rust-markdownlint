@@ -64,7 +64,7 @@ impl Rule for Md009 {
                 let mut trailing_indent = true;
                 for &child_id in list_block.children.iter().rev() {
                     let child = tokens.get(child_id);
-                    match child.kind.as_str() {
+                    match child.kind {
                         "content" => trailing_indent = false,
                         "listItemIndent" if trailing_indent => {
                             list_item_line_numbers.remove(&child.start_line);
