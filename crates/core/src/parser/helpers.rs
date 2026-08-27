@@ -284,8 +284,7 @@ impl TokenTree {
     pub fn filter_by_types_html_flow(&self, kinds: &[&str], html_flow: bool) -> Vec<TokenId> {
         let mut out: Vec<TokenId> = kinds
             .iter()
-            .filter_map(|kind| self.by_kind.get(*kind))
-            .flatten()
+            .flat_map(|kind| self.ids_of_kind(kind))
             .copied()
             .collect();
         if kinds.len() > 1 {

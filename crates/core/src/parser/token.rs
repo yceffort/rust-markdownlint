@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use super::kinds::Kind;
 
 pub type TokenId = usize;
 
@@ -7,6 +7,8 @@ pub type TokenId = usize;
 #[derive(Debug, Clone)]
 pub struct Token {
     pub kind: &'static str,
+    /// `kind` 의 판별값. 종류별 인덱스가 문자열 해시 대신 이걸로 배열을 찾는다.
+    pub(crate) kind_id: Kind,
     pub start_line: usize,
     pub start_column: usize,
     pub end_line: usize,
@@ -26,8 +28,8 @@ pub struct TokenTree {
     pub roots: Vec<TokenId>,
     /// `sources[0]` 은 원문, 나머지는 htmlFlow 재파싱에 쓴 본문 (CRLF 파일에서는 원문과 다르다).
     pub(crate) sources: Vec<String>,
-    /// 종류별 토큰 id (오름차순 = 문서 순서). `filter_by_types` 가 트리를 다시 걷지 않게 한다.
-    pub(crate) by_kind: HashMap<&'static str, Vec<TokenId>>,
+    /// `Kind` 판별값별 토큰 id (오름차순 = 문서 순서). `filter_by_types` 가 트리를 다시 걷지 않게 한다.
+    pub(crate) by_kind: Vec<Vec<TokenId>>,
 }
 
 impl TokenTree {
@@ -47,9 +49,17 @@ impl TokenTree {
 
     /// `tokens` 가 확정된 뒤 한 번 호출. id 는 깊이 우선 선행 순서로 매겨져 있다.
     pub(crate) fn index_kinds(&mut self) {
-        self.by_kind.clear();
+        self.by_kind = vec![Vec::new(); Kind::COUNT];
         for (id, token) in self.tokens.iter().enumerate() {
-            self.by_kind.entry(token.kind).or_default().push(id);
+            self.by_kind[token.kind_id.index()].push(id);
+        }
+    }
+
+    /// 종류 이름으로 인덱스를 찾는다. 모르는 이름이면 빈 목록.
+    pub(crate) fn ids_of_kind(&self, kind: &str) -> &[TokenId] {
+        match Kind::from_name(kind) {
+            Some(k) if !self.by_kind.is_empty() => &self.by_kind[k.index()],
+            _ => &[],
         }
     }
 }
