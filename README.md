@@ -45,6 +45,7 @@ rust-markdownlint --config .markdownlint.yaml --configPointer /config "*.md"
 rust-markdownlint --no-globs "README.md"
 cat README.md | rust-markdownlint -          # lint stdin
 cat README.md | rust-markdownlint --format   # fix stdin and print the result to stdout
+cat docs/x.md | rust-markdownlint --stdin-filename docs/x.md -   # lint stdin with docs/ configuration
 rust-markdownlint --help
 ```
 
@@ -57,6 +58,7 @@ rust-markdownlint --help
 | `--fix` | Write fixable errors back to the files |
 | `--format` | Fix stdin and print it to stdout (no banner, progress, or results) |
 | `--no-globs` | Ignore `globs` from configuration files and use only the command line globs |
+| `--stdin-filename <path>` | Not in markdownlint-cli2. Report stdin as `<path>` and apply the configuration files of that directory (`.markdownlint-cli2.*`, `.markdownlint.*`, `ignores`), so editors can lint an unsaved buffer with the right settings. The file itself is neither read nor written, and if a glob also matches it only stdin is linted |
 | `--help` | Show help |
 
 - Configuration cascades per directory exactly like the original: `.markdownlint-cli2.{jsonc,yaml}` merges with the parent options, `.markdownlint.{jsonc,json,yaml,yml}` replaces the parent rule configuration.

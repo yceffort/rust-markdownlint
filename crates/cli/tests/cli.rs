@@ -138,6 +138,64 @@ fn stdin_and_file_sorted_together() {
         ));
 }
 
+/// `--stdin-filename` (cli2 에 없는 옵션): 결과 이름과 디렉토리 설정 계층을 그 경로 기준으로 한다.
+#[test]
+fn stdin_filename_applies_directory_config_and_sorts_by_name() {
+    let t = tree(&[
+        ("a.md", "#x\n"),
+        ("zz.md", "#x\n"),
+        (
+            "sub/.markdownlint-cli2.jsonc",
+            r#"{"config": {"MD041": false}}"#,
+        ),
+    ]);
+    cmd(t.path())
+        .args(["--stdin-filename", "sub/m.md", "-", "a.md", "zz.md"])
+        .write_stdin("#x\n")
+        .assert()
+        .code(1)
+        .stdout(format!(
+            "{BANNER}Finding: a.md zz.md\nLinting: 3 file(s)\nSummary: 5 error(s)\n"
+        ))
+        .stderr(format!(
+            "a.md:1:1 error {MD018}\na.md:1 error {MD041}\nsub/m.md:1:1 error {MD018}\nzz.md:1:1 error {MD018}\nzz.md:1 error {MD041}\n"
+        ));
+    assert!(!t.path().join("sub/m.md").exists());
+}
+
+/// 같은 경로가 glob 에도 매치되면 stdin 내용만 lint 하고 파일은 (`--fix` 여도) 건드리지 않는다.
+#[test]
+fn stdin_filename_shadows_matching_file() {
+    let t = tree(&[("sub/a.md", "# ok\n")]);
+    cmd(t.path())
+        .args(["--fix", "--stdin-filename", "sub/a.md", "-", "**/*.md"])
+        .write_stdin("#x\n")
+        .assert()
+        .code(1)
+        .stdout(format!(
+            "{BANNER}Finding: **/*.md\nLinting: 1 file(s)\nSummary: 2 error(s)\n"
+        ))
+        .stderr(format!(
+            "sub/a.md:1:1 error {MD018}\nsub/a.md:1 error {MD041}\n"
+        ));
+    assert_eq!(
+        fs::read_to_string(t.path().join("sub/a.md")).unwrap(),
+        "# ok\n"
+    );
+}
+
+#[test]
+fn stdin_filename_with_format_uses_directory_config() {
+    let t = tree(&[("sub/.markdownlint.jsonc", r#"{"MD018": false}"#)]);
+    cmd(t.path())
+        .args(["--format", "--stdin-filename", "sub/a.md"])
+        .write_stdin("#x")
+        .assert()
+        .code(0)
+        .stdout("#x\n")
+        .stderr("");
+}
+
 #[test]
 fn format_writes_fixed_to_stdout() {
     let t = tree(&[]);
