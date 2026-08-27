@@ -62,7 +62,7 @@ const MARKERS: [u8; 16] = [
 ///     ^
 /// ```
 pub fn start(tokenizer: &mut Tokenizer) -> State {
-    tokenizer.tokenize_state.markers = &MARKERS;
+    tokenizer.tokenize_state.set_markers(&MARKERS);
     tokenizer.attempt(
         State::Next(StateName::TextBefore),
         State::Next(StateName::TextBefore),

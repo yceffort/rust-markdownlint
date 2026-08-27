@@ -262,12 +262,52 @@ pub fn start(tokenizer: &mut Tokenizer) -> State {
             )
         {
             State::Retry(StateName::GfmTableBodyRowStart)
+        } else if !next_line_may_be_delimiter_row(
+            tokenizer.parse_state.bytes,
+            tokenizer.point.index,
+        ) {
+            // 로컬 패치: 헤드 행 시도는 모든 flow 줄을 바이트 단위로 끝까지 훑은 뒤
+            // 구분자 행이 없으면 실패한다. 구분자 행은 `|`, `-`, `:`, 공백만으로 이뤄지고
+            // `-` 를 하나 이상 포함해야 하므로(위 `head_delimiter_*` 상태), 다음 줄이 그 꼴이
+            // 아니면 시도 자체를 건너뛴다. 필요조건만 보므로 결과는 같다.
+            State::Nok
         } else {
             State::Retry(StateName::GfmTableHeadRowBefore)
         }
     } else {
         State::Nok
     }
+}
+
+/// `index` 가 속한 줄의 다음 줄이 테이블 구분자 행일 수 있는지. 컨테이너 접두(`>`, 공백)는
+/// 건너뛴다. 확신이 없으면 `true`.
+fn next_line_may_be_delimiter_row(bytes: &[u8], index: usize) -> bool {
+    let Some(eol) = bytes[index..]
+        .iter()
+        .position(|&b| b == b'\n' || b == b'\r')
+    else {
+        // 다음 줄이 없으면 구분자 행도 없다
+        return false;
+    };
+    let mut i = index + eol + 1;
+    if bytes.get(i - 1) == Some(&b'\r') && bytes.get(i) == Some(&b'\n') {
+        i += 1;
+    }
+    // 컨테이너 접두: 공백, 탭, `>`
+    while i < bytes.len() && matches!(bytes[i], b' ' | b'\t' | b'>') {
+        i += 1;
+    }
+    let mut dash = false;
+    while i < bytes.len() {
+        match bytes[i] {
+            b'-' => dash = true,
+            b'|' | b':' | b' ' | b'\t' => {}
+            b'\n' | b'\r' => break,
+            _ => return false,
+        }
+        i += 1;
+    }
+    dash
 }
 
 /// Before table head row.

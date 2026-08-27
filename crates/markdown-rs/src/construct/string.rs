@@ -28,7 +28,7 @@ const MARKERS: [u8; 2] = [b'&', b'\\'];
 ///        ^
 /// ````
 pub fn start(tokenizer: &mut Tokenizer) -> State {
-    tokenizer.tokenize_state.markers = &MARKERS;
+    tokenizer.tokenize_state.set_markers(&MARKERS);
     State::Retry(StateName::StringBefore)
 }
 

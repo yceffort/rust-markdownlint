@@ -247,6 +247,9 @@ pub struct TokenizeState<'a> {
     pub marker_b: u8,
     /// Several markers.
     pub markers: &'static [u8],
+    /// 로컬 패치: `markers` 의 256비트 집합. data 상태가 바이트마다 `contains` 로 선형 탐색하던
+    /// 것을 비트 검사로 바꾼다. `set_markers` 로만 갱신할 것.
+    pub markers_set: [u64; 4],
     /// Whether something was seen.
     pub seen: bool,
     /// Size.
@@ -271,6 +274,23 @@ pub struct TokenizeState<'a> {
     pub token_5: Name,
     /// Slot for an event name.
     pub token_6: Name,
+}
+
+impl TokenizeState<'_> {
+    /// `markers` 와 `markers_set` 을 함께 설정한다.
+    pub fn set_markers(&mut self, markers: &'static [u8]) {
+        self.markers = markers;
+        self.markers_set = [0; 4];
+        for &b in markers {
+            self.markers_set[(b >> 6) as usize] |= 1 << (b & 63);
+        }
+    }
+
+    /// `markers.contains(&byte)` 와 같다.
+    #[inline]
+    pub fn is_marker(&self, byte: u8) -> bool {
+        (self.markers_set[(byte >> 6) as usize] >> (byte & 63)) & 1 == 1
+    }
 }
 
 /// A tokenizer itself.
@@ -368,6 +388,7 @@ impl<'a> Tokenizer<'a> {
                 marker: 0,
                 marker_b: 0,
                 markers: &[],
+                markers_set: [0; 4],
                 labels: vec![],
                 seen: false,
                 size: 0,
@@ -628,7 +649,7 @@ impl<'a> Tokenizer<'a> {
         // Always capture (and restore) when checking.
         // No need to capture (and restore) when `nok` is `State::Nok`, because the
         // parent attempt will do it.
-        let progress = if nok == State::Nok {
+        let progress = if matches!(nok, State::Nok) {
             None
         } else {
             Some(self.capture())
@@ -736,7 +757,7 @@ fn push_impl(
             State::Error(_) => break,
             State::Ok | State::Nok => {
                 if let Some(attempt) = tokenizer.attempts.pop() {
-                    if attempt.kind == AttemptKind::Check || state == State::Nok {
+                    if attempt.kind == AttemptKind::Check || matches!(state, State::Nok) {
                         if let Some(progress) = attempt.progress {
                             tokenizer.free(progress);
                         }
@@ -744,7 +765,7 @@ fn push_impl(
 
                     tokenizer.consumed = true;
 
-                    let next = if state == State::Ok {
+                    let next = if matches!(state, State::Ok) {
                         attempt.ok
                     } else {
                         attempt.nok
