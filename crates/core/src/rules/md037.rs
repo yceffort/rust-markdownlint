@@ -80,7 +80,7 @@ impl Rule for Md037 {
             for emphasis_tokens in emphasis_tokens_by_marker.iter_mut() {
                 emphasis_tokens.clear();
             }
-            if !TEXT_PARENTS.contains(&ctx.tokens.get(token).kind.as_str()) {
+            if !TEXT_PARENTS.contains(&ctx.tokens.get(token).kind) {
                 continue;
             }
             for &child in &ctx.tokens.get(token).children {
@@ -89,7 +89,7 @@ impl Rule for Md037 {
                     continue;
                 }
                 // 합쳐진 data 안의 마커 연속을 원본의 bare 토큰으로 되살린다
-                let text = child_token.text.as_str();
+                let text = ctx.tokens.text(child);
                 let (mut byte_pos, mut utf16_pos) = (0, 0);
                 for run in MARKER_RUN_RE.find_iter(text) {
                     utf16_pos += text[byte_pos..run.start()].encode_utf16().count();

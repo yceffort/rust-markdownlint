@@ -36,7 +36,7 @@ impl Rule for Md045 {
                 .descendants_by_type(id, &[&["label"], &["labelText"]]);
             if label_texts
                 .iter()
-                .any(|&label_text| ctx.tokens.get(label_text).text.is_empty())
+                .any(|&label_text| ctx.tokens.text(label_text).is_empty())
             {
                 let range = (image.start_line == image.end_line)
                     .then(|| (image.start_column, image.end_column - image.start_column));
@@ -47,7 +47,7 @@ impl Rule for Md045 {
         // HTML 이미지 처리
         for id in ctx.tokens.filter_by_types_html_flow(&["htmlText"], true) {
             let html_text = ctx.tokens.get(id);
-            let text = &html_text.text;
+            let text = ctx.tokens.text(id);
             let Some(html_tag_info) = ctx.tokens.html_tag_info(id) else {
                 continue;
             };

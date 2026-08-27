@@ -11,7 +11,7 @@ fn atx_heading_tokens() {
         (1, 1, 1, 8)
     );
     let seq = tree.descendants_by_type(heads[0], &[&["atxHeadingSequence"]]);
-    assert_eq!(tree.get(seq[0]).text, "#");
+    assert_eq!(tree.text(seq[0]), "#");
     assert_eq!(tree.parent_of_type(seq[0], &["atxHeading"]), Some(heads[0]));
 }
 

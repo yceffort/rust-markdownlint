@@ -93,10 +93,10 @@ Rule configuration supports all 53 rules of markdownlint v0.40.0 (MD001 through 
 
 | Corpus | Machine | markdownlint-cli2 | rust-markdownlint | Ratio |
 |--------|---------|-------------------|-------------------|-------|
-| markdownlint `test/*.md`, 388 files, all rules | Apple M-series, 10 cores | 366.5 ± 7.0 | 57.5 ± 1.6 | 6.4x |
+| markdownlint `test/*.md`, 388 files, all rules | Apple M-series, 10 cores | 366.2 ± 2.8 | 55.1 ± 1.1 | 6.6x |
 | markdownlint `test/*.md`, 388 files, all rules | GitHub Actions ubuntu-latest | 1267.3 ± 90.4 | 178.4 ± 1.3 | 7.1x |
 | Same corpus copied 10 times, 3880 files | Apple M-series, 10 cores | 2956.7 ± 199.6 | 682.6 ± 10.0 | 4.3x |
-| A blog repository, `apps/blog/posts/**/*.md`, 441 posts (7.2 MB), project config | Apple M-series, 10 cores | 1475.0 ± 48.0 | 123.7 ± 6.3 | 11.9x |
+| [yceffort/blog](https://github.com/yceffort/blog), `apps/blog/posts/**/*.md`, 441 posts (7.2 MB), project config | Apple M-series, 10 cores | 1411.2 ± 17.5 | 105.0 ± 2.3 | 13.4x |
 | The same repository, `**/*.md` including `node_modules`, 20966 files (single run) | Apple M-series, 10 cores | 48306 | 14419 | 3.4x |
 
 The 388-file corpus is small enough that process startup dominates both tools. Parallel linting alone made the Rust binary 2.8x faster than its own sequential version on that corpus (159.8 ms to 57.5 ms) and 2.9x on the 10x corpus (1516 ms to 524 ms). Per-rule results and the parallelization comparison are in [bench/RESULTS.md](bench/RESULTS.md).

@@ -4,7 +4,7 @@ use regex::Regex;
 
 use super::{LintContext, Rule, RuleMeta};
 use crate::error::{ErrorSink, FixInfo};
-use crate::parser::{JS_WHITESPACE, Token};
+use crate::parser::{JS_WHITESPACE, Token, TokenTree};
 
 pub(crate) struct Md039;
 
@@ -44,10 +44,16 @@ static WHITESPACE_RUN_RE: LazyLock<Regex> = LazyLock::new(|| {
 });
 
 /// 원본 `addLabelSpaceError`: 링크 텍스트 공백 위반을 보고한다.
-fn add_label_space_error(out: &mut ErrorSink, label: &Token, label_text: &Token, is_start: bool) {
+fn add_label_space_error(
+    out: &mut ErrorSink,
+    tokens: &TokenTree,
+    label: &Token,
+    label_text: &Token,
+    is_start: bool,
+) {
     let re = if is_start { &START_RE } else { &END_RE };
     let matched = re
-        .find(&label_text.text)
+        .find(tokens.text_of(label_text))
         .map(|m| m.as_str().chars().count());
     let range = matched.map(|length| {
         (
@@ -66,7 +72,7 @@ fn add_label_space_error(out: &mut ErrorSink, label: &Token, label_text: &Token,
     };
     out.add_error_context(
         line,
-        &WHITESPACE_RUN_RE.replace_all(&label.text, " "),
+        &WHITESPACE_RUN_RE.replace_all(tokens.text_of(label), " "),
         is_start,
         !is_start,
         range,
@@ -103,11 +109,11 @@ impl Rule for Md039 {
                 .map(|&c| ctx.tokens.get(c))
                 .filter(|child| child.kind == "labelText");
             for label_text in label_texts {
-                if TRIM_START_RE.is_match(&label_text.text) {
-                    add_label_space_error(out, label, label_text, true);
+                if TRIM_START_RE.is_match(ctx.tokens.text_of(label_text)) {
+                    add_label_space_error(out, ctx.tokens, label, label_text, true);
                 }
-                if TRIM_END_RE.is_match(&label_text.text) {
-                    add_label_space_error(out, label, label_text, false);
+                if TRIM_END_RE.is_match(ctx.tokens.text_of(label_text)) {
+                    add_label_space_error(out, ctx.tokens, label, label_text, false);
                 }
             }
         }

@@ -106,13 +106,13 @@ impl Rule for Md044 {
         }
         let content_tokens = tokens.filter_by_predicate(
             &tokens.roots,
-            |t, id| scanned_types.contains(&t.get(id).kind.as_str()),
+            |t, id| scanned_types.contains(&t.get(id).kind),
             |t, id| {
                 t.get(id)
                     .children
                     .iter()
                     .copied()
-                    .filter(|&c| !IGNORED_CHILD_TYPES.contains(&t.get(c).kind.as_str()))
+                    .filter(|&c| !IGNORED_CHILD_TYPES.contains(&t.get(c).kind))
                     .collect()
             },
         );
@@ -122,12 +122,12 @@ impl Rule for Md044 {
             let name_re = name_re(name);
             for &id in &content_tokens {
                 let token = tokens.get(id);
-                for captures in name_re.captures_iter(&token.text) {
+                for captures in name_re.captures_iter(tokens.text(id)) {
                     let full = captures.get(0).expect("full match");
                     let left_match = captures.get(1).expect("leftMatch").as_str();
                     let name_match = captures.get(2).expect("nameMatch").as_str();
                     let column = token.start_column
-                        + token.text[..full.start()].chars().count()
+                        + tokens.text(id)[..full.start()].chars().count()
                         + left_match.chars().count();
                     let length = name_match.chars().count();
                     let line_number = token.start_line;
@@ -144,7 +144,7 @@ impl Rule for Md044 {
                     {
                         let mut autolink_ranges: Vec<FileRange> = Vec::new();
                         if !scanned_tokens.contains(&id) {
-                            let reparsed = crate::parser::parse(&token.text);
+                            let reparsed = crate::parser::parse(tokens.text(id));
                             autolink_ranges = reparsed
                                 .filter_by_types(&["literalAutolink"])
                                 .into_iter()

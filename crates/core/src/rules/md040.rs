@@ -43,12 +43,12 @@ impl Rule for Md040 {
             };
             let opening = ctx.tokens.get(opening_fence);
             let start_line = opening.start_line;
-            let text = opening.text.clone();
+            let text = ctx.tokens.text(opening_fence).to_string();
             let info = ctx
                 .tokens
                 .descendants_by_type(opening_fence, &[&["codeFencedFenceInfo"]])
                 .first()
-                .map(|&id| ctx.tokens.get(id).text.clone());
+                .map(|&id| ctx.tokens.text(id).to_string());
             // 원본: `if (!info) { ... } else if ((allowed.length > 0) && !allowed.includes(info)) { ... }`
             match &info {
                 None => out.add_error_context(start_line, &text, false, false, None, None),

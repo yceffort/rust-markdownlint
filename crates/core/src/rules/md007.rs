@@ -43,7 +43,7 @@ impl Rule for Md007 {
         let mut last_block_quote_prefix: Option<TokenId> = None;
         for id in tokens.filter_by_types(UNORDERED_LIST_TYPES) {
             let token = tokens.get(id);
-            match token.kind.as_str() {
+            match token.kind {
                 "blockQuotePrefix" => last_block_quote_prefix = Some(id),
                 "listUnordered" => {
                     let mut nesting = 0i64;
@@ -51,7 +51,7 @@ impl Rule for Md007 {
                     while let Some(parent) = tokens.parent_of_type(current, UNORDERED_PARENT_TYPES)
                     {
                         current = parent;
-                        match tokens.get(parent).kind.as_str() {
+                        match tokens.get(parent).kind {
                             "listUnordered" => {
                                 nesting += 1;
                                 continue;

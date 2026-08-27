@@ -42,13 +42,13 @@ pub(super) fn validate_heading_spaces(
     if heading_sequence.is_some_and(|token| token.kind == "atxHeadingSequence")
         && let Some(whitespace) = whitespace
         && whitespace.kind == "whitespace"
-        && whitespace.text.chars().count() > 1
+        && tokens.text_of(whitespace).chars().count() > 1
     {
         let column = whitespace.start_column + 1;
         let length = whitespace.end_column - column;
         out.add_error_context(
             heading.start_line,
-            heading.text.trim(),
+            tokens.text_of(heading).trim(),
             delta > 0,
             delta < 0,
             Some((column, length)),

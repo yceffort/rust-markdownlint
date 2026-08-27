@@ -43,7 +43,7 @@ impl Rule for Md056 {
                 .copied()
                 .filter(|&child| {
                     matches!(
-                        ctx.tokens.get(child).kind.as_str(),
+                        ctx.tokens.get(child).kind,
                         "tableData" | "tableDelimiter" | "tableHeader"
                     )
                 })

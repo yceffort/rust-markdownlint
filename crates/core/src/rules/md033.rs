@@ -51,7 +51,10 @@ impl Rule for Md033 {
             {
                 let range = (
                     token.start_column,
-                    NEXT_LINES_RE.replace(&token.text, "").chars().count(),
+                    NEXT_LINES_RE
+                        .replace(ctx.tokens.text(id), "")
+                        .chars()
+                        .count(),
                 );
                 out.add_error(
                     token.start_line,

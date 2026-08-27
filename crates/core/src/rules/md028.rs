@@ -34,7 +34,7 @@ impl Rule for Md028 {
                 if sibling.kind == "lineEndingBlank" {
                     // Possible blank between blockquotes
                     error_line_numbers.push(sibling.start_line);
-                } else if IGNORE_TYPES.contains(&sibling.kind.as_str()) {
+                } else if IGNORE_TYPES.contains(&sibling.kind) {
                     // Ignore invisible formatting
                 } else if sibling.kind == "blockQuote" {
                     // Blockquote followed by blockquote

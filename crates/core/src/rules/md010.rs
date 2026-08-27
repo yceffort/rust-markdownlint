@@ -61,7 +61,7 @@ impl Rule for Md010 {
                         .descendants_by_type(id, &[&["codeFencedFence"], &["codeFencedFenceInfo"]])
                         .iter()
                         .all(|&info| {
-                            ignore_code_languages.contains(&tokens.get(info).text.to_lowercase())
+                            ignore_code_languages.contains(&tokens.text(info).to_lowercase())
                         });
                 }
                 true

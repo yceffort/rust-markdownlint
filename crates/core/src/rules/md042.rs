@@ -42,7 +42,7 @@ impl Rule for Md042 {
         let definitions = ctx.tokens.reference_link_image_data().definitions;
         // 원본 `isReferenceDefinitionHash`: 정의의 destination 이 정확히 "#" 인지.
         let is_reference_definition_hash = |token: TokenId| -> bool {
-            let definition = definitions.get(js_trim(&ctx.tokens.get(token).text));
+            let definition = definitions.get(js_trim(ctx.tokens.text(token)));
             definition.is_some_and(|definition| definition.1 == "#")
         };
         // 원본 `filterByTypesCached([ "link" ])`.
@@ -77,7 +77,7 @@ impl Rule for Md042 {
             } else if has_reference_string && !has_resource_destination_string {
                 error = is_reference_definition_hash(reference_string[0]);
             } else if !has_reference_string && has_resource_destination_string {
-                error = js_trim(&ctx.tokens.get(resource_destination_string[0]).text) == "#";
+                error = js_trim(ctx.tokens.text(resource_destination_string[0])) == "#";
             } else if !has_reference_string && !has_resource_destination_string {
                 error = true;
             }
@@ -85,7 +85,7 @@ impl Rule for Md042 {
                 let token = ctx.tokens.get(link);
                 out.add_error_context(
                     token.start_line,
-                    &token.text,
+                    ctx.tokens.text(link),
                     false,
                     false,
                     Some((token.start_column, token.end_column - token.start_column)),
