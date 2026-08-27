@@ -118,14 +118,14 @@ impl Rule for Md054 {
         }
         let data = ctx.tokens.reference_link_image_data();
         let definitions = &data.definitions;
-        let text_of = |id| ctx.tokens.get(id).text.clone();
+        let text_of = |id| ctx.tokens.text(id).to_string();
         // 원본 `filterByTypesCached([ "autolink", "image", "link" ])`
         let links = ctx.tokens.filter_by_types(&["autolink", "image", "link"]);
         for link in links {
             let token = ctx.tokens.get(link);
             let (start_line, end_line) = (token.start_line, token.end_line);
             let (start_column, end_column) = (token.start_column, token.end_column);
-            let text = token.text.clone();
+            let text = ctx.tokens.text(link).to_string();
             let image = token.kind == "image";
             let is_autolink = token.kind == "autolink";
             let label;

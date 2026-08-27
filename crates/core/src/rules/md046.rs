@@ -37,12 +37,12 @@ impl Rule for Md046 {
         for id in ctx.tokens.filter_by_types(&["codeFenced", "codeIndented"]) {
             let token = ctx.tokens.get(id);
             if expected_style == "consistent" {
-                expected_style = token_type_to_style(&token.kind).to_string();
+                expected_style = token_type_to_style(token.kind).to_string();
             }
             out.add_error_detail_if(
                 token.start_line,
                 &expected_style,
-                token_type_to_style(&token.kind),
+                token_type_to_style(token.kind),
                 None,
                 None,
                 None,

@@ -47,7 +47,7 @@ impl Rule for Md025 {
                 .position(|&id| id == matching_headings[0])
                 .unwrap_or_else(|| roots.len().saturating_sub(1));
             has_top_level_heading = roots[..end].iter().all(|&id| {
-                NON_CONTENT_TOKENS.contains(&ctx.tokens.get(id).kind.as_str())
+                NON_CONTENT_TOKENS.contains(&ctx.tokens.get(id).kind)
                     || ctx.tokens.is_html_flow_comment(id)
             });
         }

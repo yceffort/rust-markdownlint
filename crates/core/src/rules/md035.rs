@@ -28,7 +28,7 @@ impl Rule for Md035 {
         style = style.trim().to_string();
         for id in ctx.tokens.filter_by_types(&["thematicBreak"]) {
             let token = ctx.tokens.get(id);
-            let text = token.text.clone();
+            let text = ctx.tokens.text(id).to_string();
             if style == "consistent" {
                 style = text.clone();
             }

@@ -46,7 +46,7 @@ impl Rule for Md038 {
             // 코드 시작의 여분 공백 확인
             let start_padding = paddings.first().map(|&id| ctx.tokens.get(id));
             let start_data = ctx.tokens.get(datas[0]);
-            let start_match = START_RE.captures(&start_data.text);
+            let start_match = START_RE.captures(ctx.tokens.text(datas[0]));
             let (start_ws, start_first) = match &start_match {
                 Some(c) => (c[1].to_string(), c[2].to_string()),
                 None => (String::new(), String::new()),
@@ -58,7 +58,7 @@ impl Rule for Md038 {
             // 코드 끝의 여분 공백 확인
             let end_padding = paddings.last().map(|&id| ctx.tokens.get(id));
             let end_data = ctx.tokens.get(datas[datas.len() - 1]);
-            let end_match = END_RE.captures(&end_data.text);
+            let end_match = END_RE.captures(ctx.tokens.text(datas[datas.len() - 1]));
             let (end_last, end_ws) = match &end_match {
                 Some(c) => (c[1].to_string(), c[2].to_string()),
                 None => (String::new(), String::new()),
@@ -74,12 +74,13 @@ impl Rule for Md038 {
                 && end_padding.is_some()
                 && !start_backtick
                 && !end_backtick;
-            let context = ctx.tokens.get(code_text).text.clone();
+            let context = ctx.tokens.text(code_text).to_string();
             // 시작에 여분 공백이 있으면 위반 보고
             if start_spaces {
                 let padding = start_padding.filter(|_| remove_padding);
                 let start_column = padding.unwrap_or(start_data).start_column;
-                let length = start_count as usize + padding.map_or(0, |p| p.text.chars().count());
+                let length = start_count as usize
+                    + padding.map_or(0, |p| ctx.tokens.text_of(p).chars().count());
                 out.add_error_context(
                     start_data.start_line,
                     &context,
@@ -97,7 +98,8 @@ impl Rule for Md038 {
             if end_spaces {
                 let padding = end_padding.filter(|_| remove_padding);
                 let end_column = padding.unwrap_or(end_data).end_column;
-                let length = end_count as usize + padding.map_or(0, |p| p.text.chars().count());
+                let length = end_count as usize
+                    + padding.map_or(0, |p| ctx.tokens.text_of(p).chars().count());
                 out.add_error_context(
                     end_data.end_line,
                     &context,

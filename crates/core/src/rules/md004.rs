@@ -76,7 +76,7 @@ impl Rule for Md004 {
                 .descendants_by_type(list_unordered, &[&["listItemPrefix"], &["listItemMarker"]]);
             for list_item_marker in list_item_markers {
                 let marker = tokens.get(list_item_marker);
-                let item_style = marker_to_style(&marker.text);
+                let item_style = marker_to_style(tokens.text_of(marker));
                 if style == "sublist" {
                     if nesting >= nesting_styles.len() {
                         nesting_styles.resize(nesting + 1, None);

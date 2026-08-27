@@ -38,7 +38,7 @@ fn js_slice(s: &str, end: usize) -> String {
 fn filter_children_by_types(tokens: &TokenTree, id: TokenId, kinds: &[&str]) -> Vec<TokenId> {
     tokens.filter_by_predicate(
         &tokens.get(id).children,
-        |t, id| kinds.contains(&t.get(id).kind.as_str()) && !t.get(id).in_html_flow,
+        |t, id| kinds.contains(&t.get(id).kind) && !t.get(id).in_html_flow,
         |t, id| t.get(id).children.clone(),
     )
 }
@@ -181,7 +181,7 @@ impl Rule for Md060 {
                                 .map(|index| tokens.get(tokens_of_interest[index]));
                             if let Some(previous) = previous {
                                 if previous.kind == "whitespace" {
-                                    if previous.text.chars().count() != 1 {
+                                    if tokens.text_of(previous).chars().count() != 1 {
                                         add_error(
                                             &mut errors_if_compact,
                                             start_line,
@@ -208,7 +208,7 @@ impl Rule for Md060 {
                             if let Some(next) = next {
                                 if next.kind == "whitespace" {
                                     if next.end_column != row_end_column {
-                                        if next.text.chars().count() != 1 {
+                                        if tokens.text_of(next).chars().count() != 1 {
                                             add_error(
                                                 &mut errors_if_compact,
                                                 start_line,

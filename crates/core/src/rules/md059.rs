@@ -75,10 +75,13 @@ impl Rule for Md059 {
                     .descendants_by_type(link, &[&["label"], &["labelText"]]);
                 for label_text in label_texts {
                     let token = ctx.tokens.get(label_text);
-                    let has_allowed_child = token.children.iter().any(|&child| {
-                        ALLOWED_CHILDREN_TYPES.contains(&ctx.tokens.get(child).kind.as_str())
-                    });
-                    if !has_allowed_child && prohibited_texts.contains(&normalize(&token.text)) {
+                    let has_allowed_child = token
+                        .children
+                        .iter()
+                        .any(|&child| ALLOWED_CHILDREN_TYPES.contains(&ctx.tokens.get(child).kind));
+                    if !has_allowed_child
+                        && prohibited_texts.contains(&normalize(ctx.tokens.text(label_text)))
+                    {
                         // 여러 줄에 걸친 링크 텍스트는 range 를 붙이지 않는다
                         let range = (token.start_line == token.end_line)
                             .then(|| (token.start_column, token.end_column - token.start_column));
@@ -87,7 +90,7 @@ impl Rule for Md059 {
                             .get(token.parent.expect("labelText has a parent"));
                         out.add_error_context(
                             token.start_line,
-                            &parent.text,
+                            ctx.tokens.text_of(parent),
                             false,
                             false,
                             range,

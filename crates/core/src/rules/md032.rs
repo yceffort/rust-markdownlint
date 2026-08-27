@@ -14,11 +14,11 @@ static META: RuleMeta = RuleMeta {
 
 /// 원본 `isList`: 목록 토큰인지.
 fn is_list(tree: &TokenTree, id: TokenId) -> bool {
-    matches!(tree.get(id).kind.as_str(), "listOrdered" | "listUnordered")
+    matches!(tree.get(id).kind, "listOrdered" | "listUnordered")
 }
 
 fn is_non_content(tree: &TokenTree, id: TokenId) -> bool {
-    NON_CONTENT_TOKENS.contains(&tree.get(id).kind.as_str())
+    NON_CONTENT_TOKENS.contains(&tree.get(id).kind)
 }
 
 impl Rule for Md032 {

@@ -25,7 +25,7 @@ const EMPHASIS_TYPES: [[&str; 2]; 2] = [["emphasis", "emphasisText"], ["strong",
 /// 원본 `isParagraphChildMeaningful`.
 fn is_paragraph_child_meaningful(tokens: &TokenTree, id: TokenId) -> bool {
     let token = tokens.get(id);
-    !((token.kind == "htmlText") || (token.kind == "data" && token.text.trim().is_empty()))
+    !((token.kind == "htmlText") || (token.kind == "data" && tokens.text(id).trim().is_empty()))
 }
 
 impl Rule for Md036 {
@@ -102,11 +102,11 @@ impl Rule for Md036 {
                 let text_token = tokens.get(id);
                 if (text_token.children.len() == 1)
                     && (tokens.get(text_token.children[0]).kind == "data")
-                    && !punctuation_re.is_some_and(|re| re.is_match(&text_token.text))
+                    && !punctuation_re.is_some_and(|re| re.is_match(tokens.text(id)))
                 {
                     out.add_error_context(
                         text_token.start_line,
-                        &text_token.text,
+                        tokens.text(id),
                         false,
                         false,
                         None,
