@@ -4,8 +4,8 @@ markdownlint-cli2 v0.22.1 ships 216 command line scenarios in `test/markdownlint
 
 | Category | Scenarios |
 |----------|-----------|
-| Pass (identical to the snapshot) | 150 |
-| Excluded by design (JavaScript module loading) | 60 |
+| Pass (identical to the snapshot) | 159 |
+| Excluded by design (JavaScript module loading) | 51 |
 | Excluded because the original does not snapshot them (`*-no-require`) | 6 |
 | Known differences | 0 |
 | Total | 216 |
@@ -32,7 +32,7 @@ The fixture files are marked `-text` in `.gitattributes` so that a Windows check
 
 ## Excluded scenarios
 
-Everything that needs JavaScript module loading is excluded, matching the README section "Differences from markdownlint-cli2": `.markdownlint-cli2.{cjs,mjs}` and `.markdownlint.{cjs,mjs}` configuration files are an error (exit 2, `Unable to use configuration file '...'; JavaScript configuration files (.cjs/.mjs) are not supported`), and `customRules`, `markdownItPlugins`, `outputFormatters`, `modulePaths` print `Ignoring unsupported option: <name>` and are otherwise ignored. The "observed" column is what `rust-markdownlint` does today (checked by running every excluded scenario), the "original" column is the exit code of markdownlint-cli2.
+Everything that needs JavaScript module loading is excluded, matching the README section "Differences from markdownlint-cli2": `.markdownlint-cli2.{cjs,mjs}` and `.markdownlint.{cjs,mjs}` configuration files are an error (exit 2, `Unable to use configuration file '...'; JavaScript configuration files (.cjs/.mjs) are not supported`), and `customRules`, `markdownItPlugins`, `modulePaths` print `Ignoring unsupported option: <name>` and are otherwise ignored. `outputFormatters` is implemented with built-in formatters, so the scenarios that only name the original formatter packages (`outputFormatters`, `outputFormatters-npm`, `outputFormatters-params`, `outputFormatters-severity`, `outputFormatters-clean`, `outputFormatters-missing`, `formatter-summarize`, `formatter-pretty`, `formatter-template`) run and pass even though the original marks them `usesRequire` or sets `FORCE_COLOR`; the harness lists them in `BUILTIN_FORMATTER_SCENARIOS`. The "observed" column is what `rust-markdownlint` does today (checked by running every excluded scenario), the "original" column is the exit code of markdownlint-cli2.
 
 ### JavaScript configuration file (exit 2 with the error above)
 
@@ -55,14 +55,13 @@ Everything that needs JavaScript module loading is excluded, matching the README
 
 | Scenario | Original exit | Observed |
 |----------|---------------|----------|
-| `markdownlint-cli2-jsonc-example`, `markdownlint-cli2-yaml-example` | 1 | exit 1, warnings for `customRules`, `markdownItPlugins`, `modulePaths`, `outputFormatters` |
-| `config-relative-commonjs-arg`, `config-relative-module-arg` | 1 | exit 1, warnings for `customRules`, `markdownItPlugins`, `outputFormatters` |
+| `markdownlint-cli2-jsonc-example`, `markdownlint-cli2-yaml-example` | 1 | exit 1, warnings for `customRules`, `markdownItPlugins`, `modulePaths` (`outputFormatters` names the default formatter, which is built in) |
+| `config-relative-commonjs-arg`, `config-relative-module-arg` | 1 | exit 1, warnings for `customRules`, `markdownItPlugins`; `outputFormatters` names a custom module, so exit 2 after the summary |
 | `customRules-throws` | 1 | exit 1 |
 | `customRules-missing`, `customRules-invalid` | 2 | exit 0 (the option is ignored, so a missing or invalid rule module is not an error) |
-| `markdownItPlugins-missing`, `outputFormatters-missing` | 2 | exit 0 (same reason) |
-| `outputFormatters`, `outputFormatters-npm`, `outputFormatters-params`, `outputFormatters-severity`, `outputFormatters-file`, `outputFormatters-module` | 1 | exit 1, default formatter output only |
-| `outputFormatters-clean` | 0 | exit 0 |
-| `formatter-summarize`, `formatter-pretty`, `formatter-pretty-appendLink`, `formatter-template` | 1 | exit 1, default formatter output only |
+| `markdownItPlugins-missing` | 2 | exit 0 (same reason) |
+| `outputFormatters-file`, `outputFormatters-module` | 1 | exit 2, `Unable to import module '<custom formatter>'.` after the summary (the built-in formatters only match the original package names) |
+| `formatter-pretty-appendLink` | 1 | exit 1, warning for `customRules`; the `extended-ascii` custom rule result is missing from the pretty output |
 | `nested-options-config`, `modulePaths` | 1 | exit 1 |
 
 ### Not part of the exec snapshot

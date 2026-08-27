@@ -17,6 +17,8 @@ pub struct Options {
     pub no_banner: Option<bool>,
     pub no_inline_config: Option<bool>,
     pub no_progress: Option<bool>,
+    /// 원본 그대로 `[[name, params], ...]`. 내장 포맷터 판별은 CLI 몫이다.
+    pub output_formatters: Option<Vec<ConfigValue>>,
     pub show_found: Option<bool>,
 }
 
@@ -40,12 +42,7 @@ pub const OPTIONS_KEYS: &[&str] = &[
 ];
 
 /// JS 모듈 로딩이 필요해 지원하지 않는 키. stderr 경고 1줄 후 무시한다.
-const UNSUPPORTED_KEYS: &[&str] = &[
-    "customRules",
-    "markdownItPlugins",
-    "outputFormatters",
-    "modulePaths",
-];
+const UNSUPPORTED_KEYS: &[&str] = &["customRules", "markdownItPlugins", "modulePaths"];
 
 fn string_array(value: &ConfigValue) -> Vec<String> {
     value
@@ -80,6 +77,7 @@ pub fn options_from_value(v: ConfigValue, warn: &mut dyn FnMut(&str)) -> Options
             "noBanner" => options.no_banner = Some(truthy(&value)),
             "noInlineConfig" => options.no_inline_config = Some(truthy(&value)),
             "noProgress" => options.no_progress = Some(truthy(&value)),
+            "outputFormatters" => options.output_formatters = value.as_array().cloned(),
             "showFound" => options.show_found = Some(truthy(&value)),
             key if UNSUPPORTED_KEYS.contains(&key)
                 && value.as_array().is_some_and(|a| !a.is_empty()) =>
@@ -121,6 +119,10 @@ pub fn merge_options(first: &Options, second: &Options) -> Options {
         no_banner: second.no_banner.or(first.no_banner),
         no_inline_config: second.no_inline_config.or(first.no_inline_config),
         no_progress: second.no_progress.or(first.no_progress),
+        output_formatters: second
+            .output_formatters
+            .clone()
+            .or_else(|| first.output_formatters.clone()),
         show_found: second.show_found.or(first.show_found),
     }
 }

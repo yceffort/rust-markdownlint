@@ -62,10 +62,25 @@ struct Expected {
     formatter_sarif: String,
 }
 
+/// 원본은 `usesRequire`/`env` 로 표시하지만 내장 포맷터만 쓰므로 실행하는 시나리오.
+const BUILTIN_FORMATTER_SCENARIOS: &[&str] = &[
+    "outputFormatters",
+    "outputFormatters-npm",
+    "outputFormatters-params",
+    "outputFormatters-severity",
+    "outputFormatters-clean",
+    "outputFormatters-missing",
+    "formatter-summarize",
+    "formatter-pretty",
+    "formatter-template",
+];
+
 /// JavaScript 모듈 로딩이 필요해 설계상 제외하는 시나리오. README "Differences" 절과 맞춘다.
 fn skip_reason(s: &Scenario) -> Option<&'static str> {
     if s.no_import {
         Some("*-no-require variants are not part of the exec snapshot")
+    } else if BUILTIN_FORMATTER_SCENARIOS.contains(&s.name.as_str()) {
+        None
     } else if s.uses_require {
         Some("needs JavaScript module loading")
     } else if s.uses_env {
