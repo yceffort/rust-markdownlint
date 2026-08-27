@@ -91,8 +91,49 @@ pub(super) fn parse_nodes(
     sources: &mut Vec<String>,
 ) -> Vec<Node> {
     let opts = parse_options(html_flow);
-    let (events, _) = markdown::parser::parse(text, &opts).expect("markdown-rs parse");
-    let refs = markdown::undefined_refs::take();
+    // micromark preprocess: NUL 은 U+FFFD 로 바꿔 토크나이즈한다 (구두점 분류). token.text 는 원본 슬라이스라
+    // 이벤트의 바이트 인덱스는 원본으로 되돌린다 (NUL 1바이트 ↔ U+FFFD 3바이트). 컬럼은 UTF-16 단위라 같다.
+    let nuls: Vec<usize> = text
+        .bytes()
+        .enumerate()
+        .filter(|&(_, b)| b == 0)
+        .map(|(i, _)| i)
+        .collect();
+    let replaced;
+    let parse_text = if nuls.is_empty() {
+        text
+    } else {
+        replaced = text.replace('\0', "\u{FFFD}");
+        replaced.as_str()
+    };
+    let (mut events, _) = markdown::parser::parse(parse_text, &opts).expect("markdown-rs parse");
+    let mut refs = markdown::undefined_refs::take();
+    if !nuls.is_empty() {
+        // 치환본 인덱스 i 앞의 치환 문자 수 k (k번째 NUL 은 치환본에서 nuls[k] + 2k 에 시작)
+        let unmap = |i: usize| {
+            let (mut lo, mut hi) = (0, nuls.len());
+            while lo < hi {
+                let mid = (lo + hi) / 2;
+                if nuls[mid] + 2 * mid < i {
+                    lo = mid + 1
+                } else {
+                    hi = mid
+                }
+            }
+            i - 2 * lo
+        };
+        for ev in &mut events {
+            ev.point.index = unmap(ev.point.index);
+        }
+        for r in &mut refs {
+            r.start.1 = unmap(r.start.1);
+            r.end.1 = unmap(r.end.1);
+            for d in &mut r.data {
+                d.1.1 = unmap(d.1.1);
+                d.2.1 = unmap(d.2.1);
+            }
+        }
+    }
     let mut columns = ColumnCursor::new(text);
     let nodes = nest(&events, line_delta, src, &mut columns);
     drop(events);
