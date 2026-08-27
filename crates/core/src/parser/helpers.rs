@@ -26,6 +26,21 @@ pub const NON_CONTENT_TOKENS: &[&str] = &[
 pub const JS_WHITESPACE: &str =
     r"\t\n\x0B\f\r \u{a0}\u{1680}\u{2000}-\u{200a}\u{2028}\u{2029}\u{202f}\u{205f}\u{3000}\u{feff}";
 
+/// `JS_WHITESPACE` 와 같은 집합의 문자 판정 (정규식을 돌리기 전 첫/끝 글자 사전 검사용).
+pub fn is_js_whitespace(c: char) -> bool {
+    matches!(
+        c,
+        '\t' | '\n' | '\u{0B}' | '\u{0C}' | '\r' | ' ' | '\u{a0}' | '\u{1680}' | '\u{2000}'
+            ..='\u{200a}'
+                | '\u{2028}'
+                | '\u{2029}'
+                | '\u{202f}'
+                | '\u{205f}'
+                | '\u{3000}'
+                | '\u{feff}'
+    )
+}
+
 /// 원본 `getHtmlAttributeRe(name)`: `/\s{name}\s*=\s*['"]?([^'"\s>]*)/iu`.
 pub fn html_attribute_re(name: &str) -> Regex {
     Regex::new(&format!(
@@ -114,22 +129,26 @@ fn normalize_reference(s: &str) -> String {
 
 impl TokenTree {
     /// 원본 `filterByPredicate(tokens, allowed, transformChildren)`: `roots` 부터 전위 순회로
-    /// `allowed` 를 만족하는 토큰을 모은다. 자식이 있는 토큰은 `transform_children` 이 돌려준
-    /// 목록으로 계속 내려간다 (원본 기본값은 `token.children`).
+    /// `allowed` 를 만족하는 토큰을 모은다. 자식이 있는 토큰은 `transform_children` 이 `out` 에
+    /// 채운 목록으로 계속 내려간다 (원본 기본값은 `token.children`). 토큰마다 Vec 을 새로
+    /// 만들지 않도록 출력 버퍼를 넘긴다.
     pub fn filter_by_predicate(
         &self,
         roots: &[TokenId],
         allowed: impl Fn(&TokenTree, TokenId) -> bool,
-        transform_children: impl Fn(&TokenTree, TokenId) -> Vec<TokenId>,
+        transform_children: impl Fn(&TokenTree, TokenId, &mut Vec<TokenId>),
     ) -> Vec<TokenId> {
         let mut result = Vec::new();
         let mut stack: Vec<TokenId> = roots.iter().rev().copied().collect();
+        let mut children = Vec::new();
         while let Some(id) = stack.pop() {
             if allowed(self, id) {
                 result.push(id);
             }
             if !self.tokens[id].children.is_empty() {
-                stack.extend(transform_children(self, id).into_iter().rev());
+                children.clear();
+                transform_children(self, id, &mut children);
+                stack.extend(children.iter().rev());
             }
         }
         result
@@ -500,11 +519,9 @@ mod tests {
         let ids = tree.filter_by_predicate(
             &tree.roots,
             |t, id| t.get(id).kind == "emphasis",
-            |t, id| {
-                if t.get(id).kind == "htmlFlow" {
-                    vec![]
-                } else {
-                    t.get(id).children.clone()
+            |t, id, out| {
+                if t.get(id).kind != "htmlFlow" {
+                    out.extend_from_slice(&t.get(id).children);
                 }
             },
         );

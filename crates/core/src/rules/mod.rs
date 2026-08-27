@@ -1,4 +1,3 @@
-use std::collections::HashSet;
 use std::sync::LazyLock;
 
 use regex::Regex;
@@ -113,9 +112,14 @@ pub(crate) fn is_blank_line(line: &str) -> bool {
             }
         }
     }
-    line.is_empty()
-        || line.trim().is_empty()
-        || remove_comments(line).replace('>', "").trim().is_empty()
+    if line.is_empty() || line.trim().is_empty() {
+        return true;
+    }
+    // 주석 표식이 없으면 remove_comments 는 항등이라 할당 없이 판정한다
+    if !line.contains("<!--") && !line.contains("-->") {
+        return line.chars().all(|c| c == '>' || c.is_whitespace());
+    }
+    remove_comments(line).replace('>', "").trim().is_empty()
 }
 
 /// shared.cjs `nextLinesRe`: 첫 줄바꿈부터 끝까지.
@@ -148,8 +152,25 @@ pub(crate) fn has_overlap(a: &FileRange, b: &FileRange) -> bool {
     )
 }
 
+/// 줄 번호 집합. 줄 수가 상한이라 HashSet 대신 비트맵으로 둔다 (코드 블록 줄마다 해시하던 비용 제거).
+#[derive(Default)]
+pub(crate) struct LineSet(Vec<bool>);
+
+impl LineSet {
+    pub fn insert(&mut self, line: usize) {
+        if line >= self.0.len() {
+            self.0.resize(line + 1, false);
+        }
+        self.0[line] = true;
+    }
+
+    pub fn contains(&self, line: usize) -> bool {
+        self.0.get(line).copied().unwrap_or(false)
+    }
+}
+
 /// helpers/micromark-helpers.cjs `addRangeToSet`: `start`..=`end` (양 끝 포함) 를 set 에 채운다.
-pub(crate) fn add_range_to_set(set: &mut HashSet<usize>, start: usize, end: usize) {
+pub(crate) fn add_range_to_set(set: &mut LineSet, start: usize, end: usize) {
     for line in start..=end {
         set.insert(line);
     }
@@ -158,27 +179,34 @@ pub(crate) fn add_range_to_set(set: &mut HashSet<usize>, start: usize, end: usiz
 /// helpers.cjs `frontMatterHasTitle`: title 패턴에 맞는 front matter 줄이 있는지.
 /// 패턴이 지정됐지만 falsy 면 front matter 를 무시한다. 패턴은 사용자 정규식이라
 /// JS 문법에 가까운 `fancy_regex` 로 컴파일하고, 컴파일에 실패하면 false 로 본다
-/// (원본은 예외를 던진다).
+/// (원본은 예외를 던진다). 기본 패턴은 파일마다 다시 컴파일하지 않는다.
 pub(crate) fn front_matter_has_title(
     front_matter_lines: &[&str],
     front_matter_title_pattern: Option<&serde_json::Value>,
 ) -> bool {
+    static DEFAULT_TITLE_RE: LazyLock<fancy_regex::Regex> = LazyLock::new(|| {
+        fancy_regex::Regex::new(r#"(?i)^\s*"?title"?\s*[:=]"#).expect("front matter title regex")
+    });
     let ignore_front_matter =
         front_matter_title_pattern.is_some_and(|value| !crate::config::truthy(value));
-    let pattern = front_matter_title_pattern
+    if ignore_front_matter || front_matter_lines.is_empty() {
+        return false;
+    }
+    let user_re = front_matter_title_pattern
         .filter(|value| crate::config::truthy(value))
         .map(|value| match value {
             serde_json::Value::String(s) => s.clone(),
             other => other.to_string(),
         })
-        .unwrap_or_else(|| r#"^\s*"?title"?\s*[:=]"#.to_string());
-    let Ok(front_matter_title_re) = fancy_regex::Regex::new(&format!("(?i){pattern}")) else {
-        return false;
+        .map(|pattern| fancy_regex::Regex::new(&format!("(?i){pattern}")));
+    let front_matter_title_re = match &user_re {
+        Some(Ok(re)) => re,
+        Some(Err(_)) => return false,
+        None => &DEFAULT_TITLE_RE,
     };
-    !ignore_front_matter
-        && front_matter_lines
-            .iter()
-            .any(|line| front_matter_title_re.is_match(line).unwrap_or(false))
+    front_matter_lines
+        .iter()
+        .any(|line| front_matter_title_re.is_match(line).unwrap_or(false))
 }
 
 /// 규칙 하나만 활성화해 `lint_content` 로 lint 하는 테스트 helper.

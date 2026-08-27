@@ -192,8 +192,8 @@ mod tests {
     fn err_fix(line: usize, col: usize, del: isize, text: &str) -> LintError {
         LintError {
             line_number: line,
-            rule_names: vec![],
-            rule_description: String::new(),
+            rule_names: &[],
+            rule_description: "",
             rule_information: String::new(),
             error_detail: None,
             error_context: None,

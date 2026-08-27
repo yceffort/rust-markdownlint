@@ -1,4 +1,5 @@
 use std::collections::HashSet;
+use std::rc::Rc;
 use std::sync::LazyLock;
 
 use regex::Regex;
@@ -16,7 +17,8 @@ static INLINE_COMMENT_START_RE: LazyLock<Regex> = LazyLock::new(|| {
 
 pub struct InlineResult {
     pub config: ConfigValue,
-    pub enabled_per_line: Vec<HashSet<&'static str>>,
+    /// 줄마다 활성 규칙 집합. 주석이 없는 줄은 같은 집합을 공유한다 (줄마다 복제하지 않는다).
+    pub enabled_per_line: Vec<Rc<HashSet<&'static str>>>,
 }
 
 /// `(action, parameter, line_number)`. action 은 대문자.
@@ -96,35 +98,45 @@ pub fn apply_inline_config(lines: &[&str], base: &ConfigValue, no_inline: bool) 
     if no_inline {
         return InlineResult {
             config,
-            enabled_per_line: vec![initial; lines.len()],
+            enabled_per_line: std::iter::repeat_n(Rc::new(initial), lines.len()).collect(),
         };
     }
 
     // 2단계: enable-file / disable-file
-    let mut enabled_rules = initial.clone();
+    let mut enabled_rules = Rc::new(initial.clone());
     for (action, parameter, _) in collect_matches(lines) {
         if action == "ENABLE-FILE" || action == "DISABLE-FILE" {
-            apply_enable_disable(&action, &parameter, &mut enabled_rules, &all_rule_names);
+            apply_enable_disable(
+                &action,
+                &parameter,
+                Rc::make_mut(&mut enabled_rules),
+                &all_rule_names,
+            );
         }
     }
 
     // 3단계: capture / restore / enable / disable, 줄마다 스냅샷.
     // 원본에서 기본 capturedRules 는 파일 주석 적용 전의 초기 맵이다.
-    let mut captured_rules = initial;
+    let mut captured_rules = Rc::new(initial);
     let mut enabled_per_line = Vec::with_capacity(lines.len());
     let mut last_index = 0;
     for line in lines {
         for (action, parameter) in collect_matches_line(line, &mut last_index) {
             match action.as_str() {
-                "CAPTURE" => captured_rules = enabled_rules.clone(),
-                "RESTORE" => enabled_rules = captured_rules.clone(),
+                "CAPTURE" => captured_rules = Rc::clone(&enabled_rules),
+                "RESTORE" => enabled_rules = Rc::clone(&captured_rules),
                 "ENABLE" | "DISABLE" => {
-                    apply_enable_disable(&action, &parameter, &mut enabled_rules, &all_rule_names);
+                    apply_enable_disable(
+                        &action,
+                        &parameter,
+                        Rc::make_mut(&mut enabled_rules),
+                        &all_rule_names,
+                    );
                 }
                 _ => {}
             }
         }
-        enabled_per_line.push(enabled_rules.clone());
+        enabled_per_line.push(Rc::clone(&enabled_rules));
     }
 
     // 4단계: disable-line / disable-next-line
@@ -135,7 +147,7 @@ pub fn apply_inline_config(lines: &[&str], base: &ConfigValue, no_inline: bool) 
             _ => continue,
         };
         if let Some(state) = enabled_per_line.get_mut(target) {
-            apply_enable_disable(&action, &parameter, state, &all_rule_names);
+            apply_enable_disable(&action, &parameter, Rc::make_mut(state), &all_rule_names);
         }
     }
 
@@ -149,6 +161,11 @@ pub fn apply_inline_config(lines: &[&str], base: &ConfigValue, no_inline: bool) 
 /// lastIndex 이월 상태를 호출자가 들고 다닌다.
 fn collect_matches_line(line: &str, last_index: &mut usize) -> Vec<(String, String)> {
     let mut matches = Vec::new();
+    // `<!--` 가 없는 줄은 매치가 없다 (정규식 미실행, lastIndex 리셋은 같다)
+    if !line.contains("<!--") {
+        *last_index = 0;
+        return matches;
+    }
     loop {
         if *last_index > line.len() || !line.is_char_boundary(*last_index) {
             *last_index = 0;

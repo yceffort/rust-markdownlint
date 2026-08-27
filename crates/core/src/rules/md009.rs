@@ -92,8 +92,12 @@ impl Rule for Md009 {
         let expected = if br_spaces < 2 { 0 } else { br_spaces as usize };
         for (line_index, line) in ctx.lines.iter().enumerate() {
             let line_number = line_index + 1;
+            let trimmed = line.trim_end();
+            if trimmed.len() == line.len() {
+                continue;
+            }
             let line_len = line.chars().count();
-            let trailing_spaces = line_len - line.trim_end().chars().count();
+            let trailing_spaces = line_len - trimmed.chars().count();
             if trailing_spaces > 0
                 && !code_block_line_numbers.contains(&line_number)
                 && !list_item_line_numbers.contains(&line_number)

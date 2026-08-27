@@ -155,7 +155,7 @@ pub fn lint_content(
 
     results.sort_by(|a, b| {
         a.rule_names[0]
-            .cmp(&b.rule_names[0])
+            .cmp(b.rule_names[0])
             .then(a.line_number.cmp(&b.line_number))
     });
     Ok(results)

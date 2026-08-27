@@ -24,8 +24,9 @@ pub struct FixInfo {
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct LintError {
     pub line_number: usize,
-    pub rule_names: Vec<String>,
-    pub rule_description: String,
+    /// 규칙 메타의 정적 참조. 오류마다 String 을 만들지 않는다.
+    pub rule_names: &'static [&'static str],
+    pub rule_description: &'static str,
     pub rule_information: String,
     pub error_detail: Option<String>,
     pub error_context: Option<String>,
@@ -54,6 +55,9 @@ pub fn ellipsify(text: &str, start: bool, end: bool) -> String {
 
 /// helpers.cjs `newLineRe` (`/\r\n?|\n/g`) 치환.
 fn replace_newlines(text: &str, replacement: &str) -> String {
+    if !text.contains(['\r', '\n']) {
+        return text.to_string();
+    }
     text.replace("\r\n", "\n")
         .replace('\r', "\n")
         .replace('\n', replacement)
@@ -63,6 +67,8 @@ pub struct ErrorSink<'a> {
     name: &'a str,
     lines: &'a [&'a str],
     meta: &'static RuleMeta,
+    /// 규칙 문서 URL. 오류마다 format 하지 않도록 sink 당 한 번 만든다.
+    information: String,
     front_matter_lines: usize,
     severity: Severity,
     errors: Vec<LintError>,
@@ -80,6 +86,10 @@ impl<'a> ErrorSink<'a> {
             name,
             lines,
             meta,
+            information: format!(
+                "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/{}.md",
+                meta.names[0].to_lowercase()
+            ),
             front_matter_lines,
             severity,
             errors: Vec::new(),
@@ -153,12 +163,9 @@ impl<'a> ErrorSink<'a> {
         });
         self.errors.push(LintError {
             line_number,
-            rule_names: self.meta.names.iter().map(|n| n.to_string()).collect(),
-            rule_description: self.meta.description.to_string(),
-            rule_information: format!(
-                "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/{}.md",
-                self.meta.names[0].to_lowercase()
-            ),
+            rule_names: self.meta.names,
+            rule_description: self.meta.description,
+            rule_information: self.information.clone(),
             error_detail: detail
                 .map(|d| replace_newlines(d, " "))
                 .filter(|d| !d.is_empty()),

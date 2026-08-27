@@ -1,9 +1,8 @@
-use std::collections::HashSet;
 use std::sync::LazyLock;
 
 use regex::Regex;
 
-use super::{LintContext, Rule, RuleMeta, add_range_to_set};
+use super::{LineSet, LintContext, Rule, RuleMeta, add_range_to_set};
 use crate::config::{to_number, truthy};
 use crate::error::ErrorSink;
 use crate::parser::JS_WHITESPACE;
@@ -80,7 +79,7 @@ impl Rule for Md013 {
 
         let tokens = ctx.tokens;
         let line_set = |kinds: &[&str]| {
-            let mut set = HashSet::new();
+            let mut set = LineSet::default();
             for id in tokens.filter_by_types(kinds) {
                 let token = tokens.get(id);
                 add_range_to_set(&mut set, token.start_line, token.end_line);
@@ -91,7 +90,7 @@ impl Rule for Md013 {
         let code_block_line_numbers = line_set(&["codeFenced", "codeIndented"]);
         let table_line_numbers = line_set(&["table"]);
         let link_line_numbers = line_set(&["autolink", "image", "link", "literalAutolink"]);
-        let mut paragraph_data_line_numbers = HashSet::new();
+        let mut paragraph_data_line_numbers = LineSet::default();
         for paragraph in tokens.filter_by_types(&["paragraph"]) {
             for data in tokens.descendants_by_type(paragraph, &[&["data"]]) {
                 let token = tokens.get(data);
@@ -102,24 +101,27 @@ impl Rule for Md013 {
                 );
             }
         }
-        let link_only_line_numbers: HashSet<usize> = link_line_numbers
-            .into_iter()
-            .filter(|line_number| !paragraph_data_line_numbers.contains(line_number))
-            .collect();
+        // 원본 `linkOnlyLineNumbers`: 링크 줄이면서 문단 data 줄이 아닌 줄
+        let link_only = |line_number: usize| {
+            link_line_numbers.contains(line_number)
+                && !paragraph_data_line_numbers.contains(line_number)
+        };
         // helpers.cjs `getReferenceLinkImageData().definitionLineIndices`
-        let mut definition_line_indices = HashSet::new();
+        let mut definition_line_indices = LineSet::default();
         for id in tokens.filter_by_types(&["definition", "gfmFootnoteDefinition"]) {
             let token = tokens.get(id);
-            for i in token.start_line..=token.end_line {
-                definition_line_indices.insert(i - 1);
-            }
+            add_range_to_set(
+                &mut definition_line_indices,
+                token.start_line - 1,
+                token.end_line - 1,
+            );
         }
 
         for (line_index, line) in ctx.lines.iter().enumerate() {
             let line_number = line_index + 1;
-            let is_heading = heading_line_numbers.contains(&line_number);
-            let in_code = code_block_line_numbers.contains(&line_number);
-            let in_table = table_line_numbers.contains(&line_number);
+            let is_heading = heading_line_numbers.contains(line_number);
+            let in_code = code_block_line_numbers.contains(line_number);
+            let in_table = table_line_numbers.contains(line_number);
             let max_length = if in_code {
                 code_line_length
             } else if is_heading {
@@ -145,10 +147,9 @@ impl Rule for Md013 {
                 && (include_code_blocks || !in_code)
                 && (include_tables || !in_table)
                 && (include_headings || !is_heading)
-                && !definition_line_indices.contains(&line_index)
+                && !definition_line_indices.contains(line_index)
                 && (strict
-                    || !(link_only_line_numbers.contains(&line_number)
-                        || (stern && NOT_WRAPPABLE_RE.is_match(line))))
+                    || !(link_only(line_number) || (stern && NOT_WRAPPABLE_RE.is_match(line))))
                 && (text_length as f64 > max_length)
             {
                 let max_length_int = max_length as usize;

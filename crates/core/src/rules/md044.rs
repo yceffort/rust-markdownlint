@@ -107,13 +107,14 @@ impl Rule for Md044 {
         let content_tokens = tokens.filter_by_predicate(
             &tokens.roots,
             |t, id| scanned_types.contains(&t.get(id).kind),
-            |t, id| {
-                t.get(id)
-                    .children
-                    .iter()
-                    .copied()
-                    .filter(|&c| !IGNORED_CHILD_TYPES.contains(&t.get(c).kind))
-                    .collect()
+            |t, id, out| {
+                out.extend(
+                    t.get(id)
+                        .children
+                        .iter()
+                        .copied()
+                        .filter(|&c| !IGNORED_CHILD_TYPES.contains(&t.get(c).kind)),
+                );
             },
         );
         let mut exclusions: Vec<FileRange> = Vec::new();

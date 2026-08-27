@@ -1,6 +1,4 @@
-use std::collections::HashSet;
-
-use super::{LintContext, Rule, RuleMeta, add_range_to_set};
+use super::{LineSet, LintContext, Rule, RuleMeta, add_range_to_set};
 use crate::config::truthy;
 use crate::error::{ErrorSink, FixInfo};
 
@@ -29,7 +27,7 @@ impl Rule for Md012 {
             .unwrap_or(1);
 
         let tokens = ctx.tokens;
-        let mut code_block_line_numbers = HashSet::new();
+        let mut code_block_line_numbers = LineSet::default();
         for id in tokens.filter_by_types(&["codeFenced", "codeIndented"]) {
             let code_block = tokens.get(id);
             add_range_to_set(
@@ -42,7 +40,7 @@ impl Rule for Md012 {
         let mut count: i64 = 0;
         for (line_index, line) in ctx.lines.iter().enumerate() {
             let line_number = line_index + 1;
-            let in_code = code_block_line_numbers.contains(&line_number);
+            let in_code = code_block_line_numbers.contains(line_number);
             count = if in_code || !line.trim().is_empty() {
                 0
             } else {

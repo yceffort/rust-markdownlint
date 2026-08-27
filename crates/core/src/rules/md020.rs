@@ -1,9 +1,8 @@
-use std::collections::HashSet;
 use std::sync::LazyLock;
 
 use regex::Regex;
 
-use super::{LintContext, Rule, RuleMeta};
+use super::{LineSet, LintContext, Rule, RuleMeta, add_range_to_set};
 use crate::error::{ErrorSink, FixInfo};
 
 pub(crate) struct Md020;
@@ -27,18 +26,20 @@ impl Rule for Md020 {
     }
 
     fn check(&self, ctx: &LintContext, out: &mut ErrorSink) {
-        let mut ignore_block_line_numbers = HashSet::new();
+        let mut ignore_block_line_numbers = LineSet::default();
         for id in ctx
             .tokens
             .filter_by_types(&["codeFenced", "codeIndented", "htmlFlow"])
         {
             let token = ctx.tokens.get(id);
-            for line in token.start_line..=token.end_line {
-                ignore_block_line_numbers.insert(line);
-            }
+            add_range_to_set(
+                &mut ignore_block_line_numbers,
+                token.start_line,
+                token.end_line,
+            );
         }
         for (line_index, line) in ctx.lines.iter().enumerate() {
-            if ignore_block_line_numbers.contains(&(line_index + 1)) {
+            if !line.starts_with('#') || ignore_block_line_numbers.contains(line_index + 1) {
                 continue;
             }
             let Some(caps) = CLOSED_ATX_RE.captures(line) else {

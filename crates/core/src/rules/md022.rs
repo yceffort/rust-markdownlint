@@ -1,3 +1,5 @@
+use std::cell::OnceCell;
+
 use serde_json::Value;
 
 use super::{LintContext, Rule, RuleMeta, is_blank_line};
@@ -73,7 +75,13 @@ impl Rule for Md022 {
         };
 
         let tokens = ctx.tokens;
-        let block_quote_prefixes = tokens.filter_by_types(&["blockQuotePrefix", "linePrefix"]);
+        // linePrefix 는 매우 흔한 토큰이라 오류가 있을 때만 모으고, fixInfo 의 prefix 텍스트도
+        // (전체 prefix 를 훑으므로) detail 이 다를 때만 만든다.
+        let block_quote_prefixes = OnceCell::new();
+        let block_quote_prefixes = || {
+            block_quote_prefixes
+                .get_or_init(|| tokens.filter_by_types(&["blockQuotePrefix", "linePrefix"]))
+        };
         for heading_id in tokens.filter_by_types(&["atxHeading", "setextHeading"]) {
             let heading = tokens.get(heading_id);
             let (start_line, end_line) = (heading.start_line, heading.end_line);
@@ -89,22 +97,25 @@ impl Rule for Md022 {
                     actual_above += 1;
                     i += 1;
                 }
-                out.add_error_detail_if(
-                    start_line,
-                    number_to_string(lines_above),
-                    actual_above,
-                    Some("Above"),
-                    Some(line),
-                    None,
-                    Some(FixInfo {
-                        insert_text: Some(tokens.block_quote_prefix_text(
-                            &block_quote_prefixes,
-                            start_line - 1,
-                            (lines_above - actual_above as f64) as usize,
-                        )),
-                        ..Default::default()
-                    }),
-                );
+                let expected = number_to_string(lines_above);
+                if expected != actual_above.to_string() {
+                    out.add_error_detail_if(
+                        start_line,
+                        expected,
+                        actual_above,
+                        Some("Above"),
+                        Some(line),
+                        None,
+                        Some(FixInfo {
+                            insert_text: Some(tokens.block_quote_prefix_text(
+                                block_quote_prefixes(),
+                                start_line - 1,
+                                (lines_above - actual_above as f64) as usize,
+                            )),
+                            ..Default::default()
+                        }),
+                    );
+                }
             }
 
             // Check lines below
@@ -116,23 +127,26 @@ impl Rule for Md022 {
                     actual_below += 1;
                     i += 1;
                 }
-                out.add_error_detail_if(
-                    start_line,
-                    number_to_string(lines_below),
-                    actual_below,
-                    Some("Below"),
-                    Some(line),
-                    None,
-                    Some(FixInfo {
-                        line_number: Some(end_line + 1),
-                        insert_text: Some(tokens.block_quote_prefix_text(
-                            &block_quote_prefixes,
-                            end_line + 1,
-                            (lines_below - actual_below as f64) as usize,
-                        )),
-                        ..Default::default()
-                    }),
-                );
+                let expected = number_to_string(lines_below);
+                if expected != actual_below.to_string() {
+                    out.add_error_detail_if(
+                        start_line,
+                        expected,
+                        actual_below,
+                        Some("Below"),
+                        Some(line),
+                        None,
+                        Some(FixInfo {
+                            line_number: Some(end_line + 1),
+                            insert_text: Some(tokens.block_quote_prefix_text(
+                                block_quote_prefixes(),
+                                end_line + 1,
+                                (lines_below - actual_below as f64) as usize,
+                            )),
+                            ..Default::default()
+                        }),
+                    );
+                }
             }
         }
     }
