@@ -25,7 +25,7 @@ jobs:
           - { os: windows-latest, target: x86_64-pc-windows-msvc }
     steps:
       - uses: actions/checkout@v4
-      - name: 태그와 Cargo.toml 버전 일치 확인
+      - name: 태그와 Cargo.toml, npm package.json 버전 일치 확인
         shell: bash
         run: |
           tag="${GITHUB_REF_NAME#v}"
@@ -34,6 +34,18 @@ jobs:
             echo "tag v$tag != crates/cli/Cargo.toml version $version" >&2
             exit 1
           fi
+          for pkg in npm/rust-markdownlint npm/platforms/*; do
+            v=$(node -p "require('./$pkg/package.json').version")
+            if [ "$tag" != "$v" ]; then
+              echo "tag v$tag != $pkg/package.json version $v" >&2
+              exit 1
+            fi
+          done
+          node -e '
+            const deps = require("./npm/rust-markdownlint/package.json").optionalDependencies;
+            const bad = Object.entries(deps).filter(([, v]) => v !== process.argv[1]);
+            if (bad.length) { console.error("optionalDependencies not at " + process.argv[1] + ":", bad); process.exit(1); }
+          ' "$tag"
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}
@@ -70,3 +82,44 @@ jobs:
       - env:
           GH_TOKEN: ${{ github.token }}
         run: gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --generate-notes dist/*
+
+  publish-npm:
+    needs: release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: 플랫폼 패키지에 바이너리 복사
+        run: |
+          set -e
+          v="$GITHUB_REF_NAME"
+          extract() {
+            tar xzf "dist/rust-markdownlint-$v-$2.tar.gz" -C "npm/platforms/$1"
+            chmod +x "npm/platforms/$1/rust-markdownlint"
+          }
+          extract darwin-arm64 aarch64-apple-darwin
+          extract darwin-x64 x86_64-apple-darwin
+          extract linux-x64 x86_64-unknown-linux-musl
+          extract linux-arm64 aarch64-unknown-linux-musl
+          unzip -o "dist/rust-markdownlint-$v-x86_64-pc-windows-msvc.zip" -d npm/platforms/win32-x64
+          ls -l npm/platforms/*/
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - name: npm publish (플랫폼 5개, 그 다음 메인)
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          set -e
+          # 경로에 ./ 를 붙여야 함. 없으면 npm 이 npm/rust-markdownlint 를 GitHub 저장소 축약형으로 해석함
+          for pkg in ./npm/platforms/*; do
+            npm publish --access public --provenance "$pkg"
+          done
+          npm publish --access public --provenance ./npm/rust-markdownlint

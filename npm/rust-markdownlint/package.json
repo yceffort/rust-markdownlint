@@ -1,0 +1,27 @@
+{
+  "name": "@yceffort/rust-markdownlint",
+  "version": "0.1.0",
+  "description": "A Rust implementation of markdownlint-cli2: same command line, same configuration, byte-identical output, one static binary",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yceffort/rust-markdownlint.git"
+  },
+  "homepage": "https://github.com/yceffort/rust-markdownlint#readme",
+  "bugs": "https://github.com/yceffort/rust-markdownlint/issues",
+  "keywords": ["markdown", "lint", "markdownlint", "markdownlint-cli2", "rust"],
+  "bin": {
+    "rust-markdownlint": "bin/rust-markdownlint.js"
+  },
+  "files": ["bin"],
+  "engines": {
+    "node": ">=18"
+  },
+  "optionalDependencies": {
+    "@yceffort/rust-markdownlint-darwin-arm64": "0.1.0",
+    "@yceffort/rust-markdownlint-darwin-x64": "0.1.0",
+    "@yceffort/rust-markdownlint-linux-x64": "0.1.0",
+    "@yceffort/rust-markdownlint-linux-arm64": "0.1.0",
+    "@yceffort/rust-markdownlint-win32-x64": "0.1.0"
+  }
+}

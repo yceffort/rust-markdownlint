@@ -10,7 +10,14 @@ A Rust implementation of [markdownlint-cli2](https://github.com/DavidAnson/markd
 
 ## Installation
 
-Download a binary for your platform from [Releases](https://github.com/yceffort/rust-markdownlint/releases): macOS (arm64, x86_64), Linux (x86_64, arm64, statically linked with musl), Windows (x86_64). Each archive comes with a `.sha256` file.
+With npm (the package is a thin wrapper that runs a prebuilt binary from a platform package installed as an optional dependency: `darwin-arm64`, `darwin-x64`, `linux-x64`, `linux-arm64`, `win32-x64`; no postinstall script, no download at install time):
+
+```bash
+npm i -D @yceffort/rust-markdownlint
+npx rust-markdownlint "**/*.md" "#node_modules"
+```
+
+Or download a binary for your platform from [Releases](https://github.com/yceffort/rust-markdownlint/releases): macOS (arm64, x86_64), Linux (x86_64, arm64, statically linked with musl), Windows (x86_64). Each archive comes with a `.sha256` file.
 
 ```bash
 curl -LO https://github.com/yceffort/rust-markdownlint/releases/latest/download/rust-markdownlint-v0.1.0-aarch64-apple-darwin.tar.gz
@@ -126,3 +133,5 @@ Results are recorded in `bench/RESULTS.md`. On pull requests, CI benchmarks the 
 ### Releases
 
 Bump `version` in `crates/cli/Cargo.toml` and push a matching `v*` tag. The [release workflow](.github/workflows/release.yml) builds the five platform binaries and uploads them to a GitHub Release. It fails if the tag and the crate version differ.
+
+The same tag also publishes six npm packages: `@yceffort/rust-markdownlint-{darwin-arm64,darwin-x64,linux-x64,linux-arm64,win32-x64}` (one binary each, built from the same artifacts as the GitHub Release) and then `@yceffort/rust-markdownlint` (the wrapper, with the platform packages as `optionalDependencies`). Bump `version` in `npm/rust-markdownlint/package.json` (including its `optionalDependencies`) and in the five `npm/platforms/*/package.json` too; the workflow fails before building if any of them differs from the tag. The `publish-npm` job runs after the GitHub Release is created, so a failed npm publish leaves the release in place. It authenticates with the `NPM_TOKEN` repository secret (an npm granular access token with publish permission for the `@yceffort` scope) and publishes with `--provenance`. To switch to npm trusted publishing instead, add a trusted publisher on npmjs.com for each of the six packages (organization `yceffort`, repository `rust-markdownlint`, workflow `release.yml`), remove the `NODE_AUTH_TOKEN` line from the workflow, and make sure the job runs npm 11.5.1 or later (`npm install -g npm@latest` after `setup-node`), which is what trusted publishing requires; the `id-token: write` permission is already there.
