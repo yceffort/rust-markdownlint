@@ -126,13 +126,14 @@ impl Rule for Md051 {
             .map(js_string)
             .unwrap_or_default();
         // 사용자 정규식이라 fancy_regex 로 컴파일한다. 컴파일 실패는 원본이 예외를 던지지만
-        // 여기서는 매치 안 됨으로 본다.
-        let ignored_pattern_re = fancy_regex::Regex::new(if ignored_pattern.is_empty() {
-            "^$"
+        // 여기서는 매치 안 됨으로 본다. 기본값(빈 패턴)은 파일마다 다시 컴파일하지 않는다.
+        static EMPTY_PATTERN_RE: LazyLock<fancy_regex::Regex> =
+            LazyLock::new(|| fancy_regex::Regex::new("^$").expect("empty pattern regex"));
+        let ignored_pattern_re = if ignored_pattern.is_empty() {
+            Some(EMPTY_PATTERN_RE.clone())
         } else {
-            &ignored_pattern
-        })
-        .ok();
+            fancy_regex::Regex::new(&ignored_pattern).ok()
+        };
         let mut fragments: OrderedMap<usize> = OrderedMap::default();
         fragments.set("#top".to_string(), 0);
 
