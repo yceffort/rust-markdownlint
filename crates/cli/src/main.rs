@@ -58,6 +58,15 @@ struct FileOutcome {
     formatted: Option<String>,
 }
 
+/// 원본 `fs.readFile(file, "utf8")`: 잘못된 시퀀스는 U+FFFD 로 치환하고 계속한다 (BOM 은 남긴다).
+/// Node 와 Rust 모두 WHATWG 방식(maximal subpart 하나당 U+FFFD 하나)이라 컬럼이 같다.
+fn lossy_utf8(bytes: Vec<u8>) -> String {
+    match String::from_utf8(bytes) {
+        Ok(s) => s,
+        Err(e) => String::from_utf8_lossy(e.as_bytes()).into_owned(),
+    }
+}
+
 /// 파일 하나의 lint(+fix). `--format` 은 stdin 만 고치고 결과는 버린다.
 fn lint_file(
     base: &Path,
@@ -82,7 +91,7 @@ fn lint_file(
             errors
         }
     } else {
-        let content = std::fs::read_to_string(file)?;
+        let content = lossy_utf8(std::fs::read(file)?);
         let mut errors = lint_content(&name, &content, &opts)?;
         if formatting {
             errors = Vec::new();
@@ -131,9 +140,9 @@ fn run(args: &[String]) -> Result<i32> {
 
     let mut non_file: HashMap<PathBuf, String> = HashMap::new();
     if argv.use_stdin {
-        let mut text = String::new();
-        std::io::stdin().read_to_string(&mut text)?;
-        non_file.insert(base.join("stdin"), text);
+        let mut bytes = Vec::new();
+        std::io::stdin().read_to_end(&mut bytes)?;
+        non_file.insert(base.join("stdin"), lossy_utf8(bytes));
     }
 
     let show_progress = base_options.no_progress != Some(true) && !formatting;
