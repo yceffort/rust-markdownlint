@@ -16,6 +16,20 @@ fn atx_heading_tokens() {
 }
 
 #[test]
+fn table_after_skipped_head_row_attempts() {
+    // markdown-rs 의 gfm_table::start 는 다음 줄이 구분자 행일 수 없으면 헤드 행 시도를
+    // 건너뛴다. 건너뛰면서 공용 카운터(seen)를 되돌리지 않으면 앞 구성요소가 남긴 값이
+    // 다음 테이블의 헤더 셀 수를 어긋나게 해 `| q | r |` 이 문단이 된다.
+    let tree = parse("a\n|-|\n\nb\n-|-\n\np |\n- |\n\n| q | r |\n| - | - |\n| s | t |\n");
+    let tables: Vec<_> = tree
+        .filter_by_types(&["table"])
+        .into_iter()
+        .map(|id| tree.get(id).start_line)
+        .collect();
+    assert_eq!(tables, vec![1, 10]);
+}
+
+#[test]
 fn column_is_codepoint_based() {
     let tree = parse("# 한글\n");
     let h = tree.get(tree.filter_by_types(&["atxHeading"])[0]);

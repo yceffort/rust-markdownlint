@@ -270,6 +270,11 @@ pub fn start(tokenizer: &mut Tokenizer) -> State {
             // 구분자 행이 없으면 실패한다. 구분자 행은 `|`, `-`, `:`, 공백만으로 이뤄지고
             // `-` 를 하나 이상 포함해야 하므로(위 `head_delimiter_*` 상태), 다음 줄이 그 꼴이
             // 아니면 시도 자체를 건너뛴다. 필요조건만 보므로 결과는 같다.
+            // 실패 경로(`head_row_break`, `head_delimiter_nok`)와 같이 공용 카운터를 되돌린다.
+            // 앞선 구성요소가 `seen` 을 남길 수 있고, 다음 테이블은 0 에서 시작해야 한다.
+            tokenizer.tokenize_state.seen = false;
+            tokenizer.tokenize_state.size = 0;
+            tokenizer.tokenize_state.size_b = 0;
             State::Nok
         } else {
             State::Retry(StateName::GfmTableHeadRowBefore)
