@@ -53,4 +53,4 @@ jobs:
         with:
           python-version: "3.x"
       - run: pip install pre-commit
-      - run: pre-commit try-repo . rust-markdownlint --all-files --files README.md docs/cli2-scenarios.md
+      - run: pre-commit try-repo . rust-markdownlint --files README.md docs/cli2-scenarios.md
