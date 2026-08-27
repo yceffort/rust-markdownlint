@@ -46,6 +46,7 @@ const TOKENS_INCLUDE: &[&str] = &[
 /// JS `encodeURIComponent`: UTF-8 바이트 단위 percent-encoding. 예외 문자는
 /// `A-Z a-z 0-9 - _ . ! ~ * ' ( )`, 16진수는 대문자.
 fn encode_uri_component(s: &str) -> String {
+    const HEX: &[u8; 16] = b"0123456789ABCDEF";
     let mut out = String::with_capacity(s.len());
     for b in s.bytes() {
         match b {
@@ -61,7 +62,11 @@ fn encode_uri_component(s: &str) -> String {
             | b'\''
             | b'('
             | b')' => out.push(b as char),
-            _ => out.push_str(&format!("%{b:02X}")),
+            _ => {
+                out.push('%');
+                out.push(HEX[usize::from(b >> 4)] as char);
+                out.push(HEX[usize::from(b & 0xF)] as char);
+            }
         }
     }
     out
@@ -73,11 +78,9 @@ fn convert_heading_to_html_fragment(tokens: &TokenTree, heading_text: TokenId) -
         .filter_by_predicate(
             &tokens.get(heading_text).children,
             |t, id| TOKENS_INCLUDE.contains(&t.get(id).kind),
-            |t, id| {
-                if CHILDREN_EXCLUDE.contains(&t.get(id).kind) {
-                    vec![]
-                } else {
-                    t.get(id).children.clone()
+            |t, id, out| {
+                if !CHILDREN_EXCLUDE.contains(&t.get(id).kind) {
+                    out.extend_from_slice(&t.get(id).children);
                 }
             },
         )
@@ -100,7 +103,7 @@ fn filter_children_by_types(tokens: &TokenTree, token: TokenId, types: &[&str]) 
     tokens.filter_by_predicate(
         &tokens.get(token).children,
         |t, id| types.contains(&t.get(id).kind) && !t.get(id).in_html_flow,
-        |t, id| t.get(id).children.clone(),
+        |t, id, out| out.extend_from_slice(&t.get(id).children),
     )
 }
 

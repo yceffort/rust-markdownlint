@@ -84,6 +84,9 @@ impl Rule for Md010 {
 
         for (line_index, line) in ctx.lines.iter().enumerate() {
             let line_number = line_index + 1;
+            if !line.contains('\t') {
+                continue;
+            }
             let mut chars = line.chars().enumerate().peekable();
             while let Some((index, c)) = chars.next() {
                 if c != '\t' {

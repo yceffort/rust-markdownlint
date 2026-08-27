@@ -18,7 +18,7 @@ fn sorted_by_rule_then_line() {
     let errs = lint_content("a.md", "#a\n#b\ntext", &LintOptions::default()).unwrap();
     let names: Vec<_> = errs
         .iter()
-        .map(|e| (e.rule_names[0].as_str(), e.line_number))
+        .map(|e| (e.rule_names[0], e.line_number))
         .collect();
     assert_eq!(
         names,

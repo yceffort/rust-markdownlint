@@ -28,10 +28,17 @@ fn string_width(s: &str) -> usize {
 
 /// JS `line.slice(0, end)`: micromark 의 column 과 마찬가지로 UTF-16 code unit 기준이라
 /// 서러게이트 쌍(BMP 밖 이모지) 앞에서도 원본과 같은 자리에서 자른다. 쌍 가운데가
-/// 잘리면 원본은 짝 없는 서러게이트를 남기고 `string-width` 는 이를 폭 0 으로 센다.
-fn js_slice(s: &str, end: usize) -> String {
-    let units: Vec<u16> = s.encode_utf16().take(end).collect();
-    char::decode_utf16(units).filter_map(Result::ok).collect()
+/// 잘리면 원본은 짝 없는 서러게이트를 남기고 `string-width` 는 이를 폭 0 으로 세므로
+/// 그 문자 앞에서 자른 접두 부분 문자열과 폭이 같다.
+fn js_slice(s: &str, end: usize) -> &str {
+    let mut units = 0;
+    for (i, c) in s.char_indices() {
+        if units + c.len_utf16() > end {
+            return &s[..i];
+        }
+        units += c.len_utf16();
+    }
+    s
 }
 
 /// 원본 `filterByTypes(token.children, types)`: 토큰의 자식부터 전위 순회로 타입을 거른다.
@@ -39,7 +46,7 @@ fn filter_children_by_types(tokens: &TokenTree, id: TokenId, kinds: &[&str]) -> 
     tokens.filter_by_predicate(
         &tokens.get(id).children,
         |t, id| kinds.contains(&t.get(id).kind) && !t.get(id).in_html_flow,
-        |t, id| t.get(id).children.clone(),
+        |t, id, out| out.extend_from_slice(&t.get(id).children),
     )
 }
 
@@ -75,7 +82,7 @@ fn get_table_divider_columns(lines: &[&str], tokens: &TokenTree, row: TokenId) -
             let start_column = tokens.get(divider).start_column;
             Column {
                 actual: start_column,
-                effective: string_width(&js_slice(lines[start_line - 1], start_column - 1)),
+                effective: string_width(js_slice(lines[start_line - 1], start_column - 1)),
             }
         })
         .collect()

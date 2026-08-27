@@ -52,19 +52,9 @@ pub(super) fn check_style(
 ) {
     let lines = ctx.lines;
     let tokens = ctx.tokens;
-    let emphasis_tokens = tokens.filter_by_predicate(
-        &tokens.roots,
-        |tree, id| tree.get(id).kind == kind,
-        |tree, id| {
-            let token = tree.get(id);
-            if token.kind == "htmlFlow" {
-                Vec::new()
-            } else {
-                token.children.clone()
-            }
-        },
-    );
-    for token in emphasis_tokens {
+    // 원본은 htmlFlow 아래로 내려가지 않는 filterByPredicate 인데, htmlFlow 안의 emphasis/strong 은
+    // 재파싱 토큰뿐이라 in_html_flow 를 제외하는 종류 인덱스와 같다.
+    for token in tokens.filter_by_types(&[kind]) {
         let sequences = tokens.descendants_by_type(token, &[&[sequence_kind]]);
         let start_sequence = sequences.first().map(|&id| tokens.get(id));
         let end_sequence = sequences.last().map(|&id| tokens.get(id));

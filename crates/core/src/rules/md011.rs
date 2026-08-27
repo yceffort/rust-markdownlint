@@ -1,9 +1,8 @@
-use std::collections::HashSet;
 use std::sync::LazyLock;
 
 use regex::{Captures, Regex};
 
-use super::{FileRange, LintContext, Rule, RuleMeta, add_range_to_set, has_overlap};
+use super::{FileRange, LineSet, LintContext, Rule, RuleMeta, add_range_to_set, has_overlap};
 use crate::error::{ErrorSink, FixInfo};
 
 pub(crate) struct Md011;
@@ -47,7 +46,7 @@ impl Rule for Md011 {
 
     fn check(&self, ctx: &LintContext, out: &mut ErrorSink) {
         let tokens = ctx.tokens;
-        let mut ignore_block_line_numbers: HashSet<usize> = HashSet::new();
+        let mut ignore_block_line_numbers = LineSet::default();
         for id in tokens.filter_by_types(&["codeFenced", "codeIndented", "mathFlow"]) {
             let ignore_block = tokens.get(id);
             add_range_to_set(
@@ -71,7 +70,8 @@ impl Rule for Md011 {
             .collect();
         for (line_index, line) in ctx.lines.iter().enumerate() {
             let line_number = line_index + 1;
-            if ignore_block_line_numbers.contains(&line_number) {
+            // 정규식이 요구하는 `)[` 가 없는 줄은 정규식 없이 건너뛴다
+            if ignore_block_line_numbers.contains(line_number) || !line.contains(")[") {
                 continue;
             }
             for captures in reversed_links(line) {

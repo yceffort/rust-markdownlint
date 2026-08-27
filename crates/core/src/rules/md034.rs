@@ -48,9 +48,8 @@ fn allowed(tree: &TokenTree, id: TokenId) -> bool {
 }
 
 /// 원본 `literalAutolinks` 의 `transformChildren`: 인라인 HTML 태그 안의 내용은 건너뛴다.
-fn transform_children(tree: &TokenTree, id: TokenId) -> Vec<TokenId> {
+fn transform_children(tree: &TokenTree, id: TokenId, result: &mut Vec<TokenId>) {
     let children = &tree.get(id).children;
-    let mut result = Vec::new();
     let mut i = 0;
     while i < children.len() {
         let current = children[i];
@@ -78,7 +77,6 @@ fn transform_children(tree: &TokenTree, id: TokenId) -> Vec<TokenId> {
         }
         i += 1;
     }
-    result
 }
 
 impl Rule for Md034 {
@@ -87,6 +85,10 @@ impl Rule for Md034 {
     }
 
     fn check(&self, ctx: &LintContext, out: &mut ErrorSink) {
+        // literalAutolink 이 하나도 없으면 트리를 걷지 않는다
+        if ctx.tokens.filter_by_types(&["literalAutolink"]).is_empty() {
+            return;
+        }
         let literal_autolinks =
             ctx.tokens
                 .filter_by_predicate(&ctx.tokens.roots, allowed, transform_children);

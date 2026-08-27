@@ -4,7 +4,7 @@ use regex::Regex;
 
 use super::{LintContext, Rule, RuleMeta};
 use crate::error::{ErrorSink, FixInfo};
-use crate::parser::JS_WHITESPACE;
+use crate::parser::{JS_WHITESPACE, is_js_whitespace};
 
 pub(crate) struct Md038;
 
@@ -26,6 +26,14 @@ static END_RE: LazyLock<Regex> = LazyLock::new(|| {
     Regex::new(&format!("([^{JS_WHITESPACE}])([{JS_WHITESPACE}]+)$")).expect("md038 end regex")
 });
 
+/// 매치 그룹 텍스트. 매치가 없거나 그룹이 비었으면 빈 문자열 (JS `match?.[i] ?? ""`).
+fn group<'h>(captures: &Option<regex::Captures<'h>>, i: usize) -> &'h str {
+    captures
+        .as_ref()
+        .and_then(|c| c.get(i))
+        .map_or("", |m| m.as_str())
+}
+
 impl Rule for Md038 {
     fn meta(&self) -> &'static RuleMeta {
         &META
@@ -46,11 +54,13 @@ impl Rule for Md038 {
             // 코드 시작의 여분 공백 확인
             let start_padding = paddings.first().map(|&id| ctx.tokens.get(id));
             let start_data = ctx.tokens.get(datas[0]);
-            let start_match = START_RE.captures(ctx.tokens.text(datas[0]));
-            let (start_ws, start_first) = match &start_match {
-                Some(c) => (c[1].to_string(), c[2].to_string()),
-                None => (String::new(), String::new()),
-            };
+            // 첫 글자가 공백이 아니면 정규식은 매치하지 않는다
+            let start_text = ctx.tokens.text(datas[0]);
+            let start_match = start_text
+                .starts_with(is_js_whitespace)
+                .then(|| START_RE.captures(start_text))
+                .flatten();
+            let (start_ws, start_first) = (group(&start_match, 1), group(&start_match, 2));
             let start_backtick = start_first == "`";
             let start_count = start_ws.chars().count() as isize
                 - isize::from(start_backtick && start_padding.is_none());
@@ -58,11 +68,12 @@ impl Rule for Md038 {
             // 코드 끝의 여분 공백 확인
             let end_padding = paddings.last().map(|&id| ctx.tokens.get(id));
             let end_data = ctx.tokens.get(datas[datas.len() - 1]);
-            let end_match = END_RE.captures(ctx.tokens.text(datas[datas.len() - 1]));
-            let (end_last, end_ws) = match &end_match {
-                Some(c) => (c[1].to_string(), c[2].to_string()),
-                None => (String::new(), String::new()),
-            };
+            let end_text = ctx.tokens.text(datas[datas.len() - 1]);
+            let end_match = end_text
+                .ends_with(is_js_whitespace)
+                .then(|| END_RE.captures(end_text))
+                .flatten();
+            let (end_last, end_ws) = (group(&end_match, 1), group(&end_match, 2));
             let end_backtick = end_last == "`";
             let end_count = end_ws.chars().count() as isize
                 - isize::from(end_backtick && end_padding.is_none());
@@ -74,7 +85,7 @@ impl Rule for Md038 {
                 && end_padding.is_some()
                 && !start_backtick
                 && !end_backtick;
-            let context = ctx.tokens.text(code_text).to_string();
+            let context = ctx.tokens.text(code_text);
             // 시작에 여분 공백이 있으면 위반 보고
             if start_spaces {
                 let padding = start_padding.filter(|_| remove_padding);
@@ -83,7 +94,7 @@ impl Rule for Md038 {
                     + padding.map_or(0, |p| ctx.tokens.text_of(p).chars().count());
                 out.add_error_context(
                     start_data.start_line,
-                    &context,
+                    context,
                     true,
                     false,
                     Some((start_column, length)),
@@ -102,7 +113,7 @@ impl Rule for Md038 {
                     + padding.map_or(0, |p| ctx.tokens.text_of(p).chars().count());
                 out.add_error_context(
                     end_data.end_line,
-                    &context,
+                    context,
                     false,
                     true,
                     Some((end_column - length, length)),

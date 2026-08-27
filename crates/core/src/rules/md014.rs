@@ -41,8 +41,11 @@ impl Rule for Md014 {
             let dollar_matches: Vec<_> = code_flow_values
                 .iter()
                 .filter_map(|code_flow_value| {
-                    DOLLAR_COMMAND_RE
-                        .captures(ctx.tokens.text_of(code_flow_value))
+                    let text = ctx.tokens.text_of(code_flow_value);
+                    // `$` 가 없는 줄은 정규식 없이 거른다
+                    text.contains('$')
+                        .then(|| DOLLAR_COMMAND_RE.captures(text))
+                        .flatten()
                         .map(|result| (result, *code_flow_value))
                 })
                 .collect();

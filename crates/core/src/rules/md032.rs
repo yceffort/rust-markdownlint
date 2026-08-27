@@ -1,3 +1,5 @@
+use std::cell::OnceCell;
+
 use super::{LintContext, Rule, RuleMeta, is_blank_line};
 use crate::error::{ErrorSink, FixInfo};
 use crate::parser::{NON_CONTENT_TOKENS, TokenId, TokenTree};
@@ -36,17 +38,21 @@ impl Rule for Md032 {
                     .get(index as usize)
                     .is_none_or(|line| is_blank_line(line))
         };
-        let block_quote_prefixes = tokens.filter_by_types(&["blockQuotePrefix", "linePrefix"]);
+        // linePrefix 는 매우 흔한 토큰이라 오류가 있을 때만 모은다
+        let block_quote_prefixes = OnceCell::new();
+        let block_quote_prefixes = || {
+            block_quote_prefixes
+                .get_or_init(|| tokens.filter_by_types(&["blockQuotePrefix", "linePrefix"]))
+        };
 
         // For every top-level list...
-        let top_level_lists = tokens.filter_by_predicate(&tokens.roots, is_list, |tree, id| {
-            // 목록과 htmlFlow 아래로는 내려가지 않는다
-            if is_list(tree, id) || tree.get(id).kind == "htmlFlow" {
-                Vec::new()
-            } else {
-                tree.get(id).children.clone()
-            }
-        });
+        let top_level_lists =
+            tokens.filter_by_predicate(&tokens.roots, is_list, |tree, id, out| {
+                // 목록과 htmlFlow 아래로는 내려가지 않는다
+                if !is_list(tree, id) && tree.get(id).kind != "htmlFlow" {
+                    out.extend_from_slice(&tree.get(id).children);
+                }
+            });
         for list in top_level_lists {
             // Look for a blank line above the list
             let first_line_number = tokens.get(list).start_line;
@@ -59,7 +65,7 @@ impl Rule for Md032 {
                     None,
                     Some(FixInfo {
                         insert_text: Some(tokens.block_quote_prefix_text(
-                            &block_quote_prefixes,
+                            block_quote_prefixes(),
                             first_line_number,
                             1,
                         )),
@@ -72,11 +78,9 @@ impl Rule for Md032 {
             let flattened_children = tokens.filter_by_predicate(
                 &tokens.get(list).children,
                 |tree, id| !is_non_content(tree, id),
-                |tree, id| {
-                    if is_non_content(tree, id) {
-                        Vec::new()
-                    } else {
-                        tree.get(id).children.clone()
+                |tree, id, out| {
+                    if !is_non_content(tree, id) {
+                        out.extend_from_slice(&tree.get(id).children);
                     }
                 },
             );
@@ -97,7 +101,7 @@ impl Rule for Md032 {
                     Some(FixInfo {
                         line_number: Some(last_line_number + 1),
                         insert_text: Some(tokens.block_quote_prefix_text(
-                            &block_quote_prefixes,
+                            block_quote_prefixes(),
                             last_line_number,
                             1,
                         )),

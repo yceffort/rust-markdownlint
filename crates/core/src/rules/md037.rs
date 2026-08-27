@@ -70,18 +70,13 @@ impl Rule for Md037 {
         // Initialize variables
         let lines = ctx.lines;
         let mut emphasis_tokens_by_marker: [Vec<BareToken>; 6] = Default::default();
-        let tokens = ctx.tokens.filter_by_predicate(
-            &ctx.tokens.roots,
-            |t, id| t.get(id).children.iter().any(|&c| t.get(c).kind == "data"),
-            |t, id| t.get(id).children.clone(),
-        );
+        // 원본은 전체 트리에서 data 자식이 있는 토큰을 모으지만, 아래에서 TEXT_PARENTS 만 쓰므로
+        // 종류 인덱스로 바로 찾는다 (htmlFlow 안쪽 토큰은 자식의 in_html_flow 검사로 걸러진다).
+        let tokens = ctx.tokens.filter_by_types_html_flow(&TEXT_PARENTS, true);
         for token in tokens {
             // Build lists of bare tokens for each emphasis marker type
             for emphasis_tokens in emphasis_tokens_by_marker.iter_mut() {
                 emphasis_tokens.clear();
-            }
-            if !TEXT_PARENTS.contains(&ctx.tokens.get(token).kind) {
-                continue;
             }
             for &child in &ctx.tokens.get(token).children {
                 let child_token = ctx.tokens.get(child);

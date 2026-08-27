@@ -110,7 +110,7 @@ pub fn sort_results(results: &mut [LintResult]) {
     results.sort_by(|a, b| {
         locale_compare(&a.file_name, &b.file_name)
             .then(a.error.line_number.cmp(&b.error.line_number))
-            .then_with(|| locale_compare(&a.error.rule_names[0], &b.error.rule_names[0]))
+            .then_with(|| locale_compare(a.error.rule_names[0], b.error.rule_names[0]))
     });
 }
 
