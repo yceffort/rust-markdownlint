@@ -1,0 +1,23 @@
+# pre-commit 훅 정의. 사용 예는 README "pre-commit" 절.
+#
+# `rust-markdownlint` 와 `rust-markdownlint-fix` 는 `rev` 태그의 GitHub Release 바이너리를 처음 한 번
+# 내려받아 쓴다 (cargo, Node 불필요, POSIX 셸 필요). `-node` 는 npm 패키지를 쓴다 (Windows 포함).
+- id: rust-markdownlint
+  name: rust-markdownlint
+  description: Lint Markdown files with rust-markdownlint (markdownlint-cli2 compatible)
+  entry: scripts/pre-commit-hook.sh
+  language: script
+  types: [markdown]
+- id: rust-markdownlint-fix
+  name: rust-markdownlint --fix
+  description: Lint Markdown files with rust-markdownlint and fix what can be fixed
+  entry: scripts/pre-commit-hook.sh --fix
+  language: script
+  types: [markdown]
+- id: rust-markdownlint-node
+  name: rust-markdownlint (npm)
+  description: Lint Markdown files with rust-markdownlint installed from npm
+  entry: rust-markdownlint
+  language: node
+  additional_dependencies: ["@yceffort/rust-markdownlint@0.1.0"]
+  types: [markdown]
