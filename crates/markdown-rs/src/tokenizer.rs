@@ -52,7 +52,7 @@ pub struct ContainerState {
 }
 
 /// How to handle a byte.
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 enum ByteAction {
     /// This is a normal byte.
     ///
@@ -247,6 +247,9 @@ pub struct TokenizeState<'a> {
     pub marker_b: u8,
     /// Several markers.
     pub markers: &'static [u8],
+    /// 로컬 패치: `markers` 의 256비트 집합. data 상태가 바이트마다 `contains` 로 선형 탐색하던
+    /// 것을 비트 검사로 바꾼다. `set_markers` 로만 갱신할 것.
+    pub markers_set: [u64; 4],
     /// Whether something was seen.
     pub seen: bool,
     /// Size.
@@ -273,6 +276,23 @@ pub struct TokenizeState<'a> {
     pub token_6: Name,
 }
 
+impl TokenizeState<'_> {
+    /// `markers` 와 `markers_set` 을 함께 설정한다.
+    pub fn set_markers(&mut self, markers: &'static [u8]) {
+        self.markers = markers;
+        self.markers_set = [0; 4];
+        for &b in markers {
+            self.markers_set[(b >> 6) as usize] |= 1 << (b & 63);
+        }
+    }
+
+    /// `markers.contains(&byte)` 와 같다.
+    #[inline]
+    pub fn is_marker(&self, byte: u8) -> bool {
+        (self.markers_set[(byte >> 6) as usize] >> (byte & 63)) & 1 == 1
+    }
+}
+
 /// A tokenizer itself.
 #[allow(clippy::struct_excessive_bools)]
 #[derive(Debug)]
@@ -288,6 +308,9 @@ pub struct Tokenizer<'a> {
     ///
     /// Tracked to make sure everything’s valid.
     consumed: bool,
+    /// 로컬 패치: `expect` 가 받은 바이트의 동작. `consume` 이 `byte_action` 을 다시 계산하지
+    /// 않게 한다.
+    pending: Option<ByteAction>,
     /// Stack of how to handle attempts.
     attempts: Vec<Attempt>,
     /// Current byte.
@@ -338,6 +361,7 @@ impl<'a> Tokenizer<'a> {
             first_line: point.line,
             line_start: point.clone(),
             consumed: true,
+            pending: None,
             attempts: vec![],
             point,
             stack: vec![],
@@ -364,6 +388,7 @@ impl<'a> Tokenizer<'a> {
                 marker: 0,
                 marker_b: 0,
                 markers: &[],
+                markers_set: [0; 4],
                 labels: vec![],
                 seen: false,
                 size: 0,
@@ -442,10 +467,11 @@ impl<'a> Tokenizer<'a> {
     }
 
     /// Prepare for a next byte to get consumed.
-    fn expect(&mut self, byte: Option<u8>) {
+    fn expect(&mut self, byte: Option<u8>, action: Option<ByteAction>) {
         debug_assert!(self.consumed, "expected previous byte to be consumed");
         self.consumed = false;
         self.current = byte;
+        self.pending = action;
     }
 
     /// Consume the current byte.
@@ -453,7 +479,10 @@ impl<'a> Tokenizer<'a> {
     /// used, or call a next function.
     pub fn consume(&mut self) {
         debug_assert!(!self.consumed, "expected code to *not* have been consumed: this might be because `State::Retry(x)` instead of `State::Next(x)` was returned");
-        self.move_one();
+        match self.pending.take() {
+            Some(action) => self.move_one_with(action),
+            None => self.move_one(),
+        }
 
         self.previous = self.current;
         // While we’re not at eof, it is at least better to not have the
@@ -465,7 +494,13 @@ impl<'a> Tokenizer<'a> {
 
     /// Move to the next (virtual) byte.
     fn move_one(&mut self) {
-        match byte_action(self.parse_state.bytes, &self.point) {
+        self.pending = None;
+        self.move_one_with(byte_action(self.parse_state.bytes, &self.point));
+    }
+
+    /// Move to the next (virtual) byte, with the action already known.
+    fn move_one_with(&mut self, action: ByteAction) {
+        match action {
             ByteAction::Ignore => {
                 self.point.index += 1;
             }
@@ -534,6 +569,8 @@ impl<'a> Tokenizer<'a> {
             "expected non-empty event"
         );
 
+        // 로컬 패치: 81개 배열 선형 탐색이 release 에서도 돌던 것을 debug 로 한정.
+        #[cfg(debug_assertions)]
         if VOID_EVENTS.iter().any(|d| d == &name) {
             debug_assert!(
                 current == previous.name,
@@ -577,6 +614,7 @@ impl<'a> Tokenizer<'a> {
         self.previous = previous.previous;
         self.current = previous.current;
         self.point = previous.point;
+        self.pending = None;
         debug_assert!(
             self.events.len() >= previous.events_len,
             "expected to restore less events than before"
@@ -611,7 +649,7 @@ impl<'a> Tokenizer<'a> {
         // Always capture (and restore) when checking.
         // No need to capture (and restore) when `nok` is `State::Nok`, because the
         // parent attempt will do it.
-        let progress = if nok == State::Nok {
+        let progress = if matches!(nok, State::Nok) {
             None
         } else {
             Some(self.capture())
@@ -665,14 +703,15 @@ impl<'a> Tokenizer<'a> {
 }
 
 /// Move back past ignored bytes.
+///
+/// 로컬 패치: 무시되는 바이트는 `\n` 앞의 `\r` 뿐이므로 `byte_action` 대신 직접 본다.
 fn move_point_back(tokenizer: &mut Tokenizer, point: &mut Point) {
-    while point.index > 0 {
+    let bytes = tokenizer.parse_state.bytes;
+    while point.index > 0
+        && bytes[point.index - 1] == b'\r'
+        && bytes.get(point.index) == Some(&b'\n')
+    {
         point.index -= 1;
-        let action = byte_action(tokenizer.parse_state.bytes, point);
-        if !matches!(action, ByteAction::Ignore) {
-            point.index += 1;
-            break;
-        }
     }
 }
 
@@ -708,13 +747,17 @@ fn push_impl(
     );
 
     tokenizer.move_to(from);
+    // 로컬 패치: 바이트당 이벤트 약 0.16개. 벡터 성장 복사를 줄이기 위해 미리 잡는다.
+    tokenizer
+        .events
+        .reserve(to.0.saturating_sub(tokenizer.point.index) / 4);
 
     loop {
         match state {
             State::Error(_) => break,
             State::Ok | State::Nok => {
                 if let Some(attempt) = tokenizer.attempts.pop() {
-                    if attempt.kind == AttemptKind::Check || state == State::Nok {
+                    if attempt.kind == AttemptKind::Check || matches!(state, State::Nok) {
                         if let Some(progress) = attempt.progress {
                             tokenizer.free(progress);
                         }
@@ -722,7 +765,7 @@ fn push_impl(
 
                     tokenizer.consumed = true;
 
-                    let next = if state == State::Ok {
+                    let next = if matches!(state, State::Ok) {
                         attempt.ok
                     } else {
                         attempt.nok
@@ -760,7 +803,7 @@ fn push_impl(
                     #[cfg(feature = "log")]
                     log::trace!("feed:    {} to {:?}", format_byte_opt(byte), name);
 
-                    tokenizer.expect(byte);
+                    tokenizer.expect(byte, action);
                     state = call(tokenizer, name);
                 }
             }

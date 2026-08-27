@@ -268,7 +268,7 @@ pub fn container_new_after(tokenizer: &mut Tokenizer) -> State {
         != tokenizer.tokenize_state.document_container_stack.len()
     {
         if let Err(message) = exit_containers(tokenizer, &Phase::Prefix) {
-            return State::Error(message);
+            return State::Error(Box::new(message));
         }
     }
 
@@ -457,7 +457,7 @@ pub fn flow_end(tokenizer: &mut Tokenizer) -> State {
     if tokenizer.current.is_none() {
         tokenizer.tokenize_state.document_continued = 0;
         if let Err(message) = exit_containers(tokenizer, &Phase::Eof) {
-            return State::Error(message);
+            return State::Error(Box::new(message));
         }
         resolve(tokenizer);
         State::Ok

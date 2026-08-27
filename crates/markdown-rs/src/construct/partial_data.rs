@@ -21,7 +21,7 @@ use alloc::vec;
 pub fn start(tokenizer: &mut Tokenizer) -> State {
     // Make sure to eat the first `markers`.
     if let Some(byte) = tokenizer.current {
-        if tokenizer.tokenize_state.markers.contains(&byte) {
+        if tokenizer.tokenize_state.is_marker(byte) {
             tokenizer.enter(Name::Data);
             tokenizer.consume();
             return State::Next(StateName::DataInside);
@@ -39,7 +39,7 @@ pub fn start(tokenizer: &mut Tokenizer) -> State {
 /// ```
 pub fn at_break(tokenizer: &mut Tokenizer) -> State {
     if let Some(byte) = tokenizer.current {
-        if !tokenizer.tokenize_state.markers.contains(&byte) {
+        if !tokenizer.tokenize_state.is_marker(byte) {
             if byte == b'\n' {
                 tokenizer.enter(Name::LineEnding);
                 tokenizer.consume();
@@ -62,7 +62,7 @@ pub fn at_break(tokenizer: &mut Tokenizer) -> State {
 /// ```
 pub fn inside(tokenizer: &mut Tokenizer) -> State {
     if let Some(byte) = tokenizer.current {
-        if byte != b'\n' && !tokenizer.tokenize_state.markers.contains(&byte) {
+        if byte != b'\n' && !tokenizer.tokenize_state.is_marker(byte) {
             tokenizer.consume();
             return State::Next(StateName::DataInside);
         }

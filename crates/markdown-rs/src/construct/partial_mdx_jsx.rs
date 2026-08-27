@@ -1093,14 +1093,14 @@ pub fn es_whitespace_inside(tokenizer: &mut Tokenizer) -> State {
 pub fn es_whitespace_eol_after(tokenizer: &mut Tokenizer) -> State {
     // Lazy continuation in a flow tag is a syntax error.
     if tokenizer.tokenize_state.token_1 == Name::MdxJsxFlowTag && tokenizer.lazy {
-        State::Error(
+        State::Error(Box::new(
             message::Message {
                 place: Some(Box::new(message::Place::Point(tokenizer.point.to_unist()))),
                 reason: "Unexpected lazy line in jsx in container, expected line to be prefixed with `>` when in a block quote, whitespace when in a list, etc".into(),
                 rule_id: Box::new("unexpected-lazy".into()),
                 source: Box::new("markdown-rs".into()),
             }
-        )
+        ))
     } else {
         State::Retry(StateName::MdxJsxEsWhitespaceStart)
     }
@@ -1119,7 +1119,7 @@ fn id_cont_opt(code: Option<char>) -> bool {
 /// Crash because something happened `at`, with info on what was `expect`ed
 /// instead.
 fn crash(tokenizer: &Tokenizer, at: &str, expect: &str) -> State {
-    State::Error(message::Message {
+    State::Error(Box::new(message::Message {
         place: Some(Box::new(message::Place::Point(tokenizer.point.to_unist()))),
         reason: format!(
             "Unexpected {} {}, expected {}",
@@ -1140,5 +1140,5 @@ fn crash(tokenizer: &Tokenizer, at: &str, expect: &str) -> State {
             }
         )),
         source: Box::new("markdown-rs".into()),
-    })
+    }))
 }

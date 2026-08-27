@@ -86,6 +86,18 @@ Apple Silicon macOS, `hyperfine --warmup 3`. 시간은 mean ± σ (ms), 배율�
 
 markdown-rs 자체의 차이는 측정 편차(같은 코드)다. 남은 어댑터 45ms 는 단계별 계측으로 `nest` 12ms, `adapt` 변환 패스 7개 19ms, `flatten` 7ms, `index_kinds` 2ms 이며, 할당이 아니라 트리를 패스마다 다시 걷는 비용이다. 5% 이하로 가려면 중첩 `Node` 트리 대신 아레나에서 패스를 융합하는 재설계가 필요하다.
 
+## markdown-rs 토크나이저 내부 비용 절감 (2026-08-27, #161)
+
+포스트 441개를 메모리에 올려 in-process 단일 스레드로 10회 반복한 최선값 (`markdown::parser::parse` 만, 이벤트 1,143,302개 동일). 변경은 `crates/markdown-rs/PATCHES.md` 에 정리.
+
+| 단계 | `markdown::parser::parse` |
+|---|---|
+| 기준 (main, d10ca0a) | 320 ms |
+| EditMap 한 번에 재구성, `State::Error` Box, `consume` 의 byte_action 재계산 제거, `exit` 의 VOID_EVENTS 탐색 제거 | 253 ms |
+| 테이블 헤드 행 시도 사전 검사, data 마커 비트 집합, `State` 비교 `matches!` | 203 ms (−37%) |
+
+samply 로 본 병목은 순서대로 `EditMap::consume` (inclusive 11%, `split_off`/`append` 로 이벤트 전체를 두 번 복사), `drop_in_place<State>` (self 7%, `Message` 페이로드의 drop glue), `gfm_table::head_row_data` (inclusive 5%, 모든 flow 줄을 테이블 헤드 후보로 끝까지 훑음), `partial_data::inside` (마커 16개 선형 탐색) 였다. 테이블 사전 검사는 건너뛸 때 공용 카운터 `seen` 을 리셋하지 않으면 앞 구성요소가 남긴 값 때문에 다음 테이블이 문단이 되는 회귀가 있어(`tables` 경계 사례로 발견) 실패 경로와 같이 리셋한다.
+
 ## 파일 단위 병렬화 (rayon)
 
 같은 코퍼스와 기본 설정에서 병렬화 전후 rust 바이너리를 `hyperfine --warmup 3 -N` 으로 비교 (2026-08-26, Apple Silicon 10코어).
