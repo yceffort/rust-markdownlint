@@ -33,6 +33,35 @@ cargo install --git https://github.com/yceffort/rust-markdownlint rust-markdownl
 
 Either way you get a `rust-markdownlint` binary.
 
+### pre-commit
+
+```yaml
+repos:
+  - repo: https://github.com/yceffort/rust-markdownlint
+    rev: v0.1.0
+    hooks:
+      - id: rust-markdownlint        # or rust-markdownlint-fix to apply fixes
+```
+
+`rust-markdownlint` and `rust-markdownlint-fix` download the release binary for `rev` the first time they run (verified against the `.sha256` file) and need neither cargo nor Node.js, only a POSIX shell (macOS, Linux, Git Bash on Windows). `rust-markdownlint-node` installs the npm package instead and works wherever pre-commit's `node` language works; pin the package version with `additional_dependencies: ["@yceffort/rust-markdownlint@<version>"]` if it should differ from `rev`. All three lint the staged Markdown files that pre-commit passes in, with the configuration files of your repository.
+
+### GitHub Action
+
+```yaml
+steps:
+  - uses: actions/checkout@v4
+  - uses: yceffort/rust-markdownlint@v0
+    with:
+      globs: |            # default: **/*.md
+        docs/**/*.md
+        "#node_modules"
+      # config: .markdownlint-cli2.jsonc   # passed as --config
+      # fix: true                          # leaves fixed files modified, does not commit
+      # version: v0.1.0                    # default: the release matching the action ref
+```
+
+The action downloads the release binary (with `.sha256` verification), registers a problem matcher so every result becomes an annotation on the pull request, and fails when errors remain (warnings do not fail it, same as the exit code). `@v0` and `@v0.1` follow the newest release with that prefix; `@v0.1.0` pins one.
+
 ## Usage
 
 The command line is the same as markdownlint-cli2. Replace the executable name in your existing commands and scripts.

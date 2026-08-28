@@ -2,7 +2,8 @@ name: Release
 
 on:
   push:
-    tags: ["v*"]
+    # v0, v0.1 같은 액션 태그는 제외 (release 잡이 옮긴다)
+    tags: ["v[0-9]+.[0-9]+.[0-9]+"]
 
 permissions:
   contents: write
@@ -82,6 +83,14 @@ jobs:
       - env:
           GH_TOKEN: ${{ github.token }}
         run: gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --generate-notes dist/*
+      - uses: actions/checkout@v4
+      - name: 액션 태그 이동 (v0, v0.1 → 이 릴리즈)
+        run: |
+          major="${GITHUB_REF_NAME%%.*}"
+          minor="${GITHUB_REF_NAME%.*}"
+          git tag -f "$major" "$GITHUB_REF_NAME"
+          git tag -f "$minor" "$GITHUB_REF_NAME"
+          git push -f origin "$major" "$minor"
 
   publish-npm:
     needs: release

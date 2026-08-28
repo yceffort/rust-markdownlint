@@ -1,0 +1,7 @@
+// 이 저장소 문서용 설정 (CI 의 action 잡과 pre-commit 잡이 README, docs/, npm/ 을 lint 한다).
+{
+  "config": {
+    "MD013": false,
+    "MD060": false
+  }
+}

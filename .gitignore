@@ -23,3 +23,6 @@ docs/superpowers/
 
 # Binaries copied into the npm platform packages at release time
 npm/platforms/*/rust-markdownlint*
+
+# Release binary downloaded by the pre-commit hook (scripts/pre-commit-hook.sh)
+.bin/

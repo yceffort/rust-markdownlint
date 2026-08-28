@@ -1,0 +1,77 @@
+name: rust-markdownlint
+description: Lint Markdown files with rust-markdownlint (markdownlint-cli2 compatible). Results show up as annotations.
+author: yceffort
+branding:
+  icon: check-square
+  color: orange
+
+inputs:
+  globs:
+    description: Globs to lint, one per line (markdownlint-cli2 syntax; `#` or `!` negates, `:` is a literal path)
+    default: "**/*.md"
+  config:
+    description: Path of a configuration file passed as `--config`
+    default: ""
+  fix:
+    description: Run with `--fix`. Fixed files are left modified in the workspace (not committed); the step fails only if errors remain
+    default: "false"
+  version:
+    description: Release to run, for example `v0.1.0`. Defaults to the release matching this action's ref (`@v0.1.0` exactly, `@v0` or `@v0.1` the newest release with that prefix, anything else the latest release)
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    - name: Install rust-markdownlint
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+        INPUT_VERSION: ${{ inputs.version }}
+        ACTION_REF: ${{ github.action_ref }}
+        ACTION_PATH: ${{ github.action_path }}
+      run: |
+        set -euo pipefail
+        repo=yceffort/rust-markdownlint
+        version="${INPUT_VERSION:-$ACTION_REF}"
+        if [[ ! "$version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          prefix=""
+          if [[ "$version" =~ ^v[0-9]+(\.[0-9]+)?$ ]]; then
+            prefix="$version."
+          fi
+          version="$(gh api "repos/$repo/releases?per_page=100" --jq "[.[] | select(.draft | not) | .tag_name | select(startswith(\"$prefix\"))][0]")"
+          if [ -z "$version" ]; then
+            echo "rust-markdownlint: no release found for '${INPUT_VERSION:-$ACTION_REF}'" >&2
+            exit 1
+          fi
+        fi
+        dest="$RUNNER_TEMP/rust-markdownlint-$version"
+        bash "$ACTION_PATH/scripts/install-release.sh" "$version" "$dest"
+        echo "$dest" >> "$GITHUB_PATH"
+        echo "rust-markdownlint $version" >&2
+
+    - name: Lint
+      shell: bash
+      env:
+        INPUT_GLOBS: ${{ inputs.globs }}
+        INPUT_CONFIG: ${{ inputs.config }}
+        INPUT_FIX: ${{ inputs.fix }}
+        ACTION_PATH: ${{ github.action_path }}
+      run: |
+        set -euo pipefail
+        echo "::add-matcher::$ACTION_PATH/.github/problem-matcher.json"
+        args=()
+        if [ -n "$INPUT_CONFIG" ]; then
+          args+=(--config "$INPUT_CONFIG")
+        fi
+        if [ "$INPUT_FIX" = true ]; then
+          args+=(--fix)
+        fi
+        while IFS= read -r glob; do
+          if [ -n "$glob" ]; then
+            args+=("$glob")
+          fi
+        done <<< "$INPUT_GLOBS"
+        code=0
+        rust-markdownlint "${args[@]}" || code=$?
+        echo "::remove-matcher owner=rust-markdownlint::"
+        exit $code
