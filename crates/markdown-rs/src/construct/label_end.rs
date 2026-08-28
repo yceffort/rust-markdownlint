@@ -184,7 +184,7 @@ use crate::event::{Event, Kind, Name};
 use crate::resolve::Name as ResolveName;
 use crate::state::{Name as StateName, State};
 use crate::subtokenize::Subresult;
-use crate::tokenizer::{Label, LabelKind, LabelStart, Tokenizer};
+use crate::tokenizer::{DataSplit, DataSplitKind, Label, LabelKind, LabelStart, Tokenizer};
 use crate::util::{
     constant::RESOURCE_DESTINATION_BALANCE_MAX,
     normalize_identifier::normalize_identifier,
@@ -677,11 +677,27 @@ pub fn resolve(tokenizer: &mut Tokenizer) -> Option<Subresult> {
     // Inject labels.
     let labels = tokenizer.tokenize_state.labels.split_off(0);
     inject_labels(tokenizer, &labels);
+    // micromark 는 리졸버를 처음 성공한 순서로 돌린다. label 시작이 attention 시퀀스보다 먼저
+    // 나왔으면 남은 label 시작은 강조 매치 안에서 인접 data 와 합쳐지고, 아니면 끝까지 따로 남는다.
+    let label_first = tokenizer
+        .events
+        .iter()
+        .find(|event| {
+            event.kind == Kind::Enter
+                && matches!(
+                    event.name,
+                    Name::AttentionSequence
+                        | Name::LabelLink
+                        | Name::LabelImage
+                        | Name::GfmFootnoteCallLabel
+                )
+        })
+        .is_some_and(|event| event.name != Name::AttentionSequence);
     // Handle loose starts.
     let starts = tokenizer.tokenize_state.label_starts.split_off(0);
-    mark_as_data(tokenizer, &starts);
+    mark_as_data(tokenizer, &starts, label_first);
     let starts = tokenizer.tokenize_state.label_starts_loose.split_off(0);
-    mark_as_data(tokenizer, &starts);
+    mark_as_data(tokenizer, &starts, label_first);
 
     tokenizer.map.consume(&mut tokenizer.events);
     None
@@ -809,12 +825,31 @@ fn inject_labels(tokenizer: &mut Tokenizer, labels: &[Label]) {
 }
 
 /// Remove loose label starts.
-fn mark_as_data(tokenizer: &mut Tokenizer, events: &[LabelStart]) {
+fn mark_as_data(tokenizer: &mut Tokenizer, events: &[LabelStart], label_first: bool) {
     let mut index = 0;
 
     while index < events.len() {
         let data_enter_index = events[index].start.0;
         let data_exit_index = events[index].start.1;
+
+        // micromark 가 따로 남기는 토큰은 `[` 또는 `![` 다. 각주 시작 `[^` 은 `[` 만이고 `^` 는
+        // 뒤따르는 data 와 합쳐진다.
+        let start = tokenizer.events[data_enter_index].point.index;
+        let end = if matches!(
+            events[index].kind,
+            LabelKind::GfmFootnote | LabelKind::GfmUndefinedFootnote
+        ) {
+            start + 1
+        } else {
+            tokenizer.events[data_exit_index].point.index
+        };
+        tokenizer.tokenize_state.data_splits.push(DataSplit {
+            start,
+            end,
+            kind: DataSplitKind::Label {
+                merge_in_attention: label_first,
+            },
+        });
 
         tokenizer.map.add(
             data_enter_index,

@@ -6,11 +6,11 @@
 //! [string]: crate::construct::string
 //! [text]: crate::construct::text
 
-use crate::event::{Kind, Name};
+use crate::event::{Event, Kind, Name};
 use crate::state::{Name as StateName, State};
 use crate::subtokenize::Subresult;
-use crate::tokenizer::Tokenizer;
-use alloc::vec;
+use crate::tokenizer::{DataSplitKind, Tokenizer};
+use alloc::{vec, vec::Vec};
 
 /// At beginning of data.
 ///
@@ -103,6 +103,109 @@ pub fn resolve(tokenizer: &mut Tokenizer) -> Option<Subresult> {
         }
 
         index += 1;
+    }
+
+    tokenizer.map.consume(&mut tokenizer.events);
+    None
+}
+
+/// 로컬 확장: micromark 가 합치지 않는 경계에서 병합된 data 를 다시 나눈다.
+///
+/// micromark 는 data 병합(`resolveAllText`)을 label/attention 리졸버보다 먼저 돌리므로, 짝 없는
+/// attention 시퀀스와 남은 label 시작은 최상위에서 인접 data 와 합쳐지지 않는다. 강조 매치 안과
+/// 링크 라벨 안에서는 `insideSpan` 리졸버가 다시 합친다. 여기서는 [`resolve`] 가 전부 합친 뒤
+/// `tokenize_state.data_splits` 에 기록된 경계 중 micromark 가 남겼을 것만 되살린다.
+pub fn resolve_splits(tokenizer: &mut Tokenizer) -> Option<Subresult> {
+    let mut splits = core::mem::take(&mut tokenizer.tokenize_state.data_splits);
+    if splits.is_empty() {
+        return None;
+    }
+    splits.sort_by_key(|split| split.start);
+
+    let bytes = tokenizer.parse_state.bytes;
+    let mut stack: Vec<Name> = vec![];
+    let mut index = 0;
+
+    while index < tokenizer.events.len() {
+        let event = &tokenizer.events[index];
+        if event.kind == Kind::Exit {
+            stack.pop();
+            index += 1;
+            continue;
+        }
+        if event.name != Name::Data {
+            stack.push(event.name.clone());
+            index += 1;
+            continue;
+        }
+
+        let enter = event.clone();
+        let exit = tokenizer.events[index + 1].clone();
+        debug_assert!(
+            exit.kind == Kind::Exit && exit.name == Name::Data,
+            "expected data exit"
+        );
+        let in_emphasis = stack
+            .iter()
+            .any(|name| matches!(name, Name::EmphasisText | Name::StrongText));
+        let in_label = stack.iter().any(|name| *name == Name::LabelText);
+
+        // 이 data 안에 들어 있는 경계 중 micromark 가 남겼을 것.
+        let mut cuts: Vec<usize> = vec![];
+        for split in splits
+            .iter()
+            .filter(|split| split.start >= enter.point.index && split.end <= exit.point.index)
+        {
+            let merged = match split.kind {
+                DataSplitKind::Attention => in_emphasis || in_label,
+                DataSplitKind::Label { merge_in_attention } => merge_in_attention && in_emphasis,
+            };
+            if merged {
+                continue;
+            }
+            if split.start > enter.point.index {
+                cuts.push(split.start);
+            }
+            if split.end < exit.point.index {
+                cuts.push(split.end);
+            }
+        }
+        cuts.dedup();
+
+        if !cuts.is_empty() {
+            let mut replacement = vec![];
+            let mut previous = enter.point.clone();
+            let mut cut_index = 0;
+            while cut_index < cuts.len() {
+                let point = previous.shift_to(bytes, cuts[cut_index]);
+                replacement.push(Event {
+                    kind: Kind::Enter,
+                    name: Name::Data,
+                    point: previous,
+                    link: None,
+                });
+                replacement.push(Event {
+                    kind: Kind::Exit,
+                    name: Name::Data,
+                    point: point.clone(),
+                    link: None,
+                });
+                previous = point;
+                cut_index += 1;
+            }
+            replacement.push(Event {
+                kind: Kind::Enter,
+                name: Name::Data,
+                point: previous,
+                link: None,
+            });
+            replacement.push(exit);
+            // 원래 enter 의 link 는 첫 조각이 이어받는다.
+            replacement[0].link = enter.link;
+            tokenizer.map.add(index, 2, replacement);
+        }
+
+        index += 2;
     }
 
     tokenizer.map.consume(&mut tokenizer.events);

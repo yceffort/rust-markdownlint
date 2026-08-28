@@ -80,7 +80,7 @@ use crate::event::{Event, Kind, Name, Point};
 use crate::resolve::Name as ResolveName;
 use crate::state::{Name as StateName, State};
 use crate::subtokenize::Subresult;
-use crate::tokenizer::Tokenizer;
+use crate::tokenizer::{DataSplit, DataSplitKind, Tokenizer};
 use crate::util::char::{
     after_index as char_after_index, before_index as char_before_index, classify_opt,
     Kind as CharacterKind,
@@ -217,6 +217,12 @@ pub fn resolve(tokenizer: &mut Tokenizer) -> Option<Subresult> {
         let sequence = &sequences[index];
         tokenizer.events[sequence.index].name = Name::Data;
         tokenizer.events[sequence.index + 1].name = Name::Data;
+        // micromark 는 이 data 를 최상위에서는 인접 data 와 합치지 않는다 (`DataSplit` 리졸버).
+        tokenizer.tokenize_state.data_splits.push(DataSplit {
+            start: sequence.start_point.index,
+            end: sequence.end_point.index,
+            kind: DataSplitKind::Attention,
+        });
         index += 1;
     }
 

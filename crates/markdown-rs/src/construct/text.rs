@@ -81,6 +81,8 @@ pub fn before(tokenizer: &mut Tokenizer) -> State {
         None => {
             tokenizer.register_resolver(ResolveName::Data);
             tokenizer.register_resolver(ResolveName::Text);
+            // 로컬 확장: 전부 합친 뒤 micromark 가 남겼을 경계를 되살린다 (맨 마지막).
+            tokenizer.register_resolver(ResolveName::DataSplit);
             State::Ok
         }
         Some(b'!') => {

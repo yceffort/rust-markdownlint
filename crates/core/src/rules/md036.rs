@@ -166,6 +166,19 @@ mod tests {
         assert_eq!(errs[0].error_context.as_deref(), Some("Section 4"));
     }
 
+    /// #186: micromark 는 정의되지 않은 참조의 `[` 를 별도 data 로 남겨 강조의 자식이 여럿이 된다.
+    #[test]
+    fn md036_brackets_inside_emphasis_are_not_a_heading() {
+        assert!(lint_rule("MD036", "**a [b] c**\n").is_empty());
+        assert!(lint_rule("MD036", "*a [b] c*\n").is_empty());
+        assert!(lint_rule("MD036", "**/pages/post/[id].tsx**\n").is_empty());
+        // 정의된 참조와 인라인 링크는 link 자식이라 원래부터 잡히지 않는다.
+        assert!(lint_rule("MD036", "**a [b] c**\n\n[b]: x\n").is_empty());
+        assert!(lint_rule("MD036", "**a [b](x) c**\n").is_empty());
+        // 대조군: 괄호가 없으면 잡힌다.
+        assert_eq!(lint_rule("MD036", "**a b c**\n").len(), 1);
+    }
+
     #[test]
     fn md036_paragraph_inside_list_is_ignored() {
         assert!(lint_rule("MD036", "* **Emphasized item**\n").is_empty());

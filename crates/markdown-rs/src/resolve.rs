@@ -56,6 +56,8 @@ pub enum Name {
     /// It helps performance to merge them together if those markers did not
     /// match anything and hence they occur next to each other.
     Data,
+    /// 로컬 확장: micromark 가 합치지 않는 경계에서 병합된 data 를 다시 나눈다.
+    DataSplit,
     /// Resolve whitespace in `string`.
     String,
     /// Resolve whitespace in `text`.
@@ -73,6 +75,7 @@ pub fn call(tokenizer: &mut Tokenizer, name: Name) -> Result<Option<Subresult>, 
         Name::ListItem => construct::list_item::resolve(tokenizer),
         Name::Content => construct::content::resolve(tokenizer)?,
         Name::Data => construct::partial_data::resolve(tokenizer),
+        Name::DataSplit => construct::partial_data::resolve_splits(tokenizer),
         Name::String => construct::string::resolve(tokenizer),
         Name::Text => construct::text::resolve(tokenizer),
     };
