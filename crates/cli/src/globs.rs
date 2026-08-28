@@ -302,6 +302,21 @@ fn split_tasks(base: &Path, patterns: &[String]) -> Vec<Task> {
         .collect()
 }
 
+/// fast-glob 의 globParent: 절대 패턴의 static prefix 디렉토리 (완전 정적이면 그 부모). 패턴 문자열을
+/// 그대로 잘라 쓰므로 `//?/C:/` 같은 접두어도 보존된다.
+fn absolute_root(pattern: &str) -> PathBuf {
+    let segments: Vec<&str> = pattern.split('/').collect();
+    let mut n = segments.iter().take_while(|s| !has_glob_meta(s)).count();
+    if n == segments.len() {
+        n -= 1;
+    }
+    let mut root = segments[..n].join("/");
+    if root.is_empty() || root.ends_with(':') {
+        root.push('/');
+    }
+    PathBuf::from(root)
+}
+
 /// `../` 로 시작하는 패턴은 base 밖에서, 절대 패턴은 그 static prefix 디렉토리(fast-glob 의
 /// globParent)에서 순회를 시작해야 한다.
 fn walk_roots(base: &Path, patterns: &[String]) -> Vec<PathBuf> {
@@ -309,16 +324,7 @@ fn walk_roots(base: &Path, patterns: &[String]) -> Vec<PathBuf> {
     for pattern in patterns.iter().filter(|p| !p.starts_with('!')) {
         let pattern = remove_leading_dot_segment(pattern);
         let root = if is_absolute(pattern) {
-            let mut prefix = static_prefix(pattern);
-            if !pattern.split('/').any(has_glob_meta) {
-                prefix.pop();
-            }
-            let joined = prefix.join("/");
-            PathBuf::from(if pattern.starts_with('/') {
-                format!("/{joined}")
-            } else {
-                format!("{joined}/")
-            })
+            absolute_root(pattern)
         } else {
             let mut root = base.to_path_buf();
             for _ in 0..parent_prefix(pattern).len() / 3 {
@@ -551,11 +557,21 @@ mod tests {
         path.to_string_lossy().replace('\\', "/")
     }
 
+    /// Windows 의 canonicalize 는 `\\?\C:\...` verbatim 경로를 주는데 실제 base(current_dir) 는
+    /// 그렇지 않으므로 접두어를 뗀다.
+    fn canonical(dir: &Path) -> PathBuf {
+        let path = dir.canonicalize().unwrap();
+        match path.to_string_lossy().strip_prefix(r"\\?\") {
+            Some(rest) => PathBuf::from(rest),
+            None => path,
+        }
+    }
+
     /// 절대경로 glob 은 fast-glob 처럼 그 static prefix 디렉토리에서 순회를 시작해 절대경로로 매치한다.
     #[test]
     fn enumerate_absolute_glob() {
         let dir = fixture();
-        let base = dir.path().canonicalize().unwrap();
+        let base = canonical(dir.path());
         let files = enumerate_files(
             &base,
             &globs(&[&format!("{}/docs/*.md", posix(&base))]),
@@ -567,7 +583,7 @@ mod tests {
     #[test]
     fn enumerate_absolute_static_file() {
         let dir = fixture();
-        let base = dir.path().canonicalize().unwrap();
+        let base = canonical(dir.path());
         let files = enumerate_files(
             &base,
             &globs(&[&format!("{}/docs/a.md", posix(&base))]),
@@ -586,7 +602,7 @@ mod tests {
     #[test]
     fn enumerate_absolute_directory_expands() {
         let dir = fixture();
-        let base = dir.path().canonicalize().unwrap();
+        let base = canonical(dir.path());
         let files = enumerate_files(
             &base,
             &globs(&[&format!("{}/docs", posix(&base))]),
@@ -599,7 +615,7 @@ mod tests {
     #[test]
     fn enumerate_absolute_outside_base() {
         let dir = fixture();
-        let root = dir.path().canonicalize().unwrap();
+        let root = canonical(dir.path());
         let base = root.join("docs");
         let files = enumerate_files(
             &base,
@@ -614,7 +630,7 @@ mod tests {
     #[test]
     fn enumerate_absolute_with_relative_negation() {
         let dir = fixture();
-        let base = dir.path().canonicalize().unwrap();
+        let base = canonical(dir.path());
         let all = format!("{}/**/*.md", posix(&base));
         let files = enumerate_files(
             &base,
@@ -635,10 +651,12 @@ mod tests {
 
     /// globby normalizeNegativePattern: 절대 부정 패턴은 static prefix 가 앞선 절대 positive 의 prefix 와
     /// 정확히 같을 때만 절대로 남고, 아니면 (또는 상대 positive 가 있으면) `/` 를 떼어 cwd 상대가 된다.
+    /// `/` 로 시작하는 패턴에만 적용되므로 Windows 의 `C:/...` 부정 패턴은 그대로 절대로 남는다.
+    #[cfg(unix)]
     #[test]
     fn enumerate_absolute_negation_needs_equal_prefix() {
         let dir = fixture();
-        let base = dir.path().canonicalize().unwrap();
+        let base = canonical(dir.path());
         let root = posix(&base);
         let files = enumerate_files(
             &base,
@@ -675,7 +693,7 @@ mod tests {
     #[test]
     fn enumerate_absolute_dynamic_dropped_by_root_relative_dynamic() {
         let dir = fixture();
-        let base = dir.path().canonicalize().unwrap();
+        let base = canonical(dir.path());
         let root = posix(&base);
         let files = enumerate_files(
             &base,
