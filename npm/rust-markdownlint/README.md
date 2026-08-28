@@ -14,8 +14,8 @@ The package is a thin wrapper that runs a prebuilt binary from one of the platfo
 You can also download a binary for your platform from [Releases](https://github.com/yceffort/rust-markdownlint/releases): macOS (arm64, x86_64), Linux (x86_64, arm64, statically linked with musl), Windows (x86_64). Each archive comes with a `.sha256` file.
 
 ```bash
-curl -LO https://github.com/yceffort/rust-markdownlint/releases/latest/download/rust-markdownlint-v0.1.0-aarch64-apple-darwin.tar.gz
-tar xzf rust-markdownlint-v0.1.0-aarch64-apple-darwin.tar.gz
+curl -LO https://github.com/yceffort/rust-markdownlint/releases/latest/download/rust-markdownlint-v0.1.1-aarch64-apple-darwin.tar.gz
+tar xzf rust-markdownlint-v0.1.1-aarch64-apple-darwin.tar.gz
 ./rust-markdownlint --help
 ```
 
@@ -82,7 +82,7 @@ Rule configuration supports all 53 rules of markdownlint v0.40.0 (MD001 through 
 
 ## Differences from markdownlint-cli2
 
-- The banner reads `rust-markdownlint v0.1.0 (markdownlint-cli2 v0.22.1 / markdownlint v0.40.0 compatible)`. Turn on `noBanner` if something parses it.
+- The banner reads `rust-markdownlint v0.1.1 (markdownlint-cli2 v0.22.1 / markdownlint v0.40.0 compatible)`. Turn on `noBanner` if something parses it.
 - Anything that requires loading JavaScript modules is not supported. `.markdownlint-cli2.{cjs,mjs}` and `.markdownlint.{cjs,mjs}` configuration files are an error (exit 2), and `customRules`, `markdownItPlugins`, `outputFormatters`, `modulePaths` are ignored as listed above. Use the original if you need custom rules or markdown-it plugins.
 - File names in the results are sorted with an approximation of ICU `localeCompare` that is exact for ASCII. Non-ASCII file names sort by code point.
 - MD060 measures character width with `unicode-width` instead of `string-width`. A handful of characters (for example half-width katakana voiced marks) may differ.
