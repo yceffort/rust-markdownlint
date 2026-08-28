@@ -89,10 +89,21 @@ rust-markdownlint --help
 | `--no-globs` | Ignore `globs` from configuration files and use only the command line globs |
 | `--stdin-filename <path>` | Not in markdownlint-cli2. Report stdin as `<path>` and apply the configuration files of that directory (`.markdownlint-cli2.*`, `.markdownlint.*`, `ignores`), so editors can lint an unsaved buffer with the right settings. The file itself is neither read nor written, and if a glob also matches it only stdin is linted |
 | `--help` | Show help |
+| `server` | Not in markdownlint-cli2. Run a Language Server Protocol server on stdio (see [docs/lsp.md](docs/lsp.md)) |
 
 - Configuration cascades per directory exactly like the original: `.markdownlint-cli2.{jsonc,yaml}` merges with the parent options, `.markdownlint.{jsonc,json,yaml,yml}` replaces the parent rule configuration.
 - Output is byte-identical to markdownlint-cli2 except for the banner line. Results go to stderr, progress (`Finding:`, `Linting:`, `Summary:`) goes to stdout.
 - Exit codes: 0 (no errors, or warnings only), 1 (errors), 2 (help, invalid configuration, exception).
+
+### Editor integration (LSP)
+
+`rust-markdownlint server` runs a Language Server Protocol server on stdio, so Neovim, Helix, and other LSP clients get diagnostics and quick fixes without Node. Diagnostic positions and the quick fix results are the same as the CLI output and `--fix`.
+
+```bash
+rust-markdownlint server   # JSON-RPC over stdin/stdout, started by the editor
+```
+
+[docs/lsp.md](docs/lsp.md) has Neovim (`vim.lsp.config` and nvim-lspconfig), Helix, and Zed configuration, the supported requests, and a manual verification checklist.
 
 ### Supported options
 
