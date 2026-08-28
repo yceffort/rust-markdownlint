@@ -10,12 +10,15 @@ pub struct Argv {
     pub use_stdin: bool,
     pub help: bool,
     pub no_globs: bool,
+    /// cli2 에 없는 옵션: stdin 을 이 경로(base 기준)의 파일처럼 다룬다.
+    pub stdin_filename: Option<String>,
 }
 
 pub fn parse_argv(args: &[String]) -> Argv {
     let mut argv = Argv::default();
     let mut saw_dash_dash = false;
     let mut pointer_pending = false;
+    let mut stdin_filename_pending = false;
     for arg in args {
         if saw_dash_dash {
             argv.globs.push(arg.clone());
@@ -24,6 +27,9 @@ pub fn parse_argv(args: &[String]) -> Argv {
         } else if pointer_pending {
             argv.config_pointer = Some(arg.clone());
             pointer_pending = false;
+        } else if stdin_filename_pending {
+            argv.stdin_filename = Some(arg.clone());
+            stdin_filename_pending = false;
         } else if arg == "-" {
             argv.use_stdin = true;
         } else if arg == "--" {
@@ -41,6 +47,8 @@ pub fn parse_argv(args: &[String]) -> Argv {
             argv.help = true;
         } else if arg == "--no-globs" {
             argv.no_globs = true;
+        } else if arg == "--stdin-filename" {
+            stdin_filename_pending = true;
         } else {
             argv.globs.push(arg.clone());
         }
@@ -100,5 +108,14 @@ mod tests {
         assert!(a.no_globs);
         assert!(a.help);
         assert!(a.globs.is_empty());
+    }
+
+    #[test]
+    fn stdin_filename_consumes_next_arg() {
+        let a = parse_argv(&s(["--stdin-filename", "docs/a.md", "-", "b.md"]));
+        assert_eq!(a.stdin_filename, Some("docs/a.md".into()));
+        assert!(a.use_stdin);
+        assert_eq!(a.globs, ["b.md"]);
+        assert_eq!(parse_argv(&s(["--stdin-filename"])).stdin_filename, None);
     }
 }

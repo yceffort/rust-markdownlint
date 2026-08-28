@@ -142,7 +142,12 @@ fn run(args: &[String]) -> Result<i32> {
     if argv.use_stdin {
         let mut bytes = Vec::new();
         std::io::stdin().read_to_end(&mut bytes)?;
-        non_file.insert(base.join("stdin"), lossy_utf8(bytes));
+        // --stdin-filename: 그 경로에 파일이 있는 것처럼 이름과 디렉토리 설정 계층을 정한다
+        let path = match &argv.stdin_filename {
+            Some(p) => resolve(&base, p),
+            None => base.join("stdin"),
+        };
+        non_file.insert(path, lossy_utf8(bytes));
     }
 
     let show_progress = base_options.no_progress != Some(true) && !formatting;
@@ -178,7 +183,13 @@ fn run(args: &[String]) -> Result<i32> {
         .unwrap_or(GitIgnore::Enabled(false));
     let mut files = enumerate_files(&base, &glob_patterns, &gitignore);
     files.extend(literal);
-    files.extend(non_file.keys().cloned());
+    // glob 이 같은 경로를 찾았어도 stdin 내용을 한 번만 lint 한다
+    let stdin_paths: Vec<PathBuf> = non_file
+        .keys()
+        .filter(|k| !files.contains(k))
+        .cloned()
+        .collect();
+    files.extend(stdin_paths);
     let dir_infos = create_dir_infos(&base, &files, &base_options, &mut warn)?;
 
     if show_progress {
