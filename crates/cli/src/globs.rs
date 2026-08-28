@@ -44,8 +44,42 @@ fn static_prefix(pattern: &str) -> Vec<String> {
     pattern
         .split('/')
         .take_while(|s| !has_glob_meta(s))
+        .filter(|s| !s.is_empty())
         .map(str::to_string)
         .collect()
+}
+
+fn is_absolute(pattern: &str) -> bool {
+    Path::new(pattern).is_absolute()
+}
+
+/// fast-glob 은 절대 패턴을 절대경로 문자열에 대고 매치한다 (Windows 는 `C:/...`).
+fn absolute_posix(path: &Path) -> String {
+    path.to_string_lossy().replace('\\', "/")
+}
+
+/// globby `normalizeNegativePattern`: `/` 로 시작하는 부정 패턴은 (1) 루트 앵커 glob(`/**`, `/*.md`,
+/// 첫 세그먼트가 동적) 이면 상대로, (2) 상대 positive 가 있으면 `/` 만 떼고 (사실상 무효), (3) static
+/// prefix 가 앞선 절대 positive 의 prefix 와 정확히 같을 때만 절대로 남는다.
+fn normalize_negative(
+    pattern: &str,
+    abs_prefixes: &[Vec<String>],
+    has_relative_positive: bool,
+) -> String {
+    let Some(inner) = pattern.strip_prefix('/') else {
+        return pattern.to_string();
+    };
+    let first = inner.split('/').next().unwrap_or("");
+    let real_absolute = !first.is_empty() && inner.contains('/') && !has_glob_meta(first);
+    if !real_absolute || has_relative_positive {
+        return inner.to_string();
+    }
+    let prefix = static_prefix(pattern);
+    if !prefix.is_empty() && abs_prefixes.contains(&prefix) {
+        pattern.to_string()
+    } else {
+        inner.to_string()
+    }
 }
 
 fn build_glob(pattern: &str) -> Option<globset::Glob> {
@@ -100,13 +134,18 @@ fn parent_prefix(pattern: &str) -> &str {
 }
 
 /// globby 의 fast-glob 작업 하나: 양의 패턴들과 그 뒤에 온 부정 패턴들.
+/// 절대 패턴(`*_abs`)은 base 상대경로가 아니라 절대경로 문자열에 대고 매치한다.
 struct Task {
     positive: globset::GlobSet,
+    positive_abs: globset::GlobSet,
     ignore: globset::GlobSet,
+    ignore_abs: globset::GlobSet,
     /// fast-glob DeepFilter: `/**` 로 끝나거나 마지막 세그먼트가 정적인 부정 패턴은 그 디렉토리 자체를
     /// 순회하지 않는다 (`!**/node_modules` 는 아래 파일까지 제외, `!a/*` 는 아니다).
     prune: globset::GlobSet,
+    prune_abs: globset::GlobSet,
     prefixes: Vec<Vec<String>>,
+    prefixes_abs: Vec<Vec<String>>,
 }
 
 impl Task {
@@ -134,51 +173,91 @@ impl Task {
             })
             .collect();
 
+        // fast-glob convertPatternsToTasks: base 가 `.` 인 상대 동적 패턴이 있으면 동적 패턴 전부를 `.`
+        // 작업 하나로 합쳐 상대경로에 매치하므로 절대 동적 패턴은 아무것도 못 찾는다 (정적 절대 파일은
+        // stat 방식이라 살아남는다).
+        let is_dynamic = |p: &str| p.split('/').any(has_glob_meta);
+        let merged_into_root = positive.iter().any(|p| {
+            !is_absolute(p) && !p.starts_with("../") && is_dynamic(p) && static_prefix(p).is_empty()
+        });
         let mut positive_set = globset::GlobSetBuilder::new();
+        let mut positive_abs = globset::GlobSetBuilder::new();
         let mut prefixes = Vec::new();
+        let mut prefixes_abs = Vec::new();
         for pattern in &positive {
             if let Some(glob) = build_glob(pattern) {
-                positive_set.add(glob);
-                prefixes.push(static_prefix(pattern));
+                if is_absolute(pattern) {
+                    if merged_into_root && is_dynamic(pattern) {
+                        continue;
+                    }
+                    positive_abs.add(glob);
+                    prefixes_abs.push(static_prefix(pattern));
+                } else {
+                    positive_set.add(glob);
+                    prefixes.push(static_prefix(pattern));
+                }
             }
         }
         let mut ignore_set = globset::GlobSetBuilder::new();
+        let mut ignore_abs = globset::GlobSetBuilder::new();
         let mut prune = globset::GlobSetBuilder::new();
+        let mut prune_abs = globset::GlobSetBuilder::new();
         for pattern in &ignore {
-            add_glob(&mut ignore_set, pattern);
+            let (set, prune_set) = if is_absolute(pattern) {
+                (&mut ignore_abs, &mut prune_abs)
+            } else {
+                (&mut ignore_set, &mut prune)
+            };
+            add_glob(set, pattern);
             if pattern.ends_with("/**") || !pattern.rsplit('/').next().is_some_and(has_glob_meta) {
-                add_glob(&mut prune, pattern);
+                add_glob(prune_set, pattern);
             }
         }
         Some(Task {
             positive: positive_set.build().ok()?,
+            positive_abs: positive_abs.build().ok()?,
             ignore: ignore_set.build().ok()?,
+            ignore_abs: ignore_abs.build().ok()?,
             prune: prune.build().ok()?,
+            prune_abs: prune_abs.build().ok()?,
             prefixes,
+            prefixes_abs,
         })
     }
 
-    /// 이 작업의 어떤 양의 패턴이 이 디렉토리 아래를 매치할 수 있는가.
-    fn may_descend(&self, dir: &[String]) -> bool {
-        if self.prune.is_match(dir.join("/")) {
-            return false;
-        }
-        self.prefixes.iter().any(|p| {
-            let n = p.len().min(dir.len());
-            leading_dots(p) == leading_dots(dir) && p[..n] == dir[..n]
-        })
+    /// 이 작업의 어떤 양의 패턴이 이 디렉토리 아래를 매치할 수 있는가. 절대 패턴의 작업에서는
+    /// 상대 부정 패턴도 절대경로에 대고 본다 (fast-glob DeepFilter 는 entry.path 기준).
+    fn may_descend(&self, rel: &[String], abs: &str) -> bool {
+        let rel_ok = !self.prune.is_match(rel.join("/"))
+            && self.prefixes.iter().any(|p| prefix_allows(p, rel));
+        let abs_ok = !self.prefixes_abs.is_empty()
+            && !self.prune.is_match(abs)
+            && !self.prune_abs.is_match(abs)
+            && self
+                .prefixes_abs
+                .iter()
+                .any(|p| prefix_allows(p, &components(abs)));
+        rel_ok || abs_ok
     }
 
     /// fast-glob 은 패턴의 static prefix 디렉토리에서 순회를 시작하므로 `../` 개수가 다른 패턴은
-    /// 서로의 파일을 보지 못한다 (`**/*.md` 가 `../x/a.md` 를 매치하면 안 된다).
-    fn matches(&self, rel: &str, parts: &[String]) -> bool {
-        !self.ignore.is_match(rel)
+    /// 서로의 파일을 보지 못한다 (`**/*.md` 가 `../x/a.md` 를 매치하면 안 된다). 절대 패턴의 작업에서는
+    /// entry.path 가 절대경로라 상대 부정 패턴도 절대경로에 매치한다 (fast-glob EntryFilter).
+    fn matches(&self, rel: &str, parts: &[String], abs: &str) -> bool {
+        let rel_hit = !self.ignore.is_match(rel)
             && self
                 .positive
                 .matches(rel)
                 .iter()
-                .any(|&i| leading_dots(&self.prefixes[i]) == leading_dots(parts))
+                .any(|&i| leading_dots(&self.prefixes[i]) == leading_dots(parts));
+        let abs_hit = self.positive_abs.is_match(abs) && !self.ignore.is_match(abs);
+        (rel_hit || abs_hit) && !self.ignore_abs.is_match(abs)
     }
+}
+
+fn prefix_allows(prefix: &[String], dir: &[String]) -> bool {
+    let n = prefix.len().min(dir.len());
+    leading_dots(prefix) == leading_dots(dir) && prefix[..n] == dir[..n]
 }
 
 fn leading_dots(parts: &[String]) -> usize {
@@ -189,17 +268,28 @@ fn leading_dots(parts: &[String]) -> usize {
 fn split_tasks(base: &Path, patterns: &[String]) -> Vec<Task> {
     let mut tasks: Vec<(Vec<String>, Vec<String>)> = Vec::new();
     let mut pending: Vec<String> = Vec::new();
+    let mut abs_prefixes: Vec<Vec<String>> = Vec::new();
+    let mut has_relative_positive = false;
     for pattern in patterns {
         match pattern.strip_prefix('!') {
             Some(negated) => {
+                let negated = normalize_negative(negated, &abs_prefixes, has_relative_positive);
                 for (_, ignore) in &mut tasks {
-                    ignore.push(negated.to_string());
+                    ignore.push(negated.clone());
                 }
                 if !pending.is_empty() {
-                    tasks.push((std::mem::take(&mut pending), vec![negated.to_string()]));
+                    tasks.push((std::mem::take(&mut pending), vec![negated]));
                 }
             }
-            None => pending.push(pattern.clone()),
+            None => {
+                let prefix = static_prefix(pattern);
+                if is_absolute(pattern) && !prefix.is_empty() {
+                    abs_prefixes.push(prefix);
+                } else {
+                    has_relative_positive = true;
+                }
+                pending.push(pattern.clone());
+            }
         }
     }
     if !pending.is_empty() {
@@ -212,14 +302,30 @@ fn split_tasks(base: &Path, patterns: &[String]) -> Vec<Task> {
         .collect()
 }
 
-/// `../` 로 시작하는 패턴은 base 밖에서 순회를 시작해야 한다.
+/// `../` 로 시작하는 패턴은 base 밖에서, 절대 패턴은 그 static prefix 디렉토리(fast-glob 의
+/// globParent)에서 순회를 시작해야 한다.
 fn walk_roots(base: &Path, patterns: &[String]) -> Vec<PathBuf> {
     let mut roots: Vec<PathBuf> = Vec::new();
     for pattern in patterns.iter().filter(|p| !p.starts_with('!')) {
-        let mut root = base.to_path_buf();
-        for _ in 0..parent_prefix(remove_leading_dot_segment(pattern)).len() / 3 {
-            root.pop();
-        }
+        let pattern = remove_leading_dot_segment(pattern);
+        let root = if is_absolute(pattern) {
+            let mut prefix = static_prefix(pattern);
+            if !pattern.split('/').any(has_glob_meta) {
+                prefix.pop();
+            }
+            let joined = prefix.join("/");
+            PathBuf::from(if pattern.starts_with('/') {
+                format!("/{joined}")
+            } else {
+                format!("{joined}/")
+            })
+        } else {
+            let mut root = base.to_path_buf();
+            for _ in 0..parent_prefix(pattern).len() / 3 {
+                root.pop();
+            }
+            root
+        };
         if !roots.contains(&root) {
             roots.push(root);
         }
@@ -268,7 +374,10 @@ pub fn enumerate_files(base: &Path, patterns: &[String], gitignore: &GitIgnore) 
                     return true;
                 }
                 let dir = components(&relative_posix(&base_owned, entry.path()));
-                dir.is_empty() || walk_tasks.iter().any(|t| t.may_descend(&dir))
+                dir.is_empty()
+                    || walk_tasks
+                        .iter()
+                        .any(|t| t.may_descend(&dir, &absolute_posix(entry.path())))
             });
         if let GitIgnore::Enabled(true) = gitignore {
             walk.git_ignore(true).require_git(false);
@@ -282,7 +391,8 @@ pub fn enumerate_files(base: &Path, patterns: &[String], gitignore: &GitIgnore) 
                 ignore_matchers.extend(ignore_file_matcher(entry.path()));
             }
             let parts = components(&rel);
-            if tasks.iter().any(|t| t.matches(&rel, &parts)) {
+            let abs = absolute_posix(entry.path());
+            if tasks.iter().any(|t| t.matches(&rel, &parts, &abs)) {
                 files.push(entry.into_path());
             }
         }
@@ -435,6 +545,165 @@ mod tests {
             &GitIgnore::Enabled(false),
         );
         assert_eq!(rel(&base, &files), ["../.hidden/c.md", "a.md"]);
+    }
+
+    fn posix(path: &Path) -> String {
+        path.to_string_lossy().replace('\\', "/")
+    }
+
+    /// 절대경로 glob 은 fast-glob 처럼 그 static prefix 디렉토리에서 순회를 시작해 절대경로로 매치한다.
+    #[test]
+    fn enumerate_absolute_glob() {
+        let dir = fixture();
+        let base = dir.path().canonicalize().unwrap();
+        let files = enumerate_files(
+            &base,
+            &globs(&[&format!("{}/docs/*.md", posix(&base))]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(rel(&base, &files), ["docs/a.md"]);
+    }
+
+    #[test]
+    fn enumerate_absolute_static_file() {
+        let dir = fixture();
+        let base = dir.path().canonicalize().unwrap();
+        let files = enumerate_files(
+            &base,
+            &globs(&[&format!("{}/docs/a.md", posix(&base))]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(rel(&base, &files), ["docs/a.md"]);
+        let files = enumerate_files(
+            &base,
+            &globs(&[&format!("{}/docs/zzz.md", posix(&base))]),
+            &GitIgnore::Enabled(false),
+        );
+        assert!(files.is_empty());
+    }
+
+    /// globby directoryToGlob: 절대경로 디렉토리도 `/**` 로 확장한다.
+    #[test]
+    fn enumerate_absolute_directory_expands() {
+        let dir = fixture();
+        let base = dir.path().canonicalize().unwrap();
+        let files = enumerate_files(
+            &base,
+            &globs(&[&format!("{}/docs", posix(&base))]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(rel(&base, &files), ["docs/a.md", "docs/sub/b.txt"]);
+    }
+
+    /// base(cwd) 밖의 절대경로도 찾는다.
+    #[test]
+    fn enumerate_absolute_outside_base() {
+        let dir = fixture();
+        let root = dir.path().canonicalize().unwrap();
+        let base = root.join("docs");
+        let files = enumerate_files(
+            &base,
+            &globs(&[&format!("{}/.hidden/**/*.md", posix(&root))]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(rel(&base, &files), ["../.hidden/c.md"]);
+    }
+
+    /// fast-glob EntryFilter: 절대 positive 작업에서는 상대 부정 패턴도 절대경로에 대고 매치한다.
+    /// `**/node_modules/**` 는 절대경로에 맞지만 `node_modules` (→ `node_modules/**`) 는 안 맞는다.
+    #[test]
+    fn enumerate_absolute_with_relative_negation() {
+        let dir = fixture();
+        let base = dir.path().canonicalize().unwrap();
+        let all = format!("{}/**/*.md", posix(&base));
+        let files = enumerate_files(
+            &base,
+            &globs(&[&all, "!**/node_modules/**"]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(rel(&base, &files), [".hidden/c.md", "docs/a.md"]);
+        let files = enumerate_files(
+            &base,
+            &globs(&[&all, "!node_modules"]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(
+            rel(&base, &files),
+            [".hidden/c.md", "docs/a.md", "node_modules/d.md"]
+        );
+    }
+
+    /// globby normalizeNegativePattern: 절대 부정 패턴은 static prefix 가 앞선 절대 positive 의 prefix 와
+    /// 정확히 같을 때만 절대로 남고, 아니면 (또는 상대 positive 가 있으면) `/` 를 떼어 cwd 상대가 된다.
+    #[test]
+    fn enumerate_absolute_negation_needs_equal_prefix() {
+        let dir = fixture();
+        let base = dir.path().canonicalize().unwrap();
+        let root = posix(&base);
+        let files = enumerate_files(
+            &base,
+            &globs(&[&format!("{root}/**/*.md"), &format!("!{root}/node_modules")]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(
+            rel(&base, &files),
+            [".hidden/c.md", "docs/a.md", "node_modules/d.md"]
+        );
+        let files = enumerate_files(
+            &base,
+            &globs(&[
+                &format!("{root}/node_modules/**/*.md"),
+                &format!("!{root}/node_modules"),
+            ]),
+            &GitIgnore::Enabled(false),
+        );
+        assert!(files.is_empty());
+        let files = enumerate_files(
+            &base,
+            &globs(&["**/*.md", &format!("!{root}/node_modules/**")]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(
+            rel(&base, &files),
+            [".hidden/c.md", "docs/a.md", "node_modules/d.md"]
+        );
+    }
+
+    /// fast-glob convertPatternsToTasks: base 가 `.` 인 상대 동적 패턴이 있으면 같은 작업의 동적 패턴을
+    /// 전부 `.` 작업 하나로 합쳐 상대경로에 매치하므로 절대 동적 패턴은 아무것도 못 찾는다.
+    /// 정적 절대 파일은 stat 방식이라 살아남고, 부정 패턴으로 나뉜 다음 작업도 영향이 없다.
+    #[test]
+    fn enumerate_absolute_dynamic_dropped_by_root_relative_dynamic() {
+        let dir = fixture();
+        let base = dir.path().canonicalize().unwrap();
+        let root = posix(&base);
+        let files = enumerate_files(
+            &base,
+            &globs(&["**/*.md", &format!("{root}/docs/sub/*.txt")]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(
+            rel(&base, &files),
+            [".hidden/c.md", "docs/a.md", "node_modules/d.md"]
+        );
+        let files = enumerate_files(
+            &base,
+            &globs(&["*.md", &format!("{root}/docs/a.md")]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(rel(&base, &files), ["docs/a.md"]);
+        let files = enumerate_files(
+            &base,
+            &globs(&["docs/*.md", &format!("{root}/.hidden/*.md")]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(rel(&base, &files), [".hidden/c.md", "docs/a.md"]);
+        let files = enumerate_files(
+            &base,
+            &globs(&["*.md", "!zzz", &format!("{root}/.hidden/*.md")]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(rel(&base, &files), [".hidden/c.md"]);
     }
 
     #[test]
