@@ -13,10 +13,9 @@ use rust_markdownlint_cli::dirs::{
     DirInfo, create_dir_infos, read_base_options, read_dir_config, remove_ignored_files,
     resolve_globs,
 };
+use rust_markdownlint_cli::formatters::{self, Formatter};
 use rust_markdownlint_cli::globs::enumerate_files;
-use rust_markdownlint_cli::output::{
-    BANNER, HELP, LintResult, format_result, relative_posix, sort_results,
-};
+use rust_markdownlint_cli::output::{BANNER, HELP, LintResult, relative_posix, sort_results};
 
 fn main() {
     let args: Vec<String> = std::env::args().skip(1).collect();
@@ -243,9 +242,12 @@ fn run(args: &[String]) -> Result<i32> {
     if formatting {
         print!("{}", formatted.unwrap_or_default());
     } else {
-        for result in &results {
-            eprintln!("{}", format_result(result));
-        }
+        // outputResults: base 옵션의 outputFormatters (빈 배열이면 아무것도 안 함), 없으면 기본 포맷터
+        let formatters = match &base_options.output_formatters {
+            Some(entries) => formatters::resolve_all(entries)?,
+            None => vec![(Formatter::Default, serde_json::Value::Null)],
+        };
+        formatters::run(&formatters, &base, &results)?;
     }
     Ok(if errors_present { 1 } else { 0 })
 }

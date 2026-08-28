@@ -400,6 +400,63 @@ fn unsupported_option_warns_on_stderr() {
         .stderr("Ignoring unsupported option: customRules\n");
 }
 
+/// 내장 포맷터는 원본 패키지 이름으로 지정한다. 파일 포맷터의 출력 형식 자체는 cli2 시나리오
+/// (`outputFormatters*`, `formatter-*`) 가 원본 스냅샷과 대조한다.
+#[test]
+fn output_formatters_by_package_name() {
+    let t = tree(&[
+        ("a.md", "#x\n"),
+        (
+            ".markdownlint-cli2.jsonc",
+            r#"{"outputFormatters": [["markdownlint-cli2-formatter-json", {"name": "out.json", "spaces": 1}], ["markdownlint-cli2-formatter-summarize", {"byRule": true}]]}"#,
+        ),
+    ]);
+    cmd(t.path())
+        .arg("a.md")
+        .assert()
+        .code(1)
+        .stdout(format!(
+            "{BANNER}Finding: a.md\nLinting: 1 file(s)\nSummary: 2 error(s)\nCount Rule\n    1 MD018/no-missing-space-atx\n    1 MD041/first-line-heading/first-line-h1\n    2 [Total]\n"
+        ))
+        .stderr("");
+    let json = fs::read_to_string(t.path().join("out.json")).unwrap();
+    assert!(json.starts_with("[\n {\n  \"fileName\": \"a.md\",\n  \"lineNumber\": 1,\n  \"ruleNames\": [\n   \"MD018\","), "{json}");
+    assert!(
+        json.ends_with("\n  \"severity\": \"error\"\n }\n]"),
+        "{json}"
+    );
+}
+
+#[test]
+fn output_formatters_empty_array_prints_nothing() {
+    let t = tree(&[
+        ("a.md", "#x\n"),
+        (".markdownlint-cli2.jsonc", r#"{"outputFormatters": []}"#),
+    ]);
+    cmd(t.path()).arg("a.md").assert().code(1).stderr("");
+}
+
+/// 원본은 모듈 import 에 실패하면 Summary 뒤에 오류로 exit 2 한다.
+#[test]
+fn unknown_output_formatter_is_error_after_summary() {
+    let t = tree(&[
+        ("a.md", "# x\n"),
+        (
+            ".markdownlint-cli2.jsonc",
+            r#"{"outputFormatters": [["markdownlint-cli2-formatter-json"], ["./my-formatter.cjs"]]}"#,
+        ),
+    ]);
+    cmd(t.path())
+        .arg("a.md")
+        .assert()
+        .code(2)
+        .stdout(format!(
+            "{BANNER}Finding: a.md\nLinting: 1 file(s)\nSummary: 0 error(s)\n"
+        ))
+        .stderr("Error: Unable to import module './my-formatter.cjs'.\n");
+    assert!(!t.path().join("markdownlint-cli2-results.json").exists());
+}
+
 #[test]
 fn front_matter_and_bom() {
     let t = tree(&[("fm.md", "\u{FEFF}---\ntitle: x\n---\n#x")]);

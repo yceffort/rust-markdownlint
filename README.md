@@ -83,7 +83,7 @@ Options in `.markdownlint-cli2.{jsonc,yaml}`:
 | `showFound` | Yes | |
 | `customRules` | No | A one-line warning on stderr, then ignored |
 | `markdownItPlugins` | No | A one-line warning on stderr, then ignored |
-| `outputFormatters` | No | A one-line warning on stderr, then ignored. Only the default formatter is available |
+| `outputFormatters` | Yes | Built-in ports of the original formatter packages, selected by package name: `markdownlint-cli2-formatter-default`, `-json` (`name`, `spaces`), `-junit` (`name`), `-sarif` (`name`), `-codequality` (`name`, `severity`, `severityError`, `severityWarning`), `-summarize` (`byFile`, `byRule`, `byFileByRule`, `byRuleByFile`), `-pretty` (`appendLink`), `-template` (`template`). Output files and text are byte-identical to the originals. Any other module id (a custom `.cjs`/`.mjs` formatter, an unknown package) is `Unable to import module '<id>'.` with exit 2, like the original when the module cannot be loaded |
 | `modulePaths` | No | A one-line warning on stderr, then ignored |
 
 Rule configuration supports all 53 rules of markdownlint v0.40.0 (MD001 through MD060, excluding the deprecated ones) with their parameters, aliases, and tags.
@@ -91,7 +91,7 @@ Rule configuration supports all 53 rules of markdownlint v0.40.0 (MD001 through 
 ## Differences from markdownlint-cli2
 
 - The banner reads `rust-markdownlint v0.1.0 (markdownlint-cli2 v0.22.1 / markdownlint v0.40.0 compatible)`. Turn on `noBanner` if something parses it.
-- Anything that requires loading JavaScript modules is not supported. `.markdownlint-cli2.{cjs,mjs}` and `.markdownlint.{cjs,mjs}` configuration files are an error (exit 2), and `customRules`, `markdownItPlugins`, `outputFormatters`, `modulePaths` are ignored as listed above. Use the original if you need custom rules or markdown-it plugins.
+- Anything that requires loading JavaScript modules is not supported. `.markdownlint-cli2.{cjs,mjs}` and `.markdownlint.{cjs,mjs}` configuration files are an error (exit 2), and `customRules`, `markdownItPlugins`, `modulePaths` are ignored as listed above. `outputFormatters` works with the built-in formatters listed above (the original npm packages are not loaded, so `-pretty` decides on colors and hyperlinks from `FORCE_COLOR`, `NO_COLOR`, `FORCE_HYPERLINK`, and the terminal like the original does, but with a shorter list of recognized terminals). Use the original if you need custom rules, markdown-it plugins, or a custom formatter module.
 - Configuration files are parsed with Rust parsers (jsonc-parser, toml, serde-saphyr). Error messages for invalid files keep the original wording where the original tests rely on it (`Unable to parse JSONC content`, `Invalid TOML document`, `duplicated mapping key`) but the details differ. YAML flow collections are additionally checked with the js-yaml rules (an implicit key must have its `:` on the line where the key starts, and a multi-line plain scalar must stay indented past the enclosing block), so a JSONC document saved under a `.yaml` name fails with `missed comma between flow collection entries` like the original.
 - File names in the results are sorted with an approximation of ICU `localeCompare` that is exact for ASCII. Non-ASCII file names sort by code point.
 - MD060 measures character width with `unicode-width` instead of `string-width`. A handful of characters (for example half-width katakana voiced marks) may differ.
