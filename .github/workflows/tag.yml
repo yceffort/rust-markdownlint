@@ -1,0 +1,52 @@
+name: Tag on version bump
+
+# main 에 push 될 때마다 crates/cli/Cargo.toml 의 버전을 보고, 그 태그가 없으면 만들어 밀고
+# 릴리즈를 돌린다. 즉 "버전 범프 PR 을 머지하는 것 = 릴리즈" 다.
+#
+# 태그를 밀고 release.yml 의 push 트리거가 받기를 기대하면 안 된다. GITHUB_TOKEN 으로 만든
+# 이벤트는 다른 워크플로를 발화시키지 않는다 (무한 루프 방지). 그래서 release.yml 을
+# workflow_call 로 직접 부른다. 이 방식은 PAT 이 필요 없다.
+on:
+  push:
+    branches: [main]
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      version: ${{ steps.check.outputs.version }}
+      new: ${{ steps.check.outputs.new }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: check
+        name: Cargo.toml 버전에 해당하는 태그가 있는지
+        run: |
+          v="v$(sed -nE 's/^version = "(.*)"/\1/p' crates/cli/Cargo.toml | head -1)"
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+          if git ls-remote --exit-code --tags origin "refs/tags/$v" > /dev/null 2>&1; then
+            echo "new=false" >> "$GITHUB_OUTPUT"
+            echo "태그 $v 가 이미 있다. 릴리즈하지 않는다."
+          else
+            echo "new=true" >> "$GITHUB_OUTPUT"
+            echo "태그 $v 가 없다. 새 릴리즈로 본다."
+          fi
+      - if: steps.check.outputs.new == 'true'
+        name: 태그 생성과 push
+        run: |
+          git tag "${{ steps.check.outputs.version }}"
+          git push origin "${{ steps.check.outputs.version }}"
+
+  release:
+    needs: tag
+    if: needs.tag.outputs.new == 'true'
+    permissions:
+      contents: write
+      id-token: write
+    uses: ./.github/workflows/release.yml
+    with:
+      version: ${{ needs.tag.outputs.version }}
+    secrets: inherit

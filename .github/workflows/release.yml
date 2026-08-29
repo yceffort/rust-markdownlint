@@ -11,6 +11,13 @@ on:
       version:
         description: "리허설할 버전. crates/cli/Cargo.toml 과 같아야 한다 (예: v0.1.1)"
         required: true
+  # tag.yml 이 버전 범프를 감지해 태그를 민 뒤 여기를 직접 부른다.
+  # GITHUB_TOKEN 으로 push 한 태그는 위의 push 트리거를 발화시키지 않기 때문에 호출로 잇는다.
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -108,8 +115,10 @@ jobs:
         run: |
           major="${VERSION%%.*}"
           minor="${VERSION%.*}"
-          git tag -f "$major" "$VERSION"
-          git tag -f "$minor" "$VERSION"
+          # $VERSION 태그 이름 대신 SHA 를 쓴다. workflow_call 로 불릴 때는 체크아웃이 main 이라
+          # 태그가 로컬에 없다. 두 경로 모두 GITHUB_SHA 가 릴리즈 커밋이다.
+          git tag -f "$major" "$GITHUB_SHA"
+          git tag -f "$minor" "$GITHUB_SHA"
           git push -f origin "$major" "$minor"
 
   publish-npm:
