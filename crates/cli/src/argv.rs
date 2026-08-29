@@ -5,6 +5,8 @@ pub struct Argv {
     /// `Some(None)` 은 `--config` 가 값 없이 끝난 경우.
     pub config_path: Option<Option<String>>,
     pub config_pointer: Option<String>,
+    /// cli2 에 없는 옵션: `--fix` 가 쓸 내용을 파일에 쓰지 않고 unified diff 로 출력한다.
+    pub diff: bool,
     pub fix: bool,
     pub format: bool,
     pub use_stdin: bool,
@@ -38,6 +40,8 @@ pub fn parse_argv(args: &[String]) -> Argv {
             argv.config_path = Some(None);
         } else if arg == "--configPointer" {
             pointer_pending = true;
+        } else if arg == "--diff" {
+            argv.diff = true;
         } else if arg == "--fix" {
             argv.fix = true;
         } else if arg == "--format" {
@@ -108,6 +112,14 @@ mod tests {
         assert!(a.no_globs);
         assert!(a.help);
         assert!(a.globs.is_empty());
+    }
+
+    #[test]
+    fn diff_is_independent_of_fix() {
+        let a = parse_argv(&s(["--diff", "a.md"]));
+        assert!(a.diff);
+        assert!(!a.fix);
+        assert_eq!(a.globs, ["a.md"]);
     }
 
     #[test]

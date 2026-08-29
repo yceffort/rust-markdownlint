@@ -69,6 +69,7 @@ The command line is the same as markdownlint-cli2. Replace the executable name i
 ```bash
 rust-markdownlint "**/*.md" "#node_modules"
 rust-markdownlint --fix "docs/**/*.md"
+rust-markdownlint --diff "docs/**/*.md"       # print what --fix would change, without writing
 rust-markdownlint --config .markdownlint-cli2.jsonc "*.md"
 rust-markdownlint --config .markdownlint.yaml --configPointer /config "*.md"
 rust-markdownlint --no-globs "README.md"
@@ -85,6 +86,7 @@ rust-markdownlint --help
 | `--config <file>` | Top-level configuration file. The name must be a supported one (`.markdownlint-cli2.jsonc` etc.) or end with `.jsonc`, `.json`, `.toml`, `.yaml`, `.yml` |
 | `--configPointer <pointer>` | JSON Pointer into the `--config` file |
 | `--fix` | Write fixable errors back to the files |
+| `--diff` | Not in markdownlint-cli2. Print what `--fix` would write as a unified diff on stdout (`git apply` takes it as is) and leave the files alone. Wins over `--fix` and over `fix` in the configuration, but a configured `fix: false` still turns the diff off. Exit code 1 when there is something to change |
 | `--format` | Fix stdin and print it to stdout (no banner, progress, or results) |
 | `--no-globs` | Ignore `globs` from configuration files and use only the command line globs |
 | `--stdin-filename <path>` | Not in markdownlint-cli2. Report stdin as `<path>` and apply the configuration files of that directory (`.markdownlint-cli2.*`, `.markdownlint.*`, `ignores`), so editors can lint an unsaved buffer with the right settings. The file itself is neither read nor written, and if a glob also matches it only stdin is linted |

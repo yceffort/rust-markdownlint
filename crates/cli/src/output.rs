@@ -12,7 +12,7 @@ pub const BANNER: &str = concat!(
     " (markdownlint-cli2 v0.22.1 / markdownlint v0.40.0 compatible)"
 );
 
-/// 원본 `showHelp` 본문 (배너 제외). `--stdin-filename` 과 `server` 줄만 추가됐다.
+/// 원본 `showHelp` 본문 (배너 제외). `--diff`, `--stdin-filename`, `server` 줄만 추가됐다.
 pub const HELP: &str = r##"https://github.com/DavidAnson/markdownlint-cli2
 
 Syntax: markdownlint-cli2 glob0 [glob1] [...] [globN] [--config file] [--configPointer pointer] [--fix] [--format] [--help] [--no-globs]
@@ -38,6 +38,7 @@ Optional parameters:
 - --format        reads standard input (stdin), applies fixes, writes standard output (stdout)
 - --help          writes this message to the console and exits without doing anything else
 - --no-globs      ignores the "globs" property if present in the top-level options object
+- --diff          writes the changes --fix would make to standard output (stdout) as a unified diff without modifying files (rust-markdownlint only)
 - --stdin-filename names stdin (-) as if it were the given file path so the configuration of that directory applies (rust-markdownlint only)
 - server          runs a Language Server Protocol server on stdio for editors (rust-markdownlint only)
 
