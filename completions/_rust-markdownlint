@@ -1,0 +1,40 @@
+#compdef rust-markdownlint
+# zsh completion for rust-markdownlint.
+# Install as _rust-markdownlint anywhere on $fpath:
+#   rust-markdownlint completions zsh > ~/.zsh/completions/_rust-markdownlint
+
+_rust_markdownlint_positional() {
+    if (( CURRENT == 2 )); then
+        _alternative \
+            'commands:command:((completions\:"write a shell completion script to stdout" server\:"run a Language Server Protocol server on stdio"))' \
+            'files:markdown file:_files -g "*.(md|markdown)"'
+    else
+        _files -g '*.(md|markdown)'
+    fi
+}
+
+_rust_markdownlint() {
+    if (( CURRENT > 2 )); then
+        case ${words[2]} in
+            completions)
+                _values 'shell' bash zsh fish
+                return
+                ;;
+            server)
+                return
+                ;;
+        esac
+    fi
+    _arguments -S \
+        '--config[path to a configuration file that defines the base configuration]:config file:_files -g "*.(jsonc|json|toml|yaml|yml)(D)"' \
+        '--configPointer[JSON Pointer to a configuration object within the --config file]:pointer:' \
+        '--diff[write what --fix would change to stdout as a unified diff]' \
+        '--fix[update files to resolve fixable issues]' \
+        '--format[read stdin, apply fixes, write stdout]' \
+        '--help[write the help message and exit]' \
+        '--no-globs[ignore the globs property in the configuration]' \
+        '--stdin-filename[name stdin as if it were the given file path]:path:_files -g "*.(md|markdown)"' \
+        '*:glob or markdown file:_rust_markdownlint_positional'
+}
+
+_rust_markdownlint "$@"

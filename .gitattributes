@@ -1,2 +1,6 @@
 # cli2 시나리오 fixture 는 줄바꿈이 스냅샷(줄 번호, MD047 등)에 영향을 주므로 autocrlf 변환을 막는다
 crates/cli/tests/fixtures/cli2/** -text
+
+# 셸 컴플리션은 바이너리에 include_str! 로 박히고 릴리즈 아카이브로도 나간다.
+# Windows 체크아웃에서 CRLF 가 되면 셸이 읽지 못하므로 항상 LF 로 받는다
+completions/** text eol=lf
