@@ -130,9 +130,27 @@ fn lint_file(
     })
 }
 
+/// `completions <shell>`: 손수 만든 argv 파서라 생성이 아니라 `completions/` 의 정적 스크립트를 낸다.
+fn completions(shell: Option<&str>) -> i32 {
+    let script = match shell {
+        Some("bash") => include_str!("../../../completions/rust-markdownlint.bash"),
+        Some("zsh") => include_str!("../../../completions/_rust-markdownlint"),
+        Some("fish") => include_str!("../../../completions/rust-markdownlint.fish"),
+        _ => {
+            eprintln!("Syntax: rust-markdownlint completions <bash|zsh|fish>");
+            return 2;
+        }
+    };
+    print!("{script}");
+    0
+}
+
 /// 원본 `main` 순서: 배너 → base 옵션 → glob → dirInfos → lint(+fix) → 정렬 → Summary → 포매터 → exit.
 fn run(args: &[String]) -> Result<i32> {
     // cli2 에 없는 서브커맨드라 argv 파서 앞에서 가로챈다
+    if args.first().is_some_and(|arg| arg == "completions") {
+        return Ok(completions(args.get(1).map(String::as_str)));
+    }
     #[cfg(feature = "server")]
     if args.first().is_some_and(|arg| arg == "server") {
         return rust_markdownlint_cli::server::run();

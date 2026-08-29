@@ -23,6 +23,7 @@ Or download a binary for your platform from [Releases](https://github.com/yceffo
 curl -LO https://github.com/yceffort/rust-markdownlint/releases/latest/download/rust-markdownlint-v0.1.1-aarch64-apple-darwin.tar.gz
 tar xzf rust-markdownlint-v0.1.1-aarch64-apple-darwin.tar.gz
 ./rust-markdownlint --help
+rust-markdownlint completions zsh > ~/.zsh/completions/_rust-markdownlint   # shell completion
 ```
 
 To build from source you need Rust 1.88 or later:
@@ -77,6 +78,7 @@ cat README.md | rust-markdownlint -          # lint stdin
 cat README.md | rust-markdownlint --format   # fix stdin and print the result to stdout
 cat docs/x.md | rust-markdownlint --stdin-filename docs/x.md -   # lint stdin with docs/ configuration
 rust-markdownlint --help
+rust-markdownlint completions zsh > ~/.zsh/completions/_rust-markdownlint   # shell completion
 ```
 
 | Argument | Description |
@@ -92,6 +94,7 @@ rust-markdownlint --help
 | `--stdin-filename <path>` | Not in markdownlint-cli2. Report stdin as `<path>` and apply the configuration files of that directory (`.markdownlint-cli2.*`, `.markdownlint.*`, `ignores`), so editors can lint an unsaved buffer with the right settings. The file itself is neither read nor written, and if a glob also matches it only stdin is linted |
 | `--help` | Show help |
 | `server` | Not in markdownlint-cli2. Run a Language Server Protocol server on stdio (see [docs/lsp.md](docs/lsp.md)) |
+| `completions <shell>` | Not in markdownlint-cli2. Write the `bash`, `zsh`, or `fish` completion script to stdout. The scripts also ship in the release archives under `completions/` |
 
 - Configuration cascades per directory exactly like the original: `.markdownlint-cli2.{jsonc,yaml}` merges with the parent options, `.markdownlint.{jsonc,json,yaml,yml}` replaces the parent rule configuration.
 - Output is byte-identical to markdownlint-cli2 except for the banner line. Results go to stderr, progress (`Finding:`, `Linting:`, `Summary:`) goes to stdout.

@@ -153,6 +153,32 @@ fn diff_respects_fix_false_in_config() {
 }
 
 #[test]
+fn completions_prints_the_script_for_each_shell() {
+    let t = tree(&[]);
+    for (shell, marker) in [
+        (
+            "bash",
+            "complete -o filenames -F _rust_markdownlint rust-markdownlint\n",
+        ),
+        ("zsh", "#compdef rust-markdownlint\n"),
+        ("fish", "complete -c rust-markdownlint -f\n"),
+    ] {
+        cmd(t.path())
+            .args(["completions", shell])
+            .assert()
+            .code(0)
+            .stdout(predicate::str::contains(marker))
+            .stderr("");
+    }
+    cmd(t.path())
+        .arg("completions")
+        .assert()
+        .code(2)
+        .stdout("")
+        .stderr("Syntax: rust-markdownlint completions <bash|zsh|fish>\n");
+}
+
+#[test]
 fn stdin_dash() {
     let t = tree(&[]);
     cmd(t.path())
