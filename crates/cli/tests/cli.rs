@@ -505,3 +505,24 @@ fn invalid_utf8_stdin_is_decoded_lossily_like_cli2() {
         ))
         .stderr(format!("stdin:3:13 error {MD010}\n"));
 }
+
+/// `$schema` 는 cli2 `constants.mjs` 의 `cli2SchemaKeys` 에 없다. 임의 이름의 설정 파일이
+/// 이 키를 가졌다고 해서 옵션 객체로 오분류되면 안 된다 (#195).
+#[test]
+fn schema_key_does_not_make_config_an_options_object() {
+    let t = tree(&[
+        ("a.md", "#x\n"),
+        (
+            "cfg.json",
+            r#"{"$schema": "https://json.schemastore.org/markdownlint", "default": false, "MD018": true}"#,
+        ),
+    ]);
+    cmd(t.path())
+        .args(["--config", "cfg.json", "a.md"])
+        .assert()
+        .code(1)
+        .stdout(format!(
+            "{BANNER}Finding: a.md\nLinting: 1 file(s)\nSummary: 1 error(s)\n"
+        ))
+        .stderr(format!("a.md:1:1 error {MD018}\n"));
+}

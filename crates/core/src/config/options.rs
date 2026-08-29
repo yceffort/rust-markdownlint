@@ -22,9 +22,10 @@ pub struct Options {
     pub show_found: Option<bool>,
 }
 
-/// cli2 `schema/markdownlint-cli2-config-schema.json` 의 속성 목록. "unknown" 파일 판별용.
+/// cli2 `constants.mjs` 의 `cli2SchemaKeys`. "unknown" 파일 판별용.
+/// 설정 스키마 파일과 달리 `$schema` 는 여기 없다. 있으면 `$schema` 가 붙은 markdownlint
+/// 설정 파일이 cli2 옵션 객체로 오분류돼 규칙 설정이 통째로 버려진다.
 pub const OPTIONS_KEYS: &[&str] = &[
-    "$schema",
     "config",
     "customRules",
     "fix",
