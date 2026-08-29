@@ -44,11 +44,24 @@ jobs:
             npm/**/README.md
             bench/RESULTS.md
 
-  # .pre-commit-hooks.yaml 의 script 훅 (릴리즈 바이너리 다운로드)
+  # .pre-commit-hooks.yaml 의 script 훅. 훅은 crates/cli/Cargo.toml 버전의 릴리즈 자산을 내려받는데
+  # 버전을 올리는 PR 에서는 그 릴리즈가 아직 없으므로, 이 체크아웃을 빌드해 같은 이름으로 묶고
+  # file:// 로 받게 한다 (실제 릴리즈 다운로드 경로는 위 action 잡이 검증한다).
   pre-commit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo build --release -p rust-markdownlint-cli
+      - name: 릴리즈 자산 모양으로 묶기
+        run: |
+          version="v$(sed -nE 's/^version = "(.*)"/\1/p' crates/cli/Cargo.toml | head -1)"
+          asset="rust-markdownlint-$version-x86_64-unknown-linux-musl.tar.gz"
+          mkdir -p "dist/$version"
+          tar czf "dist/$version/$asset" -C target/release rust-markdownlint
+          (cd "dist/$version" && sha256sum "$asset" > "$asset.sha256")
+          echo "RUST_MARKDOWNLINT_DOWNLOAD_BASE=file://$PWD/dist" >> "$GITHUB_ENV"
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"

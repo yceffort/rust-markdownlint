@@ -16,7 +16,7 @@ inputs:
     description: Run with `--fix`. Fixed files are left modified in the workspace (not committed); the step fails only if errors remain
     default: "false"
   version:
-    description: Release to run, for example `v0.1.0`. Defaults to the release matching this action's ref (`@v0.1.0` exactly, `@v0` or `@v0.1` the newest release with that prefix, anything else the latest release)
+    description: Release to run, for example `v0.1.1`. Defaults to the release matching this action's ref (`@v0.1.1` exactly, `@v0` or `@v0.1` the newest release with that prefix, anything else the latest release)
     default: ""
 
 runs:
