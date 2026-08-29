@@ -107,7 +107,7 @@ fn posix(path: &Path) -> String {
     path.to_string_lossy().replace('\\', "/")
 }
 
-/// 원본 `sanitize` 와 execa 의 마지막 개행 제거, 배너 치환, 그리고 우리만 있는 도움말 줄(`--stdin-filename`, `server`) 제거.
+/// 원본 `sanitize` 와 execa 의 마지막 개행 제거, 배너 치환, 그리고 우리만 있는 도움말 줄(`(rust-markdownlint only)`) 제거.
 fn sanitize(bytes: &[u8]) -> String {
     let text = String::from_utf8_lossy(bytes);
     let text = text
@@ -121,10 +121,7 @@ fn sanitize(bytes: &[u8]) -> String {
     let text = Regex::new(r" :.+[/\\]sentinel")
         .unwrap()
         .replace_all(&text, " :[PATH]");
-    let text = Regex::new(r"(?m)^- --stdin-filename .*\n")
-        .unwrap()
-        .replace_all(&text, "");
-    let text = Regex::new(r"(?m)^- server .*\n")
+    let text = Regex::new(r"(?m)^- .*\(rust-markdownlint only\)\n")
         .unwrap()
         .replace_all(&text, "");
     text.replace(OUR_BANNER, ORIGINAL_BANNER)

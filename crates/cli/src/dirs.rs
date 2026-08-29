@@ -219,6 +219,7 @@ fn read_options_or_config(
 
 /// 원본 `readOptionsOrConfig` + `getBaseOptions`:
 /// `{fix: --fix}` ← `--config` 파일 ← cwd 의 `.markdownlint-cli2.*`.
+/// `--diff` 는 같은 계산이 필요하므로 `--fix` 와 같게 켜고, 쓰기만 main 에서 막는다.
 pub fn read_base_options(cwd: &Path, argv: &Argv, warn: &mut dyn FnMut(&str)) -> Result<Options> {
     let options_argv = match &argv.config_path {
         Some(Some(path)) => {
@@ -227,7 +228,7 @@ pub fn read_base_options(cwd: &Path, argv: &Argv, warn: &mut dyn FnMut(&str)) ->
         _ => Options::default(),
     };
     let fix = Options {
-        fix: Some(argv.fix),
+        fix: Some(argv.fix || argv.diff),
         ..Options::default()
     };
     let cwd_options = read_dir_options(cwd, warn)?.unwrap_or_default();

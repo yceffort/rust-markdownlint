@@ -15,7 +15,10 @@ use rust_markdownlint_cli::dirs::{
 };
 use rust_markdownlint_cli::formatters::{self, Formatter};
 use rust_markdownlint_cli::globs::enumerate_files;
-use rust_markdownlint_cli::output::{BANNER, HELP, LintResult, relative_posix, sort_results};
+use rust_markdownlint_cli::output::{
+    BANNER, HELP, LintResult, locale_compare, relative_posix, sort_results,
+};
+use similar::TextDiff;
 
 fn main() {
     let args: Vec<String> = std::env::args().skip(1).collect();
@@ -55,6 +58,17 @@ struct FileOutcome {
     errors: Vec<LintError>,
     /// `--format` 일 때 stdin 을 고친 결과
     formatted: Option<String>,
+    /// `--diff` 일 때 fix 가 이 파일에 쓸 내용
+    diff: Option<String>,
+}
+
+/// `--diff` 한 파일: `git apply` 가 그대로 받는 `a/` `b/` 헤더. 바뀐 게 없으면 None.
+fn unified_diff(name: &str, before: &str, after: &str) -> Option<String> {
+    let diff = TextDiff::from_lines(before, after)
+        .unified_diff()
+        .header(&format!("a/{name}"), &format!("b/{name}"))
+        .to_string();
+    (!diff.is_empty()).then_some(diff)
 }
 
 /// 원본 `fs.readFile(file, "utf8")`: 잘못된 시퀀스는 U+FFFD 로 치환하고 계속한다 (BOM 은 남긴다).
@@ -67,12 +81,14 @@ fn lossy_utf8(bytes: Vec<u8>) -> String {
 }
 
 /// 파일 하나의 lint(+fix). `--format` 은 stdin 만 고치고 결과는 버린다.
+/// `--diff` 는 fix 를 계산하되 파일에 쓰지 않고 diff 만 만든다 (stdin 은 fix 대상이 아니라 그대로).
 fn lint_file(
     base: &Path,
     info: &DirInfo,
     file: &Path,
     non_file: &HashMap<PathBuf, String>,
     formatting: bool,
+    diff_mode: bool,
 ) -> Result<FileOutcome> {
     let opts = LintOptions {
         config: info.effective_config.as_ref(),
@@ -81,6 +97,7 @@ fn lint_file(
     };
     let name = relative_posix(base, file);
     let mut formatted = None;
+    let mut diff = None;
     let errors = if let Some(content) = non_file.get(file) {
         let errors = lint_content(&name, content, &opts)?;
         if formatting {
@@ -96,7 +113,11 @@ fn lint_file(
             errors = Vec::new();
         } else if info.options.fix == Some(true) && errors.iter().any(|e| e.fix_info.is_some()) {
             let fixed = apply_fixes(&content, &errors);
-            std::fs::write(file, &fixed)?;
+            if diff_mode {
+                diff = unified_diff(&name, &content, &fixed);
+            } else {
+                std::fs::write(file, &fixed)?;
+            }
             errors = lint_content(&name, &fixed, &opts)?;
         }
         errors
@@ -105,6 +126,7 @@ fn lint_file(
         name,
         errors,
         formatted,
+        diff,
     })
 }
 
@@ -123,10 +145,12 @@ fn run(args: &[String]) -> Result<i32> {
     }
     let base = std::env::current_dir()?;
     let formatting = argv.format;
+    // --diff 의 stdout 은 git apply 로 넘길 수 있어야 하므로 배너와 진행 출력을 --format 처럼 막는다
+    let quiet_stdout = formatting || argv.diff;
 
     let base_options = read_base_options(&base, &argv, &mut warn);
     // 원본 finally 블록: 옵션 읽기에 실패해도 배너는 출력
-    if !formatting
+    if !quiet_stdout
         && !base_options
             .as_ref()
             .is_ok_and(|o| o.no_banner == Some(true))
@@ -154,7 +178,7 @@ fn run(args: &[String]) -> Result<i32> {
         non_file.insert(path, lossy_utf8(bytes));
     }
 
-    let show_progress = base_options.no_progress != Some(true) && !formatting;
+    let show_progress = base_options.no_progress != Some(true) && !quiet_stdout;
     if show_progress {
         println!("Finding: {}", patterns.join(" "));
     }
@@ -221,15 +245,19 @@ fn run(args: &[String]) -> Result<i32> {
         .collect();
     let outcomes: Vec<Result<FileOutcome>> = jobs
         .par_iter()
-        .map(|(info, file)| lint_file(&base, info, file, &non_file, formatting))
+        .map(|(info, file)| lint_file(&base, info, file, &non_file, formatting, argv.diff))
         .collect();
 
     let mut results = Vec::new();
     let mut errors_present = false;
     let mut formatted = None;
+    let mut diffs: Vec<(String, String)> = Vec::new();
     for outcome in outcomes {
         let outcome = outcome?;
         formatted = outcome.formatted.or(formatted);
+        if let Some(diff) = outcome.diff {
+            diffs.push((outcome.name.clone(), diff));
+        }
         errors_present |= outcome
             .errors
             .iter()
@@ -253,6 +281,15 @@ fn run(args: &[String]) -> Result<i32> {
             None => vec![(Formatter::Default, serde_json::Value::Null)],
         };
         formatters::run(&formatters, &base, &results)?;
+        // 진단은 stderr, diff 는 stdout. 파일 순서는 결과와 같은 기준으로 맞춘다
+        diffs.sort_by(|a, b| locale_compare(&a.0, &b.0));
+        for (_, diff) in &diffs {
+            print!("{diff}");
+        }
     }
-    Ok(if errors_present { 1 } else { 0 })
+    Ok(if errors_present || !diffs.is_empty() {
+        1
+    } else {
+        0
+    })
 }

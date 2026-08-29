@@ -109,6 +109,50 @@ fn fix_false_in_config_overrides_flag() {
 }
 
 #[test]
+fn diff_previews_fix_without_writing() {
+    let t = tree(&[("a.md", "#x")]);
+    cmd(t.path())
+        .args(["--diff", "a.md"])
+        .assert()
+        .code(1)
+        .stdout("--- a/a.md\n+++ b/a.md\n@@ -1 +1 @@\n-#x\n\\ No newline at end of file\n+# x\n")
+        .stderr("");
+    assert_eq!(fs::read_to_string(t.path().join("a.md")).unwrap(), "#x");
+}
+
+#[test]
+fn diff_wins_over_fix_and_exits_0_without_changes() {
+    let t = tree(&[("a.md", "#x"), ("b.md", "# x\n")]);
+    cmd(t.path())
+        .args(["--fix", "--diff", "a.md"])
+        .assert()
+        .code(1);
+    assert_eq!(fs::read_to_string(t.path().join("a.md")).unwrap(), "#x");
+    cmd(t.path())
+        .args(["--diff", "b.md"])
+        .assert()
+        .code(0)
+        .stdout("")
+        .stderr("");
+}
+
+#[test]
+fn diff_respects_fix_false_in_config() {
+    let t = tree(&[
+        ("a.md", "#x"),
+        (".markdownlint-cli2.jsonc", r#"{"fix": false}"#),
+    ]);
+    cmd(t.path())
+        .args(["--diff", "a.md"])
+        .assert()
+        .code(1)
+        .stdout("")
+        .stderr(format!(
+            "a.md:1:1 error {MD018}\na.md:1 error {MD041}\na.md:1:2 error {MD047}\n"
+        ));
+}
+
+#[test]
 fn stdin_dash() {
     let t = tree(&[]);
     cmd(t.path())
