@@ -120,6 +120,27 @@ pub struct LabelStart {
     pub inactive: bool,
 }
 
+/// 로컬 확장: micromark 가 최종 트리에서 인접 data 와 합치지 않는 구간 (바이트 범위).
+///
+/// micromark 는 data 병합(`resolveAllText`)을 label/attention 리졸버보다 먼저 돌려서, 짝 없는
+/// attention 시퀀스와 남은 label 시작이 최상위에서는 따로 남는다. markdown-rs 는 반대 순서라
+/// 전부 합쳐지므로 여기 기록해 두고 `DataSplit` 리졸버가 다시 나눈다.
+#[derive(Debug)]
+pub struct DataSplit {
+    pub start: usize,
+    pub end: usize,
+    pub kind: DataSplitKind,
+}
+
+#[derive(Debug)]
+pub enum DataSplitKind {
+    /// 짝 없는 attention 시퀀스. 강조와 링크 라벨 안에서는 micromark 도 다시 합친다 (`insideSpan`).
+    Attention,
+    /// 남은 label 시작. label 리졸버가 attention 보다 먼저 등록됐으면(`merge_in_attention`)
+    /// 강조 안에서 합쳐지고, 아니면 어디서든 따로 남는다.
+    Label { merge_in_attention: bool },
+}
+
 /// Valid label.
 #[derive(Debug)]
 pub struct Label {
@@ -230,6 +251,8 @@ pub struct TokenizeState<'a> {
     ///
     /// Used when tokenizing [text content][crate::construct::text].
     pub labels: Vec<Label>,
+    /// 로컬 확장: `DataSplit` 리졸버가 다시 나눌 data 경계.
+    pub data_splits: Vec<DataSplit>,
 
     /// List of defined definition identifiers.
     pub definitions: Vec<String>,
@@ -385,6 +408,7 @@ impl<'a> Tokenizer<'a> {
                 end: 0,
                 label_starts: vec![],
                 label_starts_loose: vec![],
+                data_splits: vec![],
                 marker: 0,
                 marker_b: 0,
                 markers: &[],

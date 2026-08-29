@@ -76,6 +76,8 @@ fn matches_micromark_token_dumps() {
         "empty-links",
         "list-syntax-in-paragraph-text",
         "prefix-whitespace-in-containers",
+        // 짝 없는 attention 시퀀스와 남은 label 시작이 인접 data 와 합쳐지지 않는 경계 (#186)
+        "data-splits",
     ] {
         let md = std::fs::read_to_string(format!("{dir}/{name}.md")).unwrap();
         let expected: serde_json::Value = serde_json::from_str(
