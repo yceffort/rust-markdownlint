@@ -4,12 +4,23 @@ on:
   push:
     # v0, v0.1 같은 액션 태그는 제외 (release 잡이 옮긴다)
     tags: ["v[0-9]+.[0-9]+.[0-9]+"]
+  # 수동 실행은 항상 리허설이다. 빌드, 아카이브, sha256, npm 패키징까지 그대로 하고
+  # 릴리즈 생성과 실제 publish 만 건너뛴다. 태그를 밀기 전에 경로 전체를 검증하는 용도.
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "리허설할 버전. crates/cli/Cargo.toml 과 같아야 한다 (예: v0.1.1)"
+        required: true
 
 permissions:
   contents: write
 
 env:
   CARGO_TERM_COLOR: always
+  # 태그 push 면 태그 이름, 수동 실행이면 입력값
+  VERSION: ${{ inputs.version || github.ref_name }}
+  # 수동 실행이면 리허설
+  REHEARSAL: ${{ github.event_name == 'workflow_dispatch' }}
 
 jobs:
   build:
@@ -26,10 +37,10 @@ jobs:
           - { os: windows-latest, target: x86_64-pc-windows-msvc }
     steps:
       - uses: actions/checkout@v4
-      - name: 태그와 Cargo.toml, npm package.json 버전 일치 확인
+      - name: 버전과 Cargo.toml, npm package.json 일치 확인
         shell: bash
         run: |
-          tag="${GITHUB_REF_NAME#v}"
+          tag="${VERSION#v}"
           version=$(sed -nE 's/^version = "(.*)"/\1/p' crates/cli/Cargo.toml | head -1)
           if [ "$tag" != "$version" ]; then
             echo "tag v$tag != crates/cli/Cargo.toml version $version" >&2
@@ -56,7 +67,7 @@ jobs:
       - name: 아카이브와 sha256
         shell: bash
         run: |
-          name="rust-markdownlint-${GITHUB_REF_NAME}-${{ matrix.target }}"
+          name="rust-markdownlint-${VERSION}-${{ matrix.target }}"
           mkdir -p dist
           if [ "${{ runner.os }}" = Windows ]; then
             asset="$name.zip"
@@ -80,16 +91,25 @@ jobs:
         with:
           path: dist
           merge-multiple: true
-      - env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --generate-notes dist/*
-      - uses: actions/checkout@v4
-      - name: 액션 태그 이동 (v0, v0.1 → 이 릴리즈)
+      - name: 자산 목록과 sha256 (리허설이면 여기까지)
         run: |
-          major="${GITHUB_REF_NAME%%.*}"
-          minor="${GITHUB_REF_NAME%.*}"
-          git tag -f "$major" "$GITHUB_REF_NAME"
-          git tag -f "$minor" "$GITHUB_REF_NAME"
+          ls -l dist
+          cat dist/*.sha256
+          test "$(ls dist/*.tar.gz | wc -l)" -eq 4
+          test "$(ls dist/*.zip | wc -l)" -eq 1
+      - if: env.REHEARSAL != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$VERSION" --repo "$GITHUB_REPOSITORY" --generate-notes dist/*
+      - if: env.REHEARSAL != 'true'
+        uses: actions/checkout@v4
+      - name: 액션 태그 이동 (v0, v0.1 → 이 릴리즈)
+        if: env.REHEARSAL != 'true'
+        run: |
+          major="${VERSION%%.*}"
+          minor="${VERSION%.*}"
+          git tag -f "$major" "$VERSION"
+          git tag -f "$minor" "$VERSION"
           git push -f origin "$major" "$minor"
 
   publish-npm:
@@ -107,7 +127,7 @@ jobs:
       - name: 플랫폼 패키지에 바이너리 복사
         run: |
           set -e
-          v="$GITHUB_REF_NAME"
+          v="$VERSION"
           extract() {
             tar xzf "dist/rust-markdownlint-$v-$2.tar.gz" -C "npm/platforms/$1"
             chmod +x "npm/platforms/$1/rust-markdownlint"
@@ -127,8 +147,14 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           set -e
+          # 리허설은 --dry-run. provenance 는 OIDC 교환이 필요해 리허설에서 뺀다.
+          if [ "$REHEARSAL" = true ]; then
+            flags="--dry-run --access public"
+          else
+            flags="--access public --provenance"
+          fi
           # 경로에 ./ 를 붙여야 함. 없으면 npm 이 npm/rust-markdownlint 를 GitHub 저장소 축약형으로 해석함
           for pkg in ./npm/platforms/*; do
-            npm publish --access public --provenance "$pkg"
+            npm publish $flags "$pkg"
           done
-          npm publish --access public --provenance ./npm/rust-markdownlint
+          npm publish $flags ./npm/rust-markdownlint
