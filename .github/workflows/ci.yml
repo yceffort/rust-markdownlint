@@ -9,6 +9,13 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
+  # 버전 문자열이 13곳에서 일치하는지. 릴리즈 때가 아니라 PR 에서 잡는다.
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/check-version.sh
+
   check:
     name: ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
