@@ -4,7 +4,7 @@
 
 **버전 범프 PR 을 머지하면 릴리즈가 나간다.** 태그를 손으로 밀 필요가 없다.
 
-```
+```text
 버전 범프 PR 머지
   → tag.yml 이 Cargo.toml 버전에 해당하는 태그가 없는 걸 보고 태그를 만들어 push
   → release.yml 을 호출
@@ -59,7 +59,7 @@ Classic **Publish** 토큰을 쓰면 `npm error code EOTP` 로 실패한다. CI 
 
 `publish-npm` 만 실패한 경우 태그와 릴리즈는 이미 만들어져 있다. 원인을 고친 뒤 실패한 잡만 다시 돌리면 된다.
 
-```
+```bash
 gh run rerun <run-id> --failed
 ```
 
@@ -67,7 +67,7 @@ gh run rerun <run-id> --failed
 
 버전을 올리기 전이나 워크플로를 고친 뒤에는 리허설을 한 번 돌려 본다.
 
-```
+```bash
 gh workflow run Release --ref main -f version=v0.1.1
 ```
 
