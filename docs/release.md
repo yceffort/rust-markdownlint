@@ -23,12 +23,27 @@
 
 ## 버전 올리기
 
-버전 문자열이 12곳에 있다. 하나라도 빠지면 릴리즈 첫 스텝에서 막힌다.
+스크립트 하나로 끝난다. 버전 문자열이 13곳에 흩어져 있어서 손으로 고치면 반드시 빠뜨린다.
 
-- `crates/cli/Cargo.toml`, `crates/core/Cargo.toml`
+```bash
+scripts/bump-version.sh 0.1.2
+```
+
+`crates/cli/Cargo.toml` 의 현재 버전을 읽어 아래를 전부 바꾸고, 끝에 검사까지 돌린다.
+
+- `crates/cli/Cargo.toml`, `crates/core/Cargo.toml`, `Cargo.lock`
 - `npm/rust-markdownlint/package.json` (`version` 과 `optionalDependencies` 5개 전부)
 - `npm/platforms/*/package.json` 5개
 - `npm/rust-markdownlint/README.md`, `README.md`, `action.yml`, `.pre-commit-hooks.yaml`
+
+`.github/` 는 건드리지 않는다. `release.yml` 의 `예: v0.1.1` 은 설명용 예시다.
+
+검사는 따로도 부를 수 있고, CI 의 `version` 잡과 릴리즈 첫 스텝이 이걸 쓴다.
+
+```bash
+scripts/check-version.sh          # crates/cli/Cargo.toml 기준
+scripts/check-version.sh v0.1.2   # 주어진 버전 기준
+```
 
 ## 알려진 함정
 
