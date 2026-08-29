@@ -110,6 +110,11 @@ fn lint_file(
 
 /// 원본 `main` 순서: 배너 → base 옵션 → glob → dirInfos → lint(+fix) → 정렬 → Summary → 포매터 → exit.
 fn run(args: &[String]) -> Result<i32> {
+    // cli2 에 없는 서브커맨드라 argv 파서 앞에서 가로챈다
+    #[cfg(feature = "server")]
+    if args.first().is_some_and(|arg| arg == "server") {
+        return rust_markdownlint_cli::server::run();
+    }
     let argv = parse_argv(args);
     if argv.help {
         println!("{BANNER}");

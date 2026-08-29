@@ -3,3 +3,5 @@ pub mod dirs;
 pub mod formatters;
 pub mod globs;
 pub mod output;
+#[cfg(feature = "server")]
+pub mod server;

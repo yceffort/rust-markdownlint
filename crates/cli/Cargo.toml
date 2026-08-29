@@ -9,11 +9,17 @@ license.workspace = true
 name = "rust-markdownlint"
 path = "src/main.rs"
 
+[features]
+default = ["server"]
+server = ["dep:lsp-server", "dep:lsp-types"]
+
 [dependencies]
 rust-markdownlint.workspace = true
 anyhow.workspace = true
 globset.workspace = true
 ignore.workspace = true
+lsp-server = { workspace = true, optional = true }
+lsp-types = { workspace = true, optional = true }
 rayon.workspace = true
 regex.workspace = true
 serde.workspace = true

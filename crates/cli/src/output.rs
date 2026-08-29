@@ -12,7 +12,7 @@ pub const BANNER: &str = concat!(
     " (markdownlint-cli2 v0.22.1 / markdownlint v0.40.0 compatible)"
 );
 
-/// 원본 `showHelp` 본문 (배너 제외). `--stdin-filename` 줄만 추가됐다.
+/// 원본 `showHelp` 본문 (배너 제외). `--stdin-filename` 과 `server` 줄만 추가됐다.
 pub const HELP: &str = r##"https://github.com/DavidAnson/markdownlint-cli2
 
 Syntax: markdownlint-cli2 glob0 [glob1] [...] [globN] [--config file] [--configPointer pointer] [--fix] [--format] [--help] [--no-globs]
@@ -39,6 +39,7 @@ Optional parameters:
 - --help          writes this message to the console and exits without doing anything else
 - --no-globs      ignores the "globs" property if present in the top-level options object
 - --stdin-filename names stdin (-) as if it were the given file path so the configuration of that directory applies (rust-markdownlint only)
+- server          runs a Language Server Protocol server on stdio for editors (rust-markdownlint only)
 
 Configuration via:
 - .markdownlint-cli2.jsonc
@@ -115,17 +116,8 @@ pub fn sort_results(results: &mut [LintResult]) {
     });
 }
 
-/// `markdownlint-cli2-formatter-default` 한 줄.
-pub fn format_result(result: &LintResult) -> String {
-    let e = &result.error;
-    let column = match e.error_range {
-        Some((start, _)) if start > 0 => format!(":{start}"),
-        _ => String::new(),
-    };
-    let severity = match e.severity {
-        Severity::Error => "error",
-        Severity::Warning => "warning",
-    };
+/// 기본 포매터가 규칙 이름 뒤에 붙이는 부분: 설명, detail, context.
+pub fn error_message(e: &LintError) -> String {
     let detail = e
         .error_detail
         .as_ref()
@@ -138,12 +130,26 @@ pub fn format_result(result: &LintResult) -> String {
         .filter(|c| !c.is_empty())
         .map(|c| format!(" [Context: \"{c}\"]"))
         .unwrap_or_default();
+    format!("{}{detail}{context}", e.rule_description)
+}
+
+/// `markdownlint-cli2-formatter-default` 한 줄.
+pub fn format_result(result: &LintResult) -> String {
+    let e = &result.error;
+    let column = match e.error_range {
+        Some((start, _)) if start > 0 => format!(":{start}"),
+        _ => String::new(),
+    };
+    let severity = match e.severity {
+        Severity::Error => "error",
+        Severity::Warning => "warning",
+    };
     format!(
-        "{}:{}{column} {severity} {} {}{detail}{context}",
+        "{}:{}{column} {severity} {} {}",
         result.file_name,
         e.line_number,
         e.rule_names.join("/"),
-        e.rule_description
+        error_message(e)
     )
 }
 
