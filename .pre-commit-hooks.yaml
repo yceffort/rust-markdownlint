@@ -19,5 +19,5 @@
   description: Lint Markdown files with rust-markdownlint installed from npm
   entry: rust-markdownlint
   language: node
-  additional_dependencies: ["@yceffort/rust-markdownlint@0.1.1"]
+  additional_dependencies: ["@yceffort/rust-markdownlint@0.1.2"]
   types: [markdown]

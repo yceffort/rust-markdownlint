@@ -1,6 +1,6 @@
 {
   "name": "@yceffort/rust-markdownlint-linux-x64",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "The rust-markdownlint binary for linux-x64 (x86_64-unknown-linux-musl). Installed as an optional dependency of @yceffort/rust-markdownlint.",
   "license": "MIT",
   "repository": {
