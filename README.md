@@ -20,8 +20,8 @@ npx rust-markdownlint "**/*.md" "#node_modules"
 Or download a binary for your platform from [Releases](https://github.com/yceffort/rust-markdownlint/releases): macOS (arm64, x86_64), Linux (x86_64, arm64, statically linked with musl), Windows (x86_64). Each archive comes with a `.sha256` file.
 
 ```bash
-curl -LO https://github.com/yceffort/rust-markdownlint/releases/latest/download/rust-markdownlint-v0.1.1-aarch64-apple-darwin.tar.gz
-tar xzf rust-markdownlint-v0.1.1-aarch64-apple-darwin.tar.gz
+curl -LO https://github.com/yceffort/rust-markdownlint/releases/latest/download/rust-markdownlint-v0.1.2-aarch64-apple-darwin.tar.gz
+tar xzf rust-markdownlint-v0.1.2-aarch64-apple-darwin.tar.gz
 ./rust-markdownlint --help
 rust-markdownlint completions zsh > ~/.zsh/completions/_rust-markdownlint   # shell completion
 ```
@@ -39,7 +39,7 @@ Either way you get a `rust-markdownlint` binary.
 ```yaml
 repos:
   - repo: https://github.com/yceffort/rust-markdownlint
-    rev: v0.1.1
+    rev: v0.1.2
     hooks:
       - id: rust-markdownlint        # or rust-markdownlint-fix to apply fixes
 ```
@@ -58,10 +58,10 @@ steps:
         "#node_modules"
       # config: .markdownlint-cli2.jsonc   # passed as --config
       # fix: true                          # leaves fixed files modified, does not commit
-      # version: v0.1.1                    # default: the release matching the action ref
+      # version: v0.1.2                    # default: the release matching the action ref
 ```
 
-The action downloads the release binary (with `.sha256` verification), registers a problem matcher so every result becomes an annotation on the pull request, and fails when errors remain (warnings do not fail it, same as the exit code). `@v0` and `@v0.1` follow the newest release with that prefix; `@v0.1.1` pins one.
+The action downloads the release binary (with `.sha256` verification), registers a problem matcher so every result becomes an annotation on the pull request, and fails when errors remain (warnings do not fail it, same as the exit code). `@v0` and `@v0.1` follow the newest release with that prefix; `@v0.1.2` pins one.
 
 ## Usage
 
@@ -135,7 +135,7 @@ Rule configuration supports all 53 rules of markdownlint v0.40.0 (MD001 through 
 
 ## Differences from markdownlint-cli2
 
-- The banner reads `rust-markdownlint v0.1.1 (markdownlint-cli2 v0.22.1 / markdownlint v0.40.0 compatible)`. Turn on `noBanner` if something parses it.
+- The banner reads `rust-markdownlint v0.1.2 (markdownlint-cli2 v0.22.1 / markdownlint v0.40.0 compatible)`. Turn on `noBanner` if something parses it.
 - Anything that requires loading JavaScript modules is not supported. `.markdownlint-cli2.{cjs,mjs}` and `.markdownlint.{cjs,mjs}` configuration files are an error (exit 2), and `customRules`, `markdownItPlugins`, `modulePaths` are ignored as listed above. `outputFormatters` works with the built-in formatters listed above (the original npm packages are not loaded, so `-pretty` decides on colors and hyperlinks from `FORCE_COLOR`, `NO_COLOR`, `FORCE_HYPERLINK`, and the terminal like the original does, but with a shorter list of recognized terminals). Use the original if you need custom rules, markdown-it plugins, or a custom formatter module.
 - Configuration files are parsed with Rust parsers (jsonc-parser, toml, serde-saphyr). Error messages for invalid files keep the original wording where the original tests rely on it (`Unable to parse JSONC content`, `Invalid TOML document`, `duplicated mapping key`) but the details differ. YAML flow collections are additionally checked with the js-yaml rules (an implicit key must have its `:` on the line where the key starts, and a multi-line plain scalar must stay indented past the enclosing block), so a JSONC document saved under a `.yaml` name fails with `missed comma between flow collection entries` like the original.
 - File names in the results are sorted with an approximation of ICU `localeCompare` that is exact for ASCII. Non-ASCII file names sort by code point.

@@ -1,6 +1,6 @@
 {
   "name": "@yceffort/rust-markdownlint-darwin-x64",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "The rust-markdownlint binary for darwin-x64 (x86_64-apple-darwin). Installed as an optional dependency of @yceffort/rust-markdownlint.",
   "license": "MIT",
   "repository": {
