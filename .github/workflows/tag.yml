@@ -19,7 +19,7 @@ jobs:
       version: ${{ steps.check.outputs.version }}
       new: ${{ steps.check.outputs.new }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - id: check

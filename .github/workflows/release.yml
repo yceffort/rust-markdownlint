@@ -43,7 +43,7 @@ jobs:
           - { os: ubuntu-24.04-arm, target: aarch64-unknown-linux-musl }
           - { os: windows-latest, target: x86_64-pc-windows-msvc }
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: 버전이 13곳에서 일치하는지
         shell: bash
         run: bash scripts/check-version.sh "$VERSION"
@@ -66,7 +66,7 @@ jobs:
             tar czf "dist/$asset" -C "target/${{ matrix.target }}/release" rust-markdownlint -C "$GITHUB_WORKSPACE" completions
           fi
           cd dist && (sha256sum "$asset" 2> /dev/null || shasum -a 256 "$asset") > "$asset.sha256"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: ${{ matrix.target }}
           path: dist/*
@@ -76,7 +76,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           path: dist
           merge-multiple: true
@@ -91,7 +91,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: gh release create "$VERSION" --repo "$GITHUB_REPOSITORY" --generate-notes dist/*
       - if: env.REHEARSAL != 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: 액션 태그 이동 (v0, v0.1 → 이 릴리즈)
         if: env.REHEARSAL != 'true'
         run: |
@@ -110,8 +110,8 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v7
         with:
           path: dist
           merge-multiple: true
@@ -129,7 +129,7 @@ jobs:
           extract linux-arm64 aarch64-unknown-linux-musl
           unzip -o "dist/rust-markdownlint-$v-x86_64-pc-windows-msvc.zip" -d npm/platforms/win32-x64
           ls -l npm/platforms/*/
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org
