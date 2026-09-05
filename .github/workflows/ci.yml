@@ -13,7 +13,7 @@ jobs:
   version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: scripts/check-version.sh
 
   check:
@@ -24,7 +24,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt, clippy
@@ -42,7 +42,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./
         with:
           globs: |
@@ -57,7 +57,7 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - run: cargo build --release -p rust-markdownlint-cli
@@ -69,7 +69,7 @@ jobs:
           tar czf "dist/$version/$asset" -C target/release rust-markdownlint
           (cd "dist/$version" && sha256sum "$asset" > "$asset.sha256")
           echo "RUST_MARKDOWNLINT_DOWNLOAD_BASE=file://$PWD/dist" >> "$GITHUB_ENV"
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.x"
       - run: pip install pre-commit
