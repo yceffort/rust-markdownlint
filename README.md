@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/yceffort/rust-markdownlint/actions/workflows/ci.yml/badge.svg)](https://github.com/yceffort/rust-markdownlint/actions/workflows/ci.yml)
 
-A Rust implementation of [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) v0.22.1 (markdownlint v0.40.0). It is meant to be a drop-in replacement: the same command line, the same `.markdownlint-cli2.{jsonc,yaml}` and `.markdownlint.{jsonc,json,yaml,yml}` configuration files, the same inline comments (`<!-- markdownlint-disable -->` and friends), and byte-identical output.
+A Rust implementation of [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) v0.22.1 (markdownlint v0.40.0). It is meant to be a drop-in replacement: the same command line, the same `.markdownlint-cli2.{jsonc,yaml}` and `.markdownlint.{jsonc,json,yaml,yml}` configuration files, the same inline comments (`<!-- markdownlint-disable -->` and friends), and byte-identical lint results, subject to the [differences below](#differences-from-markdownlint-cli2).
 
 - All 53 rules of markdownlint v0.40.0 are implemented. Linting the original `test/*.md` corpus (388 files) with the default configuration produces 3218 errors that match the original byte for byte. A real-world repository with 20966 markdown files (including `node_modules`) produces 264114 identical errors.
 - Files are linted in parallel. 3x to 12x faster than markdownlint-cli2 depending on the corpus and the machine (see [Performance](#performance)).
@@ -97,7 +97,7 @@ rust-markdownlint completions zsh > ~/.zsh/completions/_rust-markdownlint   # sh
 | `completions <shell>` | Not in markdownlint-cli2. Write the `bash`, `zsh`, or `fish` completion script to stdout. The scripts also ship in the release archives under `completions/` |
 
 - Configuration cascades per directory exactly like the original: `.markdownlint-cli2.{jsonc,yaml}` merges with the parent options, `.markdownlint.{jsonc,json,yaml,yml}` replaces the parent rule configuration.
-- Output is byte-identical to markdownlint-cli2 except for the banner line. Results go to stderr, progress (`Finding:`, `Linting:`, `Summary:`) goes to stdout.
+- Normal lint output is byte-identical to markdownlint-cli2 except for the banner line. Results go to stderr, progress (`Finding:`, `Linting:`, `Summary:`) goes to stdout. Fatal configuration and file-system errors are described under [Differences](#differences-from-markdownlint-cli2).
 - Exit codes: 0 (no errors, or warnings only), 1 (errors), 2 (help, invalid configuration, exception).
 
 ### Editor integration (LSP)
@@ -138,6 +138,7 @@ Rule configuration supports all 53 rules of markdownlint v0.40.0 (MD001 through 
 - The banner reads `rust-markdownlint v0.1.2 (markdownlint-cli2 v0.22.1 / markdownlint v0.40.0 compatible)`. Turn on `noBanner` if something parses it.
 - Anything that requires loading JavaScript modules is not supported. `.markdownlint-cli2.{cjs,mjs}` and `.markdownlint.{cjs,mjs}` configuration files are an error (exit 2), and `customRules`, `markdownItPlugins`, `modulePaths` are ignored as listed above. `outputFormatters` works with the built-in formatters listed above (the original npm packages are not loaded, so `-pretty` decides on colors and hyperlinks from `FORCE_COLOR`, `NO_COLOR`, `FORCE_HYPERLINK`, and the terminal like the original does, but with a shorter list of recognized terminals). Use the original if you need custom rules, markdown-it plugins, or a custom formatter module.
 - Configuration files are parsed with Rust parsers (jsonc-parser, toml, serde-saphyr). Error messages for invalid files keep the original wording where the original tests rely on it (`Unable to parse JSONC content`, `Invalid TOML document`, `duplicated mapping key`) but the details differ. YAML flow collections are additionally checked with the js-yaml rules (an implicit key must have its `:` on the line where the key starts, and a multi-line plain scalar must stay indented past the enclosing block), so a JSONC document saved under a `.yaml` name fails with `missed comma between flow collection entries` like the original.
+- Fatal configuration-loading and file-system errors have the same exit code (2), but use a concise Rust error message instead of Node.js `Error` object formatting and stack traces.
 - File names in the results are sorted with an approximation of ICU `localeCompare` that is exact for ASCII. Non-ASCII file names sort by code point.
 - MD060 measures character width with `unicode-width` instead of `string-width`. A handful of characters (for example half-width katakana voiced marks) may differ.
 - The markdown parser is a modified [markdown-rs](https://github.com/wooorm/markdown-rs) rather than micromark. 12 of the 388 original fixtures have slightly different token structure (lazy continuation lines after fenced code inside lists, for example); rule results are unaffected. Text directives (`:name[label]`, from micromark-extension-directive) are not recognized; in practice this only showed up when linting binary files, where `_` inside such a label paired with one outside and produced extra MD049 errors.
