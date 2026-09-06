@@ -190,3 +190,23 @@ samply 로 본 병목은 순서대로 `EditMap::consume` (inclusive 11%, `split_
 - MD022, MD032: 오류가 없어도 linePrefix 전체를 모으고(MD022 는 heading 마다 prefix 텍스트까지) 계산했다. 오류가 있을 때만.
 - 인라인 설정 (20ms): 줄마다 정규식 3회와 `HashSet` 복제. `<!--` 없는 줄은 정규식을 건너뛰고 줄별 활성 집합은 `Rc` 로 공유.
 - 남은 후보: `reference_link_image_data` 를 MD042/MD052/MD053/MD054 가 각각 계산 (합쳐 3ms 미만이라 두었다), MD013 의 오류당 detail/context String, MD051 의 `OrderedMap` SipHash.
+
+## CLI 결과 정렬 최적화 (2026-09-06, #197)
+
+Apple M1 8코어, Rust 1.88.0 release 빌드. 변경 전 기준은 `c0c9d5c`다. 블로그 포스트 445개(7,504,540바이트)를 저장소 설정이 없는 디렉토리에 복사하고 `noBanner: true`와 빈 규칙 설정으로 기본 53개 규칙을 실행했다. #197의 443개 코퍼스와는 구성이 다르므로 당시 절대 시간과 직접 비교하지 않는다.
+
+변경 전, 변경 후, rumdl, rumdl, 변경 후, 변경 전 순서를 반복했다. 각 바이너리의 준비 실행 2회를 제외한 20회 평균과 표준편차이며 stdout과 stderr는 `/dev/null`로 보냈다. rust는 `rust-markdownlint '**/*.md'`, rumdl은 공식 0.2.61 macOS arm64 릴리스 바이너리로 `rumdl check --no-cache --no-config .`를 실행했다.
+
+| 대상 | 평균과 표준편차 (ms) |
+|---|---|
+| rust-markdownlint 변경 전 | 343.1 ± 7.9 |
+| rust-markdownlint 변경 후 | 179.0 ± 11.3 |
+| rumdl 0.2.61 | 175.9 ± 4.7 |
+
+전체 실행 시간이 47.8% 줄었다. 변경 후 평균은 rumdl의 1.02배로, 이 코퍼스에서 기존의 큰 격차가 사라졌다. 두 도구의 규칙과 진단 결과는 서로 다르며, 이 비교는 출력 호환성을 의미하지 않는다.
+
+`crates/cli/src/output.rs`의 `locale_compare`는 정렬 비교마다 양쪽 파일명의 전체 비교 키를 `Vec`으로 만들고, 1차 키가 같으면 대소문자 키도 새로 만들었다. 동일한 문자열은 바로 반환하고, 나머지는 문자 이터레이터를 직접 비교하도록 바꿨다. 비교 키 정의와 정렬 순서는 유지했다. 별도 내부 측정에서 같은 진단 16,764건의 정렬 중앙값은 128.0ms에서 23.2ms로 줄었다(8회, 입력 벡터 복제 시간 제외). 내부 측정의 입력 순서는 CLI 작업 순서와 다를 수 있어 이 차이를 CLI 시간에서 그대로 빼면 안 된다.
+
+MD013만 켜도 진단이 15,138건 발생한다. 규칙을 켜고 끈 CLI 실행 시간의 차이에는 규칙 본체 외에 결과 수집, 정렬과 출력 비용도 포함되므로 이를 전부 규칙 시간으로 해석하면 안 된다.
+
+검증: `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D warnings`, `cargo test --workspace`, release 빌드 통과. 테스트 609개 통과, 기존 제외 항목 11개. 블로그 445개(진단 16,764건)와 fixture 388개(진단 3,218건)의 종료 코드, stdout과 stderr가 변경 전후 모두 같았다. 로컬 Xcode 실행 경로 문제를 피하기 위해 빌드와 문서 테스트에 clang 경로를 명시했다.

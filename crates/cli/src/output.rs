@@ -102,11 +102,17 @@ fn primary_key(c: char) -> (u8, u32) {
 /// JS `String.prototype.localeCompare` (ICU root) 근사: 1차 키는 공백 < 구두점 < 숫자 < 문자
 /// (대소문자 무시), 1차가 같으면 소문자 우선. ASCII 이외 문자는 코드 포인트 순.
 pub fn locale_compare(a: &str, b: &str) -> Ordering {
-    let primary = |s: &str| s.chars().map(primary_key).collect::<Vec<_>>();
-    primary(a).cmp(&primary(b)).then_with(|| {
-        let case = |s: &str| s.chars().map(|c| c.is_uppercase()).collect::<Vec<_>>();
-        case(a).cmp(&case(b))
-    })
+    if a == b {
+        return Ordering::Equal;
+    }
+    a.chars()
+        .map(primary_key)
+        .cmp(b.chars().map(primary_key))
+        .then_with(|| {
+            a.chars()
+                .map(|c| c.is_uppercase())
+                .cmp(b.chars().map(|c| c.is_uppercase()))
+        })
 }
 
 /// 원본 `createResults` 정렬: 파일명 localeCompare → 줄 → 규칙명 (안정 정렬로 입력 순서 유지).
