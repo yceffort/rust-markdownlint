@@ -36,7 +36,10 @@ impl Rule for Md025 {
             return;
         }
         let found_front_matter_title =
-            front_matter_has_title(ctx.front_matter, ctx.config.get("front_matter_title"));
+            match front_matter_has_title(ctx.front_matter, ctx.config.get("front_matter_title")) {
+                Ok(has_title) => has_title,
+                Err(message) => return out.add_rule_failure(&message),
+            };
         // front matter 의 title 도 최상위 heading 으로 센다
         let mut has_top_level_heading = found_front_matter_title;
         if !has_top_level_heading {

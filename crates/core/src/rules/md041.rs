@@ -68,7 +68,10 @@ impl Rule for Md041 {
             Some(value) => to_number(value),
             None => 1.0,
         };
-        if front_matter_has_title(ctx.front_matter, ctx.config.get("front_matter_title")) {
+        if match front_matter_has_title(ctx.front_matter, ctx.config.get("front_matter_title")) {
+            Ok(has_title) => has_title,
+            Err(message) => return out.add_rule_failure(&message),
+        } {
             return;
         }
         let mut error_line_number = 0;
@@ -133,6 +136,30 @@ mod tests {
         assert_eq!(errs.len(), 1);
         assert_eq!(errs[0].line_number, 1);
         assert_eq!(errs[0].error_context.as_deref(), Some("text"));
+    }
+
+    #[test]
+    fn md041_front_matter_title_word_class_is_ascii() {
+        let content = "---\n한글 title\n---\n\ntext\n";
+        let errs = lint_with(json!({ "front_matter_title": "^\\w" }), content);
+        assert_eq!(errs.len(), 1);
+        assert_eq!(errs[0].line_number, 5);
+    }
+
+    #[test]
+    fn md041_invalid_front_matter_title_pattern_is_a_rule_failure() {
+        let errs = lint_with(
+            json!({ "front_matter_title": "(" }),
+            "---\ntitle: x\n---\n\ntext\n",
+        );
+        assert_eq!(errs.len(), 1);
+        assert_eq!(errs[0].line_number, 5);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some(
+                "This rule threw an exception: Invalid regular expression: /(/i: Unterminated group"
+            )
+        );
     }
 
     #[test]
