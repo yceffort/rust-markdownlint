@@ -41,8 +41,7 @@ fn normalize(str: &str) -> String {
 }
 
 /// 원본 `new Set((params.config.prohibited_texts || defaultProhibitedTexts).map(normalize))`.
-/// falsy 면 기본값을 쓴다. 배열이 아닌 truthy 값은 원본이 `.map` 에서 TypeError 를 내므로
-/// 빈 집합으로 두어 (`size > 0` 가드에 걸려) 아무것도 보고하지 않게 한다.
+/// falsy 면 기본값을 쓴다. truthy 비배열은 호출부에서 rule failure로 처리한다.
 fn prohibited_texts(value: Option<&Value>) -> HashSet<String> {
     match value {
         Some(v) if truthy(v) => match v {
@@ -65,6 +64,16 @@ impl Rule for Md059 {
     }
 
     fn check(&self, ctx: &LintContext, out: &mut ErrorSink) {
+        if ctx
+            .config
+            .get("prohibited_texts")
+            .is_some_and(|value| truthy(value) && !value.is_array())
+        {
+            out.add_rule_failure(
+                "(params.config.prohibited_texts || defaultProhibitedTexts).map is not a function",
+            );
+            return;
+        }
         let prohibited_texts = prohibited_texts(ctx.config.get("prohibited_texts"));
         if !prohibited_texts.is_empty() {
             // 원본 `filterByTypesCached([ "link" ])`.
@@ -185,5 +194,19 @@ mod tests {
         assert_eq!(errs[1].error_context.as_deref(), Some("[this]"));
         // 빈 배열이면 아무것도 보고하지 않는다
         assert!(lint_with(json!({ "prohibited_texts": [] }), content).is_empty());
+    }
+
+    #[test]
+    fn md059_non_array_texts_are_a_rule_failure() {
+        let errs = lint_with(
+            json!({ "prohibited_texts": "click here" }),
+            "[click here](x)\n",
+        );
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some(
+                "This rule threw an exception: (params.config.prohibited_texts || defaultProhibitedTexts).map is not a function"
+            )
+        );
     }
 }

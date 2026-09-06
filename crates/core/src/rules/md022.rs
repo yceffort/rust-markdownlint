@@ -3,7 +3,7 @@ use std::cell::OnceCell;
 use serde_json::Value;
 
 use super::{LintContext, Rule, RuleMeta, is_blank_line};
-use crate::config::to_number;
+use crate::config::{js_number_string, js_repeat, js_string, to_number};
 use crate::error::{ErrorSink, FixInfo};
 
 pub(crate) struct Md022;
@@ -18,41 +18,66 @@ static META: RuleMeta = RuleMeta {
 
 const DEFAULT_LINES: f64 = 1.0;
 
-/// JS `String(number)` 상당의 표기. 정수는 소수점 없이 찍는다.
-fn number_to_string(n: f64) -> String {
-    if n.is_finite() && n.fract() == 0.0 {
-        format!("{}", n as i64)
-    } else {
-        format!("{n}")
+#[derive(Clone)]
+enum LinesValue {
+    /// 비배열 설정은 `Number(...)` 강제 후의 값을 반환한다.
+    Number(f64),
+    /// 배열 설정은 원소를 그대로 반환해 strict equality와 문자열화에 원 타입이 남는다.
+    Raw(Value),
+}
+
+impl LinesValue {
+    fn number(&self) -> f64 {
+        match self {
+            LinesValue::Number(value) => *value,
+            LinesValue::Raw(value) => to_number(value),
+        }
+    }
+
+    fn display(&self) -> String {
+        match self {
+            LinesValue::Number(value) => js_number_string(*value),
+            LinesValue::Raw(value) => js_string(value),
+        }
+    }
+
+    fn strictly_equals(&self, actual: usize) -> bool {
+        match self {
+            LinesValue::Number(value) => *value == actual as f64,
+            LinesValue::Raw(Value::Number(value)) => {
+                value.as_f64().is_some_and(|value| value == actual as f64)
+            }
+            LinesValue::Raw(_) => false,
+        }
     }
 }
 
 /// 원본 `getLinesFunction`: 배열이면 heading 레벨별 값, 아니면 고정 값을 돌려준다.
 enum LinesFunction {
-    PerLevel([f64; 6]),
-    Fixed(f64),
+    PerLevel(Box<[LinesValue; 6]>),
+    Fixed(LinesValue),
 }
 
 impl LinesFunction {
     fn new(lines_param: Option<&Value>) -> Self {
         if let Some(Value::Array(array)) = lines_param {
-            let mut lines_array = [DEFAULT_LINES; 6];
+            let mut lines_array = std::array::from_fn(|_| LinesValue::Number(DEFAULT_LINES));
             for (index, value) in array.iter().enumerate().take(6) {
-                lines_array[index] = to_number(value);
+                lines_array[index] = LinesValue::Raw(value.clone());
             }
-            return LinesFunction::PerLevel(lines_array);
+            return LinesFunction::PerLevel(Box::new(lines_array));
         }
         let lines = match lines_param {
             None => DEFAULT_LINES,
             Some(value) => to_number(value),
         };
-        LinesFunction::Fixed(lines)
+        LinesFunction::Fixed(LinesValue::Number(lines))
     }
 
-    fn get(&self, level: usize) -> f64 {
+    fn get(&self, level: usize) -> &LinesValue {
         match self {
-            LinesFunction::PerLevel(array) => array[level - 1],
-            LinesFunction::Fixed(lines) => *lines,
+            LinesFunction::PerLevel(array) => &array[level - 1],
+            LinesFunction::Fixed(lines) => lines,
         }
     }
 }
@@ -90,28 +115,37 @@ impl Rule for Md022 {
 
             // Check lines above
             let lines_above = get_lines_above.get(level);
-            if lines_above >= 0.0 {
+            let lines_above_number = lines_above.number();
+            if lines_above_number >= 0.0 {
                 let mut actual_above = 0usize;
                 let mut i = 0usize;
-                while (i as f64) < lines_above && blank_at(start_line as isize - 2 - i as isize) {
+                while (i as f64) < lines_above_number
+                    && blank_at(start_line as isize - 2 - i as isize)
+                {
                     actual_above += 1;
                     i += 1;
                 }
-                let expected = number_to_string(lines_above);
-                if expected != actual_above.to_string() {
-                    out.add_error_detail_if(
+                if !lines_above.strictly_equals(actual_above) {
+                    let detail = format!(
+                        "Expected: {}; Actual: {actual_above}; Above",
+                        lines_above.display()
+                    );
+                    // 원본 `getBlockQuotePrefixText(...).repeat(count)`: Infinity 나 한도 초과는 규칙이
+                    // 예외로 끝난다.
+                    let insert_text = match js_repeat(
+                        &tokens.block_quote_prefix_text(block_quote_prefixes(), start_line - 1, 1),
+                        lines_above_number - actual_above as f64,
+                    ) {
+                        Ok(text) => text,
+                        Err(message) => return out.add_rule_failure(&message),
+                    };
+                    out.add_error(
                         start_line,
-                        expected,
-                        actual_above,
-                        Some("Above"),
+                        Some(&detail),
                         Some(line),
                         None,
                         Some(FixInfo {
-                            insert_text: Some(tokens.block_quote_prefix_text(
-                                block_quote_prefixes(),
-                                start_line - 1,
-                                (lines_above - actual_above as f64) as usize,
-                            )),
+                            insert_text: Some(insert_text),
                             ..Default::default()
                         }),
                     );
@@ -120,29 +154,34 @@ impl Rule for Md022 {
 
             // Check lines below
             let lines_below = get_lines_below.get(level);
-            if lines_below >= 0.0 {
+            let lines_below_number = lines_below.number();
+            if lines_below_number >= 0.0 {
                 let mut actual_below = 0usize;
                 let mut i = 0usize;
-                while (i as f64) < lines_below && blank_at((end_line + i) as isize) {
+                while (i as f64) < lines_below_number && blank_at((end_line + i) as isize) {
                     actual_below += 1;
                     i += 1;
                 }
-                let expected = number_to_string(lines_below);
-                if expected != actual_below.to_string() {
-                    out.add_error_detail_if(
+                if !lines_below.strictly_equals(actual_below) {
+                    let detail = format!(
+                        "Expected: {}; Actual: {actual_below}; Below",
+                        lines_below.display()
+                    );
+                    let insert_text = match js_repeat(
+                        &tokens.block_quote_prefix_text(block_quote_prefixes(), end_line + 1, 1),
+                        lines_below_number - actual_below as f64,
+                    ) {
+                        Ok(text) => text,
+                        Err(message) => return out.add_rule_failure(&message),
+                    };
+                    out.add_error(
                         start_line,
-                        expected,
-                        actual_below,
-                        Some("Below"),
+                        Some(&detail),
                         Some(line),
                         None,
                         Some(FixInfo {
                             line_number: Some(end_line + 1),
-                            insert_text: Some(tokens.block_quote_prefix_text(
-                                block_quote_prefixes(),
-                                end_line + 1,
-                                (lines_below - actual_below as f64) as usize,
-                            )),
+                            insert_text: Some(insert_text),
                             ..Default::default()
                         }),
                     );
@@ -237,6 +276,38 @@ mod tests {
                 (2, "Expected: 1; Actual: 0; Below".to_string()),
                 (5, "Expected: 2; Actual: 1; Above".to_string()),
             ]
+        );
+    }
+
+    #[test]
+    fn md022_array_values_keep_javascript_types() {
+        let errs = lint_with(
+            json!({ "lines_above": ["1"], "lines_below": [null] }),
+            "text\n\n# h1\n",
+        );
+        assert_eq!(errs.len(), 2);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("Expected: 1; Actual: 1; Above")
+        );
+        assert_eq!(
+            errs[1].error_detail.as_deref(),
+            Some("Expected: null; Actual: 0; Below")
+        );
+    }
+
+    #[test]
+    fn md022_infinite_or_huge_lines_are_rule_failures() {
+        let errs = lint_with(json!({ "lines_above": "Infinity" }), "text\n\n# h1\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("This rule threw an exception: Invalid count value: Infinity")
+        );
+        let errs = lint_with(json!({ "lines_above": 1e9 }), "text\n\n# h1\n");
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("This rule threw an exception: Invalid string length")
         );
     }
 

@@ -3,7 +3,9 @@ use std::sync::LazyLock;
 use regex::Regex;
 
 use super::{LintContext, Rule, RuleMeta};
+use crate::config::js_string;
 use crate::error::ErrorSink;
+use crate::front_matter::{compile_js_regex, js_regex_error_message};
 use crate::parser::{TokenId, TokenTree};
 
 pub(crate) struct Md036;
@@ -39,29 +41,23 @@ impl Rule for Md036 {
         static DEFAULT_RE: LazyLock<Regex> = LazyLock::new(|| {
             Regex::new(&format!("[{ALL_PUNCTUATION}]$")).expect("default punctuation")
         });
-        // 바깥 Option 은 config 지정 여부, 안쪽 Option 은 "절대 매치하지 않음"(JS 의 빈 `[]`).
-        let custom_re: Option<Option<Regex>> = match ctx.config.get("punctuation") {
+        // 사용자 punctuation 은 JS 문자 클래스 본문이므로 `[...]$` 전체를 JS 정규식으로 옮긴다
+        // (`[]` 는 아무것도, `[^]` 는 모든 문자를 매치하고, `[` 는 클래스 안에서 리터럴이다).
+        let custom_re = match ctx.config.get("punctuation") {
             None => None,
             Some(value) => {
-                let punctuation = match value {
-                    serde_json::Value::String(s) => s.clone(),
-                    other => other.to_string(),
-                };
-                if punctuation.is_empty() {
-                    // JS 의 빈 문자 클래스 `[]$` 는 아무것도 매치하지 않는다.
-                    Some(None)
-                } else {
-                    // 원본은 잘못된 정규식이면 예외를 던진다. 여기서는 아무것도 보고하지 않는다.
-                    match Regex::new(&format!("[{punctuation}]$")) {
-                        Ok(re) => Some(Some(re)),
-                        Err(_) => return,
+                let source = format!("[{}]$", js_string(value));
+                match compile_js_regex(&source, false, false) {
+                    Ok(re) => Some(re),
+                    Err(error) => {
+                        return out.add_rule_failure(&js_regex_error_message(&source, "", &error));
                     }
                 }
             }
         };
-        let punctuation_re: Option<&Regex> = match &custom_re {
-            None => Some(&DEFAULT_RE),
-            Some(inner) => inner.as_ref(),
+        let ends_with_punctuation = |text: &str| match &custom_re {
+            None => DEFAULT_RE.is_match(text),
+            Some(re) => re.is_match(text).unwrap_or(false),
         };
 
         let tokens = ctx.tokens;
@@ -102,7 +98,7 @@ impl Rule for Md036 {
                 let text_token = tokens.get(id);
                 if (text_token.children.len() == 1)
                     && (tokens.get(text_token.children[0]).kind == "data")
-                    && !punctuation_re.is_some_and(|re| re.is_match(tokens.text(id)))
+                    && !ends_with_punctuation(tokens.text(id))
                 {
                     out.add_error_context(
                         text_token.start_line,
@@ -177,6 +173,41 @@ mod tests {
         assert!(lint_rule("MD036", "**a [b](x) c**\n").is_empty());
         // 대조군: 괄호가 없으면 잡힌다.
         assert_eq!(lint_rule("MD036", "**a b c**\n").len(), 1);
+    }
+
+    #[test]
+    fn md036_leading_closing_bracket_makes_empty_js_class() {
+        let errs = lint_with(json!({ "punctuation": "]" }), "**title]**\n");
+        assert_eq!(errs.len(), 1);
+    }
+
+    /// JS 클래스 안의 `[` 는 리터럴, `[^]` 는 모든 문자, `[]` 는 없는 문자다.
+    #[test]
+    fn md036_punctuation_uses_javascript_class_syntax() {
+        let errs = lint_with(json!({ "punctuation": "[" }), "**title[**\n\n**plain**\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(errs[0].line_number, 3);
+        let errs = lint_with(json!({ "punctuation": "^]" }), "**title]**\n\n**titlea**\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(errs[0].line_number, 3);
+        let errs = lint_with(json!({ "punctuation": "z-a" }), "**Title**\n");
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some(
+                "This rule threw an exception: Invalid regular expression: /[z-a]$/: Range out of order in character class"
+            )
+        );
+    }
+
+    #[test]
+    fn md036_invalid_character_class_is_a_rule_failure() {
+        let errs = lint_with(json!({ "punctuation": "\\" }), "**title\\**\n");
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some(
+                "This rule threw an exception: Invalid regular expression: /[\\]$/: Unterminated character class"
+            )
+        );
     }
 
     #[test]

@@ -41,6 +41,117 @@ fn locale_compare(a: &str, b: &str) -> Ordering {
     })
 }
 
+/// ECMAScript의 Unicode 플래그 없는 ignore-case `Canonicalize` (코드 유닛 기준).
+/// 대문자화가 여러 유닛이면 원본을 쓰고, non-ASCII가 ASCII로 바뀌는
+/// Kelvin sign/long s 같은 경우도 원본을 쓴다.
+fn canonicalize_js_no_u(unit: u16) -> u16 {
+    let Some(ch) = char::from_u32(u32::from(unit)) else {
+        return unit;
+    };
+    let mut upper = ch.to_uppercase();
+    let (Some(first), None) = (upper.next(), upper.next()) else {
+        return unit;
+    };
+    if first.len_utf16() != 1 {
+        return unit;
+    }
+    let upper_unit = first as u32 as u16;
+    if unit >= 0x80 && upper_unit < 0x80 {
+        unit
+    } else {
+        upper_unit
+    }
+}
+
+/// JS `gi` (u 없음) 의 대소문자 무시 비교. 매치마다 불리므로 ASCII 는 할당 없이 비교한다.
+fn js_no_u_ignore_case_eq(a: &str, b: &str) -> bool {
+    if a == b {
+        return true;
+    }
+    if a.is_ascii() && b.is_ascii() {
+        return a.eq_ignore_ascii_case(b);
+    }
+    a.encode_utf16()
+        .map(canonicalize_js_no_u)
+        .eq(b.encode_utf16().map(canonicalize_js_no_u))
+}
+
+/// 원본 comparator `(b.length - a.length) || a.localeCompare(b)` 를 JS 값 위에서 평가한다.
+/// 문자열이 아닌 원소가 있으면 V8 이 던지는 TypeError 문구가 Err 다.
+fn js_names_compare(a: &Value, b: &Value) -> Result<f64, &'static str> {
+    let js_length = |value: &Value| match value {
+        Value::Null => Err("Cannot read properties of null (reading 'length')"),
+        Value::String(value) => Ok(Some(value.encode_utf16().count())),
+        Value::Array(value) => Ok(Some(value.len())),
+        _ => Ok(None),
+    };
+    let b_length = js_length(b)?;
+    let a_length = js_length(a)?;
+    if let (Some(b_length), Some(a_length)) = (b_length, a_length)
+        && b_length != a_length
+    {
+        return Ok(b_length as f64 - a_length as f64);
+    }
+    match a {
+        Value::String(a) => Ok(match locale_compare(a, &crate::config::js_string(b)) {
+            Ordering::Less => -1.0,
+            Ordering::Equal => 0.0,
+            Ordering::Greater => 1.0,
+        }),
+        _ => Err("a.localeCompare is not a function"),
+    }
+}
+
+/// `names` 에 문자열이 아닌 원소가 있을 때 원본이 던지는 첫 TypeError. V8 의 sort(TimSort: 첫 run 판정 뒤
+/// binary insertion, 64개 미만이면 run 하나)가 comparator 를 부르는 순서를 그대로 밟고, 정렬이 끝나면
+/// `escapeForRegExp` 의 `str.replace` 에서 첫 비문자열이 던진다.
+fn invalid_names_failure(names: &[Value]) -> Option<&'static str> {
+    let mut sorted: Vec<Value> = names.to_vec();
+    let n = sorted.len();
+    let mut run_length = n.min(1);
+    if n >= 2 {
+        let descending = match js_names_compare(&sorted[1], &sorted[0]) {
+            Ok(order) => order < 0.0,
+            Err(message) => return Some(message),
+        };
+        run_length = 2;
+        while run_length < n {
+            let order = match js_names_compare(&sorted[run_length], &sorted[run_length - 1]) {
+                Ok(order) => order,
+                Err(message) => return Some(message),
+            };
+            if descending == (order >= 0.0) {
+                break;
+            }
+            run_length += 1;
+        }
+        if descending {
+            sorted[..run_length].reverse();
+        }
+    }
+    for start in run_length..n {
+        let pivot = sorted[start].clone();
+        let (mut left, mut right) = (0, start);
+        while left < right {
+            let mid = left + (right - left) / 2;
+            match js_names_compare(&pivot, &sorted[mid]) {
+                Ok(order) if order < 0.0 => right = mid,
+                Ok(_) => left = mid + 1,
+                Err(message) => return Some(message),
+            }
+        }
+        sorted.remove(start);
+        sorted.insert(left, pivot);
+    }
+    sorted.iter().find(|name| !name.is_string()).map(|name| {
+        if name.is_null() {
+            "Cannot read properties of null (reading 'replace')"
+        } else {
+            "str.replace is not a function"
+        }
+    })
+}
+
 /// 이름별 `nameRe` 는 설정에 따라 달라지므로 이름당 한 번만 컴파일해 캐시한다.
 static NAME_RE_CACHE: LazyLock<Mutex<HashMap<String, Regex>>> =
     LazyLock::new(|| Mutex::new(HashMap::new()));
@@ -77,10 +188,15 @@ impl Rule for Md044 {
     fn check(&self, ctx: &LintContext, out: &mut ErrorSink) {
         let tokens = ctx.tokens;
         let mut names: Vec<String> = match ctx.config.get("names") {
-            Some(Value::Array(names)) => names
+            Some(Value::Array(names)) if names.iter().all(Value::is_string) => names
                 .iter()
-                .filter_map(|name| name.as_str().map(str::to_string))
+                .map(|name| name.as_str().expect("checked string").to_string())
                 .collect(),
+            Some(Value::Array(names)) => {
+                let message = invalid_names_failure(names).expect("array contains a non-string");
+                out.add_rule_failure(message);
+                return;
+            }
             _ => Vec::new(),
         };
         names.sort_by(|a, b| {
@@ -123,10 +239,29 @@ impl Rule for Md044 {
             let name_re = name_re(name);
             for &id in &content_tokens {
                 let token = tokens.get(id);
-                for captures in name_re.captures_iter(tokens.text(id)) {
+                let text = tokens.text(id);
+                let mut position = 0;
+                while position <= text.len()
+                    && let Some(captures) = name_re.captures_at(text, position)
+                {
                     let full = captures.get(0).expect("full match");
                     let left_match = captures.get(1).expect("leftMatch").as_str();
                     let name_match = captures.get(2).expect("nameMatch").as_str();
+                    let next_char_len = text[full.start()..]
+                        .chars()
+                        .next()
+                        .map_or(1, char::len_utf8);
+                    // Rust regex 의 Unicode case-fold 가 JS `gi` 보다 넓게 잡은 후보: JS 는 이 위치에서
+                    // 실패하고 다음 코드 유닛부터 다시 찾는다.
+                    if !js_no_u_ignore_case_eq(name, name_match) {
+                        position = full.start() + next_char_len;
+                        continue;
+                    }
+                    position = if full.is_empty() {
+                        full.end() + next_char_len
+                    } else {
+                        full.end()
+                    };
                     // 원본 `match.index`, `.length`: UTF-16 단위
                     let column = token.start_column
                         + utf16_len(&tokens.text(id)[..full.start()])
@@ -207,6 +342,49 @@ mod tests {
     #[test]
     fn md044_no_names_does_nothing() {
         assert!(lint_with(json!(true), "javascript and JAVASCRIPT\n").is_empty());
+    }
+
+    #[test]
+    fn md044_uses_javascript_non_unicode_case_folding() {
+        assert!(lint_with(json!({ "names": ["K", "S"] }), "AKB AſB\n").is_empty());
+        assert_eq!(lint_with(json!({ "names": ["É"] }), "é\n").len(), 1);
+    }
+
+    /// Rust 의 case-fold 로 잡힌 가짜 후보(`sſ`)를 버린 뒤 그 안에서 시작하는 진짜 매치(`ſS`)를 찾는다.
+    #[test]
+    fn md044_retries_after_rejected_unicode_fold() {
+        let errs = lint_with(json!({ "names": ["ſs"] }), "sſS\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("Expected: ſs; Actual: ſS")
+        );
+        assert_eq!(errs[0].error_range, Some((2, 2)));
+    }
+
+    /// V8 sort 는 첫 run 판정 뒤 binary insertion 이라 인접하지 않은 원소끼리도 비교한다.
+    #[test]
+    fn md044_sort_failure_follows_v8_comparison_order() {
+        let errs = lint_with(json!({ "names": ["x", "ab", [1]] }), "x ab\n");
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("This rule threw an exception: a.localeCompare is not a function")
+        );
+        let errs = lint_with(json!({ "names": [7, "ab"] }), "ab\n");
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("This rule threw an exception: str.replace is not a function")
+        );
+    }
+
+    #[test]
+    fn md044_mixed_names_report_rule_failure() {
+        let errs = lint_with(json!({ "names": ["GitHub", 7, null] }), "github 7 null\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("This rule threw an exception: a.localeCompare is not a function")
+        );
     }
 
     #[test]

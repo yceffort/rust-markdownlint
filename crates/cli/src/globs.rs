@@ -102,9 +102,29 @@ fn add_glob(set: &mut globset::GlobSetBuilder, pattern: &str) {
     }
 }
 
-/// fast-glob `removeLeadingDotSegment`.
-fn remove_leading_dot_segment(pattern: &str) -> &str {
-    pattern.strip_prefix("./").unwrap_or(pattern)
+/// fast-glob `removeLeadingDotSegment` 에 더해, cli2 가 결과 경로를 `path.relative` 로 정규화하는 것과 같게
+/// `.` 세그먼트와 정적 세그먼트 뒤의 `..` 를 접는다 (`sub/../sub/a.md` → `sub/a.md`). 동적 세그먼트 뒤의
+/// `..` 는 fast-glob 도 아무것도 찾지 못하므로 그대로 둔다. 전부 접히면 cwd 자체라 `**` 다.
+fn normalize_pattern(pattern: &str) -> String {
+    let mut segments: Vec<&str> = Vec::new();
+    for (index, segment) in pattern.split('/').enumerate() {
+        match segment {
+            "" if index == 0 => segments.push(segment),
+            "" | "." => {}
+            ".." => match segments.last() {
+                Some(last) if !last.is_empty() && *last != ".." && !has_glob_meta(last) => {
+                    segments.pop();
+                }
+                _ => segments.push(segment),
+            },
+            _ => segments.push(segment),
+        }
+    }
+    match segments.as_slice() {
+        [] => "**".to_string(),
+        [""] => "/".to_string(),
+        _ => segments.join("/"),
+    }
 }
 
 /// globby `directoryToGlob`: `**/name` (정적이고 확장자 없는 마지막 세그먼트) 과 실제 디렉토리는
@@ -152,11 +172,11 @@ impl Task {
     fn new(base: &Path, positive: &[String], ignore: &[String]) -> Option<Task> {
         let positive: Vec<String> = positive
             .iter()
-            .map(|p| expand_directory(base, remove_leading_dot_segment(p)))
+            .map(|p| expand_directory(base, &normalize_pattern(p)))
             .collect();
         let ignore: Vec<String> = ignore
             .iter()
-            .map(|p| expand_directory(base, remove_leading_dot_segment(p)))
+            .map(|p| expand_directory(base, &normalize_pattern(p)))
             .collect();
         // globby adjustIgnorePatternsForParentDirectories: 양의 패턴이 모두 같은 `../` 접두어를
         // 가지면 `**/` 로 시작하는 부정 패턴도 같은 기준으로 옮긴다
@@ -322,12 +342,12 @@ fn absolute_root(pattern: &str) -> PathBuf {
 fn walk_roots(base: &Path, patterns: &[String]) -> Vec<PathBuf> {
     let mut roots: Vec<PathBuf> = Vec::new();
     for pattern in patterns.iter().filter(|p| !p.starts_with('!')) {
-        let pattern = remove_leading_dot_segment(pattern);
-        let root = if is_absolute(pattern) {
-            absolute_root(pattern)
+        let pattern = normalize_pattern(pattern);
+        let root = if is_absolute(&pattern) {
+            absolute_root(&pattern)
         } else {
             let mut root = base.to_path_buf();
-            for _ in 0..parent_prefix(pattern).len() / 3 {
+            for _ in 0..parent_prefix(&pattern).len() / 3 {
                 root.pop();
             }
             root
@@ -353,6 +373,31 @@ fn ignore_file_matcher(file: &Path) -> Option<ignore::gitignore::Gitignore> {
     builder.build().ok()
 }
 
+fn symlink_loop_child(error: &ignore::Error) -> Option<&Path> {
+    match error {
+        ignore::Error::Loop { child, .. } => Some(child),
+        ignore::Error::Partial(errors) => errors.iter().find_map(symlink_loop_child),
+        ignore::Error::WithLineNumber { err, .. }
+        | ignore::Error::WithPath { err, .. }
+        | ignore::Error::WithDepth { err, .. } => symlink_loop_child(err),
+        _ => None,
+    }
+}
+
+/// fast-glob 은 `**` 없는 상대 패턴을 세그먼트 수 깊이까지만 순회한다. 그 한도(base 기준)를 돌려주고,
+/// `**` 나 절대 패턴이 있으면 None (깊이 제한 없음).
+fn finite_depth(base: &Path, patterns: &[String]) -> Option<usize> {
+    let mut depth = 0;
+    for pattern in patterns.iter().filter(|p| !p.starts_with('!')) {
+        let pattern = expand_directory(base, &normalize_pattern(pattern));
+        if is_absolute(&pattern) || pattern.contains("**") {
+            return None;
+        }
+        depth = depth.max(pattern.split('/').filter(|s| !s.is_empty()).count());
+    }
+    Some(depth)
+}
+
 /// globby 의미론(absolute, dot:true, 디렉토리 확장, 부정, gitignore)으로 base 아래 파일 열거.
 /// 결과는 정렬된 절대 경로.
 pub fn enumerate_files(base: &Path, patterns: &[String], gitignore: &GitIgnore) -> Vec<PathBuf> {
@@ -366,15 +411,23 @@ pub fn enumerate_files(base: &Path, patterns: &[String], gitignore: &GitIgnore) 
         _ => None,
     };
     let mut ignore_matchers = Vec::new();
+    let finite_depth = finite_depth(base, patterns);
 
     let mut files: Vec<PathBuf> = Vec::new();
-    for root in walk_roots(base, patterns) {
+    // (순회 시작 디렉토리, 그 아래로 허용하는 깊이). 처음은 패턴의 루트들이고, symlink 순환에서 잘린
+    // 디렉토리가 뒤에 추가된다.
+    let mut pending: Vec<(PathBuf, Option<usize>)> = walk_roots(base, patterns)
+        .into_iter()
+        .map(|root| (root, None))
+        .collect();
+    while let Some((root, max_depth)) = pending.pop() {
         let mut walk = ignore::WalkBuilder::new(&root);
         let (walk_tasks, base_owned) = (Arc::clone(&tasks), base.to_path_buf());
         // fast-glob 기본값 followSymbolicLinks:true (pnpm node_modules 등)
         walk.standard_filters(false)
             .hidden(false)
             .follow_links(true)
+            .max_depth(max_depth)
             .filter_entry(move |entry| {
                 if !entry.file_type().is_some_and(|t| t.is_dir()) {
                     return true;
@@ -388,7 +441,23 @@ pub fn enumerate_files(base: &Path, patterns: &[String], gitignore: &GitIgnore) 
         if let GitIgnore::Enabled(true) = gitignore {
             walk.git_ignore(true).require_git(false);
         }
-        for entry in walk.build().flatten() {
+        for entry in walk.build() {
+            let entry = match entry {
+                Ok(entry) => entry,
+                Err(error) => {
+                    // `ignore` 는 조상 디렉토리로 되돌아가는 symlink 를 순환으로 보고 끊지만 fast-glob 은
+                    // 따라간다 (유한 패턴은 그 깊이까지, `**` 는 OS 가 ELOOP 를 낼 때까지). 잘린 디렉토리를
+                    // 새 루트로 다시 순회한다.
+                    if let Some(child) = symlink_loop_child(&error) {
+                        let child_depth = components(&relative_posix(base, child)).len();
+                        let remaining = finite_depth.map(|depth| depth.saturating_sub(child_depth));
+                        if remaining != Some(0) {
+                            pending.push((child.to_path_buf(), remaining));
+                        }
+                    }
+                    continue;
+                }
+            };
             if !entry.file_type().is_some_and(|t| t.is_file()) {
                 continue;
             }
@@ -484,6 +553,105 @@ mod tests {
             &GitIgnore::Enabled(false),
         );
         assert_eq!(rel(&base, &files), ["linked/a.md"]);
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn finite_glob_follows_symlink_cycle() {
+        let dir = tempfile::tempdir().unwrap();
+        let base = dir.path().canonicalize().unwrap();
+        fs::create_dir(base.join("sub")).unwrap();
+        fs::write(base.join("sub/a.md"), "#bad\n").unwrap();
+        std::os::unix::fs::symlink("..", base.join("sub/loop")).unwrap();
+        let files = enumerate_files(
+            &base,
+            &globs(&["sub/*/sub/a.md"]),
+            &GitIgnore::Enabled(false),
+        );
+        assert_eq!(rel(&base, &files), ["sub/loop/sub/a.md"]);
+    }
+
+    /// fast-glob 은 동적 세그먼트를 디렉토리 목록에 대소문자 구분으로 매치한다. 대소문자 무시 파일시스템에서
+    /// `Path::join` 으로 찾으면 안 된다.
+    #[test]
+    fn finite_glob_does_not_match_static_segment_case_insensitively() {
+        let dir = tempfile::tempdir().unwrap();
+        let base = dir.path().canonicalize().unwrap();
+        fs::create_dir_all(base.join("docs/x")).unwrap();
+        fs::write(base.join("docs/x/readme.md"), "#bad\n").unwrap();
+        let files = enumerate_files(
+            &base,
+            &globs(&["docs/*/README.md"]),
+            &GitIgnore::Enabled(false),
+        );
+        assert!(files.is_empty(), "{files:?}");
+    }
+
+    /// gitignore 를 켜도 순환 symlink 아래의 유한 경로는 찾는다 (globby 는 gitignore 를 사후 필터로 적용).
+    #[cfg(unix)]
+    #[test]
+    fn finite_glob_follows_symlink_cycle_with_gitignore() {
+        let dir = tempfile::tempdir().unwrap();
+        let base = dir.path().canonicalize().unwrap();
+        fs::create_dir(base.join("sub")).unwrap();
+        fs::write(base.join("sub/a.md"), "#bad\n").unwrap();
+        std::os::unix::fs::symlink("..", base.join("sub/loop")).unwrap();
+        let files = enumerate_files(
+            &base,
+            &globs(&["sub/*/sub/a.md"]),
+            &GitIgnore::Enabled(true),
+        );
+        assert_eq!(rel(&base, &files), ["sub/loop/sub/a.md"]);
+    }
+
+    /// 디렉토리 인자는 globby 가 `sub/**` 로 확장하므로 `**` 처럼 순환을 끝까지 따라간다.
+    #[cfg(unix)]
+    #[test]
+    fn directory_argument_follows_symlink_cycle_until_os_limit() {
+        let dir = tempfile::tempdir().unwrap();
+        let base = dir.path().canonicalize().unwrap();
+        fs::create_dir(base.join("sub")).unwrap();
+        fs::write(base.join("sub/a.md"), "#bad\n").unwrap();
+        std::os::unix::fs::symlink("..", base.join("sub/loop")).unwrap();
+        let files = enumerate_files(&base, &globs(&["sub"]), &GitIgnore::Enabled(false));
+        let relative = rel(&base, &files);
+        assert!(relative.iter().any(|path| path == "sub/loop/sub/a.md"));
+        assert!(relative.len() > 2);
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn globstar_follows_symlink_cycle_until_os_limit() {
+        let dir = tempfile::tempdir().unwrap();
+        let base = dir.path().canonicalize().unwrap();
+        fs::create_dir(base.join("sub")).unwrap();
+        fs::write(base.join("sub/a.md"), "#bad\n").unwrap();
+        std::os::unix::fs::symlink("..", base.join("sub/loop")).unwrap();
+        let files = enumerate_files(&base, &globs(&["**/*.md"]), &GitIgnore::Enabled(false));
+        let relative = rel(&base, &files);
+        assert_eq!(relative.first().map(String::as_str), Some("sub/a.md"));
+        assert!(relative.iter().any(|path| path == "sub/loop/sub/a.md"));
+        assert!(relative.len() > 2);
+    }
+
+    /// cli2 는 결과 경로를 정규화하므로 `.`/`..` 세그먼트가 있는 패턴도 파일을 찾고 `sub/a.md` 로 부른다.
+    #[test]
+    fn enumerate_normalizes_dot_segments() {
+        let dir = fixture();
+        let base = dir.path().canonicalize().unwrap();
+        for pattern in [
+            "docs/../docs/a.md",
+            "docs/./a.md",
+            "docs/sub/../*.md",
+            "docs/../docs",
+        ] {
+            let files = enumerate_files(&base, &globs(&[pattern]), &GitIgnore::Enabled(false));
+            assert_eq!(rel(&base, &files)[0], "docs/a.md", "{pattern}");
+        }
+        assert_eq!(normalize_pattern("docs/.."), "**");
+        assert_eq!(normalize_pattern("*/../a.md"), "*/../a.md");
+        assert_eq!(normalize_pattern("../x/../y"), "../y");
+        assert_eq!(normalize_pattern("/abs/../b"), "/b");
     }
 
     /// fast-glob DeepFilter: 마지막 세그먼트가 정적인 부정 패턴은 디렉토리 아래 전체를 제외한다.

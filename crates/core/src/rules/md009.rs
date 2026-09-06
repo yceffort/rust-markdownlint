@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 
 use super::{LintContext, Rule, RuleMeta};
-use crate::config::truthy;
+use crate::config::{js_number_string, to_number, truthy};
 use crate::error::{ErrorSink, FixInfo, utf16_len};
 
 pub(crate) struct Md009;
@@ -26,11 +26,7 @@ impl Rule for Md009 {
     }
 
     fn check(&self, ctx: &LintContext, out: &mut ErrorSink) {
-        let br_spaces = ctx
-            .config
-            .get("br_spaces")
-            .and_then(|v| v.as_i64())
-            .unwrap_or(2);
+        let br_spaces = ctx.config.get("br_spaces").map(to_number).unwrap_or(2.0);
         let include_code = ctx.config.get("code_blocks").is_some_and(truthy);
         let list_item_empty_lines = ctx.config.get("list_item_empty_lines").is_some_and(truthy);
         let strict = ctx.config.get("strict").is_some_and(truthy);
@@ -89,7 +85,7 @@ impl Rule for Md009 {
             }
         }
 
-        let expected = if br_spaces < 2 { 0 } else { br_spaces as usize };
+        let expected = if br_spaces < 2.0 { 0.0 } else { br_spaces };
         for (line_index, line) in ctx.lines.iter().enumerate() {
             let line_number = line_index + 1;
             let trimmed = line.trim_end();
@@ -102,15 +98,16 @@ impl Rule for Md009 {
             if trailing_spaces > 0
                 && !code_block_line_numbers.contains(&line_number)
                 && !list_item_line_numbers.contains(&line_number)
-                && (expected != trailing_spaces
+                && (expected != trailing_spaces as f64
                     || (strict
                         && (!paragraph_line_numbers.contains(&line_number)
                             || code_inline_line_numbers.contains(&line_number))))
             {
                 let column = line_len - trailing_spaces + 1;
+                let expected_text = js_number_string(expected);
                 let detail = format!(
-                    "Expected: {}{expected}; Actual: {trailing_spaces}",
-                    if expected == 0 { "" } else { "0 or " }
+                    "Expected: {}{expected_text}; Actual: {trailing_spaces}",
+                    if expected == 0.0 { "" } else { "0 or " }
                 );
                 out.add_error(
                     line_number,
@@ -207,5 +204,15 @@ mod tests {
         assert_eq!(errs[0].error_range, Some((8, 3)));
         let f = errs[0].fix_info.as_ref().unwrap();
         assert_eq!((f.edit_column, f.delete_count), (Some(8), Some(3)));
+    }
+
+    #[test]
+    fn md009_numeric_string_is_coerced() {
+        let errs = lint_with(json!({ "br_spaces": "3" }), "text  \nnext\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("Expected: 0 or 3; Actual: 2")
+        );
     }
 }

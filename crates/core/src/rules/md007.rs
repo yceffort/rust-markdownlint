@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 use super::{LintContext, Rule, RuleMeta};
-use crate::config::truthy;
+use crate::config::{js_number_string, js_pad_end, to_number, truthy};
 use crate::error::{ErrorSink, FixInfo};
 use crate::parser::TokenId;
 
@@ -28,14 +28,14 @@ impl Rule for Md007 {
             .config
             .get("indent")
             .filter(|v| truthy(v))
-            .and_then(|v| v.as_i64())
-            .unwrap_or(2);
+            .map(to_number)
+            .unwrap_or(2.0);
         let start_indented = ctx.config.get("start_indented").is_some_and(truthy);
         let start_indent = ctx
             .config
             .get("start_indent")
             .filter(|v| truthy(v))
-            .and_then(|v| v.as_i64())
+            .map(to_number)
             .unwrap_or(indent);
 
         let tokens = ctx.tokens;
@@ -78,32 +78,43 @@ impl Rule for Md007 {
                         } else {
                             0
                         };
-                        let expected_indent = base_indent
-                            + (if start_indented { start_indent } else { 0 })
-                            + (nesting * indent);
+                        let expected_indent = base_indent as f64
+                            + (if start_indented { start_indent } else { 0.0 })
+                            + (nesting as f64 * indent);
                         let block_quote_adjustment = last_block_quote_prefix
                             .map(|p| tokens.get(p))
                             .filter(|p| p.end_line == token.start_line)
                             .map_or(0, |p| p.end_column as i64 - 1);
                         let actual_indent = token.start_column as i64 - 1 - block_quote_adjustment;
                         let range = (1, token.end_column - 1);
+                        // 원본 `"".padEnd(...)`: 한도를 넘으면 규칙이 예외로 끝난다. deleteCount 는
+                        // `as isize` 포화값(Infinity)이 onError 검증에서 걸린다.
+                        let insert_text =
+                            match js_pad_end((expected_indent - actual_indent as f64).max(0.0)) {
+                                Ok(text) => text,
+                                Err(message) => return out.add_rule_failure(&message),
+                            };
                         let fix_info = FixInfo {
                             edit_column: Some((token.start_column as i64 - actual_indent) as usize),
-                            delete_count: Some((actual_indent - expected_indent).max(0) as isize),
-                            insert_text: Some(
-                                " ".repeat((expected_indent - actual_indent).max(0) as usize),
+                            delete_count: Some(
+                                (actual_indent as f64 - expected_indent).max(0.0) as isize
                             ),
+                            insert_text: Some(insert_text),
                             ..Default::default()
                         };
-                        out.add_error_detail_if(
-                            token.start_line,
-                            expected_indent,
-                            actual_indent,
-                            None,
-                            None,
-                            Some(range),
-                            Some(fix_info),
-                        );
+                        if expected_indent != actual_indent as f64 {
+                            let detail = format!(
+                                "Expected: {}; Actual: {actual_indent}",
+                                js_number_string(expected_indent)
+                            );
+                            out.add_error(
+                                token.start_line,
+                                Some(&detail),
+                                None,
+                                Some(range),
+                                Some(fix_info),
+                            );
+                        }
                     }
                 }
             }
@@ -181,6 +192,61 @@ mod tests {
         assert_eq!(
             errs[0].error_detail.as_deref(),
             Some("Expected: 1; Actual: 0")
+        );
+    }
+
+    #[test]
+    fn md007_numeric_strings_are_coerced() {
+        let errs = lint_with(
+            json!({ "indent": "3", "start_indented": "false", "start_indent": "1" }),
+            "* a\n   * b\n",
+        );
+        assert_eq!(errs.len(), 2);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("Expected: 1; Actual: 0")
+        );
+        assert_eq!(
+            errs[1].error_detail.as_deref(),
+            Some("Expected: 4; Actual: 3")
+        );
+    }
+
+    #[test]
+    fn md007_fraction_and_nan_keep_javascript_number_semantics() {
+        let errs = lint_with(json!({ "indent": 1.5 }), "* a\n   * b\n");
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("Expected: 1.5; Actual: 3")
+        );
+        let errs = lint_with(json!({ "indent": "x" }), "* a\n   * b\n");
+        assert_eq!(errs.len(), 2);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("Expected: NaN; Actual: 0")
+        );
+        assert_eq!(
+            errs[1].error_detail.as_deref(),
+            Some("Expected: NaN; Actual: 3")
+        );
+    }
+
+    /// 원본 `"".padEnd(huge)` 는 RangeError, `-Infinity` 는 deleteCount 가 onError 검증에서 걸린다.
+    #[test]
+    fn md007_huge_indent_is_a_rule_failure() {
+        let errs = lint_with(json!({ "indent": 1e15 }), "* a\n  * b\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("This rule threw an exception: Invalid string length")
+        );
+        let errs = lint_with(json!({ "indent": "-Infinity" }), "* a\n  * b\n");
+        assert_eq!(errs.len(), 2);
+        assert_eq!(
+            errs[1].error_detail.as_deref(),
+            Some(
+                "This rule threw an exception: Value of 'fixInfo.deleteCount' passed to onError by 'MD007' is incorrect for 'test.md'."
+            )
         );
     }
 

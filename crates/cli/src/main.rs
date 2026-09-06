@@ -64,11 +64,33 @@ struct FileOutcome {
 
 /// `--diff` 한 파일: `git apply` 가 그대로 받는 `a/` `b/` 헤더. 바뀐 게 없으면 None.
 fn unified_diff(name: &str, before: &str, after: &str) -> Option<String> {
-    let diff = TextDiff::from_lines(before, after)
-        .unified_diff()
-        .header(&format!("a/{name}"), &format!("b/{name}"))
-        .to_string();
-    (!diff.is_empty()).then_some(diff)
+    // Git patch의 줄 구분자는 LF다. `TextDiff::from_lines`는 CR도 줄 구분자로
+    // 인식해 CR-only/혼합 개행 파일에서 hunk record를 붙여 버리므로 LF 기준으로 쪼갠다.
+    // similar 의 렌더러도 CR 로 끝난 마지막 줄을 개행 있음으로 보아 `\ No newline at end of file`
+    // 을 빼먹기 때문에 hunk 를 직접 찍는다.
+    let before_lines: Vec<&str> = before.split_inclusive('\n').collect();
+    let after_lines: Vec<&str> = after.split_inclusive('\n').collect();
+    let diff = TextDiff::configure()
+        .newline_terminated(true)
+        .diff_slices(&before_lines, &after_lines);
+    let unified = diff.unified_diff();
+    let hunks: Vec<_> = unified.iter_hunks().collect();
+    if hunks.is_empty() {
+        return None;
+    }
+    let mut rendered = format!("--- a/{name}\n+++ b/{name}\n");
+    for hunk in hunks {
+        rendered.push_str(&format!("{}\n", hunk.header()));
+        for change in hunk.iter_changes() {
+            rendered.push_str(&change.tag().to_string());
+            let value = change.value();
+            rendered.push_str(value);
+            if !value.ends_with('\n') {
+                rendered.push_str("\n\\ No newline at end of file\n");
+            }
+        }
+    }
+    Some(rendered)
 }
 
 /// 원본 `fs.readFile(file, "utf8")`: 잘못된 시퀀스는 U+FFFD 로 치환하고 계속한다 (BOM 은 남긴다).
@@ -96,10 +118,12 @@ fn lint_file(
         no_inline_config: info.options.no_inline_config == Some(true),
     };
     let name = relative_posix(base, file);
+    // 원본은 markdownlint 에 절대경로를 넘기고 (stdin 도 `baseDir/stdin`), 규칙 실패 메시지가 그 이름을 쓴다.
+    let lint_name = file.to_string_lossy();
     let mut formatted = None;
     let mut diff = None;
     let errors = if let Some(content) = non_file.get(file) {
-        let errors = lint_content(&name, content, &opts)?;
+        let errors = lint_content(&lint_name, content, &opts)?;
         if formatting {
             formatted = Some(apply_fixes(content, &errors));
             Vec::new()
@@ -108,7 +132,7 @@ fn lint_file(
         }
     } else {
         let content = lossy_utf8(std::fs::read(file)?);
-        let mut errors = lint_content(&name, &content, &opts)?;
+        let mut errors = lint_content(&lint_name, &content, &opts)?;
         if formatting {
             errors = Vec::new();
         } else if info.options.fix == Some(true) && errors.iter().any(|e| e.fix_info.is_some()) {
@@ -118,7 +142,7 @@ fn lint_file(
             } else {
                 std::fs::write(file, &fixed)?;
             }
-            errors = lint_content(&name, &fixed, &opts)?;
+            errors = lint_content(&lint_name, &fixed, &opts)?;
         }
         errors
     };
@@ -310,4 +334,29 @@ fn run(args: &[String]) -> Result<i32> {
     } else {
         0
     })
+}
+
+#[cfg(test)]
+mod diff_tests {
+    use super::unified_diff;
+
+    #[test]
+    fn cr_only_diff_uses_git_line_semantics() {
+        let diff = unified_diff("input.md", "a \rb \r", "a\rb\r").unwrap();
+        assert!(
+            diff.contains("-a \rb \r\n\\ No newline at end of file\n"),
+            "{diff:?}"
+        );
+        assert!(
+            diff.contains("+a\rb\r\n\\ No newline at end of file\n"),
+            "{diff:?}"
+        );
+    }
+
+    #[test]
+    fn mixed_line_endings_have_separate_hunk_records() {
+        let diff = unified_diff("input.md", "a \nb \r\nc \r", "a\nb\nc\n").unwrap();
+        assert!(diff.contains("-a \n-b \r\n-c \r\n"), "{diff:?}");
+        assert!(diff.contains("+a\n+b\n+c\n"), "{diff:?}");
+    }
 }

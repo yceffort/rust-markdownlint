@@ -19,8 +19,8 @@ pub struct LintOptions<'a> {
 
 #[derive(Debug, thiserror::Error)]
 pub enum LintFailure {
-    #[error("invalid front matter pattern: {0}")]
-    InvalidFrontMatter(#[from] Box<fancy_regex::Error>),
+    #[error("{0}")]
+    InvalidFrontMatter(String),
 }
 
 /// helpers.cjs `clearHtmlCommentText`: 올바른 HTML 주석의 본문을 "." 로 치환해
@@ -92,7 +92,7 @@ pub fn lint_content(
         .front_matter
         .map(compile_js_pattern)
         .transpose()
-        .map_err(Box::new)?;
+        .map_err(LintFailure::InvalidFrontMatter)?;
     let (content, front_matter) = strip_front_matter(content, user_pattern.as_ref());
     let front_matter_lines = front_matter.len();
 

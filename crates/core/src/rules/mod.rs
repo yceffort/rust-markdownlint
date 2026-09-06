@@ -178,35 +178,34 @@ pub(crate) fn add_range_to_set(set: &mut LineSet, start: usize, end: usize) {
 
 /// helpers.cjs `frontMatterHasTitle`: title 패턴에 맞는 front matter 줄이 있는지.
 /// 패턴이 지정됐지만 falsy 면 front matter 를 무시한다. 패턴은 사용자 정규식이라
-/// JS 문법에 가까운 `fancy_regex` 로 컴파일하고, 컴파일에 실패하면 false 로 본다
-/// (원본은 예외를 던진다). 기본 패턴은 파일마다 다시 컴파일하지 않는다.
+/// JS 문법으로 옮겨 컴파일하고(패턴별 캐시), 컴파일에 실패하면 원본처럼 규칙 실패 메시지를
+/// Err 로 돌려준다. 기본 패턴은 파일마다 다시 컴파일하지 않는다.
 pub(crate) fn front_matter_has_title(
     front_matter_lines: &[&str],
     front_matter_title_pattern: Option<&serde_json::Value>,
-) -> bool {
+) -> Result<bool, String> {
     static DEFAULT_TITLE_RE: LazyLock<fancy_regex::Regex> = LazyLock::new(|| {
-        fancy_regex::Regex::new(r#"(?i)^\s*"?title"?\s*[:=]"#).expect("front matter title regex")
+        crate::front_matter::compile_js_regex(r#"^\s*"?title"?\s*[:=]"#, false, true)
+            .expect("front matter title regex")
     });
     let ignore_front_matter =
         front_matter_title_pattern.is_some_and(|value| !crate::config::truthy(value));
     if ignore_front_matter || front_matter_lines.is_empty() {
-        return false;
+        return Ok(false);
     }
     let user_re = front_matter_title_pattern
         .filter(|value| crate::config::truthy(value))
-        .map(|value| match value {
-            serde_json::Value::String(s) => s.clone(),
-            other => other.to_string(),
+        .map(crate::config::js_string)
+        .map(|pattern| {
+            crate::front_matter::compile_js_regex(&pattern, false, true).map_err(|reason| {
+                crate::front_matter::js_regex_error_message(&pattern, "i", &reason)
+            })
         })
-        .map(|pattern| fancy_regex::Regex::new(&format!("(?i){pattern}")));
-    let front_matter_title_re = match &user_re {
-        Some(Ok(re)) => re,
-        Some(Err(_)) => return false,
-        None => &DEFAULT_TITLE_RE,
-    };
-    front_matter_lines
+        .transpose()?;
+    let front_matter_title_re = user_re.as_ref().unwrap_or(&DEFAULT_TITLE_RE);
+    Ok(front_matter_lines
         .iter()
-        .any(|line| front_matter_title_re.is_match(line).unwrap_or(false))
+        .any(|line| front_matter_title_re.is_match(line).unwrap_or(false)))
 }
 
 /// 규칙 하나만 활성화해 `lint_content` 로 lint 하는 테스트 helper.

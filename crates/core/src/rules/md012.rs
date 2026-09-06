@@ -1,5 +1,5 @@
 use super::{LineSet, LintContext, Rule, RuleMeta, add_range_to_set};
-use crate::config::truthy;
+use crate::config::{js_number_string, to_number, truthy};
 use crate::error::{ErrorSink, FixInfo};
 
 pub(crate) struct Md012;
@@ -23,8 +23,8 @@ impl Rule for Md012 {
             .config
             .get("maximum")
             .filter(|v| truthy(v))
-            .and_then(|v| v.as_i64())
-            .unwrap_or(1);
+            .map(to_number)
+            .unwrap_or(1.0);
 
         let tokens = ctx.tokens;
         let mut code_block_line_numbers = LineSet::default();
@@ -46,12 +46,11 @@ impl Rule for Md012 {
             } else {
                 count + 1
             };
-            if maximum < count {
-                out.add_error_detail_if(
+            if maximum < count as f64 {
+                let detail = format!("Expected: {}; Actual: {count}", js_number_string(maximum));
+                out.add_error(
                     line_number,
-                    maximum,
-                    count,
-                    None,
+                    Some(&detail),
                     None,
                     None,
                     Some(FixInfo {
@@ -120,5 +119,10 @@ mod tests {
             errs[0].error_detail.as_deref(),
             Some("Expected: 1; Actual: 2")
         );
+    }
+
+    #[test]
+    fn md012_numeric_string_is_coerced() {
+        assert!(lint_with(json!({ "maximum": "3" }), "a\n\n\n\n b\n").is_empty());
     }
 }

@@ -18,7 +18,10 @@ impl Rule for Md001 {
 
     fn check(&self, ctx: &LintContext, out: &mut ErrorSink) {
         let has_title =
-            front_matter_has_title(ctx.front_matter, ctx.config.get("front_matter_title"));
+            match front_matter_has_title(ctx.front_matter, ctx.config.get("front_matter_title")) {
+                Ok(has_title) => has_title,
+                Err(message) => return out.add_rule_failure(&message),
+            };
         // 원본의 `Number.MAX_SAFE_INTEGER` 자리. 레벨은 최대 6 이라 비교 결과는 같다.
         let mut prev_level = if has_title { 1 } else { usize::MAX };
         for id in ctx.tokens.filter_by_types(&["atxHeading", "setextHeading"]) {

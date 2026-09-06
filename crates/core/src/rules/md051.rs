@@ -5,6 +5,7 @@ use regex::Regex;
 use super::{LintContext, Rule, RuleMeta};
 use crate::config::{js_string, truthy};
 use crate::error::{ErrorSink, FixInfo};
+use crate::front_matter::{compile_js_regex, js_regex_error_message};
 use crate::parser::{OrderedMap, TokenId, TokenTree, html_attribute_re};
 
 pub(crate) struct Md051;
@@ -128,14 +129,22 @@ impl Rule for Md051 {
             .filter(|value| truthy(value))
             .map(js_string)
             .unwrap_or_default();
-        // 사용자 정규식이라 fancy_regex 로 컴파일한다. 컴파일 실패는 원본이 예외를 던지지만
-        // 여기서는 매치 안 됨으로 본다. 기본값(빈 패턴)은 파일마다 다시 컴파일하지 않는다.
+        // 원본은 Unicode 플래그 없는 JavaScript RegExp를 사용한다.
         static EMPTY_PATTERN_RE: LazyLock<fancy_regex::Regex> =
             LazyLock::new(|| fancy_regex::Regex::new("^$").expect("empty pattern regex"));
         let ignored_pattern_re = if ignored_pattern.is_empty() {
-            Some(EMPTY_PATTERN_RE.clone())
+            EMPTY_PATTERN_RE.clone()
         } else {
-            fancy_regex::Regex::new(&ignored_pattern).ok()
+            match compile_js_regex(&ignored_pattern, false, false) {
+                Ok(re) => re,
+                Err(error) => {
+                    return out.add_rule_failure(&js_regex_error_message(
+                        &ignored_pattern,
+                        "",
+                        &error,
+                    ));
+                }
+            }
         };
         let mut fragments: OrderedMap<usize> = OrderedMap::default();
         fragments.set("#top".to_string(), 0);
@@ -216,9 +225,7 @@ impl Rule for Md051 {
                     if !text_slice_one.is_empty()
                         && !fragments.contains_key(&encoded_text)
                         && !LINE_FRAGMENT_RE.is_match(&encoded_text)
-                        && !ignored_pattern_re
-                            .as_ref()
-                            .is_some_and(|re| re.is_match(text_slice_one).unwrap_or(false))
+                        && !ignored_pattern_re.is_match(text_slice_one).unwrap_or(false)
                     {
                         let link_token = ctx.tokens.get(link);
                         let mut context = None;
@@ -333,6 +340,36 @@ mod tests {
         let errs = lint_with(json!({ "ignored_pattern": "^figure-\\d+$" }), content);
         assert_eq!(errs.len(), 1);
         assert_eq!(errs[0].error_context.as_deref(), Some("[b](#other)"));
+    }
+
+    #[test]
+    fn md051_ignored_pattern_uses_javascript_classes() {
+        let errs = lint_with(json!({ "ignored_pattern": "^\\w+$" }), "[x](#없는링크)\n");
+        assert_eq!(errs.len(), 1);
+        assert!(lint_with(json!({ "ignored_pattern": "^[^]+$" }), "[x](#missing)\n").is_empty());
+    }
+
+    #[test]
+    fn md051_word_boundary_is_ascii_and_quantifier_order_is_checked() {
+        assert!(lint_with(json!({ "ignored_pattern": "\\ba$" }), "[x](#한글a)\n").is_empty());
+        let errs = lint_with(json!({ "ignored_pattern": "a{2,1}" }), "[x](#missing)\n");
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some(
+                "This rule threw an exception: Invalid regular expression: /a{2,1}/: numbers out of order in {} quantifier"
+            )
+        );
+    }
+
+    #[test]
+    fn md051_invalid_pattern_is_a_rule_failure() {
+        let errs = lint_with(json!({ "ignored_pattern": "[" }), "[x](#missing)\n");
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some(
+                "This rule threw an exception: Invalid regular expression: /[/: Unterminated character class"
+            )
+        );
     }
 
     #[test]
