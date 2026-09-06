@@ -1,4 +1,4 @@
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 use super::{ConfigValue, truthy};
 
@@ -190,6 +190,15 @@ fn expand_tilde(path: &str) -> String {
 /// markdownlint `extendConfig`: `extends` 를 설정 파일 기준 상대 경로로 재귀 해석하고
 /// `{...extendsConfig, ...config}` 얕은 병합 후 `extends` 를 제거한다.
 pub fn extend_config(config: ConfigValue, file: &Path) -> Result<ConfigValue, ConfigError> {
+    extend_config_chain(config, file, &mut vec![file.to_path_buf()])
+}
+
+/// `chain` 은 지금 해석 중인 설정 파일들. 원본은 `extends` 순환에서 끝나지 않지만 여기서는 오류로 멈춘다.
+fn extend_config_chain(
+    config: ConfigValue,
+    file: &Path,
+    chain: &mut Vec<PathBuf>,
+) -> Result<ConfigValue, ConfigError> {
     let extends = config
         .get("extends")
         .filter(|v| truthy(v))
@@ -199,7 +208,24 @@ pub fn extend_config(config: ConfigValue, file: &Path) -> Result<ConfigValue, Co
         return Ok(config);
     };
     let resolved = file.parent().unwrap_or(Path::new("")).join(&extends);
-    let extends_config = read_config_file(&resolved)?;
+    let same_file = |a: &Path, b: &Path| match (a.canonicalize(), b.canonicalize()) {
+        (Ok(a), Ok(b)) => a == b,
+        _ => a == b,
+    };
+    if chain.iter().any(|seen| same_file(seen, &resolved)) {
+        let cycle: Vec<String> = chain
+            .iter()
+            .chain(std::iter::once(&resolved))
+            .map(|path| path.to_string_lossy().into_owned())
+            .collect();
+        return Err(ConfigError::Parse(format!(
+            "Circular \"extends\": {}",
+            cycle.join(" -> ")
+        )));
+    }
+    chain.push(resolved.clone());
+    let extends_config = read_config_file_chain(&resolved, chain)?;
+    chain.pop();
 
     let mut merged = match extends_config {
         ConfigValue::Object(map) => map,
@@ -219,9 +245,16 @@ pub fn extend_config(config: ConfigValue, file: &Path) -> Result<ConfigValue, Co
 
 /// markdownlint `readConfig`.
 pub fn read_config_file(path: &Path) -> Result<ConfigValue, ConfigError> {
+    read_config_file_chain(path, &mut vec![path.to_path_buf()])
+}
+
+fn read_config_file_chain(
+    path: &Path,
+    chain: &mut Vec<PathBuf>,
+) -> Result<ConfigValue, ConfigError> {
     let content = std::fs::read_to_string(path)?;
     let config = parse_configuration(&path.to_string_lossy(), &content)?;
-    extend_config(config, path)
+    extend_config_chain(config, path, chain)
 }
 
 /// 인라인 `markdownlint-configure-file` 주석 등 파일이 아닌 설정 문자열 파싱.
