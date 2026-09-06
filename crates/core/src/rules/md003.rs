@@ -1,4 +1,5 @@
 use super::{LintContext, Rule, RuleMeta};
+use crate::config::{js_string, truthy};
 use crate::error::ErrorSink;
 
 pub(crate) struct Md003;
@@ -20,10 +21,9 @@ impl Rule for Md003 {
         let mut style = ctx
             .config
             .get("style")
-            .and_then(|v| v.as_str())
-            .filter(|s| !s.is_empty())
-            .unwrap_or("consistent")
-            .to_string();
+            .filter(|v| truthy(v))
+            .map(js_string)
+            .unwrap_or_else(|| "consistent".to_string());
         for id in ctx.tokens.filter_by_types(&["atxHeading", "setextHeading"]) {
             let heading = ctx.tokens.get(id);
             let style_for_token = ctx.tokens.heading_style(id);
@@ -94,6 +94,16 @@ mod tests {
         assert_eq!(
             errs[0].error_detail.as_deref(),
             Some("Expected: atx; Actual: atx_closed")
+        );
+    }
+
+    #[test]
+    fn md003_non_string_style_is_stringified() {
+        let errs = lint_with(json!({ "style": 7 }), "# One\n\n## Two\n");
+        assert_eq!(errs.len(), 2);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("Expected: 7; Actual: atx")
         );
     }
 

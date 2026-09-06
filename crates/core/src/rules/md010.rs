@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 
 use super::{FileRange, LintContext, Rule, RuleMeta, has_overlap};
-use crate::config::truthy;
+use crate::config::{js_pad_end, js_string, to_number, truthy};
 use crate::error::{ErrorSink, FixInfo};
 
 pub(crate) struct Md010;
@@ -21,26 +21,23 @@ impl Rule for Md010 {
 
     fn check(&self, ctx: &LintContext, out: &mut ErrorSink) {
         let include_code = ctx.config.get("code_blocks").is_none_or(truthy);
-        let ignore_code_languages: HashSet<String> = ctx
-            .config
-            .get("ignore_code_languages")
-            .and_then(|v| v.as_array())
-            .map(|langs| {
-                langs
-                    .iter()
-                    .map(|l| {
-                        l.as_str()
-                            .map_or_else(|| l.to_string(), str::to_string)
-                            .to_lowercase()
-                    })
-                    .collect()
-            })
-            .unwrap_or_default();
+        let ignore_code_languages: HashSet<String> = match ctx.config.get("ignore_code_languages") {
+            Some(value) if truthy(value) && !value.is_array() => {
+                out.add_rule_failure(
+                    "(params.config.ignore_code_languages || []).map is not a function",
+                );
+                return;
+            }
+            value => value
+                .and_then(|v| v.as_array())
+                .map(|langs| langs.iter().map(|l| js_string(l).to_lowercase()).collect())
+                .unwrap_or_default(),
+        };
         // 원본: `Math.max(0, Number(spacesPerTab))`, 숫자가 아니면 NaN 이라 padEnd 가 0 으로 처리
         let space_multiplier = ctx
             .config
             .get("spaces_per_tab")
-            .map_or(1.0, |v| v.as_f64().map_or(0.0, |n| n.max(0.0)));
+            .map_or(1.0, |v| to_number(v).max(0.0));
 
         let mut exclusion_types: Vec<&str> = Vec::new();
         if include_code {
@@ -108,7 +105,11 @@ impl Rule for Md010 {
                     end_column: column + length - 1,
                 };
                 if !code_ranges.iter().any(|r| has_overlap(r, &range)) {
-                    let width = (length as f64 * space_multiplier).floor() as usize;
+                    // 원본 `"".padEnd(length * spaceMultiplier)`: 한도를 넘으면 규칙이 예외로 끝난다.
+                    let insert_text = match js_pad_end(length as f64 * space_multiplier) {
+                        Ok(text) => text,
+                        Err(message) => return out.add_rule_failure(&message),
+                    };
                     out.add_error(
                         line_number,
                         Some(&format!("Column: {column}")),
@@ -117,7 +118,7 @@ impl Rule for Md010 {
                         Some(FixInfo {
                             edit_column: Some(column),
                             delete_count: Some(length as isize),
-                            insert_text: Some(" ".repeat(width)),
+                            insert_text: Some(insert_text),
                             ..Default::default()
                         }),
                     );
@@ -195,6 +196,40 @@ mod tests {
         assert_eq!(
             (f.edit_column, f.delete_count, f.insert_text.as_deref()),
             (Some(3), Some(1), Some(" "))
+        );
+    }
+
+    #[test]
+    fn md010_numeric_string_is_coerced() {
+        let errs = lint_with(json!({ "spaces_per_tab": "4" }), "a\tb\n");
+        assert_eq!(
+            errs[0].fix_info.as_ref().unwrap().insert_text.as_deref(),
+            Some("    ")
+        );
+    }
+
+    #[test]
+    fn md010_huge_spaces_per_tab_is_a_rule_failure() {
+        let errs = lint_with(json!({ "spaces_per_tab": "1e400" }), "a\tb\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("This rule threw an exception: Invalid string length")
+        );
+    }
+
+    #[test]
+    fn md010_non_array_ignore_languages_is_a_rule_failure() {
+        let errs = lint_with(
+            json!({ "ignore_code_languages": "go" }),
+            "```go\n\tcode\n```\n",
+        );
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some(
+                "This rule threw an exception: (params.config.ignore_code_languages || []).map is not a function"
+            )
         );
     }
 }

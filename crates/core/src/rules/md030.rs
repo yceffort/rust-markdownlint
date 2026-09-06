@@ -1,7 +1,7 @@
 use serde_json::Value;
 
 use super::{LintContext, Rule, RuleMeta};
-use crate::config::{to_number, truthy};
+use crate::config::{js_number_string, js_pad_end, to_number, truthy};
 use crate::error::{ErrorSink, FixInfo};
 
 pub(crate) struct Md030;
@@ -20,25 +20,6 @@ fn config_spaces(config: &serde_json::Map<String, Value>, key: &str) -> f64 {
         Some(v) if truthy(v) => to_number(v),
         _ => 1.0,
     }
-}
-
-/// JS `String(number)` 상당의 표기. 정수는 소수점 없이 찍는다.
-fn number_to_string(n: f64) -> String {
-    if n.is_finite() && n.fract() == 0.0 {
-        format!("{}", n as i64)
-    } else {
-        format!("{n}")
-    }
-}
-
-/// JS `"".padEnd(n)` 상당: n 을 정수로 자르고(NaN·음수는 0) 그만큼 공백을 만든다.
-fn pad_spaces(n: f64) -> String {
-    let count = if n.is_finite() && n > 0.0 {
-        n.trunc() as usize
-    } else {
-        0
-    };
-    " ".repeat(count)
 }
 
 impl Rule for Md030 {
@@ -85,15 +66,20 @@ impl Rule for Md030 {
                 for whitespace_id in whitespaces {
                     let whitespace = tokens.get(whitespace_id);
                     let actual_spaces = whitespace.end_column - whitespace.start_column;
+                    // 원본 `"".padEnd(expectedSpaces)`: 한도를 넘으면 규칙이 예외로 끝난다.
+                    let insert_text = match js_pad_end(expected_spaces) {
+                        Ok(text) => text,
+                        Err(message) => return out.add_rule_failure(&message),
+                    };
                     let fix_info = FixInfo {
                         edit_column: Some(whitespace.start_column),
                         delete_count: Some(actual_spaces as isize),
-                        insert_text: Some(pad_spaces(expected_spaces)),
+                        insert_text: Some(insert_text),
                         ..Default::default()
                     };
                     out.add_error_detail_if(
                         whitespace.start_line,
-                        number_to_string(expected_spaces),
+                        js_number_string(expected_spaces),
                         actual_spaces,
                         None,
                         None,
@@ -119,6 +105,16 @@ mod tests {
             ..Default::default()
         };
         lint_content("test.md", content, &opts).unwrap()
+    }
+
+    #[test]
+    fn md030_huge_spaces_are_a_rule_failure() {
+        let errs = lint_with(json!({ "ul_single": "Infinity" }), "* a\n");
+        assert_eq!(errs.len(), 1);
+        assert_eq!(
+            errs[0].error_detail.as_deref(),
+            Some("This rule threw an exception: Invalid string length")
+        );
     }
 
     #[test]
