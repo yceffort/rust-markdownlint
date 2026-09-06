@@ -118,10 +118,12 @@ fn lint_file(
         no_inline_config: info.options.no_inline_config == Some(true),
     };
     let name = relative_posix(base, file);
+    // 원본은 markdownlint 에 절대경로를 넘기고 (stdin 도 `baseDir/stdin`), 규칙 실패 메시지가 그 이름을 쓴다.
+    let lint_name = file.to_string_lossy();
     let mut formatted = None;
     let mut diff = None;
     let errors = if let Some(content) = non_file.get(file) {
-        let errors = lint_content(&name, content, &opts)?;
+        let errors = lint_content(&lint_name, content, &opts)?;
         if formatting {
             formatted = Some(apply_fixes(content, &errors));
             Vec::new()
@@ -130,7 +132,7 @@ fn lint_file(
         }
     } else {
         let content = lossy_utf8(std::fs::read(file)?);
-        let mut errors = lint_content(&name, &content, &opts)?;
+        let mut errors = lint_content(&lint_name, &content, &opts)?;
         if formatting {
             errors = Vec::new();
         } else if info.options.fix == Some(true) && errors.iter().any(|e| e.fix_info.is_some()) {
@@ -140,7 +142,7 @@ fn lint_file(
             } else {
                 std::fs::write(file, &fixed)?;
             }
-            errors = lint_content(&name, &fixed, &opts)?;
+            errors = lint_content(&lint_name, &fixed, &opts)?;
         }
         errors
     };

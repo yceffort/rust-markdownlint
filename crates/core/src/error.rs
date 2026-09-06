@@ -82,6 +82,8 @@ pub struct ErrorSink<'a> {
     front_matter_lines: usize,
     severity: Severity,
     errors: Vec<LintError>,
+    /// 규칙이 예외를 던진 뒤 (원본은 규칙 함수가 중단된다) 추가되는 오류는 버린다.
+    failed: bool,
 }
 
 impl<'a> ErrorSink<'a> {
@@ -103,6 +105,7 @@ impl<'a> ErrorSink<'a> {
             front_matter_lines,
             severity,
             errors: Vec::new(),
+            failed: false,
         }
     }
 
@@ -122,11 +125,14 @@ impl<'a> ErrorSink<'a> {
         &self.errors
     }
 
-    fn fail(&self, property: &str) -> ! {
-        panic!(
+    /// markdownlint.mjs `throwError`: onError 인자 검증 실패는 규칙 안에서 던져지므로
+    /// `handleRuleFailures` 가 규칙 실패 오류로 바꾼다.
+    fn fail(&mut self, property: &str) {
+        let message = format!(
             "Value of '{}' passed to onError by '{}' is incorrect for '{}'.",
             property, self.meta.names[0], self.name
         );
+        self.add_rule_failure(&message);
     }
 
     /// markdownlint.mjs `onError` 검증과 수집.
@@ -138,39 +144,42 @@ impl<'a> ErrorSink<'a> {
         range: Option<(usize, usize)>,
         fix: Option<FixInfo>,
     ) {
+        if self.failed {
+            return;
+        }
         if line < 1 || line > self.lines.len() {
-            self.fail("lineNumber");
+            return self.fail("lineNumber");
         }
         let line_number = line + self.front_matter_lines;
         if let Some((column, length)) = range
             && (column < 1 || length < 1 || column + length - 1 > utf16_len(self.lines[line - 1]))
         {
-            self.fail("range");
+            return self.fail("range");
         }
-        let fix_info = fix.map(|fix| {
-            let clean_line_number = fix.line_number.map(|n| {
-                if n < 1 || n > self.lines.len() {
-                    self.fail("fixInfo.lineNumber");
-                }
-                n + self.front_matter_lines
-            });
+        let mut fix_info = None;
+        if let Some(fix) = fix {
+            let clean_line_number = match fix.line_number {
+                Some(n) if n < 1 || n > self.lines.len() => return self.fail("fixInfo.lineNumber"),
+                Some(n) => Some(n + self.front_matter_lines),
+                None => None,
+            };
             let effective_line = fix.line_number.unwrap_or(line);
             let line_len = utf16_len(self.lines[effective_line - 1]);
             if let Some(edit_column) = fix.edit_column
                 && (edit_column < 1 || edit_column > line_len + 1)
             {
-                self.fail("fixInfo.editColumn");
+                return self.fail("fixInfo.editColumn");
             }
             if let Some(delete_count) = fix.delete_count
                 && (delete_count < -1 || delete_count > line_len as isize)
             {
-                self.fail("fixInfo.deleteCount");
+                return self.fail("fixInfo.deleteCount");
             }
-            FixInfo {
+            fix_info = Some(FixInfo {
                 line_number: clean_line_number,
                 ..fix
-            }
-        });
+            });
+        }
         self.errors.push(LintError {
             line_number,
             rule_names: self.meta.names,
@@ -186,6 +195,17 @@ impl<'a> ErrorSink<'a> {
             fix_info,
             severity: self.severity,
         });
+    }
+
+    /// markdownlint `handleRuleFailures`: 규칙이 throw하면 1번 줄의 일반 lint 오류로 바꾸고,
+    /// 그 규칙이 이후 보고하는 오류는 버린다 (원본은 규칙 함수가 거기서 끝난다).
+    pub(crate) fn add_rule_failure(&mut self, message: &str) {
+        if self.failed {
+            return;
+        }
+        let detail = format!("This rule threw an exception: {message}");
+        self.add_error(1, Some(&detail), None, None, None);
+        self.failed = true;
     }
 
     /// helpers.cjs `addErrorDetailIf`.
@@ -274,12 +294,19 @@ mod tests {
         );
     }
 
+    /// 원본 `throwError` 는 규칙 안에서 던져지므로 `handleRuleFailures` 가 규칙 실패로 바꾸고,
+    /// 그 규칙이 이후 보고하는 오류는 버린다.
     #[test]
-    fn range_validation_panics_out_of_bounds() {
+    fn range_validation_out_of_bounds_is_a_rule_failure() {
         let mut sink = ErrorSink::for_test(&["abc"]);
-        let r = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-            sink.add_error(1, None, None, Some((3, 2)), None)
-        }));
-        assert!(r.is_err());
+        sink.add_error(1, None, None, Some((3, 2)), None);
+        sink.add_error(1, Some("after"), None, None, None);
+        assert_eq!(sink.errors().len(), 1);
+        assert_eq!(
+            sink.errors()[0].error_detail.as_deref(),
+            Some(
+                "This rule threw an exception: Value of 'range' passed to onError by 'MD000' is incorrect for 'test'."
+            )
+        );
     }
 }
