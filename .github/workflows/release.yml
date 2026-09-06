@@ -60,10 +60,10 @@ jobs:
           mkdir -p dist
           if [ "${{ runner.os }}" = Windows ]; then
             asset="$name.zip"
-            7z a "dist/$asset" "./target/${{ matrix.target }}/release/rust-markdownlint.exe" ./completions > /dev/null
+            7z a "dist/$asset" "./target/${{ matrix.target }}/release/rust-markdownlint.exe" ./completions ./LICENSE ./THIRD-PARTY-LICENSES.md > /dev/null
           else
             asset="$name.tar.gz"
-            tar czf "dist/$asset" -C "target/${{ matrix.target }}/release" rust-markdownlint -C "$GITHUB_WORKSPACE" completions
+            tar czf "dist/$asset" -C "target/${{ matrix.target }}/release" rust-markdownlint -C "$GITHUB_WORKSPACE" completions LICENSE THIRD-PARTY-LICENSES.md
           fi
           cd dist && (sha256sum "$asset" 2> /dev/null || shasum -a 256 "$asset") > "$asset.sha256"
       - uses: actions/upload-artifact@v6
@@ -115,7 +115,7 @@ jobs:
         with:
           path: dist
           merge-multiple: true
-      - name: 플랫폼 패키지에 바이너리 복사
+      - name: 플랫폼 패키지에 바이너리 복사, 라이선스 파일을 패키지 6개에 복사
         run: |
           set -e
           v="$VERSION"
@@ -128,6 +128,9 @@ jobs:
           extract linux-x64 x86_64-unknown-linux-musl
           extract linux-arm64 aarch64-unknown-linux-musl
           unzip -o "dist/rust-markdownlint-$v-x86_64-pc-windows-msvc.zip" -d npm/platforms/win32-x64
+          for pkg in npm/rust-markdownlint npm/platforms/*; do
+            cp LICENSE THIRD-PARTY-LICENSES.md "$pkg/"
+          done
           ls -l npm/platforms/*/
       - uses: actions/setup-node@v5
         with:
