@@ -1,6 +1,6 @@
 # 벤치마크 결과
 
-후속 실행: [musl 출력 버퍼링 계획·결과](optimization-plan-2026-09-07.md). 동일 세션의 기준 대비 개선을 별도로 기록했으며, 아래 세 도구 표는 출력 변경 전 측정이다.
+후속 실행: [musl 출력 버퍼링 계획과 결과](optimization-plan-2026-09-07.md). 동일 세션의 기준 대비 개선을 별도로 기록했으며, 아래 세 도구 표는 출력 변경 전 측정이다.
 
 ## GitHub Codespaces 비교 (2026-09-07)
 
@@ -26,7 +26,7 @@ glibc 빌드 ([원시 JSON](results/codespaces-2026-09-07-gnu.json)):
 | markdownlint fixtures, 388 files (0.25 MB) | 83.8 ± 6.4 | 93.6 ± 6.5 | 1,214.7 ± 40.7 |
 | Fixtures copied 10 times, 3,880 files (2.45 MB) | 726.0 ± 23.1 | 758.6 ± 26.8 | 6,549.7 ± 92.5 |
 
-두 세션 모두 세 코퍼스에서 Rust 와 cli2 0.22.1 의 종료 코드, stdout, stderr 가 같았고 진단 수도 원래 측정과 같다(Rust 3,218 / 16,764 / 32,180, rumdl 2,602 / 17,527 / 26,020). 원래 측정(20회) 대비 glibc 빌드는 블로그 451.9 → 416.7ms, 10배 fixture 804.7 → 726.0ms 로, A/B 실험에서 본 개선 폭과 비슷하다. 별도 세션의 musl 정적 빌드 측정값은 같은 소스의 glibc 빌드보다 블로그와 10배 fixture 에서 4~5% 높았다. rumdl 과 cli2 는 musl 세션에서 조금 빨랐으므로 모든 도구가 함께 느려진 결과는 아니다. 다만 GNU·musl 을 같은 세션에서 교대로 측정하지 않았으므로 환경 변동을 배제하거나 차이 전체를 libc 에 귀속할 수는 없다. musl 내부의 어느 연산이 차이를 만드는지는 아직 프로파일링하지 않았다.
+두 세션 모두 세 코퍼스에서 Rust 와 cli2 0.22.1 의 종료 코드, stdout, stderr 가 같았고 진단 수도 원래 측정과 같다(Rust 3,218 / 16,764 / 32,180, rumdl 2,602 / 17,527 / 26,020). 원래 측정(20회) 대비 glibc 빌드는 블로그 451.9 → 416.7ms, 10배 fixture 804.7 → 726.0ms 로, A/B 실험에서 본 개선 폭과 비슷하다. 별도 세션의 musl 정적 빌드 측정값은 같은 소스의 glibc 빌드보다 블로그와 10배 fixture 에서 4~5% 높았다. rumdl 과 cli2 는 musl 세션에서 조금 빨랐으므로 모든 도구가 함께 느려진 결과는 아니다. 다만 GNU 와 musl 을 같은 세션에서 교대로 측정하지 않았으므로 환경 변동을 배제하거나 차이 전체를 libc 에 귀속할 수는 없다. musl 내부의 어느 연산이 차이를 만드는지는 아직 프로파일링하지 않았다.
 
 앞선 A/B 의 Thin LTO + jemalloc GNU 빌드는 블로그 416.6ms, 10배 fixture 736.1ms 였다. 이번 GNU 빌드의 416.7ms, 726.0ms 는 비슷한 수준이다. 반면 rumdl 의 10배 fixture 값은 A/B 세션의 833.2ms 에서 이번 musl 세션의 748.3ms 로 달라졌다. 따라서 이전 A/B 와 현재 README 의 도구 간 순위 변화에는 Rust 빌드 타깃 변경과 비교 도구의 세션별 변동이 함께 들어 있다. 아래 재현 절차는 현재 코드의 musl 과 GNU 빌드를 각각 지정하며 24회씩 측정한다.
 
@@ -61,7 +61,7 @@ glibc 빌드 ([원시 JSON](results/codespaces-2026-09-07-gnu.json)):
 
 코퍼스별 exit code, 출력 SHA-256, 환경, 커밋, 명령, 20개 개별 측정값은 [원시 JSON](results/codespaces-2026-09-07.json)에 기록했다. 현재 머신과 과거 Apple Silicon/Actions 측정의 절대시간은 직접 비교하지 않는다.
 
-### 현재 코드의 musl·GNU 비교 재현
+### 현재 코드의 musl 과 GNU 비교 재현
 
 재현 하네스는 [compare-tools.py](compare-tools.py)이며 Python 표준 라이브러리만 사용한다. 다음 명령은 현재 코드를 기준으로 README 의 musl 표와 위 GNU 표를 각각 측정한다. 최적화 반영 전 `8bdd653` 의 원래 측정을 재현하는 명령은 아니다. 새 4코어 x86_64 Codespace 안에서 rust-markdownlint 저장소 루트를 기준으로 실행한다. 빌드 및 도구 설치는 시간 측정 전에 끝낸다.
 
