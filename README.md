@@ -206,7 +206,7 @@ Rule configuration supports all 53 rules of markdownlint v0.40.0 (MD001 through 
 
 Release builds enable Thin LTO, and the Linux CLI uses jemalloc. The table below measures a build with these defaults; the [Codespaces A/B comparison](bench/remaining-gap-2026-09-07.md) that motivated them is recorded separately. Performance on macOS and Windows has not been measured.
 
-Measured on **GitHub Codespaces**, 2026-09-07: 4 vCPUs (AMD EPYC 7763), 16 GB RAM, Ubuntu 24.04 x86_64. Rust 1.98.1, Node.js 24.14.0. The Rust binary is the static `x86_64-unknown-linux-musl` build that Releases and the npm `linux-x64` package ship, built with `cargo build --release --locked` from [`8bdd653`](https://github.com/yceffort/rust-markdownlint/commit/8bdd65342cd02a11f5e09d02186be51e0e4cc3c6) plus the Thin LTO and jemalloc change. rumdl uses its official Linux GNU release binary.
+Measured on **GitHub Codespaces**, 2026-09-07: 4 vCPUs (AMD EPYC 7763), 16 GB RAM, Ubuntu 24.04 x86_64. Rust 1.98.1, Node.js 24.14.0. The Rust binary is the static `x86_64-unknown-linux-musl` build that Releases and the npm `linux-x64` package ship, built with `cargo build --release --locked -p rust-markdownlint-cli --target x86_64-unknown-linux-musl` from [`8bdd653`](https://github.com/yceffort/rust-markdownlint/commit/8bdd65342cd02a11f5e09d02186be51e0e4cc3c6) plus the Thin LTO and jemalloc change. rumdl uses its official Linux GNU release binary.
 
 **Mean ± sample standard deviation, in milliseconds; lower is better.** Each tool ran 24 times per corpus after 3 warm-ups, cycling through all six tool orders four times. Timings include process startup, file discovery, linting, diagnostic sorting, and default output formatting; stdout/stderr were redirected to `/dev/null`.
 
@@ -216,7 +216,7 @@ Measured on **GitHub Codespaces**, 2026-09-07: 4 vCPUs (AMD EPYC 7763), 16 GB RA
 | markdownlint fixtures, 388 files (0.25 MB) | 83.8 ± 2.4 | 89.8 ± 1.2 | 1,192.4 ± 23.6 |
 | Fixtures copied 10 times, 3,880 files (2.45 MB) | 762.9 ± 25.9 | 748.3 ± 14.6 | 6,501.8 ± 157.1 |
 
-A glibc build of the same source (what `cargo install` produces on Linux) measured 416.7 ± 17.7 ms on the blog corpus and 726.0 ± 23.1 ms on the 10x corpus in a separate session; the static musl binary is about 4% to 5% slower on the larger corpora.
+A glibc build of the same source (what `cargo install` produces on Linux) measured 416.7 ± 17.7 ms on the blog corpus and 726.0 ± 23.1 ms on the 10x corpus in a separate session. The musl measurements were about 4% to 5% higher on the larger corpora; alternating both builds in one session and profiling would be needed to isolate the cause.
 
 The corpora contain only Markdown files copied into isolated directories, with `noBanner: true` and each tool's default rules. Project rule configurations are excluded; inline directives remain in the source. rumdl runs with `--no-cache --no-config`, and all tools use a warm filesystem cache. The [blog corpus is pinned to a commit](https://github.com/yceffort/blog/tree/4c7cade067a10eb565a8e608081532fa055218c3/apps/blog/posts).
 
