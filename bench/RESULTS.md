@@ -1,5 +1,110 @@
 # 벤치마크 결과
 
+## GitHub Codespaces 비교 (2026-09-07)
+
+후속 조사: [Thin LTO와 jemalloc A/B, 단계별 계측](remaining-gap-2026-09-07.md). 그 결과로 release 프로필에 Thin LTO 를, Linux CLI 에 jemalloc 을 기본 적용했고, 같은 Codespace 에서 같은 절차로 다시 측정했다. README 의 표는 아래 "기본 설정 반영 후" 의 musl 표다.
+
+### 기본 설정 반영 후 (같은 날 재측정)
+
+소스는 `8bdd653` 위에 이 브랜치의 변경(`lto = "thin"`, `tikv-jemallocator` 0.6.1, Cargo.lock 의 cc 1.4.5)을 얹은 상태다. 도구, 코퍼스, 환경은 아래 원래 측정과 같고, 라운드 수만 6개 실행 순서에 균등하도록 24회로 늘렸다. 배포되는 Linux 바이너리(Releases, npm `linux-x64`)와 같은 `x86_64-unknown-linux-musl` 정적 빌드와 `cargo install` 이 만드는 glibc 빌드를 각각 별도 세션으로 쟀다. 두 빌드 모두 `--locked` 로 빌드했고, `nm` 으로 jemalloc 심볼 517개가 링크된 것을 확인했다. 바이너리 SHA-256 은 각 원시 JSON 의 `rust_binary` 에 있다.
+
+musl 정적 빌드 ([원시 JSON](results/codespaces-2026-09-07-musl.json)):
+
+| Corpus | rust-markdownlint | rumdl 0.2.67 | markdownlint-cli2 0.23.2 |
+|---|---:|---:|---:|
+| Blog posts, 445 files (7.50 MB) | 434.4 ± 16.1 | 380.1 ± 5.3 | 4,792.9 ± 104.4 |
+| markdownlint fixtures, 388 files (0.25 MB) | 83.8 ± 2.4 | 89.8 ± 1.2 | 1,192.4 ± 23.6 |
+| Fixtures copied 10 times, 3,880 files (2.45 MB) | 762.9 ± 25.9 | 748.3 ± 14.6 | 6,501.8 ± 157.1 |
+
+glibc 빌드 ([원시 JSON](results/codespaces-2026-09-07-gnu.json)):
+
+| Corpus | rust-markdownlint | rumdl 0.2.67 | markdownlint-cli2 0.23.2 |
+|---|---:|---:|---:|
+| Blog posts, 445 files (7.50 MB) | 416.7 ± 17.7 | 389.4 ± 25.9 | 4,874.0 ± 175.2 |
+| markdownlint fixtures, 388 files (0.25 MB) | 83.8 ± 6.4 | 93.6 ± 6.5 | 1,214.7 ± 40.7 |
+| Fixtures copied 10 times, 3,880 files (2.45 MB) | 726.0 ± 23.1 | 758.6 ± 26.8 | 6,549.7 ± 92.5 |
+
+두 세션 모두 세 코퍼스에서 Rust 와 cli2 0.22.1 의 종료 코드, stdout, stderr 가 같았고 진단 수도 원래 측정과 같다(Rust 3,218 / 16,764 / 32,180, rumdl 2,602 / 17,527 / 26,020). 원래 측정(20회) 대비 glibc 빌드는 블로그 451.9 → 416.7ms, 10배 fixture 804.7 → 726.0ms 로, A/B 실험에서 본 개선 폭과 비슷하다. musl 정적 빌드는 같은 소스의 glibc 빌드보다 블로그와 10배 fixture 에서 4~5% 느렸다. 두 세션의 rumdl 과 cli2 수치가 musl 세션에서 오히려 조금 빠르므로 머신 상태 차이로 설명되지 않는다. 원인은 이번에 조사하지 않았다. 재현 명령은 아래와 같고 `--runs 24` 만 다르다.
+
+### 기본 설정 반영 전 (원래 측정)
+
+로컬 머신 대신 전용 GitHub Codespace (`standardLinux32gb`, 4 vCPU, 16GB RAM)에서 세 도구를 실행했다. Ubuntu 24.04.4 LTS / Linux x86_64, AMD EPYC 7763(노출된 논리 CPU 4개), Rust 1.98.1, Node.js 24.14.0이다. CPU 스레드 수는 별도 제한하지 않았다.
+
+- rust-markdownlint: `8bdd65342cd02a11f5e09d02186be51e0e4cc3c6` (#207 반영), `cargo build --release --locked`.
+- rumdl: 공식 `v0.2.67` x86_64 Linux GNU 릴리스 바이너리, 배포된 SHA-256 검증.
+- markdownlint-cli2: npm `0.23.2` (markdownlint `0.41.1`). README의 호환 대상인 `0.22.1`은 별도 출력 검증에만 사용했다.
+- 블로그: `yceffort/blog`의 `4c7cade067a10eb565a8e608081532fa055218c3`, `apps/blog/posts/**/*.md` 445개. 10배 코퍼스는 fixture를 별도 하위 디렉터리 10개에 복제한 것이며, 서로 다른 문서 3,880개라는 뜻은 아니다.
+
+각 코퍼스의 Markdown 파일만 `/tmp`의 새 디렉터리에 복사했다. 저장소의 규칙 설정은 가져오지 않고 `{"noBanner":true}`만 설정했으며, 각 도구의 기본 규칙과 소스에 포함된 인라인 지시문을 사용했다. rumdl에는 `--no-config --no-cache`를 전달했다. 규칙 집합과 인라인 설정 해석이 도구마다 다르므로 동일한 검사를 수행한다고 가정하지 않는다. 특히 fixture는 markdownlint의 경계 사례와 인라인 설정을 포함하며, rumdl은 일부에 대해 설정 경고도 출력한다.
+
+코퍼스별 각 도구 3회 준비 실행 후 20회 측정했다. 매 라운드에 세 도구를 한 번씩 실행하고, 가능한 6개 실행 순서를 순환했다. Python `time.perf_counter`로 프로세스 시작부터 종료까지 재며(종료 대기는 timeout polling 없이 blocking wait 사용), 기본 포매터가 실제 실행된 상태에서 stdout/stderr만 `/dev/null`로 보냈다. 파일 검색, 읽기, 파싱, 규칙, 정렬, 출력이 모두 포함된다. 파일 시스템 캐시는 따뜻한 상태이고 rumdl의 영속 lint 캐시는 껐다. 빌드, 설치, 네트워크 다운로드는 측정 전에 끝냈다. 아래 값은 평균 ± 표본 표준편차(ms)이다.
+
+| Corpus | rust-markdownlint | rumdl 0.2.67 | markdownlint-cli2 0.23.2 |
+|---|---:|---:|---:|
+| Blog posts, 445 files (7.50 MB) | 451.9 ± 21.9 | 384.0 ± 13.6 | 4,780.8 ± 153.9 |
+| markdownlint fixtures, 388 files (0.25 MB) | 97.3 ± 12.7 | 96.2 ± 11.8 | 1,247.4 ± 37.6 |
+| Fixtures copied 10 times, 3,880 files (2.45 MB) | 804.7 ± 27.8 | 755.9 ± 24.5 | 6,480.8 ± 107.6 |
+
+진단 수와 출력 검증:
+
+| 코퍼스 | Rust | cli2 0.23.2 | rumdl 0.2.67 |
+|---|---:|---:|---:|
+| Blog posts, 445 files (7.50 MB) | 16,764 | 16,764 | 17,527 |
+| markdownlint fixtures, 388 files (0.25 MB) | 3,218 | 3,218 | 2,602 |
+| Fixtures copied 10 times, 3,880 files (2.45 MB) | 32,180 | 32,180 | 26,020 |
+
+세 코퍼스 모두 Rust와 cli2 0.23.2의 진단(stderr)은 바이트 단위로 같았다. 최신 cli2의 진행 상황 출력(stdout)은 달랐다. 별도로 실행한 cli2 0.22.1은 종료 코드, stdout, stderr 모두 Rust와 같았다. rumdl 진단 수는 별도 JSON 출력 실행에서 센 lint 진단이며, fixture의 설정 경고는 포함하지 않는다. 시간 측정에는 기본 출력의 설정 경고도 포함된다.
+
+코퍼스별 exit code, 출력 SHA-256, 환경, 커밋, 명령, 20개 개별 측정값은 [원시 JSON](results/codespaces-2026-09-07.json)에 기록했다. 현재 머신과 과거 Apple Silicon/Actions 측정의 절대시간은 직접 비교하지 않는다.
+
+재현 하네스는 [compare-tools.py](compare-tools.py)이며 Python 표준 라이브러리만 사용한다. 빌드 및 도구 설치는 별도로 수행한다. 예를 들어 새 4코어 Codespace 안에서 다음과 같이 준비할 수 있다(명령은 rust-markdownlint 저장소 루트 기준).
+
+```bash
+# rustup 설치 후, 측정에 사용한 컴파일러로 빌드
+rustup toolchain install 1.98.1 --profile minimal
+rustup override set 1.98.1
+cargo build --release --locked
+
+BENCH_ROOT=/workspaces/markdownlint-performance
+mkdir -p "$BENCH_ROOT/bin" "$BENCH_ROOT/tools"
+npm install --prefix "$BENCH_ROOT/cli2-latest" --no-audit --no-fund markdownlint-cli2@0.23.2
+npm install --prefix "$BENCH_ROOT/cli2-compatible" --no-audit --no-fund markdownlint-cli2@0.22.1
+
+# rumdl 공식 바이너리와 체크섬
+curl -fL https://github.com/rvben/rumdl/releases/download/v0.2.67/rumdl-v0.2.67-x86_64-unknown-linux-gnu.tar.gz \
+  -o "$BENCH_ROOT/tools/rumdl-v0.2.67-x86_64-unknown-linux-gnu.tar.gz"
+curl -fL https://github.com/rvben/rumdl/releases/download/v0.2.67/rumdl-v0.2.67-x86_64-unknown-linux-gnu.tar.gz.sha256 \
+  -o "$BENCH_ROOT/tools/rumdl-v0.2.67-x86_64-unknown-linux-gnu.tar.gz.sha256"
+(cd "$BENCH_ROOT/tools" && sha256sum -c rumdl-v0.2.67-x86_64-unknown-linux-gnu.tar.gz.sha256)
+tar -xzf "$BENCH_ROOT/tools/rumdl-v0.2.67-x86_64-unknown-linux-gnu.tar.gz" -C "$BENCH_ROOT/bin"
+
+git clone --filter=blob:none --sparse https://github.com/yceffort/blog.git "$BENCH_ROOT/blog"
+git -C "$BENCH_ROOT/blog" sparse-checkout set apps/blog/posts
+git -C "$BENCH_ROOT/blog" checkout --detach 4c7cade067a10eb565a8e608081532fa055218c3
+
+python3 bench/compare-tools.py \
+  --rust "$PWD/target/release/rust-markdownlint" \
+  --rumdl "$BENCH_ROOT/bin/rumdl" \
+  --cli2 "$BENCH_ROOT/cli2-latest/node_modules/.bin/markdownlint-cli2" \
+  --compatible-cli2 "$BENCH_ROOT/cli2-compatible/node_modules/.bin/markdownlint-cli2" \
+  --blog "$BENCH_ROOT/blog" \
+  --output "$BENCH_ROOT/results.json" --runs 24 --warmup 3
+```
+
+## 이전 README의 환경별 측정 (보관)
+
+아래 표는 이번 Codespaces 비교 이전에 README에 있던 수치다. 머신, 코퍼스, 설정, 코드 버전이 달라 새 비교표와 직접 합산하거나 속도 변화를 계산하는 데 쓰지 않는다. 특히 프로젝트 설정을 사용한 블로그 측정은 다수 규칙이 꺼져 있었으므로 기본 규칙 전체의 성능을 나타내지 않는다. 20,966개 파일 행은 반복 측정이 아닌 단일 실행이다. 당시 표는 hyperfine 준비 실행 3회, mean ± σ(ms), cli2/Rust 배율로 기록됐으며 두 도구의 진단 결과는 동일했다.
+
+| Corpus | Machine | markdownlint-cli2 | rust-markdownlint | Ratio |
+|--------|---------|-------------------|-------------------|-------|
+| markdownlint `test/*.md`, 388 files, all rules | Apple M-series, 10 cores | 366.2 ± 2.8 | 55.1 ± 1.1 | 6.6x |
+| markdownlint `test/*.md`, 388 files, all rules | GitHub Actions ubuntu-latest | 1267.3 ± 90.4 | 178.4 ± 1.3 | 7.1x |
+| Same corpus copied 10 times, 3880 files | Apple M-series, 10 cores | 2956.7 ± 199.6 | 682.6 ± 10.0 | 4.3x |
+| [yceffort/blog](https://github.com/yceffort/blog), `apps/blog/posts/**/*.md`, 441 posts (7.2 MB), project config | Apple M-series, 10 cores | 1411.2 ± 17.5 | 105.0 ± 2.3 | 13.4x |
+| The same repository, `**/*.md` including `node_modules`, 20966 files (single run) | Apple M-series, 10 cores | 48306 | 14419 | 3.4x |
+
+## 규칙별 과거 측정 (2026-08)
+
 `bench/run.sh <MD0XX|all>` 출력의 마지막 행을 누적 기록한다. 코퍼스는 원본 markdownlint `test/*.md` 388개 (SCALE=1),
 Apple Silicon macOS, `hyperfine --warmup 3`. 시간은 mean ± σ (ms), 배율은 cli2 / rust.
 코퍼스가 작아 두 도구의 프로세스 시작 시간 비중이 크다.
