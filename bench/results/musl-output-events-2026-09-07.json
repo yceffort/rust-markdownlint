@@ -1,0 +1,2203 @@
+{
+  "base_commit": "a039aee926d759141829ae711ae5cd39343ca503",
+  "date_utc": "2026-09-07T05:03:11.700282+00:00",
+  "target": "x86_64-unknown-linux-musl",
+  "environment": {
+    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+    "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           48 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  4\nOn-line CPU(s) list:                     0-3\nVendor ID:                               AuthenticAMD\nModel name:                              AMD EPYC 7763 64-Core Processor\nCPU family:                              25\nModel:                                   1\nThread(s) per core:                      2\nCore(s) per socket:                      2\nSocket(s):                               1\nStepping:                                1\nBogoMIPS:                                4890.86\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves user_shstk clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm\nVirtualization:                          AMD-V\nHypervisor vendor:                       Microsoft\nVirtualization type:                     full\nL1d cache:                               64 KiB (2 instances)\nL1i cache:                               64 KiB (2 instances)\nL2 cache:                                1 MiB (2 instances)\nL3 cache:                                32 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-3\nVulnerability Gather data sampling:      Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Vulnerable: Safe RET, no microcode\nVulnerability Spec store bypass:         Vulnerable\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Vulnerable: Clear CPU buffers attempted, no microcode\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected",
+    "kernel": "Linux codespaces-02da5d 6.8.0-1052-azure #58~22.04.1-Ubuntu SMP Thu Mar 26 05:02:21 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux",
+    "rayon_num_threads": null
+  },
+  "method": {
+    "runs": 24,
+    "warmup": 3,
+    "order": "all 24 permutations of four variants",
+    "timing": "blocking subprocess wait, stdout/stderr to /dev/null, all builds completed first"
+  },
+  "patches": {
+    "output": "14e06bdf22553f45ea748d9662f5f543d618863f64cba822310b157c87ebb8a5",
+    "parser": "a97912be787a115ce9c2202f0f4f421e23c8354db0b3c3ffae2fc37dba83082a"
+  },
+  "binaries": {
+    "baseline": {
+      "sha256": "eedbd59689be635b12532dbf842ba39b1b5a74d1dff35e59fc3ff8440bd803e4",
+      "bytes": 10425280
+    },
+    "output": {
+      "sha256": "122a7747ef7f3abc37b3419e4c18752cf1f97dd2454ae3f1c42d64623f419d79",
+      "bytes": 10433464
+    },
+    "parser": {
+      "sha256": "0ca7b676c7a2dfdae0c5be7a9e4361b89a85892394de095d42bd6ed85f1f8167",
+      "bytes": 10421712
+    },
+    "both": {
+      "sha256": "a4cd6502699fc7541a3db2020db0dccd536bc5daf16ad3826d312b8d9c462dc8",
+      "bytes": 10429904
+    }
+  },
+  "corpora": [
+    {
+      "name": "fixtures",
+      "files": 388,
+      "sha256": "7bf1b93077fdc14434558d1e18013fd1039e8ab47a98376ee603ac95d33f71fa",
+      "validation": {
+        "baseline": {
+          "exit_code": 1,
+          "stdout_sha256": "5f544697f96462c8bbedd1d95d05abe959b9a8627b5d2257513da0e8ec2c8544",
+          "stderr_sha256": "dbdadfc45ea8ce2ff45b2bb43afa8b0aec1a7cbf52e40eb4ff2daf83acdbd5ef",
+          "stderr_bytes": 410496,
+          "matches_baseline": true
+        },
+        "output": {
+          "exit_code": 1,
+          "stdout_sha256": "5f544697f96462c8bbedd1d95d05abe959b9a8627b5d2257513da0e8ec2c8544",
+          "stderr_sha256": "dbdadfc45ea8ce2ff45b2bb43afa8b0aec1a7cbf52e40eb4ff2daf83acdbd5ef",
+          "stderr_bytes": 410496,
+          "matches_baseline": true
+        },
+        "parser": {
+          "exit_code": 1,
+          "stdout_sha256": "5f544697f96462c8bbedd1d95d05abe959b9a8627b5d2257513da0e8ec2c8544",
+          "stderr_sha256": "dbdadfc45ea8ce2ff45b2bb43afa8b0aec1a7cbf52e40eb4ff2daf83acdbd5ef",
+          "stderr_bytes": 410496,
+          "matches_baseline": true
+        },
+        "both": {
+          "exit_code": 1,
+          "stdout_sha256": "5f544697f96462c8bbedd1d95d05abe959b9a8627b5d2257513da0e8ec2c8544",
+          "stderr_sha256": "dbdadfc45ea8ce2ff45b2bb43afa8b0aec1a7cbf52e40eb4ff2daf83acdbd5ef",
+          "stderr_bytes": 410496,
+          "matches_baseline": true
+        }
+      },
+      "results": {
+        "baseline": {
+          "seconds": [
+            0.08339272599994274,
+            0.08375918400008686,
+            0.08336976700002197,
+            0.08566446899999391,
+            0.08347820400001638,
+            0.08303544099999272,
+            0.08308610599999611,
+            0.08294814500004577,
+            0.08489661200007959,
+            0.08256499399999484,
+            0.08310855000001993,
+            0.08784669199997097,
+            0.0833348419999993,
+            0.0833759460000465,
+            0.08349720500007152,
+            0.0851710939999748,
+            0.08496025900001314,
+            0.08382750800001304,
+            0.08387340399997356,
+            0.08336784899995564,
+            0.10777693699992597,
+            0.08271194999997533,
+            0.08319422900001427,
+            0.08422328100004961
+          ],
+          "mean": 0.08485272475000727,
+          "stddev": 0.005018516855341101,
+          "median": 0.08343546499997956,
+          "paired_savings_mean": 0.0,
+          "paired_savings_median": 0.0,
+          "faster_rounds": 0
+        },
+        "output": {
+          "seconds": [
+            0.07748648899996624,
+            0.0783870109999043,
+            0.08212960100001965,
+            0.0782283070000176,
+            0.07758137799999076,
+            0.0778207639999664,
+            0.08008842699996421,
+            0.0780213589999903,
+            0.0777316010000959,
+            0.07798461999993833,
+            0.07757067800002915,
+            0.07851302899996426,
+            0.07758754700000736,
+            0.0775944920000029,
+            0.07804955099993549,
+            0.07757582799990814,
+            0.07794370300007358,
+            0.07767641499992806,
+            0.0774104060000127,
+            0.07751397200001975,
+            0.09700357299993811,
+            0.08025525799996558,
+            0.07824028900006397,
+            0.07788363199995274
+          ],
+          "mean": 0.07901158041665231,
+          "stddev": 0.003986668944183755,
+          "median": 0.07791366750001316,
+          "paired_savings_mean": 0.005841144333354957,
+          "paired_savings_median": 0.005817665499989744,
+          "faster_rounds": 24
+        },
+        "parser": {
+          "seconds": [
+            0.0835382480000817,
+            0.08528248900006474,
+            0.08335942499991233,
+            0.08339261499997974,
+            0.08405523099997936,
+            0.08912847500005228,
+            0.08333151299996189,
+            0.0829161890000023,
+            0.08865708500002256,
+            0.08341008999991573,
+            0.08518167699992318,
+            0.08263733599994794,
+            0.08235694299992247,
+            0.08286176499996145,
+            0.08366936400000213,
+            0.08729085799996028,
+            0.0832143540000061,
+            0.08313690199997836,
+            0.08345653300000322,
+            0.08329882399993949,
+            0.08542995100003736,
+            0.08283054100002119,
+            0.08308858199995939,
+            0.09182475199997953
+          ],
+          "mean": 0.08447290591665062,
+          "stddev": 0.00240505487502551,
+          "median": 0.08340135249994773,
+          "paired_savings_mean": 0.00037981883335665617,
+          "paired_savings_median": -5.4124499968111195e-05,
+          "faster_rounds": 12
+        },
+        "both": {
+          "seconds": [
+            0.07719628699999248,
+            0.0770020669999667,
+            0.07709893799994916,
+            0.07902475000003051,
+            0.07808542999998735,
+            0.07735720199991647,
+            0.07803216199999952,
+            0.07819414499999766,
+            0.08238669100001061,
+            0.07805614599999444,
+            0.07772755799999231,
+            0.0776757539999835,
+            0.07743317300003127,
+            0.0776370720000159,
+            0.07870787900003506,
+            0.07753662200002509,
+            0.07733569200001966,
+            0.07812292599999182,
+            0.07843899600004534,
+            0.08709788900000603,
+            0.09220506199994816,
+            0.09204788900001404,
+            0.08021555899995292,
+            0.08355713999992531
+          ],
+          "mean": 0.0799238762083263,
+          "stddev": 0.004443189514251265,
+          "median": 0.0780707879999909,
+          "paired_savings_mean": 0.0049288485416809635,
+          "paired_savings_median": 0.005556323500002236,
+          "faster_rounds": 22
+        }
+      },
+      "orders": [
+        [
+          "baseline",
+          "output",
+          "parser",
+          "both"
+        ],
+        [
+          "baseline",
+          "output",
+          "both",
+          "parser"
+        ],
+        [
+          "baseline",
+          "parser",
+          "output",
+          "both"
+        ],
+        [
+          "baseline",
+          "parser",
+          "both",
+          "output"
+        ],
+        [
+          "baseline",
+          "both",
+          "output",
+          "parser"
+        ],
+        [
+          "baseline",
+          "both",
+          "parser",
+          "output"
+        ],
+        [
+          "output",
+          "baseline",
+          "parser",
+          "both"
+        ],
+        [
+          "output",
+          "baseline",
+          "both",
+          "parser"
+        ],
+        [
+          "output",
+          "parser",
+          "baseline",
+          "both"
+        ],
+        [
+          "output",
+          "parser",
+          "both",
+          "baseline"
+        ],
+        [
+          "output",
+          "both",
+          "baseline",
+          "parser"
+        ],
+        [
+          "output",
+          "both",
+          "parser",
+          "baseline"
+        ],
+        [
+          "parser",
+          "baseline",
+          "output",
+          "both"
+        ],
+        [
+          "parser",
+          "baseline",
+          "both",
+          "output"
+        ],
+        [
+          "parser",
+          "output",
+          "baseline",
+          "both"
+        ],
+        [
+          "parser",
+          "output",
+          "both",
+          "baseline"
+        ],
+        [
+          "parser",
+          "both",
+          "baseline",
+          "output"
+        ],
+        [
+          "parser",
+          "both",
+          "output",
+          "baseline"
+        ],
+        [
+          "both",
+          "baseline",
+          "output",
+          "parser"
+        ],
+        [
+          "both",
+          "baseline",
+          "parser",
+          "output"
+        ],
+        [
+          "both",
+          "output",
+          "baseline",
+          "parser"
+        ],
+        [
+          "both",
+          "output",
+          "parser",
+          "baseline"
+        ],
+        [
+          "both",
+          "parser",
+          "baseline",
+          "output"
+        ],
+        [
+          "both",
+          "parser",
+          "output",
+          "baseline"
+        ]
+      ]
+    },
+    {
+      "name": "blog",
+      "files": 445,
+      "sha256": "f677658550fbd86da84e92ad732c7cdad492645bb718398965a95333d44de2c2",
+      "validation": {
+        "baseline": {
+          "exit_code": 1,
+          "stdout_sha256": "b4b34e306c157f072a438189f4c11ec09a8362773d82ec4ecc575baf10e38158",
+          "stderr_sha256": "10e13f0c787b68bf5f4868be33389d054c046eb8a93732a3864fcfa86f566521",
+          "stderr_bytes": 1856949,
+          "matches_baseline": true
+        },
+        "output": {
+          "exit_code": 1,
+          "stdout_sha256": "b4b34e306c157f072a438189f4c11ec09a8362773d82ec4ecc575baf10e38158",
+          "stderr_sha256": "10e13f0c787b68bf5f4868be33389d054c046eb8a93732a3864fcfa86f566521",
+          "stderr_bytes": 1856949,
+          "matches_baseline": true
+        },
+        "parser": {
+          "exit_code": 1,
+          "stdout_sha256": "b4b34e306c157f072a438189f4c11ec09a8362773d82ec4ecc575baf10e38158",
+          "stderr_sha256": "10e13f0c787b68bf5f4868be33389d054c046eb8a93732a3864fcfa86f566521",
+          "stderr_bytes": 1856949,
+          "matches_baseline": true
+        },
+        "both": {
+          "exit_code": 1,
+          "stdout_sha256": "b4b34e306c157f072a438189f4c11ec09a8362773d82ec4ecc575baf10e38158",
+          "stderr_sha256": "10e13f0c787b68bf5f4868be33389d054c046eb8a93732a3864fcfa86f566521",
+          "stderr_bytes": 1856949,
+          "matches_baseline": true
+        }
+      },
+      "results": {
+        "baseline": {
+          "seconds": [
+            0.44381881799995426,
+            0.4389503549999745,
+            0.44404648499994437,
+            0.4970220949999202,
+            0.4515506620000451,
+            0.4369968810000273,
+            0.48670503400001053,
+            0.4376460869999619,
+            0.44574571799989826,
+            0.48882353299995884,
+            0.42900819299995874,
+            0.4481406290000223,
+            0.5035421759999963,
+            0.4451554910000368,
+            0.4441806549999683,
+            0.4444960460000402,
+            0.44594757100003335,
+            0.4606603109999696,
+            0.4990289130000747,
+            0.4400121679999529,
+            0.4400290019999602,
+            0.4290665989999525,
+            0.5886764919999905,
+            0.6561576679999916
+          ],
+          "mean": 0.46855864924998514,
+          "stddev": 0.053421756190510705,
+          "median": 0.44545060449996754,
+          "paired_savings_mean": 0.0,
+          "paired_savings_median": 0.0,
+          "faster_rounds": 0
+        },
+        "output": {
+          "seconds": [
+            0.41479202599998644,
+            0.43042642899990824,
+            0.48115918700000293,
+            0.4190657529999271,
+            0.4130983899999592,
+            0.42099160000009306,
+            0.4155883589999121,
+            0.4441281220000519,
+            0.41112226899997495,
+            0.48619450199998937,
+            0.6105676749999702,
+            0.40311008900005163,
+            0.4224847719999616,
+            0.41624526099997183,
+            0.42310993099999905,
+            0.4145055469999761,
+            0.4321904009999571,
+            0.45229090899999846,
+            0.41974872200000846,
+            0.41459828499989726,
+            0.41634583500001554,
+            0.5012496699999929,
+            0.5675815690000263,
+            0.711878406999972
+          ],
+          "mean": 0.4559364045833168,
+          "stddev": 0.07502576240363003,
+          "median": 0.4217381860000273,
+          "paired_savings_mean": 0.012622244666668317,
+          "paired_savings_median": 0.02238904499995442,
+          "faster_rounds": 19
+        },
+        "parser": {
+          "seconds": [
+            0.511170575000051,
+            0.45846202299992456,
+            0.4498752600001126,
+            0.4877556579999691,
+            0.4356834019999951,
+            0.44148315100005675,
+            0.44581934000007095,
+            0.43744969099998343,
+            0.4328533030000017,
+            0.43415910100009114,
+            0.43264010800010055,
+            0.437124850000032,
+            0.43407288799994603,
+            0.44254784999998265,
+            0.435002911999959,
+            0.4397934799999348,
+            0.43723604500007696,
+            0.44113499499997033,
+            0.4435034429999405,
+            0.44443427899989274,
+            0.4410492519999707,
+            0.5483425229999739,
+            0.4560561499999949,
+            0.7346947510000064
+          ],
+          "mean": 0.4625977095833349,
+          "stddev": 0.06416242717177664,
+          "median": 0.44130907300001354,
+          "paired_savings_mean": 0.0059609396666502334,
+          "paired_savings_median": 0.006707046000030914,
+          "faster_rounds": 15
+        },
+        "both": {
+          "seconds": [
+            0.4171896600000764,
+            0.42451369000002614,
+            0.4730795839999473,
+            0.41917695500001173,
+            0.4302492260000008,
+            0.41074009899989505,
+            0.4159387349999406,
+            0.41167606199996953,
+            0.45135258799996336,
+            0.4028200630000356,
+            0.48477014299999155,
+            0.4076912819999734,
+            0.41319053500001246,
+            0.42531857699998454,
+            0.41639675300007184,
+            0.410230949000038,
+            0.4112109080000437,
+            0.4138563729999305,
+            0.4162675559999798,
+            0.42261083300002156,
+            0.4095782080000845,
+            0.4054820080000354,
+            0.40661325400003534,
+            0.6485299809999105
+          ],
+          "mean": 0.43118683424999915,
+          "stddev": 0.05055674672646631,
+          "median": 0.4161031454999602,
+          "paired_savings_mean": 0.037371814999985986,
+          "paired_savings_median": 0.027206529999887152,
+          "faster_rounds": 21
+        }
+      },
+      "orders": [
+        [
+          "baseline",
+          "output",
+          "parser",
+          "both"
+        ],
+        [
+          "baseline",
+          "output",
+          "both",
+          "parser"
+        ],
+        [
+          "baseline",
+          "parser",
+          "output",
+          "both"
+        ],
+        [
+          "baseline",
+          "parser",
+          "both",
+          "output"
+        ],
+        [
+          "baseline",
+          "both",
+          "output",
+          "parser"
+        ],
+        [
+          "baseline",
+          "both",
+          "parser",
+          "output"
+        ],
+        [
+          "output",
+          "baseline",
+          "parser",
+          "both"
+        ],
+        [
+          "output",
+          "baseline",
+          "both",
+          "parser"
+        ],
+        [
+          "output",
+          "parser",
+          "baseline",
+          "both"
+        ],
+        [
+          "output",
+          "parser",
+          "both",
+          "baseline"
+        ],
+        [
+          "output",
+          "both",
+          "baseline",
+          "parser"
+        ],
+        [
+          "output",
+          "both",
+          "parser",
+          "baseline"
+        ],
+        [
+          "parser",
+          "baseline",
+          "output",
+          "both"
+        ],
+        [
+          "parser",
+          "baseline",
+          "both",
+          "output"
+        ],
+        [
+          "parser",
+          "output",
+          "baseline",
+          "both"
+        ],
+        [
+          "parser",
+          "output",
+          "both",
+          "baseline"
+        ],
+        [
+          "parser",
+          "both",
+          "baseline",
+          "output"
+        ],
+        [
+          "parser",
+          "both",
+          "output",
+          "baseline"
+        ],
+        [
+          "both",
+          "baseline",
+          "output",
+          "parser"
+        ],
+        [
+          "both",
+          "baseline",
+          "parser",
+          "output"
+        ],
+        [
+          "both",
+          "output",
+          "baseline",
+          "parser"
+        ],
+        [
+          "both",
+          "output",
+          "parser",
+          "baseline"
+        ],
+        [
+          "both",
+          "parser",
+          "baseline",
+          "output"
+        ],
+        [
+          "both",
+          "parser",
+          "output",
+          "baseline"
+        ]
+      ]
+    },
+    {
+      "name": "fixtures-10x",
+      "files": 3880,
+      "sha256": "e3b00696cf5d2c86dd3d93aed82f6986b70b1913f512c243ea9b6579694c6b7b",
+      "validation": {
+        "baseline": {
+          "exit_code": 1,
+          "stdout_sha256": "661f97fd834aa78098e3cfaa91fa97e46299d48fc6b50ca4b5953d4c9340441f",
+          "stderr_sha256": "bb861d709b4ade86cde417ec9350ae3918792db1f1403c0db1ba6864d1b69175",
+          "stderr_bytes": 4172538,
+          "matches_baseline": true
+        },
+        "output": {
+          "exit_code": 1,
+          "stdout_sha256": "661f97fd834aa78098e3cfaa91fa97e46299d48fc6b50ca4b5953d4c9340441f",
+          "stderr_sha256": "bb861d709b4ade86cde417ec9350ae3918792db1f1403c0db1ba6864d1b69175",
+          "stderr_bytes": 4172538,
+          "matches_baseline": true
+        },
+        "parser": {
+          "exit_code": 1,
+          "stdout_sha256": "661f97fd834aa78098e3cfaa91fa97e46299d48fc6b50ca4b5953d4c9340441f",
+          "stderr_sha256": "bb861d709b4ade86cde417ec9350ae3918792db1f1403c0db1ba6864d1b69175",
+          "stderr_bytes": 4172538,
+          "matches_baseline": true
+        },
+        "both": {
+          "exit_code": 1,
+          "stdout_sha256": "661f97fd834aa78098e3cfaa91fa97e46299d48fc6b50ca4b5953d4c9340441f",
+          "stderr_sha256": "bb861d709b4ade86cde417ec9350ae3918792db1f1403c0db1ba6864d1b69175",
+          "stderr_bytes": 4172538,
+          "matches_baseline": true
+        }
+      },
+      "results": {
+        "baseline": {
+          "seconds": [
+            0.7502096960000699,
+            0.7494598669999277,
+            0.8152669110000943,
+            0.7696498689999771,
+            0.7488707400000294,
+            0.7470348690000037,
+            0.7484001469999839,
+            0.7495738369999572,
+            0.7488314280000168,
+            0.7511668789999248,
+            0.7531317110000373,
+            0.7456330740000112,
+            0.750777587000016,
+            0.7480419549999624,
+            0.7443622340000502,
+            0.7518197079999709,
+            0.7506918919999634,
+            0.747863223999957,
+            0.7486669050000501,
+            0.7493880409999747,
+            0.7525305200000503,
+            0.8069366339999533,
+            0.8653958099999954,
+            0.7578552389999231
+          ],
+          "mean": 0.7604816157083292,
+          "stddev": 0.028534270443125738,
+          "median": 0.7498917665000135,
+          "paired_savings_mean": 0.0,
+          "paired_savings_median": 0.0,
+          "faster_rounds": 0
+        },
+        "output": {
+          "seconds": [
+            0.7314050349999661,
+            0.7134542329999931,
+            0.7992630370000597,
+            0.700441326000032,
+            0.7191271010000264,
+            0.7054056480000099,
+            0.6993981340000346,
+            0.6994721300000037,
+            0.7145583020000004,
+            0.7269627989999208,
+            0.6981578109999873,
+            0.7021195969999781,
+            0.7355995389999634,
+            0.6971025230000123,
+            0.7086143880000009,
+            0.6968994279999379,
+            0.6988648580000927,
+            0.7072113670000135,
+            0.7147930800000495,
+            0.7429516199999853,
+            0.6992233579999265,
+            0.7363830229999166,
+            0.8079454909999413,
+            0.7147362970000586
+          ],
+          "mean": 0.719587088541663,
+          "stddev": 0.029359614357004054,
+          "median": 0.711034310499997,
+          "paired_savings_mean": 0.04089452716666623,
+          "paired_savings_median": 0.04237408149992916,
+          "faster_rounds": 24
+        },
+        "parser": {
+          "seconds": [
+            0.7725806419999799,
+            0.7701020309999649,
+            0.7781811460000654,
+            0.7592130959999395,
+            0.7484860529999651,
+            0.7985382370000025,
+            0.7465822700000899,
+            0.758921225999984,
+            0.7464833369999724,
+            0.7504988499999854,
+            0.7479218700000274,
+            0.7634951809999393,
+            0.7505808729999899,
+            0.75265075599998,
+            0.7489907240000093,
+            0.7649609679999685,
+            0.7761838789999729,
+            0.7494572069999776,
+            0.7501002470000913,
+            0.7878578639999887,
+            0.7739228730000605,
+            0.7782052520000207,
+            0.8712832319999961,
+            0.766193090999991
+          ],
+          "mean": 0.7671412877083318,
+          "stddev": 0.02644177449684187,
+          "median": 0.7613541384999394,
+          "paired_savings_mean": -0.006659672000002577,
+          "paired_savings_median": -0.004618645499988361,
+          "faster_rounds": 9
+        },
+        "both": {
+          "seconds": [
+            0.7153731109999626,
+            0.7003908069999625,
+            0.8076428589999978,
+            0.7316110289999642,
+            0.7036086609999757,
+            0.6962524150000036,
+            0.6972048339999901,
+            0.6936565690000407,
+            0.7003351520000933,
+            0.6988566119999859,
+            0.7021933089999948,
+            0.7028693529999828,
+            0.6978229059999421,
+            0.6949440789999244,
+            0.7052936009999939,
+            0.6936679059999733,
+            0.6983137099999794,
+            0.6942985659999295,
+            0.6985735870000553,
+            0.6927322899999808,
+            0.6938882880000392,
+            0.7141988020000554,
+            0.7758226569999351,
+            0.8115035030000399
+          ],
+          "mean": 0.7133772752499917,
+          "stddev": 0.034406245276125166,
+          "median": 0.6995958820000396,
+          "paired_savings_mean": 0.04710434045833741,
+          "paired_savings_median": 0.05106685750001816,
+          "faster_rounds": 23
+        }
+      },
+      "orders": [
+        [
+          "baseline",
+          "output",
+          "parser",
+          "both"
+        ],
+        [
+          "baseline",
+          "output",
+          "both",
+          "parser"
+        ],
+        [
+          "baseline",
+          "parser",
+          "output",
+          "both"
+        ],
+        [
+          "baseline",
+          "parser",
+          "both",
+          "output"
+        ],
+        [
+          "baseline",
+          "both",
+          "output",
+          "parser"
+        ],
+        [
+          "baseline",
+          "both",
+          "parser",
+          "output"
+        ],
+        [
+          "output",
+          "baseline",
+          "parser",
+          "both"
+        ],
+        [
+          "output",
+          "baseline",
+          "both",
+          "parser"
+        ],
+        [
+          "output",
+          "parser",
+          "baseline",
+          "both"
+        ],
+        [
+          "output",
+          "parser",
+          "both",
+          "baseline"
+        ],
+        [
+          "output",
+          "both",
+          "baseline",
+          "parser"
+        ],
+        [
+          "output",
+          "both",
+          "parser",
+          "baseline"
+        ],
+        [
+          "parser",
+          "baseline",
+          "output",
+          "both"
+        ],
+        [
+          "parser",
+          "baseline",
+          "both",
+          "output"
+        ],
+        [
+          "parser",
+          "output",
+          "baseline",
+          "both"
+        ],
+        [
+          "parser",
+          "output",
+          "both",
+          "baseline"
+        ],
+        [
+          "parser",
+          "both",
+          "baseline",
+          "output"
+        ],
+        [
+          "parser",
+          "both",
+          "output",
+          "baseline"
+        ],
+        [
+          "both",
+          "baseline",
+          "output",
+          "parser"
+        ],
+        [
+          "both",
+          "baseline",
+          "parser",
+          "output"
+        ],
+        [
+          "both",
+          "output",
+          "baseline",
+          "parser"
+        ],
+        [
+          "both",
+          "output",
+          "parser",
+          "baseline"
+        ],
+        [
+          "both",
+          "parser",
+          "baseline",
+          "output"
+        ],
+        [
+          "both",
+          "parser",
+          "output",
+          "baseline"
+        ]
+      ]
+    }
+  ],
+  "base_archive_sha256": "588b3ab272dc890ea8318666303e606d0a4b3d2ed6788ecdd781bb5b68f9e204",
+  "confirmation": {
+    "seed": 208,
+    "warmup": 3,
+    "runs": 24,
+    "order": "all 24 permutations, shuffled with seed 208",
+    "cpu": "difference in RUSAGE_CHILDREN user + system time outside the wall timer",
+    "corpora": [
+      {
+        "name": "fixtures",
+        "sha256": "7bf1b93077fdc14434558d1e18013fd1039e8ab47a98376ee603ac95d33f71fa",
+        "orders": [
+          [
+            "baseline",
+            "output",
+            "parser",
+            "both"
+          ],
+          [
+            "baseline",
+            "both",
+            "output",
+            "parser"
+          ],
+          [
+            "baseline",
+            "parser",
+            "both",
+            "output"
+          ],
+          [
+            "output",
+            "parser",
+            "both",
+            "baseline"
+          ],
+          [
+            "parser",
+            "baseline",
+            "output",
+            "both"
+          ],
+          [
+            "parser",
+            "output",
+            "both",
+            "baseline"
+          ],
+          [
+            "both",
+            "output",
+            "baseline",
+            "parser"
+          ],
+          [
+            "baseline",
+            "parser",
+            "output",
+            "both"
+          ],
+          [
+            "both",
+            "output",
+            "parser",
+            "baseline"
+          ],
+          [
+            "baseline",
+            "both",
+            "parser",
+            "output"
+          ],
+          [
+            "output",
+            "baseline",
+            "both",
+            "parser"
+          ],
+          [
+            "both",
+            "parser",
+            "baseline",
+            "output"
+          ],
+          [
+            "output",
+            "both",
+            "parser",
+            "baseline"
+          ],
+          [
+            "output",
+            "both",
+            "baseline",
+            "parser"
+          ],
+          [
+            "parser",
+            "baseline",
+            "both",
+            "output"
+          ],
+          [
+            "parser",
+            "both",
+            "output",
+            "baseline"
+          ],
+          [
+            "parser",
+            "output",
+            "baseline",
+            "both"
+          ],
+          [
+            "both",
+            "parser",
+            "output",
+            "baseline"
+          ],
+          [
+            "both",
+            "baseline",
+            "parser",
+            "output"
+          ],
+          [
+            "both",
+            "baseline",
+            "output",
+            "parser"
+          ],
+          [
+            "baseline",
+            "output",
+            "both",
+            "parser"
+          ],
+          [
+            "output",
+            "baseline",
+            "parser",
+            "both"
+          ],
+          [
+            "parser",
+            "both",
+            "baseline",
+            "output"
+          ],
+          [
+            "output",
+            "parser",
+            "baseline",
+            "both"
+          ]
+        ],
+        "results": {
+          "baseline": {
+            "seconds": [
+              0.09077253300006305,
+              0.08338661799996316,
+              0.0841699840000274,
+              0.08704776699994454,
+              0.08293323999998847,
+              0.08321988500006228,
+              0.08300781899993126,
+              0.08328416500000912,
+              0.08321583700001156,
+              0.08367603399995005,
+              0.08332016399992881,
+              0.08385226500001863,
+              0.08310724600005415,
+              0.08497450699996989,
+              0.08308938200002558,
+              0.08329117799996766,
+              0.08467636099999254,
+              0.08294559300009041,
+              0.08365242900003977,
+              0.08764177000000473,
+              0.08334176200003185,
+              0.08335592000003089,
+              0.08309933500004263,
+              0.08332781399997202
+            ],
+            "cpu_seconds": [
+              0.2821080000000003,
+              0.28201800000000066,
+              0.2822409999999998,
+              0.2813470000000008,
+              0.2812929999999999,
+              0.2830159999999996,
+              0.28232100000000027,
+              0.281617,
+              0.28149599999999997,
+              0.2813300000000002,
+              0.2806920000000003,
+              0.2800620000000005,
+              0.2813070000000011,
+              0.2815340000000035,
+              0.2811909999999995,
+              0.2813820000000029,
+              0.28410599999999975,
+              0.2824320000000009,
+              0.28092899999999554,
+              0.282608999999999,
+              0.28289600000000226,
+              0.2820780000000007,
+              0.2818389999999993,
+              0.2817569999999967
+            ],
+            "mean": 0.08409956700000502,
+            "stddev": 0.0018639902039379156,
+            "median": 0.08333478800000194,
+            "cpu_mean": 0.2818167083333335,
+            "paired_savings_mean": 0.0,
+            "paired_savings_median": 0.0,
+            "faster_rounds": 0
+          },
+          "output": {
+            "seconds": [
+              0.07795362199999545,
+              0.07926849200009656,
+              0.07866195399992648,
+              0.07773623599996426,
+              0.07841470200003187,
+              0.07807068800002526,
+              0.0776946119999593,
+              0.07844521100003021,
+              0.07830795400002444,
+              0.07756229999995412,
+              0.08185767500003749,
+              0.07803758900001867,
+              0.07808575100000326,
+              0.08121181900003194,
+              0.0782461170000488,
+              0.07720904300003895,
+              0.07785529900002075,
+              0.0779072240000005,
+              0.0776179829999819,
+              0.0776334949999864,
+              0.07777372399993965,
+              0.07843591099992864,
+              0.07814917999996851,
+              0.07779609899989737
+            ],
+            "cpu_seconds": [
+              0.2779439999999995,
+              0.2752209999999997,
+              0.27798099999999987,
+              0.2770850000000003,
+              0.2771670000000002,
+              0.2762620000000001,
+              0.2775720000000015,
+              0.276166000000002,
+              0.2755950000000018,
+              0.27659799999999846,
+              0.27568500000000107,
+              0.27810999999999875,
+              0.277624000000002,
+              0.2765590000000031,
+              0.2766830000000007,
+              0.27607899999999863,
+              0.27752399999999766,
+              0.27765900000000077,
+              0.2768219999999981,
+              0.276625000000001,
+              0.27615699999999865,
+              0.2760809999999989,
+              0.2755939999999999,
+              0.27575900000000186
+            ],
+            "mean": 0.07833052833332961,
+            "stddev": 0.0010786286923217595,
+            "median": 0.07805413850002196,
+            "cpu_mean": 0.27668966666666683,
+            "paired_savings_mean": 0.005769038666675404,
+            "paired_savings_median": 0.005231202000004487,
+            "faster_rounds": 24
+          },
+          "parser": {
+            "seconds": [
+              0.08709665599997152,
+              0.08383036600002924,
+              0.08401763500000925,
+              0.0831282450000117,
+              0.08259932500004652,
+              0.08528917699993599,
+              0.08944862099997408,
+              0.08276145000002089,
+              0.08259321799994268,
+              0.08337882199998603,
+              0.08365332599998965,
+              0.08430123200002981,
+              0.08326255299994045,
+              0.09802469700002803,
+              0.08258235799996783,
+              0.08332018199996583,
+              0.08353309500000705,
+              0.08284467299995413,
+              0.08367799699999523,
+              0.0842034730000023,
+              0.08330809000005956,
+              0.08291954499998155,
+              0.08472244100005355,
+              0.08308536899994579
+            ],
+            "cpu_seconds": [
+              0.2814200000000001,
+              0.279643,
+              0.28114500000000026,
+              0.2812719999999995,
+              0.2809729999999998,
+              0.2807049999999979,
+              0.282813999999998,
+              0.281091,
+              0.2806539999999986,
+              0.2812720000000004,
+              0.28041999999999945,
+              0.2793780000000008,
+              0.28026099999999843,
+              0.2829120000000003,
+              0.2813899999999989,
+              0.2816190000000005,
+              0.2812010000000005,
+              0.2807400000000013,
+              0.28129400000000104,
+              0.2804780000000002,
+              0.28063000000000327,
+              0.28077099999999877,
+              0.2822640000000003,
+              0.28145900000000323
+            ],
+            "mean": 0.08448260608332703,
+            "stddev": 0.0032745391797465166,
+            "median": 0.08345595849999654,
+            "cpu_mean": 0.28107525000000005,
+            "paired_savings_mean": -0.00038303908332200837,
+            "paired_savings_median": 0.00012663450007721622,
+            "faster_rounds": 14
+          },
+          "both": {
+            "seconds": [
+              0.07719767200001115,
+              0.07863190699993083,
+              0.07791639000004125,
+              0.07795858100007536,
+              0.07731381899998269,
+              0.0778778810000631,
+              0.07892150800000763,
+              0.07874597800002903,
+              0.07744454199996653,
+              0.07777686500003256,
+              0.07912715899999512,
+              0.0826867680000305,
+              0.07955624099997749,
+              0.07732003299997814,
+              0.07715179399997396,
+              0.07764874500003316,
+              0.07850762599991867,
+              0.07772977199999787,
+              0.07826193999994757,
+              0.07789483499993821,
+              0.0772847800000136,
+              0.07804614700000911,
+              0.08005537500002902,
+              0.07777918199997202
+            ],
+            "cpu_seconds": [
+              0.27609399999999956,
+              0.2763149999999994,
+              0.27748100000000003,
+              0.27664099999999975,
+              0.27583500000000016,
+              0.27544699999999966,
+              0.2774940000000008,
+              0.27818699999999974,
+              0.27626599999999846,
+              0.2760150000000017,
+              0.27670400000000117,
+              0.27660899999999955,
+              0.27546099999999807,
+              0.27673199999999687,
+              0.2763449999999985,
+              0.27731599999999745,
+              0.27535400000000054,
+              0.27713299999999896,
+              0.27650499999999933,
+              0.27638699999999905,
+              0.2762910000000003,
+              0.2750630000000003,
+              0.27624200000000076,
+              0.2765170000000008
+            ],
+            "mean": 0.07828481416666477,
+            "stddev": 0.0012071410119167789,
+            "median": 0.07790561249998973,
+            "cpu_mean": 0.2764347499999996,
+            "paired_savings_mean": 0.005814752833340246,
+            "paired_savings_median": 0.005584026500002892,
+            "faster_rounds": 24
+          }
+        }
+      },
+      {
+        "name": "blog",
+        "sha256": "f677658550fbd86da84e92ad732c7cdad492645bb718398965a95333d44de2c2",
+        "orders": [
+          [
+            "baseline",
+            "output",
+            "parser",
+            "both"
+          ],
+          [
+            "baseline",
+            "both",
+            "output",
+            "parser"
+          ],
+          [
+            "baseline",
+            "parser",
+            "both",
+            "output"
+          ],
+          [
+            "output",
+            "parser",
+            "both",
+            "baseline"
+          ],
+          [
+            "parser",
+            "baseline",
+            "output",
+            "both"
+          ],
+          [
+            "parser",
+            "output",
+            "both",
+            "baseline"
+          ],
+          [
+            "both",
+            "output",
+            "baseline",
+            "parser"
+          ],
+          [
+            "baseline",
+            "parser",
+            "output",
+            "both"
+          ],
+          [
+            "both",
+            "output",
+            "parser",
+            "baseline"
+          ],
+          [
+            "baseline",
+            "both",
+            "parser",
+            "output"
+          ],
+          [
+            "output",
+            "baseline",
+            "both",
+            "parser"
+          ],
+          [
+            "both",
+            "parser",
+            "baseline",
+            "output"
+          ],
+          [
+            "output",
+            "both",
+            "parser",
+            "baseline"
+          ],
+          [
+            "output",
+            "both",
+            "baseline",
+            "parser"
+          ],
+          [
+            "parser",
+            "baseline",
+            "both",
+            "output"
+          ],
+          [
+            "parser",
+            "both",
+            "output",
+            "baseline"
+          ],
+          [
+            "parser",
+            "output",
+            "baseline",
+            "both"
+          ],
+          [
+            "both",
+            "parser",
+            "output",
+            "baseline"
+          ],
+          [
+            "both",
+            "baseline",
+            "parser",
+            "output"
+          ],
+          [
+            "both",
+            "baseline",
+            "output",
+            "parser"
+          ],
+          [
+            "baseline",
+            "output",
+            "both",
+            "parser"
+          ],
+          [
+            "output",
+            "baseline",
+            "parser",
+            "both"
+          ],
+          [
+            "parser",
+            "both",
+            "baseline",
+            "output"
+          ],
+          [
+            "output",
+            "parser",
+            "baseline",
+            "both"
+          ]
+        ],
+        "results": {
+          "baseline": {
+            "seconds": [
+              0.4268426510000154,
+              0.44173475800005235,
+              0.4334614590000001,
+              0.4781541219999781,
+              0.4283775069999365,
+              0.4301642890000039,
+              0.4377459260000478,
+              0.42703735700001744,
+              0.4336038070000541,
+              0.4308423640000001,
+              0.4248960850000003,
+              0.4282162760000574,
+              0.4305623049999667,
+              0.432349181999939,
+              0.4311926699999731,
+              0.42642821399999775,
+              0.4323571570000695,
+              0.43250349500010543,
+              0.43462762500007557,
+              0.4301012720000017,
+              0.42580870500000856,
+              0.4289866400000619,
+              0.48083619700003055,
+              0.4313767559999633
+            ],
+            "cpu_seconds": [
+              1.4695420000000055,
+              1.4757840000000022,
+              1.4704469999999996,
+              1.4958780000000131,
+              1.475114000000005,
+              1.471590000000007,
+              1.468850000000002,
+              1.4708180000000026,
+              1.4799860000000011,
+              1.466545999999989,
+              1.4717620000000062,
+              1.471209999999998,
+              1.4739850000000043,
+              1.4743529999999918,
+              1.473784999999987,
+              1.4723079999999946,
+              1.470861000000017,
+              1.4771360000000042,
+              1.4706749999999742,
+              1.4782540000000122,
+              1.472064999999998,
+              1.4707490000000147,
+              1.483335000000011,
+              1.4701159999999955
+            ],
+            "mean": 0.43492528412501485,
+            "stddev": 0.014247363070040514,
+            "median": 0.4310175169999866,
+            "cpu_mean": 1.4739645416666682,
+            "paired_savings_mean": 0.0,
+            "paired_savings_median": 0.0,
+            "faster_rounds": 0
+          },
+          "output": {
+            "seconds": [
+              0.40846382299992,
+              0.404441960999975,
+              0.4038232870000229,
+              0.41870370499998444,
+              0.4042893920000097,
+              0.4015443810000079,
+              0.4280476160000717,
+              0.40484204699998827,
+              0.40663938000000144,
+              0.41839547799997945,
+              0.43160134999993716,
+              0.402441500000009,
+              0.3975595060001069,
+              0.4056540159999713,
+              0.41454963099999986,
+              0.40284604099997523,
+              0.4320568310000681,
+              0.4004232749999801,
+              0.4138819990000684,
+              0.40106038300007185,
+              0.4026806099999476,
+              0.39770539000005556,
+              0.4022206649999589,
+              0.40026192599998467
+            ],
+            "cpu_seconds": [
+              1.4490969999999983,
+              1.4497730000000044,
+              1.4471909999999961,
+              1.4485789999999934,
+              1.448560999999982,
+              1.452041000000004,
+              1.4473949999999998,
+              1.4502209999999942,
+              1.442174999999997,
+              1.4573880000000066,
+              1.4616299999999924,
+              1.4491199999999989,
+              1.445849000000007,
+              1.443168999999993,
+              1.4487480000000046,
+              1.4492420000000115,
+              1.4617550000000001,
+              1.441828999999987,
+              1.4504959999999816,
+              1.4470570000000116,
+              1.4455899999999788,
+              1.4421789999999906,
+              1.446577999999982,
+              1.4462640000000047
+            ],
+            "mean": 0.408505591375004,
+            "stddev": 0.01028788049612804,
+            "median": 0.40436567649999233,
+            "cpu_mean": 1.4488302916666633,
+            "paired_savings_mean": 0.02641969275001088,
+            "paired_savings_median": 0.026234971000008045,
+            "faster_rounds": 23
+          },
+          "parser": {
+            "seconds": [
+              0.42534105799995814,
+              0.42572094900003776,
+              0.42534755299993776,
+              0.4551660529999708,
+              0.4299243220000335,
+              0.43281917100000555,
+              0.4406530429999975,
+              0.42673492999995233,
+              0.42584477299999435,
+              0.4252186820000361,
+              0.42657186799999636,
+              0.4258485139999948,
+              0.4244183419999672,
+              0.4290450860000874,
+              0.42690610200008905,
+              0.42692885700000716,
+              0.4399026240000694,
+              0.4358021649999273,
+              0.42756636299998263,
+              0.42555956100000003,
+              0.4297832949999929,
+              0.42998745199997757,
+              0.4283127350000768,
+              0.4316140319999704
+            ],
+            "cpu_seconds": [
+              1.4644260000000018,
+              1.4670659999999986,
+              1.4663239999999966,
+              1.4670109999999976,
+              1.4673409999999971,
+              1.4684720000000056,
+              1.4732219999999914,
+              1.4688529999999962,
+              1.465942000000004,
+              1.4660429999999982,
+              1.4734690000000112,
+              1.4670480000000024,
+              1.4694739999999964,
+              1.4675000000000091,
+              1.4681699999999962,
+              1.4694659999999944,
+              1.4813179999999866,
+              1.4660510000000233,
+              1.4627290000000102,
+              1.4663020000000255,
+              1.4698070000000136,
+              1.4687310000000036,
+              1.4715259999999972,
+              1.4643440000000236
+            ],
+            "mean": 0.43004239708333597,
+            "stddev": 0.006947319791195998,
+            "median": 0.4272476099999949,
+            "cpu_mean": 1.46835979166667,
+            "paired_savings_mean": 0.004882887041678903,
+            "paired_savings_median": 0.0019346775000599337,
+            "faster_rounds": 14
+          },
+          "both": {
+            "seconds": [
+              0.4035858870000766,
+              0.39638927999999396,
+              0.3972623699999076,
+              0.40417798900000435,
+              0.42782067500002086,
+              0.3975107640000033,
+              0.4136116629999833,
+              0.3985742779999555,
+              0.401869290000036,
+              0.4032298700000183,
+              0.4066410629999382,
+              0.4039690959999689,
+              0.40797122100002525,
+              0.3976025209999534,
+              0.4015341699999908,
+              0.4026574619999792,
+              0.4047387839999601,
+              0.3976562240000021,
+              0.39845867100007126,
+              0.40186555599996154,
+              0.39834419700002854,
+              0.3989677890000394,
+              0.4106000869999207,
+              0.404533377000007
+            ],
+            "cpu_seconds": [
+              1.4401989999999945,
+              1.4400229999999947,
+              1.4396179999999998,
+              1.438671999999996,
+              1.4521210000000004,
+              1.4398849999999905,
+              1.4459529999999896,
+              1.4390400000000039,
+              1.4380080000000097,
+              1.4391280000000055,
+              1.437699999999992,
+              1.4432789999999969,
+              1.4448600000000034,
+              1.4357750000000031,
+              1.435311000000004,
+              1.4380870000000199,
+              1.4372529999999806,
+              1.438532000000004,
+              1.440186000000022,
+              1.4420199999999879,
+              1.4367880000000302,
+              1.4434120000000048,
+              1.4450729999999963,
+              1.4401509999999886
+            ],
+            "mean": 0.4033155118333269,
+            "stddev": 0.006844652619022641,
+            "median": 0.4022633760000076,
+            "cpu_mean": 1.4404614166666674,
+            "paired_savings_mean": 0.03160977229168793,
+            "paired_savings_median": 0.028349397500051055,
+            "faster_rounds": 24
+          }
+        }
+      },
+      {
+        "name": "fixtures-10x",
+        "sha256": "e3b00696cf5d2c86dd3d93aed82f6986b70b1913f512c243ea9b6579694c6b7b",
+        "orders": [
+          [
+            "baseline",
+            "output",
+            "parser",
+            "both"
+          ],
+          [
+            "baseline",
+            "both",
+            "output",
+            "parser"
+          ],
+          [
+            "baseline",
+            "parser",
+            "both",
+            "output"
+          ],
+          [
+            "output",
+            "parser",
+            "both",
+            "baseline"
+          ],
+          [
+            "parser",
+            "baseline",
+            "output",
+            "both"
+          ],
+          [
+            "parser",
+            "output",
+            "both",
+            "baseline"
+          ],
+          [
+            "both",
+            "output",
+            "baseline",
+            "parser"
+          ],
+          [
+            "baseline",
+            "parser",
+            "output",
+            "both"
+          ],
+          [
+            "both",
+            "output",
+            "parser",
+            "baseline"
+          ],
+          [
+            "baseline",
+            "both",
+            "parser",
+            "output"
+          ],
+          [
+            "output",
+            "baseline",
+            "both",
+            "parser"
+          ],
+          [
+            "both",
+            "parser",
+            "baseline",
+            "output"
+          ],
+          [
+            "output",
+            "both",
+            "parser",
+            "baseline"
+          ],
+          [
+            "output",
+            "both",
+            "baseline",
+            "parser"
+          ],
+          [
+            "parser",
+            "baseline",
+            "both",
+            "output"
+          ],
+          [
+            "parser",
+            "both",
+            "output",
+            "baseline"
+          ],
+          [
+            "parser",
+            "output",
+            "baseline",
+            "both"
+          ],
+          [
+            "both",
+            "parser",
+            "output",
+            "baseline"
+          ],
+          [
+            "both",
+            "baseline",
+            "parser",
+            "output"
+          ],
+          [
+            "both",
+            "baseline",
+            "output",
+            "parser"
+          ],
+          [
+            "baseline",
+            "output",
+            "both",
+            "parser"
+          ],
+          [
+            "output",
+            "baseline",
+            "parser",
+            "both"
+          ],
+          [
+            "parser",
+            "both",
+            "baseline",
+            "output"
+          ],
+          [
+            "output",
+            "parser",
+            "baseline",
+            "both"
+          ]
+        ],
+        "results": {
+          "baseline": {
+            "seconds": [
+              0.7522011170000269,
+              0.7614800899999636,
+              0.7470589829999881,
+              0.8032800889999407,
+              0.8082558859999835,
+              0.7499163630000112,
+              0.8277446440000631,
+              0.7488686089999419,
+              0.8389715519999754,
+              0.8424875539999448,
+              0.7519529549999788,
+              0.7444304379999949,
+              0.7512542690000146,
+              0.787321980999991,
+              0.7480767839999771,
+              0.7487592229999791,
+              0.7490234980000423,
+              0.7462247649999654,
+              0.7537633570000253,
+              0.7570163819999607,
+              0.8268695620000699,
+              0.7664609830000018,
+              0.7457945659999723,
+              0.75982661799992
+            ],
+            "cpu_seconds": [
+              2.552672000000012,
+              2.5580369999999935,
+              2.5516279999999822,
+              2.587682999999977,
+              2.5749830000000156,
+              2.5519549999999835,
+              2.5971529999999525,
+              2.5566860000000116,
+              2.604462999999983,
+              2.564500000000047,
+              2.5615440000000174,
+              2.5500129999999643,
+              2.5590159999999837,
+              2.5801320000000256,
+              2.553015000000004,
+              2.555734999999995,
+              2.556540999999971,
+              2.5583259999999814,
+              2.559076999999938,
+              2.556646000000036,
+              2.6013200000000296,
+              2.5609319999999656,
+              2.552360000000002,
+              2.55802400000003
+            ],
+            "mean": 0.7715433444999888,
+            "stddev": 0.033337368870773515,
+            "median": 0.7529822370000261,
+            "cpu_mean": 2.565101708333329,
+            "paired_savings_mean": 0.0,
+            "paired_savings_median": 0.0,
+            "faster_rounds": 0
+          },
+          "output": {
+            "seconds": [
+              0.6980400290000262,
+              0.6986642159999974,
+              0.7013583409999455,
+              0.727990329000022,
+              0.7079812340000444,
+              0.697008932000017,
+              0.7051650029999337,
+              0.7267026220000616,
+              0.7339594149999584,
+              0.708308334000094,
+              0.7544446169999901,
+              0.693895461000011,
+              0.7012489600000436,
+              0.6983061480000288,
+              0.6990372589999652,
+              0.7002856909999764,
+              0.7015458500000022,
+              0.7023529360000111,
+              0.6952724420000322,
+              0.7212850519999847,
+              0.7773822169999676,
+              0.6975754750000078,
+              0.6985556529999712,
+              0.694396084999994
+            ],
+            "cpu_seconds": [
+              2.510427999999994,
+              2.5090220000000043,
+              2.5180739999999915,
+              2.5267139999999957,
+              2.514899999999969,
+              2.509860000000046,
+              2.5098300000000417,
+              2.512311000000013,
+              2.515992999999982,
+              2.5030290000000175,
+              2.542932000000036,
+              2.506068000000063,
+              2.5031509999999617,
+              2.50333699999997,
+              2.5116850000000657,
+              2.509576000000008,
+              2.5069479999999658,
+              2.507974000000047,
+              2.5105900000000165,
+              2.5128830000000004,
+              2.5445689999999868,
+              2.505896000000021,
+              2.5006860000000177,
+              2.494276999999947
+            ],
+            "mean": 0.7100317625416702,
+            "stddev": 0.02077614392723722,
+            "median": 0.7013036504999945,
+            "cpu_mean": 2.512113875000007,
+            "paired_savings_mean": 0.061511581958318594,
+            "paired_savings_median": 0.05172120399998903,
+            "faster_rounds": 23
+          },
+          "parser": {
+            "seconds": [
+              0.7515543600000001,
+              0.7499358950000214,
+              0.7466459029999442,
+              0.7931742600000007,
+              0.8499542079999856,
+              0.7611996519999593,
+              0.7551990470000192,
+              0.7760040529999515,
+              0.7814815100000487,
+              0.7598166630000378,
+              0.7525323400000161,
+              0.7501705479999146,
+              0.7503640779999614,
+              0.749653401000046,
+              0.7607523450000144,
+              0.7514963720000196,
+              0.7473012529999323,
+              0.754713541000001,
+              0.7526137009999729,
+              0.7881526130000793,
+              0.7610353659999873,
+              0.7443221050000375,
+              0.7545559170000615,
+              0.746913219000021
+            ],
+            "cpu_seconds": [
+              2.557605999999997,
+              2.552495999999987,
+              2.554196000000017,
+              2.5581470000000177,
+              2.606450999999968,
+              2.5609629999999957,
+              2.5624479999999927,
+              2.5677329999999667,
+              2.5641149999999584,
+              2.5585809999999842,
+              2.5570469999999865,
+              2.54851099999995,
+              2.5512410000000507,
+              2.5516289999999913,
+              2.554477999999939,
+              2.5535709999999945,
+              2.5571060000000116,
+              2.5534749999999775,
+              2.5521829999999994,
+              2.5499089999999747,
+              2.559398999999969,
+              2.5497059999999987,
+              2.5564440000000523,
+              2.5512679999999843
+            ],
+            "mean": 0.7620642645833348,
+            "stddev": 0.022929327530140122,
+            "median": 0.7535848090000172,
+            "cpu_mean": 2.55786262499999,
+            "paired_savings_mean": 0.009479079916654124,
+            "paired_savings_median": 0.000768474000039987,
+            "faster_rounds": 14
+          },
+          "both": {
+            "seconds": [
+              0.695637851000015,
+              0.6951203559999612,
+              0.6974302099999932,
+              0.7144423759999654,
+              0.7151234210000439,
+              0.7472975650000535,
+              0.6906547199999977,
+              0.7021693740000501,
+              0.7226393349999398,
+              0.7119416089999504,
+              0.7009139519999508,
+              0.7125472839999247,
+              0.6972579600000017,
+              0.6929140400000051,
+              0.7125387849999925,
+              0.6993387439999879,
+              0.694148250000012,
+              0.7336372390000179,
+              0.7133882480000011,
+              0.7015778679999585,
+              0.8117473500000187,
+              0.7016463190000195,
+              0.700390569000092,
+              0.7135239130000173
+            ],
+            "cpu_seconds": [
+              2.5019270000000216,
+              2.5025289999999787,
+              2.4996700000000054,
+              2.509052999999998,
+              2.5061479999999747,
+              2.510758000000024,
+              2.500107999999992,
+              2.5086120000000385,
+              2.5266590000000075,
+              2.5099939999999776,
+              2.497988999999981,
+              2.50869100000002,
+              2.500255999999972,
+              2.5050559999999837,
+              2.5070470000000054,
+              2.5170550000000507,
+              2.506925999999998,
+              2.5267250000000168,
+              2.502966000000006,
+              2.5114479999999766,
+              2.559096000000009,
+              2.4993089999999967,
+              2.5140759999999567,
+              2.5096399999999903
+            ],
+            "mean": 0.7115844724166654,
+            "stddev": 0.025233271211562602,
+            "median": 0.7019078465000348,
+            "cpu_mean": 2.5100724166666657,
+            "paired_savings_mean": 0.059958872083323435,
+            "paired_savings_median": 0.05251765600002045,
+            "faster_rounds": 24
+          }
+        }
+      }
+    ]
+  },
+  "write_syscall_check": {
+    "method": "Separate strace -f -c -e trace=write,writev on blog; not included in timings",
+    "baseline_write_calls": 33531,
+    "output_write_calls": 32,
+    "raw": "baseline\n% time     seconds  usecs/call     calls    errors syscall\n------ ----------- ----------- --------- --------- ----------------\n100.00    0.028631           0     33531           write\n------ ----------- ----------- --------- --------- ----------------\n100.00    0.028631           0     33531           total\n\noutput\n% time     seconds  usecs/call     calls    errors syscall\n------ ----------- ----------- --------- --------- ----------------\n100.00    0.000007           0        32           write\n------ ----------- ----------- --------- --------- ----------------\n100.00    0.000007           0        32           total\n\n"
+  }
+}

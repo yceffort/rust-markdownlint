@@ -1,5 +1,7 @@
 # 벤치마크 결과
 
+후속 실행: [musl 출력 버퍼링 계획·결과](optimization-plan-2026-09-07.md). 동일 세션의 기준 대비 개선을 별도로 기록했으며, 아래 세 도구 표는 출력 변경 전 측정이다.
+
 ## GitHub Codespaces 비교 (2026-09-07)
 
 후속 조사: [Thin LTO와 jemalloc A/B, 단계별 계측](remaining-gap-2026-09-07.md). 그 결과로 release 프로필에 Thin LTO 를, Linux CLI 에 jemalloc 을 기본 적용했고, 같은 Codespace 에서 같은 절차로 다시 측정했다. README 의 표는 아래 "기본 설정 반영 후" 의 musl 표다.

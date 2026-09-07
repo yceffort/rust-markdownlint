@@ -143,22 +143,40 @@ pub fn error_message(e: &LintError) -> String {
 
 /// `markdownlint-cli2-formatter-default` 한 줄.
 pub fn format_result(result: &LintResult) -> String {
-    let e = &result.error;
-    let column = match e.error_range {
-        Some((start, _)) if start > 0 => format!(":{start}"),
-        _ => String::new(),
-    };
-    let severity = match e.severity {
-        Severity::Error => "error",
-        Severity::Warning => "warning",
-    };
-    format!(
-        "{}:{}{column} {severity} {} {}",
-        result.file_name,
-        e.line_number,
-        e.rule_names.join("/"),
-        error_message(e)
-    )
+    FormattedResult(result).to_string()
+}
+
+/// Write directly to the formatter without allocating intermediate strings.
+pub(crate) struct FormattedResult<'a>(pub &'a LintResult);
+
+impl std::fmt::Display for FormattedResult<'_> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let result = self.0;
+        let e = &result.error;
+        write!(f, "{}:{}", result.file_name, e.line_number)?;
+        if let Some((start, _)) = e.error_range.filter(|(start, _)| *start > 0) {
+            write!(f, ":{start}")?;
+        }
+        let severity = match e.severity {
+            Severity::Error => "error",
+            Severity::Warning => "warning",
+        };
+        write!(f, " {severity} ")?;
+        for (index, name) in e.rule_names.iter().enumerate() {
+            if index > 0 {
+                f.write_str("/")?;
+            }
+            f.write_str(name)?;
+        }
+        write!(f, " {}", e.rule_description)?;
+        if let Some(detail) = e.error_detail.as_ref().filter(|s| !s.is_empty()) {
+            write!(f, " [{detail}]")?;
+        }
+        if let Some(context) = e.error_context.as_ref().filter(|s| !s.is_empty()) {
+            write!(f, " [Context: \"{context}\"]")?;
+        }
+        Ok(())
+    }
 }
 
 #[cfg(test)]
