@@ -20,6 +20,12 @@ use rust_markdownlint_cli::output::{
 };
 use similar::TextDiff;
 
+// Linux benchmarks show lower allocation overhead with jemalloc. Keep the
+// allocator in the CLI binary so library consumers choose their own allocator.
+#[cfg(target_os = "linux")]
+#[global_allocator]
+static ALLOCATOR: tikv_jemallocator::Jemalloc = tikv_jemallocator::Jemalloc;
+
 fn main() {
     let args: Vec<String> = std::env::args().skip(1).collect();
     let code = match run(&args) {

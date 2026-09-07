@@ -1,0 +1,115 @@
+{
+  "base_commit": "8bdd65342cd02a11f5e09d02186be51e0e4cc3c6",
+  "description": "Production worktree: Thin LTO and Linux-only jemalloc 0.6.1. Output checks only, no timing.",
+  "binaries": {
+    "baseline": {
+      "sha256": "8bef7bfa1f6a84726cc79ddccede8571ed6ab1c566de5ec9070a3e83bcb6c1e8",
+      "bytes": 10084328,
+      "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=003015b3f297e51715f3d50a29afc981ec37b500, not stripped"
+    },
+    "gnu": {
+      "sha256": "7e11b7caa5ab68d6eba3787b1d6d84789270f1fed94f390a757f27dea7a02c6a",
+      "bytes": 10514968,
+      "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=601db0df9a42de4a89e94b0d3d10991649e0d7ba, not stripped"
+    },
+    "musl": {
+      "sha256": "0d0e1d0846d47d18a16dc64f7d633d884d49fa700d3426428f36ead4d74c26bf",
+      "bytes": 10425216,
+      "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), static-pie linked, BuildID[sha1]=8e21fb3665020ba840cdaefb3609463b7e13966b, not stripped"
+    },
+    "gnu-no-server": {
+      "sha256": "3f2715074a5660c1ab0f49211e49db59929eb5d94e7f07299ca2b589fa85670b",
+      "bytes": 9010920,
+      "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=80ad2ca6c77d89e97df932a86f9f591dd6dbf8d3, not stripped"
+    }
+  },
+  "corpora": [
+    {
+      "name": "fixtures",
+      "variants": {
+        "baseline": {
+          "exit_code": 1,
+          "stdout_sha256": "5f544697f96462c8bbedd1d95d05abe959b9a8627b5d2257513da0e8ec2c8544",
+          "stderr_sha256": "dbdadfc45ea8ce2ff45b2bb43afa8b0aec1a7cbf52e40eb4ff2daf83acdbd5ef",
+          "matches_baseline": true
+        },
+        "gnu": {
+          "exit_code": 1,
+          "stdout_sha256": "5f544697f96462c8bbedd1d95d05abe959b9a8627b5d2257513da0e8ec2c8544",
+          "stderr_sha256": "dbdadfc45ea8ce2ff45b2bb43afa8b0aec1a7cbf52e40eb4ff2daf83acdbd5ef",
+          "matches_baseline": true
+        },
+        "musl": {
+          "exit_code": 1,
+          "stdout_sha256": "5f544697f96462c8bbedd1d95d05abe959b9a8627b5d2257513da0e8ec2c8544",
+          "stderr_sha256": "dbdadfc45ea8ce2ff45b2bb43afa8b0aec1a7cbf52e40eb4ff2daf83acdbd5ef",
+          "matches_baseline": true
+        },
+        "gnu-no-server": {
+          "exit_code": 1,
+          "stdout_sha256": "5f544697f96462c8bbedd1d95d05abe959b9a8627b5d2257513da0e8ec2c8544",
+          "stderr_sha256": "dbdadfc45ea8ce2ff45b2bb43afa8b0aec1a7cbf52e40eb4ff2daf83acdbd5ef",
+          "matches_baseline": true
+        }
+      }
+    },
+    {
+      "name": "blog",
+      "variants": {
+        "baseline": {
+          "exit_code": 1,
+          "stdout_sha256": "b4b34e306c157f072a438189f4c11ec09a8362773d82ec4ecc575baf10e38158",
+          "stderr_sha256": "10e13f0c787b68bf5f4868be33389d054c046eb8a93732a3864fcfa86f566521",
+          "matches_baseline": true
+        },
+        "gnu": {
+          "exit_code": 1,
+          "stdout_sha256": "b4b34e306c157f072a438189f4c11ec09a8362773d82ec4ecc575baf10e38158",
+          "stderr_sha256": "10e13f0c787b68bf5f4868be33389d054c046eb8a93732a3864fcfa86f566521",
+          "matches_baseline": true
+        },
+        "musl": {
+          "exit_code": 1,
+          "stdout_sha256": "b4b34e306c157f072a438189f4c11ec09a8362773d82ec4ecc575baf10e38158",
+          "stderr_sha256": "10e13f0c787b68bf5f4868be33389d054c046eb8a93732a3864fcfa86f566521",
+          "matches_baseline": true
+        },
+        "gnu-no-server": {
+          "exit_code": 1,
+          "stdout_sha256": "b4b34e306c157f072a438189f4c11ec09a8362773d82ec4ecc575baf10e38158",
+          "stderr_sha256": "10e13f0c787b68bf5f4868be33389d054c046eb8a93732a3864fcfa86f566521",
+          "matches_baseline": true
+        }
+      }
+    },
+    {
+      "name": "fixtures-10x",
+      "variants": {
+        "baseline": {
+          "exit_code": 1,
+          "stdout_sha256": "661f97fd834aa78098e3cfaa91fa97e46299d48fc6b50ca4b5953d4c9340441f",
+          "stderr_sha256": "bb861d709b4ade86cde417ec9350ae3918792db1f1403c0db1ba6864d1b69175",
+          "matches_baseline": true
+        },
+        "gnu": {
+          "exit_code": 1,
+          "stdout_sha256": "661f97fd834aa78098e3cfaa91fa97e46299d48fc6b50ca4b5953d4c9340441f",
+          "stderr_sha256": "bb861d709b4ade86cde417ec9350ae3918792db1f1403c0db1ba6864d1b69175",
+          "matches_baseline": true
+        },
+        "musl": {
+          "exit_code": 1,
+          "stdout_sha256": "661f97fd834aa78098e3cfaa91fa97e46299d48fc6b50ca4b5953d4c9340441f",
+          "stderr_sha256": "bb861d709b4ade86cde417ec9350ae3918792db1f1403c0db1ba6864d1b69175",
+          "matches_baseline": true
+        },
+        "gnu-no-server": {
+          "exit_code": 1,
+          "stdout_sha256": "661f97fd834aa78098e3cfaa91fa97e46299d48fc6b50ca4b5953d4c9340441f",
+          "stderr_sha256": "bb861d709b4ade86cde417ec9350ae3918792db1f1403c0db1ba6864d1b69175",
+          "matches_baseline": true
+        }
+      }
+    }
+  ]
+}

@@ -52,6 +52,13 @@ jobs:
           targets: ${{ matrix.target }}
       - if: runner.os == 'Linux'
         run: sudo apt-get install -y musl-tools
+      # 페이지 크기: 16K/64K 커널에서도 동작하도록. outline atomics: Ubuntu musl-gcc 의
+      # glibc 용 libgcc 가 __getauxval 을 참조해 musl 링크가 깨지므로 인라인 atomics 로 컴파일.
+      - name: aarch64 musl 용 jemalloc 빌드 설정
+        if: startsWith(matrix.target, 'aarch64-unknown-linux')
+        run: |
+          echo "JEMALLOC_SYS_WITH_LG_PAGE=16" >> "$GITHUB_ENV"
+          echo "CFLAGS_aarch64_unknown_linux_musl=-mno-outline-atomics" >> "$GITHUB_ENV"
       - run: cargo build --release -p rust-markdownlint-cli --target ${{ matrix.target }}
       - name: 아카이브와 sha256
         shell: bash

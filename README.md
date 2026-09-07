@@ -5,7 +5,7 @@
 A Rust implementation of [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) v0.22.1 (markdownlint v0.40.0). It is meant to be a drop-in replacement: the same command line, the same `.markdownlint-cli2.{jsonc,yaml}` and `.markdownlint.{jsonc,json,yaml,yml}` configuration files, the same inline comments (`<!-- markdownlint-disable -->` and friends), and byte-identical lint results, subject to the [differences below](#differences-from-markdownlint-cli2).
 
 - All 53 rules of markdownlint v0.40.0 are implemented. Linting the original `test/*.md` corpus (388 files) with the default configuration produces 3218 errors that match the original byte for byte. A real-world repository with 20966 markdown files (including `node_modules`) produces 264114 identical errors.
-- Files are linted in parallel. 3x to 12x faster than markdownlint-cli2 depending on the corpus and the machine (see [Performance](#performance)).
+- Files are linted in parallel. See [Performance](#performance) for measured comparisons with markdownlint-cli2 and rumdl.
 - A single static binary. No Node.js required.
 
 ## Installation
@@ -26,7 +26,7 @@ tar xzf rust-markdownlint-v0.1.3-aarch64-apple-darwin.tar.gz
 rust-markdownlint completions zsh > ~/.zsh/completions/_rust-markdownlint   # shell completion
 ```
 
-To build from source you need Rust 1.88 or later:
+To build from source you need Rust 1.88 or later. On Linux you also need a C compiler and `make`, because the CLI links jemalloc there:
 
 ```bash
 cargo install --git https://github.com/yceffort/rust-markdownlint rust-markdownlint-cli
@@ -63,14 +63,72 @@ steps:
 
 The action downloads the release binary (with `.sha256` verification), registers a problem matcher so every result becomes an annotation on the pull request, and fails when errors remain (warnings do not fail it, same as the exit code). `@v0` and `@v0.1` follow the newest release with that prefix; `@v0.1.3` pins one.
 
-## Usage
+## How to use
 
-The command line is the same as markdownlint-cli2. Replace the executable name in your existing commands and scripts.
+The examples below use the installed `rust-markdownlint` binary. If you installed the npm package locally, use `npx rust-markdownlint` instead. If you extracted a release archive, use the binary's path, such as `./rust-markdownlint`.
+
+### Check Markdown files
 
 ```bash
-rust-markdownlint "**/*.md" "#node_modules"
-rust-markdownlint --fix "docs/**/*.md"
-rust-markdownlint --diff "docs/**/*.md"       # print what --fix would change, without writing
+rust-markdownlint README.md                   # one file
+rust-markdownlint "docs/**/*.md"              # a directory, including subdirectories
+rust-markdownlint "**/*.md" "#node_modules"    # the project, excluding dependencies
+```
+
+Quote glob patterns so the CLI expands them consistently across shells. Diagnostics include the file, line, and rule ID. An exit code of 0 means there are no errors (warnings are allowed); 1 means lint errors remain; 2 means help was requested or an operational error occurred.
+
+### Preview and apply fixes
+
+```bash
+rust-markdownlint --diff "docs/**/*.md"    # preview fixes as a patch
+rust-markdownlint --fix "docs/**/*.md"     # write fixes to files
+```
+
+`--fix` applies the fixes supported by each rule and reports any remaining errors. Some issues need manual editing. `--diff` leaves files unchanged and exits with code 1 when changes are available.
+
+### Configure a project
+
+Create `.markdownlint-cli2.jsonc` in the project root:
+
+```jsonc
+{
+  "globs": ["**/*.md"],
+  "ignores": ["node_modules/**", "dist/**"],
+  "config": {
+    "MD013": false
+  }
+}
+```
+
+This checks Markdown files throughout the project, excludes dependencies and build output, and disables the line-length rule. Run from the project root to use the configured globs:
+
+```bash
+rust-markdownlint
+rust-markdownlint --fix
+```
+
+Existing `.markdownlint-cli2.*` and `.markdownlint.*` files are discovered automatically. To choose a configuration explicitly, use `--config .markdownlint-cli2.jsonc`. See [supported options](#supported-options) and [compatibility differences](#differences-from-markdownlint-cli2) for supported file formats and behavior.
+
+### Add npm scripts
+
+After `npm i -D @yceffort/rust-markdownlint`, add these entries to your `package.json` scripts. They use the project configuration above:
+
+```json
+{
+  "scripts": {
+    "lint:md": "rust-markdownlint",
+    "lint:md:fix": "rust-markdownlint --fix"
+  }
+}
+```
+
+Run `npm run lint:md` to check files or `npm run lint:md:fix` to apply fixes. For automation, see the [GitHub Action](#github-action) and [pre-commit hook](#pre-commit) examples.
+
+### Command reference
+
+The command line follows markdownlint-cli2. Replace the executable name in existing commands and scripts; additional Rust CLI options are marked below.
+
+```bash
 rust-markdownlint --config .markdownlint-cli2.jsonc "*.md"
 rust-markdownlint --config .markdownlint.yaml --configPointer /config "*.md"
 rust-markdownlint --no-globs "README.md"
@@ -146,19 +204,29 @@ Rule configuration supports all 53 rules of markdownlint v0.40.0 (MD001 through 
 
 ## Performance
 
-`hyperfine --warmup 3`, mean ± σ in milliseconds, ratio is markdownlint-cli2 / rust-markdownlint. The results of both tools are identical (no diff) in every row.
+Release builds enable Thin LTO, and the Linux CLI uses jemalloc. The table below measures a build with these defaults; the [Codespaces A/B comparison](bench/remaining-gap-2026-09-07.md) that motivated them is recorded separately. Performance on macOS and Windows has not been measured.
 
-| Corpus | Machine | markdownlint-cli2 | rust-markdownlint | Ratio |
-|--------|---------|-------------------|-------------------|-------|
-| markdownlint `test/*.md`, 388 files, all rules | Apple M-series, 10 cores | 366.2 ± 2.8 | 55.1 ± 1.1 | 6.6x |
-| markdownlint `test/*.md`, 388 files, all rules | GitHub Actions ubuntu-latest | 1267.3 ± 90.4 | 178.4 ± 1.3 | 7.1x |
-| Same corpus copied 10 times, 3880 files | Apple M-series, 10 cores | 2956.7 ± 199.6 | 682.6 ± 10.0 | 4.3x |
-| [yceffort/blog](https://github.com/yceffort/blog), `apps/blog/posts/**/*.md`, 441 posts (7.2 MB), project config | Apple M-series, 10 cores | 1411.2 ± 17.5 | 105.0 ± 2.3 | 13.4x |
-| The same repository, `**/*.md` including `node_modules`, 20966 files (single run) | Apple M-series, 10 cores | 48306 | 14419 | 3.4x |
+Measured on **GitHub Codespaces**, 2026-09-07: 4 vCPUs (AMD EPYC 7763), 16 GB RAM, Ubuntu 24.04 x86_64. Rust 1.98.1, Node.js 24.14.0. The Rust binary is the static `x86_64-unknown-linux-musl` build that Releases and the npm `linux-x64` package ship, built with `cargo build --release --locked -p rust-markdownlint-cli --target x86_64-unknown-linux-musl` from [`8bdd653`](https://github.com/yceffort/rust-markdownlint/commit/8bdd65342cd02a11f5e09d02186be51e0e4cc3c6) plus the Thin LTO and jemalloc change. rumdl uses its official Linux GNU release binary.
 
-The 388-file corpus is small enough that process startup dominates both tools. Parallel linting alone made the Rust binary 2.8x faster than its own sequential version on that corpus (159.8 ms to 57.5 ms) and 2.9x on the 10x corpus (1516 ms to 524 ms). Per-rule results and the parallelization comparison are in [bench/RESULTS.md](bench/RESULTS.md).
+**Mean ± sample standard deviation, in milliseconds; lower is better.** Each tool ran 24 times per corpus after 3 warm-ups, cycling through all six tool orders four times. Timings include process startup, file discovery, linting, diagnostic sorting, and default output formatting; stdout/stderr were redirected to `/dev/null`.
+
+| Corpus | rust-markdownlint | rumdl 0.2.67 | markdownlint-cli2 0.23.2 |
+|---|---:|---:|---:|
+| Blog posts, 445 files (7.50 MB) | 434.4 ± 16.1 | 380.1 ± 5.3 | 4,792.9 ± 104.4 |
+| markdownlint fixtures, 388 files (0.25 MB) | 83.8 ± 2.4 | 89.8 ± 1.2 | 1,192.4 ± 23.6 |
+| Fixtures copied 10 times, 3,880 files (2.45 MB) | 762.9 ± 25.9 | 748.3 ± 14.6 | 6,501.8 ± 157.1 |
+
+A glibc build of the same source (what `cargo install` produces on Linux) measured 416.7 ± 17.7 ms on the blog corpus and 726.0 ± 23.1 ms on the 10x corpus in a separate session. The musl measurements were about 4% to 5% higher on the larger corpora; alternating both builds in one session and profiling would be needed to isolate the cause.
+
+The corpora contain only Markdown files copied into isolated directories, with `noBanner: true` and each tool's default rules. Project rule configurations are excluded; inline directives remain in the source. rumdl runs with `--no-cache --no-config`, and all tools use a warm filesystem cache. The [blog corpus is pinned to a commit](https://github.com/yceffort/blog/tree/4c7cade067a10eb565a8e608081532fa055218c3/apps/blog/posts).
+
+Rust and markdownlint-cli2 0.23.2 produced byte-identical diagnostics on these corpora; cli2's progress output differs. A separate check against the compatibility target, cli2 0.22.1, matched exit codes, stdout, and stderr. rumdl has different rules and diagnostics: on the blog corpus it reported 17,527 diagnostics versus 16,764 for Rust and cli2. Fixture inputs also exercise inline configuration that rumdl interprets differently.
+
+[Methodology, reproduction commands, diagnostic counts, and earlier measurements](bench/RESULTS.md#github-codespaces-비교-2026-09-07) are recorded alongside the raw samples and environment for the [musl](bench/results/codespaces-2026-09-07-musl.json) and [glibc](bench/results/codespaces-2026-09-07-gnu.json) builds.
 
 ## Development
+
+Linux CLI builds compile jemalloc and require a C compiler and `make`. For Linux musl release targets, install `musl-tools` as well (Debian/Ubuntu). jemalloc fixes the page size at build time, so the aarch64 release workflow sets `JEMALLOC_SYS_WITH_LG_PAGE=16` to keep the binary working on 16K and 64K page kernels, and compiles jemalloc with `-mno-outline-atomics` because the Ubuntu musl-gcc wrapper cannot link the outline atomics helpers from the glibc libgcc. The allocator is configured in the CLI binary; library consumers retain control of their allocator.
 
 ```bash
 cargo fmt --all --check
@@ -171,6 +239,8 @@ To compare one rule against the original markdownlint expectations, filter the s
 The command line behavior is checked against the markdownlint-cli2 test scenarios and their snapshots: `cargo test -p rust-markdownlint-cli --test cli2_scenarios` (one scenario: `CLI2_SCENARIO=<name>`). `scripts/compare-fix.sh` runs `--fix` with both tools on the 388 fixtures and diffs the results. Scenario list, exclusions, and results are in [docs/cli2-scenarios.md](docs/cli2-scenarios.md).
 
 ### Benchmarks
+
+For the three-tool Codespaces comparison, [bench/compare-tools.py](bench/compare-tools.py) prepares isolated corpora, checks outputs, alternates tool order, and saves individual timings as JSON. See [setup and methodology](bench/RESULTS.md#github-codespaces-비교-2026-09-07).
 
 `bench/run.sh` runs both tools on the same corpus, diffs the results, and times them with `hyperfine` (needs `node` and `hyperfine`).
 
@@ -190,4 +260,4 @@ The same tag also publishes six npm packages: `@yceffort/rust-markdownlint-{darw
 
 ## License
 
-MIT, see [LICENSE](LICENSE). The binary contains a modified copy of [markdown-rs](https://github.com/wooorm/markdown-rs) (Titus Wormer, MIT), and the rules and command line are ported from [markdownlint](https://github.com/DavidAnson/markdownlint) and [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) (David Anson, MIT). Their notices are in [THIRD-PARTY-LICENSES.md](THIRD-PARTY-LICENSES.md), which ships with every release archive and npm package.
+MIT, see [LICENSE](LICENSE). The binary contains a modified copy of [markdown-rs](https://github.com/wooorm/markdown-rs) (Titus Wormer, MIT), and the rules and command line are ported from [markdownlint](https://github.com/DavidAnson/markdownlint) and [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) (David Anson, MIT). Linux binaries also statically link [jemalloc](https://github.com/jemalloc/jemalloc) (BSD-2-Clause) through tikv-jemallocator (MIT OR Apache-2.0). Their notices are in [THIRD-PARTY-LICENSES.md](THIRD-PARTY-LICENSES.md), which ships with every release archive and npm package.

@@ -1,0 +1,477 @@
+{
+  "date_utc": "2026-09-07T01:44:09.512085+00:00",
+  "source_commit": "8bdd65342cd02a11f5e09d02186be51e0e4cc3c6",
+  "blog_commit": "4c7cade067a10eb565a8e608081532fa055218c3",
+  "environment": {
+    "platform": "Linux-6.8.0-1052-azure-x86_64-with-glibc2.39",
+    "os_release": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.4 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+    "lscpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           48 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  4\nOn-line CPU(s) list:                     0-3\nVendor ID:                               AuthenticAMD\nModel name:                              AMD EPYC 7763 64-Core Processor\nCPU family:                              25\nModel:                                   1\nThread(s) per core:                      2\nCore(s) per socket:                      2\nSocket(s):                               1\nStepping:                                1\nBogoMIPS:                                4890.85\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves user_shstk clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm\nVirtualization:                          AMD-V\nHypervisor vendor:                       Microsoft\nVirtualization type:                     full\nL1d cache:                               64 KiB (2 instances)\nL1i cache:                               64 KiB (2 instances)\nL2 cache:                                1 MiB (2 instances)\nL3 cache:                                32 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-3\nVulnerability Gather data sampling:      Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Vulnerable: Safe RET, no microcode\nVulnerability Spec store bypass:         Vulnerable\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Vulnerable: Clear CPU buffers attempted, no microcode\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected",
+    "memory": "total        used        free      shared  buff/cache   available\nMem:     16772870144  1425002496   412319744    69304320 15368437760 15347867648\nSwap:              0           0           0",
+    "logical_cpus": 4,
+    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+    "node": "v24.14.0",
+    "rumdl": "rumdl 0.2.67",
+    "cli2": "0.23.2",
+    "compatible_cli2": "0.22.1",
+    "rayon_num_threads": null
+  },
+  "method": {
+    "runs": 20,
+    "warmup": 3,
+    "timing": "perf_counter wall seconds around subprocess.run with blocking wait; includes process startup",
+    "order": "Cycle through all six permutations of the three tools, one sample each per round",
+    "output": "Default formatters run; stdout/stderr redirected to /dev/null",
+    "cache": "Warm filesystem cache; rumdl persistent cache disabled with --no-cache",
+    "configuration": "Markdown files only, with noBanner:true; default rule sets and inline directives"
+  },
+  "corpora": [
+    {
+      "name": "fixtures",
+      "files": 388,
+      "bytes": 245495,
+      "sha256": "7bf1b93077fdc14434558d1e18013fd1039e8ab47a98376ee603ac95d33f71fa",
+      "commands": {
+        "rust": [
+          "/workspaces/rust-markdownlint/target/release/rust-markdownlint",
+          "**/*.md"
+        ],
+        "rumdl": [
+          "/workspaces/markdownlint-performance/bin/rumdl",
+          "check",
+          "--no-cache",
+          "--no-config",
+          "."
+        ],
+        "cli2": [
+          "/workspaces/markdownlint-performance/cli2-latest/node_modules/markdownlint-cli2/markdownlint-cli2-bin.mjs",
+          "**/*.md"
+        ]
+      },
+      "validation": {
+        "rust": {
+          "exit_code": 1,
+          "stdout_sha256": "5f544697f96462c8bbedd1d95d05abe959b9a8627b5d2257513da0e8ec2c8544",
+          "stderr_sha256": "dbdadfc45ea8ce2ff45b2bb43afa8b0aec1a7cbf52e40eb4ff2daf83acdbd5ef",
+          "stdout_bytes": 61,
+          "stderr_bytes": 410496,
+          "stderr_lines": 3218
+        },
+        "rumdl": {
+          "exit_code": 1,
+          "stdout_sha256": "09c432c0a6aecd5b5588646fc80e4c1d0d61a14a5326ae5f83eb30b9923c41ad",
+          "stderr_sha256": "b0953266bba90a44f0de1fcceb24e017a8dae33688d6ebf22f0f25f13a169df1",
+          "stdout_bytes": 234160,
+          "stderr_bytes": 22695,
+          "stderr_lines": 453,
+          "diagnostics": 2602
+        },
+        "cli2": {
+          "exit_code": 1,
+          "stdout_sha256": "eec20992d7c51a84fe8095bd39f6a0a2224fe7cd328a35ebdbfc806b544a194a",
+          "stderr_sha256": "dbdadfc45ea8ce2ff45b2bb43afa8b0aec1a7cbf52e40eb4ff2daf83acdbd5ef",
+          "stdout_bytes": 70,
+          "stderr_bytes": 410496,
+          "stderr_lines": 3218
+        },
+        "compatible_cli2": {
+          "exit_code": 1,
+          "stdout_sha256": "5f544697f96462c8bbedd1d95d05abe959b9a8627b5d2257513da0e8ec2c8544",
+          "stderr_sha256": "dbdadfc45ea8ce2ff45b2bb43afa8b0aec1a7cbf52e40eb4ff2daf83acdbd5ef",
+          "stdout_bytes": 61,
+          "stderr_bytes": 410496,
+          "stderr_lines": 3218
+        },
+        "rust_matches_cli2": false,
+        "rust_matches_compatible_cli2": true
+      },
+      "results": {
+        "rust": {
+          "seconds": [
+            0.09338258100024177,
+            0.08909312900004807,
+            0.09204290500019852,
+            0.08837191100019481,
+            0.1234065170001486,
+            0.12622481400012475,
+            0.08731718600029126,
+            0.11655234599993491,
+            0.10448584400000982,
+            0.08946085499974288,
+            0.08754829000008613,
+            0.10753258100021412,
+            0.08897656399994958,
+            0.10830052099981913,
+            0.10013029299989284,
+            0.08796737200009375,
+            0.08974723200026347,
+            0.08814954799981933,
+            0.08873725499961438,
+            0.08811820000028092
+          ],
+          "mean": 0.09727729720004845,
+          "stddev": 0.012722197147979987,
+          "median": 0.08960404350000317,
+          "minimum": 0.08731718600029126,
+          "maximum": 0.12622481400012475
+        },
+        "rumdl": {
+          "seconds": [
+            0.0894817969997348,
+            0.0888071829999717,
+            0.08848013599981641,
+            0.08944618799978343,
+            0.09077898100031234,
+            0.08910174499987988,
+            0.0898513060001278,
+            0.09385743499979071,
+            0.10692831699998351,
+            0.12500469799988423,
+            0.08985508799969466,
+            0.11040700600005948,
+            0.09136933300032979,
+            0.09021401800009698,
+            0.12764887200000885,
+            0.09167766099972141,
+            0.09233009799982028,
+            0.08903544900022098,
+            0.0960199150003973,
+            0.09314535599969531
+          ],
+          "mean": 0.0961720290999665,
+          "stddev": 0.011836103997661251,
+          "median": 0.09107415700032107,
+          "minimum": 0.08848013599981641,
+          "maximum": 0.12764887200000885
+        },
+        "cli2": {
+          "seconds": [
+            1.2522169089997988,
+            1.3116850820001673,
+            1.2870627789998252,
+            1.2649956239997664,
+            1.22986853600014,
+            1.1881608759999835,
+            1.2343909420001182,
+            1.1925052579999829,
+            1.2802355379999426,
+            1.2380819500003781,
+            1.2389389290001418,
+            1.2245008009999765,
+            1.2416720400001395,
+            1.2195919959999628,
+            1.2401903899999525,
+            1.347971373999826,
+            1.2583486500002437,
+            1.2380342379997273,
+            1.2397960879998209,
+            1.2196915589997843
+          ],
+          "mean": 1.2473969779499838,
+          "stddev": 0.037560207226880644,
+          "median": 1.2393675084999813,
+          "minimum": 1.1881608759999835,
+          "maximum": 1.347971373999826
+        }
+      }
+    },
+    {
+      "name": "blog",
+      "files": 445,
+      "bytes": 7504540,
+      "sha256": "f677658550fbd86da84e92ad732c7cdad492645bb718398965a95333d44de2c2",
+      "commands": {
+        "rust": [
+          "/workspaces/rust-markdownlint/target/release/rust-markdownlint",
+          "**/*.md"
+        ],
+        "rumdl": [
+          "/workspaces/markdownlint-performance/bin/rumdl",
+          "check",
+          "--no-cache",
+          "--no-config",
+          "."
+        ],
+        "cli2": [
+          "/workspaces/markdownlint-performance/cli2-latest/node_modules/markdownlint-cli2/markdownlint-cli2-bin.mjs",
+          "**/*.md"
+        ]
+      },
+      "validation": {
+        "rust": {
+          "exit_code": 1,
+          "stdout_sha256": "b4b34e306c157f072a438189f4c11ec09a8362773d82ec4ecc575baf10e38158",
+          "stderr_sha256": "10e13f0c787b68bf5f4868be33389d054c046eb8a93732a3864fcfa86f566521",
+          "stdout_bytes": 62,
+          "stderr_bytes": 1856949,
+          "stderr_lines": 16764
+        },
+        "rumdl": {
+          "exit_code": 1,
+          "stdout_sha256": "e2f0bfe54c18c73187f26478f64ad73dd0bd710d7190128c382014209f774d1d",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 1679414,
+          "stderr_bytes": 0,
+          "stderr_lines": 0,
+          "diagnostics": 17527
+        },
+        "cli2": {
+          "exit_code": 1,
+          "stdout_sha256": "e14a13dc3e108f6ff4cde80d87751ffd39bd386ac92f0128bd0416e610b887de",
+          "stderr_sha256": "10e13f0c787b68bf5f4868be33389d054c046eb8a93732a3864fcfa86f566521",
+          "stdout_bytes": 71,
+          "stderr_bytes": 1856949,
+          "stderr_lines": 16764
+        },
+        "compatible_cli2": {
+          "exit_code": 1,
+          "stdout_sha256": "b4b34e306c157f072a438189f4c11ec09a8362773d82ec4ecc575baf10e38158",
+          "stderr_sha256": "10e13f0c787b68bf5f4868be33389d054c046eb8a93732a3864fcfa86f566521",
+          "stdout_bytes": 62,
+          "stderr_bytes": 1856949,
+          "stderr_lines": 16764
+        },
+        "rust_matches_cli2": false,
+        "rust_matches_compatible_cli2": true
+      },
+      "results": {
+        "rust": {
+          "seconds": [
+            0.4562885339996683,
+            0.48023211800000354,
+            0.49963345200012554,
+            0.4769644809998681,
+            0.4441870320001726,
+            0.43145532899961836,
+            0.43622088399979475,
+            0.4469321599999603,
+            0.5023092030000953,
+            0.46840100400004303,
+            0.4373334369997792,
+            0.44255255699999907,
+            0.43852246000005835,
+            0.43005047199994806,
+            0.45196711699964,
+            0.43800787999998647,
+            0.44073149199994077,
+            0.4353936040001827,
+            0.44163071000002674,
+            0.4400226500001736
+          ],
+          "mean": 0.45194182879995426,
+          "stddev": 0.021863987546964937,
+          "median": 0.4420916335000129,
+          "minimum": 0.43005047199994806,
+          "maximum": 0.5023092030000953
+        },
+        "rumdl": {
+          "seconds": [
+            0.378333960999953,
+            0.4180948510002054,
+            0.4237584739998965,
+            0.3788723499997104,
+            0.38269429399997534,
+            0.3809864469999411,
+            0.3786768919999304,
+            0.37980091600002197,
+            0.3856093750000582,
+            0.37841699299997344,
+            0.3750821889998406,
+            0.3974870419997387,
+            0.37480549200017776,
+            0.3762519100000645,
+            0.378692226000112,
+            0.3830860040002335,
+            0.3749301180000657,
+            0.3773016750001261,
+            0.37924876500028404,
+            0.3772267770000326
+          ],
+          "mean": 0.38396783755001707,
+          "stddev": 0.013616309723510241,
+          "median": 0.3787822879999112,
+          "minimum": 0.37480549200017776,
+          "maximum": 0.4237584739998965
+        },
+        "cli2": {
+          "seconds": [
+            4.931772325000111,
+            5.198932021000019,
+            4.948038387999986,
+            4.915661420000106,
+            4.724292637999952,
+            4.7074593090001144,
+            4.723298211999918,
+            4.642879324000205,
+            4.677421655000217,
+            4.6630373119996875,
+            4.705512207000083,
+            4.791653403000055,
+            4.639712311000039,
+            4.709427697000137,
+            4.758190917999855,
+            4.732983324000088,
+            4.683057225999619,
+            4.686219173000154,
+            4.694589153999914,
+            5.082750395999938
+          ],
+          "mean": 4.78084442065001,
+          "stddev": 0.1538844133784182,
+          "median": 4.716362954500028,
+          "minimum": 4.639712311000039,
+          "maximum": 5.198932021000019
+        }
+      }
+    },
+    {
+      "name": "fixtures-10x",
+      "files": 3880,
+      "bytes": 2454950,
+      "sha256": "e3b00696cf5d2c86dd3d93aed82f6986b70b1913f512c243ea9b6579694c6b7b",
+      "commands": {
+        "rust": [
+          "/workspaces/rust-markdownlint/target/release/rust-markdownlint",
+          "**/*.md"
+        ],
+        "rumdl": [
+          "/workspaces/markdownlint-performance/bin/rumdl",
+          "check",
+          "--no-cache",
+          "--no-config",
+          "."
+        ],
+        "cli2": [
+          "/workspaces/markdownlint-performance/cli2-latest/node_modules/markdownlint-cli2/markdownlint-cli2-bin.mjs",
+          "**/*.md"
+        ]
+      },
+      "validation": {
+        "rust": {
+          "exit_code": 1,
+          "stdout_sha256": "661f97fd834aa78098e3cfaa91fa97e46299d48fc6b50ca4b5953d4c9340441f",
+          "stderr_sha256": "bb861d709b4ade86cde417ec9350ae3918792db1f1403c0db1ba6864d1b69175",
+          "stdout_bytes": 63,
+          "stderr_bytes": 4172538,
+          "stderr_lines": 32180
+        },
+        "rumdl": {
+          "exit_code": 1,
+          "stdout_sha256": "4ff1cc381ce6acf99954275440dce65f3d3b321358b08b76459571847d31cb91",
+          "stderr_sha256": "8f1aa7d86d2d9f867a7ff2fc843e035bc2ed61a84735ae7357198c163fcf66bc",
+          "stdout_bytes": 2395240,
+          "stderr_bytes": 227643,
+          "stderr_lines": 4530,
+          "diagnostics": 26020
+        },
+        "cli2": {
+          "exit_code": 1,
+          "stdout_sha256": "9a52014a2721019f8a608388d206ee9291a0993436d98a5fdf98d46ab0f2f996",
+          "stderr_sha256": "bb861d709b4ade86cde417ec9350ae3918792db1f1403c0db1ba6864d1b69175",
+          "stdout_bytes": 73,
+          "stderr_bytes": 4172538,
+          "stderr_lines": 32180
+        },
+        "compatible_cli2": {
+          "exit_code": 1,
+          "stdout_sha256": "661f97fd834aa78098e3cfaa91fa97e46299d48fc6b50ca4b5953d4c9340441f",
+          "stderr_sha256": "bb861d709b4ade86cde417ec9350ae3918792db1f1403c0db1ba6864d1b69175",
+          "stdout_bytes": 63,
+          "stderr_bytes": 4172538,
+          "stderr_lines": 32180
+        },
+        "rust_matches_cli2": false,
+        "rust_matches_compatible_cli2": true
+      },
+      "results": {
+        "rust": {
+          "seconds": [
+            0.8020160239998404,
+            0.7952248689998669,
+            0.7874522529996284,
+            0.8169892199998685,
+            0.7870158579999043,
+            0.8760412790002192,
+            0.8625455999999758,
+            0.7912192479998339,
+            0.7958950619999996,
+            0.7880518590000065,
+            0.7895041090000632,
+            0.8135266200001752,
+            0.8564664959999391,
+            0.785489145000156,
+            0.7848623790000602,
+            0.8037434840002788,
+            0.7978389390000302,
+            0.7887082010001905,
+            0.782378824999796,
+            0.7889176419998876
+          ],
+          "mean": 0.804694355599986,
+          "stddev": 0.027751298213418565,
+          "median": 0.7932220584998504,
+          "minimum": 0.782378824999796,
+          "maximum": 0.8760412790002192
+        },
+        "rumdl": {
+          "seconds": [
+            0.7611085889998321,
+            0.8066178879998915,
+            0.7464661330000126,
+            0.7587766679998822,
+            0.754191826999886,
+            0.833558499999981,
+            0.7705516589999206,
+            0.7392289939998591,
+            0.7440518399998837,
+            0.7406511620001766,
+            0.7541222680001738,
+            0.7637603940002009,
+            0.7432338160001564,
+            0.7424108079999314,
+            0.7387943499998073,
+            0.7390546059996268,
+            0.7613771930000439,
+            0.7387276859999474,
+            0.743980737000129,
+            0.7377970319998894
+          ],
+          "mean": 0.7559231074999616,
+          "stddev": 0.02446731163064224,
+          "median": 0.7452589864999482,
+          "minimum": 0.7377970319998894,
+          "maximum": 0.833558499999981
+        },
+        "cli2": {
+          "seconds": [
+            6.412011635999988,
+            6.485440408999693,
+            6.609703900999648,
+            6.547309186000348,
+            6.572935486000006,
+            6.572753473000375,
+            6.392786137999792,
+            6.360938954000176,
+            6.448029113999837,
+            6.776555675000054,
+            6.535952146999989,
+            6.341412300999764,
+            6.429144581000401,
+            6.572682273000282,
+            6.480711768999754,
+            6.34848331000012,
+            6.383357789999991,
+            6.452051107999978,
+            6.484646880999662,
+            6.408545109999977
+          ],
+          "mean": 6.480772562099991,
+          "stddev": 0.10761578432093678,
+          "median": 6.466381438499866,
+          "minimum": 6.341412300999764,
+          "maximum": 6.776555675000054
+        }
+      }
+    }
+  ]
+}

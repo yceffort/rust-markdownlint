@@ -26,3 +26,6 @@ npm/platforms/*/rust-markdownlint*
 
 # Release binary downloaded by the pre-commit hook (scripts/pre-commit-hook.sh)
 .bin/
+
+# Python bytecode from bench/compare-tools.py
+__pycache__/

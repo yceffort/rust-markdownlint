@@ -19,7 +19,7 @@ tar xzf rust-markdownlint-v0.1.3-aarch64-apple-darwin.tar.gz
 ./rust-markdownlint --help
 ```
 
-To build from source you need Rust 1.88 or later:
+To build from source you need Rust 1.88 or later. On Linux you also need a C compiler and `make`, because the CLI links jemalloc there:
 
 ```bash
 cargo install --git https://github.com/yceffort/rust-markdownlint rust-markdownlint-cli
