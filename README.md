@@ -226,7 +226,7 @@ Rust and markdownlint-cli2 0.23.2 produced byte-identical diagnostics on these c
 
 ## Development
 
-Linux CLI builds compile jemalloc and require a C compiler and `make`. For Linux musl release targets, install `musl-tools` as well (Debian/Ubuntu). jemalloc fixes the page size at build time, so the aarch64 release workflow sets `JEMALLOC_SYS_WITH_LG_PAGE=16` to keep the binary working on 16K and 64K page kernels. The allocator is configured in the CLI binary; library consumers retain control of their allocator.
+Linux CLI builds compile jemalloc and require a C compiler and `make`. For Linux musl release targets, install `musl-tools` as well (Debian/Ubuntu). jemalloc fixes the page size at build time, so the aarch64 release workflow sets `JEMALLOC_SYS_WITH_LG_PAGE=16` to keep the binary working on 16K and 64K page kernels, and compiles jemalloc with `-mno-outline-atomics` because the Ubuntu musl-gcc wrapper cannot link the outline atomics helpers from the glibc libgcc. The allocator is configured in the CLI binary; library consumers retain control of their allocator.
 
 ```bash
 cargo fmt --all --check
