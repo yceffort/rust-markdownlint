@@ -204,7 +204,7 @@ Rule configuration supports all 53 rules of markdownlint v0.40.0 (MD001 through 
 
 ## Performance
 
-Release builds enable Thin LTO, and the Linux CLI uses jemalloc. The table below measures a build with these defaults; the [Codespaces A/B comparison](bench/remaining-gap-2026-09-07.md) that motivated them is recorded separately. Performance on macOS and Windows has not been measured.
+Release builds enable Thin LTO, and the Linux CLI uses jemalloc. The table below measures a build with these defaults; the [Codespaces A/B comparison](bench/remaining-gap-2026-09-07.md) that motivated them is recorded separately. Performance on macOS and Windows has not been measured. A [subsequent musl A/B experiment](bench/optimization-plan-2026-09-07.md) measured a further 6.1% to 8.0% reduction from buffered diagnostic output; the three-tool table below predates that change.
 
 Measured on **GitHub Codespaces**, 2026-09-07: 4 vCPUs (AMD EPYC 7763), 16 GB RAM, Ubuntu 24.04 x86_64. Rust 1.98.1, Node.js 24.14.0. The Rust binary is the static `x86_64-unknown-linux-musl` build that Releases and the npm `linux-x64` package ship, built with `cargo build --release --locked -p rust-markdownlint-cli --target x86_64-unknown-linux-musl` from [`8bdd653`](https://github.com/yceffort/rust-markdownlint/commit/8bdd65342cd02a11f5e09d02186be51e0e4cc3c6) plus the Thin LTO and jemalloc change. rumdl uses its official Linux GNU release binary.
 

@@ -5,7 +5,7 @@
 //! `Unable to import module` 오류다.
 
 use std::collections::BTreeMap;
-use std::io::IsTerminal;
+use std::io::{BufWriter, IsTerminal, Write};
 use std::path::Path;
 
 use anyhow::{Result, bail};
@@ -15,7 +15,7 @@ use rust_markdownlint::error::Severity;
 use serde_json::{Map, json};
 use sha2::{Digest, Sha256};
 
-use crate::output::{LintResult, format_result};
+use crate::output::{FormattedResult, LintResult};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Formatter {
@@ -147,9 +147,20 @@ fn stringify(value: &ConfigValue, indent: &[u8]) -> String {
 }
 
 fn default(results: &[LintResult]) {
-    for result in results {
-        eprintln!("{}", format_result(result));
+    if results.is_empty() {
+        return;
     }
+    let stderr = std::io::stderr();
+    let mut out = BufWriter::with_capacity(64 * 1024, stderr.lock());
+    // Preserve eprintln!'s failure behavior and flush before main calls exit.
+    write_default(&mut out, results).expect("failed printing to stderr");
+}
+
+fn write_default(out: &mut impl Write, results: &[LintResult]) -> std::io::Result<()> {
+    for result in results {
+        writeln!(out, "{}", FormattedResult(result))?;
+    }
+    out.flush()
 }
 
 /// 원본 `createResults` 항목을 markdownlint `LintError` 의 키 순서 그대로.
@@ -645,6 +656,50 @@ fn template(results: &[LintResult], params: &ConfigValue) {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn default_output_flushes_buffer_tail_and_reports_flush_failure() {
+        use rust_markdownlint::error::LintError;
+
+        let results = vec![LintResult {
+            file_name: "문서.md".into(),
+            error: LintError {
+                line_number: 3,
+                rule_names: &["MD009", "no-trailing-spaces"],
+                rule_description: "Trailing spaces",
+                rule_information: String::new(),
+                error_detail: Some("Expected: 0; Actual: 1".into()),
+                error_context: Some("끝 ".into()),
+                error_range: Some((2, 1)),
+                fix_info: None,
+                severity: Severity::Warning,
+            },
+        }];
+        let expected = "문서.md:3:2 warning MD009/no-trailing-spaces Trailing spaces [Expected: 0; Actual: 1] [Context: \"끝 \"]\n";
+        // Larger than the buffer, with a final partial buffer that needs flushing.
+        let mut bytes = Vec::new();
+        let mut buffered = BufWriter::with_capacity(31, &mut bytes);
+        write_default(&mut buffered, &results).unwrap();
+        assert!(buffered.buffer().is_empty());
+        drop(buffered);
+        assert_eq!(bytes, expected.as_bytes());
+
+        struct FailOnFlush;
+        impl Write for FailOnFlush {
+            fn write(&mut self, bytes: &[u8]) -> std::io::Result<usize> {
+                Ok(bytes.len())
+            }
+            fn flush(&mut self) -> std::io::Result<()> {
+                Err(std::io::ErrorKind::BrokenPipe.into())
+            }
+        }
+        assert_eq!(
+            write_default(&mut FailOnFlush, &results)
+                .unwrap_err()
+                .kind(),
+            std::io::ErrorKind::BrokenPipe
+        );
+    }
 
     #[test]
     fn resolves_package_and_directory_names() {
