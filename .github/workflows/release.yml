@@ -52,6 +52,9 @@ jobs:
           targets: ${{ matrix.target }}
       - if: runner.os == 'Linux'
         run: sudo apt-get install -y musl-tools
+      - name: aarch64 용 jemalloc 페이지 크기 (16K/64K 커널에서도 동작하도록)
+        if: startsWith(matrix.target, 'aarch64-unknown-linux')
+        run: echo "JEMALLOC_SYS_WITH_LG_PAGE=16" >> "$GITHUB_ENV"
       - run: cargo build --release -p rust-markdownlint-cli --target ${{ matrix.target }}
       - name: 아카이브와 sha256
         shell: bash
