@@ -109,6 +109,8 @@ rust-markdownlint --fix
 
 Existing `.markdownlint-cli2.*` and `.markdownlint.*` files are discovered automatically. To choose a configuration explicitly, use `--config .markdownlint-cli2.jsonc`. See [supported options](#supported-options) and [compatibility differences](#differences-from-markdownlint-cli2) for supported file formats and behavior.
 
+Like markdownlint-cli2, `.markdownlintignore` is not read (a warning is printed when one is present). It uses gitignore syntax, so point the `gitignore` option at it with `"gitignore": ".markdownlintignore"`, or move its entries to `ignores`.
+
 ### Add npm scripts
 
 After `npm i -D @yceffort/rust-markdownlint`, add these entries to your `package.json` scripts. They use the project configuration above:

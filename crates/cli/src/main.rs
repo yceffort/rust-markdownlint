@@ -257,6 +257,14 @@ fn run(args: &[String]) -> Result<i32> {
         .gitignore
         .clone()
         .unwrap_or(GitIgnore::Enabled(false));
+    // markdownlint-cli 에서 옮겨 온 저장소가 남긴 파일. cli2 처럼 읽지는 않고 알리기만 한다.
+    let reads_markdownlintignore =
+        matches!(&gitignore, GitIgnore::Pattern(p) if p.contains(".markdownlintignore"));
+    if !reads_markdownlintignore && base.join(".markdownlintignore").is_file() {
+        warn(
+            ".markdownlintignore is not read (markdownlint-cli2 compatible); set \"gitignore\": \".markdownlintignore\" or use \"ignores\"",
+        );
+    }
     let mut files = enumerate_files(&base, &glob_patterns, &gitignore);
     files.extend(literal);
     // glob 이 같은 경로를 찾았어도 stdin 내용을 한 번만 lint 한다
