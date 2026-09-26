@@ -143,9 +143,9 @@ jobs:
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org
+      # trusted publishing(OIDC) 은 npm 11.5.1 이상이 필요하다
+      - run: npm install -g npm@latest
       - name: npm publish (플랫폼 5개, 그 다음 메인)
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           set -e
           # 리허설은 --dry-run. provenance 는 OIDC 교환이 필요해 리허설에서 뺀다.
