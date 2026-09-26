@@ -11,21 +11,22 @@ on:
       version:
         description: "리허설할 버전. crates/cli/Cargo.toml 과 같아야 한다 (예: v0.1.1)"
         required: true
-  # tag.yml 이 버전 범프를 감지해 태그를 민 뒤 여기를 직접 부른다.
-  # GITHUB_TOKEN 으로 push 한 태그는 위의 push 트리거를 발화시키지 않기 때문에 호출로 잇는다.
-  workflow_call:
-    inputs:
-      version:
-        required: true
-        type: string
+  # tag.yml 이 버전 범프를 감지해 태그를 민 뒤 여기를 발화시킨다. GITHUB_TOKEN 으로 push 한 태그는
+  # 위의 push 트리거를 발화시키지 않지만 repository_dispatch 는 발화시킨다. workflow_call 로 부르지
+  # 않는 이유는 npm trusted publishing 이 호출한 쪽 워크플로 이름을 검증하기 때문이다
+  # (npmjs.com 에는 release.yml 로 등록돼 있다).
+  repository_dispatch:
+    types: [release]
 
 permissions:
   contents: write
 
 env:
   CARGO_TERM_COLOR: always
-  # 태그 push 면 태그 이름, 수동 실행이면 입력값
-  VERSION: ${{ inputs.version || github.ref_name }}
+  # 태그 push 면 태그 이름, 수동 실행이면 입력값, tag.yml 이 발화시켰으면 payload
+  VERSION: ${{ inputs.version || github.event.client_payload.version || github.ref_name }}
+  # repository_dispatch 는 main 에서 실행되므로 태그를 체크아웃한다. 나머지는 트리거한 ref 그대로.
+  RELEASE_REF: ${{ github.event.client_payload.version || github.ref }}
   # 수동 실행이면 리허설
   REHEARSAL: ${{ github.event_name == 'workflow_dispatch' }}
 
@@ -44,6 +45,8 @@ jobs:
           - { os: windows-latest, target: x86_64-pc-windows-msvc }
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.RELEASE_REF }}
       - name: 버전이 13곳에서 일치하는지
         shell: bash
         run: bash scripts/check-version.sh "$VERSION"
@@ -99,15 +102,16 @@ jobs:
         run: gh release create "$VERSION" --repo "$GITHUB_REPOSITORY" --generate-notes dist/*
       - if: env.REHEARSAL != 'true'
         uses: actions/checkout@v5
+        with:
+          ref: ${{ env.RELEASE_REF }}
       - name: 액션 태그 이동 (v0, v0.1 → 이 릴리즈)
         if: env.REHEARSAL != 'true'
         run: |
           major="${VERSION%%.*}"
           minor="${VERSION%.*}"
-          # $VERSION 태그 이름 대신 SHA 를 쓴다. workflow_call 로 불릴 때는 체크아웃이 main 이라
-          # 태그가 로컬에 없다. 두 경로 모두 GITHUB_SHA 가 릴리즈 커밋이다.
-          git tag -f "$major" "$GITHUB_SHA"
-          git tag -f "$minor" "$GITHUB_SHA"
+          # repository_dispatch 경로에서는 GITHUB_SHA 가 main 의 최신 커밋이라 체크아웃한 태그 커밋을 쓴다
+          git tag -f "$major" HEAD
+          git tag -f "$minor" HEAD
           git push -f origin "$major" "$minor"
 
   publish-npm:
@@ -118,6 +122,8 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.RELEASE_REF }}
       - uses: actions/download-artifact@v7
         with:
           path: dist

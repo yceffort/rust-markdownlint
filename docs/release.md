@@ -7,7 +7,7 @@
 ```text
 버전 범프 PR 머지
   → tag.yml 이 Cargo.toml 버전에 해당하는 태그가 없는 걸 보고 태그를 만들어 push
-  → release.yml 을 호출
+  → repository_dispatch 로 release.yml 을 발화
   → 5개 타깃 빌드, GitHub Release 생성, v0/v0.1 태그 이동, npm 6개 publish
 ```
 
@@ -15,7 +15,8 @@
 
 | 파일 | 트리거 | 하는 일 |
 | --- | --- | --- |
-| `tag.yml` | main 에 push | Cargo.toml 버전의 태그가 없으면 만들어 밀고 `release.yml` 호출. 있으면 아무것도 안 함 |
+| `tag.yml` | main 에 push | Cargo.toml 버전의 태그가 없으면 만들어 밀고 `release.yml` 발화. 있으면 아무것도 안 함 |
+| `release.yml` | `repository_dispatch` (`release`) | 진짜 릴리즈. `tag.yml` 이 보낸다 |
 | `release.yml` | `v*.*.*` 태그 push | 진짜 릴리즈 (수동 탈출구) |
 | `release.yml` | 수동 실행 | **항상 리허설.** 빌드와 패키징까지만 하고 publish 는 `--dry-run` |
 
@@ -53,18 +54,15 @@ scripts/check-version.sh v0.1.2   # 주어진 버전 기준
 
 ### 2. GITHUB_TOKEN 으로 push 한 태그는 워크플로를 트리거하지 않는다
 
-GitHub 의 무한 루프 방지 규칙이다. 그래서 `tag.yml` 은 태그를 민 뒤 `release.yml` 의 push 트리거를 기다리지 않고 `workflow_call` 로 직접 부른다. 이 방식은 PAT 이 필요 없다.
+GitHub 의 무한 루프 방지 규칙이다. `repository_dispatch` 와 `workflow_dispatch` 는 예외라서, `tag.yml` 은 태그를 민 뒤 `repository_dispatch` (`event_type=release`, `client_payload.version`) 로 `release.yml` 을 발화시킨다. 이 방식은 PAT 이 필요 없다.
 
-`workflow_call` 경로에서는 체크아웃이 태그가 아니라 main 이므로 태그 이름이 로컬에 없다. 부동 태그 이동이 `$VERSION` 대신 `$GITHUB_SHA` 를 쓰는 이유다.
+`workflow_call` 은 쓰면 안 된다. npm trusted publishing 은 호출한 쪽 워크플로 이름을 검증하는데 npmjs.com 에는 `release.yml` 로 등록돼 있어서, `tag.yml` 이 부르면 publish 가 `E404` 로 실패한다.
 
-### 3. npm 토큰은 2FA 를 우회하는 종류여야 한다
+`repository_dispatch` 는 main 에서 실행되고 `GITHUB_SHA` 도 main 의 최신 커밋이다. 그래서 체크아웃마다 `RELEASE_REF` (태그) 를 지정하고, 부동 태그 이동은 체크아웃한 `HEAD` 를 쓴다.
 
-Classic **Publish** 토큰을 쓰면 `npm error code EOTP` 로 실패한다. CI 에서는 OTP 를 입력할 수 없다. 다음 둘 중 하나여야 한다.
+### 3. npm 은 토큰이 아니라 trusted publishing (OIDC) 으로 인증한다
 
-- **Granular Access Token**: `@yceffort` 스코프에 Read and write
-- **Classic Automation Token**: Publish 가 아니라 Automation
-
-`gh secret set NPM_TOKEN` 으로 등록한다.
+npm 6개 패키지 모두 npmjs.com 에 trusted publisher (user `yceffort`, repository `rust-markdownlint`, workflow `release.yml`) 가 등록돼 있어야 한다. npm CLI 11.5.1 이상이 필요해서 `publish-npm` 잡이 `npm install -g npm@latest` 를 먼저 돌린다. `NPM_TOKEN` secret 은 쓰지 않는다. v0.1.4 는 토큰 인증이 `E404` 로 실패해 npm 에 나가지 못했다.
 
 ### 4. 리허설은 인증 경로를 검증하지 못한다
 
@@ -72,7 +70,7 @@ Classic **Publish** 토큰을 쓰면 `npm error code EOTP` 로 실패한다. CI 
 
 ## 실패했을 때
 
-`publish-npm` 만 실패한 경우 태그와 릴리즈는 이미 만들어져 있다. 원인을 고친 뒤 실패한 잡만 다시 돌리면 된다.
+`publish-npm` 만 실패한 경우 태그와 릴리즈는 이미 만들어져 있다. 원인을 고친 뒤 실패한 잡만 다시 돌리면 된다. 재실행은 처음 실행한 커밋의 워크플로 파일을 그대로 쓰므로, 워크플로를 고쳐야 하는 원인이면 버전을 올려 새로 릴리즈한다.
 
 ```bash
 gh run rerun <run-id> --failed

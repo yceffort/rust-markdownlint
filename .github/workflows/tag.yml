@@ -4,8 +4,9 @@ name: Tag on version bump
 # 릴리즈를 돌린다. 즉 "버전 범프 PR 을 머지하는 것 = 릴리즈" 다.
 #
 # 태그를 밀고 release.yml 의 push 트리거가 받기를 기대하면 안 된다. GITHUB_TOKEN 으로 만든
-# 이벤트는 다른 워크플로를 발화시키지 않는다 (무한 루프 방지). 그래서 release.yml 을
-# workflow_call 로 직접 부른다. 이 방식은 PAT 이 필요 없다.
+# 이벤트는 다른 워크플로를 발화시키지 않는다 (무한 루프 방지). repository_dispatch 는 예외라서
+# 그걸로 release.yml 을 발화시킨다. 이 방식은 PAT 이 필요 없다. workflow_call 은 쓰지 않는다
+# (npm trusted publishing 이 호출한 쪽 워크플로 이름을 검증하는데 npmjs.com 에는 release.yml 로 등록돼 있다).
 on:
   push:
     branches: [main]
@@ -43,10 +44,11 @@ jobs:
   release:
     needs: tag
     if: needs.tag.outputs.new == 'true'
+    runs-on: ubuntu-latest
     permissions:
       contents: write
-      id-token: write
-    uses: ./.github/workflows/release.yml
-    with:
-      version: ${{ needs.tag.outputs.version }}
-    secrets: inherit
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.tag.outputs.version }}
+        run: gh api "repos/$GITHUB_REPOSITORY/dispatches" -f event_type=release -f "client_payload[version]=$VERSION"
