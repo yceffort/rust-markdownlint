@@ -109,20 +109,55 @@ language-servers = ["rust-markdownlint"]
 
 ## Zed
 
-Zed 는 settings.json 만으로 새 언어 서버를 등록하지 못한다. markdownlint 계열 언어 서버를 제공하는 확장을 설치한 뒤, 그 서버가 쓰는 바이너리를 이 서버로 바꾸는 형태가 된다. 확장이 등록한 서버 이름을 키로 쓴다.
+Zed 는 settings.json 만으로 새 언어 서버를 등록하지 못한다. [Markdownlint 확장](https://zed.dev/extensions/markdownlint)(vitallium/zed-markdownlint) 을 설치한 뒤, 그 확장이 등록한 `markdownlint` 서버의 바이너리를 이 서버로 바꾼다. 저장할 때 파일 전체를 고치려면 Markdown 의 format 단계에 `source.fixAll` code action 을 건다.
 
 ```json
 {
   "lsp": {
     "markdownlint": {
       "binary": {
-        "path": "/usr/local/bin/rust-markdownlint",
+        "path": "/Users/me/.cargo/bin/rust-markdownlint",
         "arguments": ["server"]
       }
+    }
+  },
+  "languages": {
+    "Markdown": {
+      "format_on_save": "on",
+      "code_actions_on_format": { "source.fixAll": true },
+      "formatter": []
     }
   }
 }
 ```
+
+- `arguments` 를 빼면 확장이 `--stdio` 를 붙여 실행하므로 서버가 뜨지 않는다.
+- 위 `formatter: []` 조합으로 확인했다. prettier 같은 다른 formatter 와 함께 쓰는 조합은 확인하지 않았다.
+- 확장 README 의 `lsp.markdownlint.settings` (규칙 on/off) 는 이 서버가 읽지 않는다. 규칙은 CLI 와 같은 설정 파일에서 읽는다.
+- 서버가 떴는지는 명령 팔레트의 `dev: open language server logs` 에서 `serverInfo.name` 이 `rust-markdownlint` 인지로 본다.
+
+Zed Preview 1.22.0 에서 진단, quick fix, 저장 시 fixAll 을 확인했다.
+
+## VS Code
+
+VS Code 의 [markdownlint 확장](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) 은 LSP 가 아니라 markdownlint 라이브러리를 직접 불러 쓰므로 바이너리를 바꿀 수 없다. 대신 임의의 LSP 서버를 붙이는 [Generic LSP Client (v2)](https://marketplace.visualstudio.com/items?itemName=zsol.vscode-glspc) 확장으로 이 서버를 띄운다. 이 확장은 서버를 하나만 등록할 수 있다.
+
+```json
+{
+  "glspc.server.command": "/Users/me/.cargo/bin/rust-markdownlint",
+  "glspc.server.commandArguments": ["server"],
+  "glspc.server.languageId": ["markdown"],
+  "[markdown]": {
+    "editor.codeActionsOnSave": { "source.fixAll": "explicit" }
+  }
+}
+```
+
+- `"explicit"` 은 직접 저장할 때만 고친다. `files.autoSave` 로 저장될 때도 고치려면 `"always"` 로 둔다.
+- markdownlint 확장이 함께 켜져 있으면 같은 진단이 두 번 뜨고 두 확장이 같은 줄을 고친다. 이 서버를 쓰는 워크스페이스에서는 그 확장을 끈다.
+- 서버 stderr 는 출력 패널의 `Generic LSP Client` 채널에 찍힌다.
+
+VS Code 설정은 아직 실제 편집기에서 확인하지 않았다.
 
 ## 수동 확인 절차
 

@@ -168,7 +168,7 @@ rust-markdownlint completions zsh > ~/.zsh/completions/_rust-markdownlint   # sh
 rust-markdownlint server   # JSON-RPC over stdin/stdout, started by the editor
 ```
 
-[docs/lsp.md](docs/lsp.md) has Neovim (`vim.lsp.config` and nvim-lspconfig), Helix, and Zed configuration, the supported requests, and a manual verification checklist.
+[docs/lsp.md](docs/lsp.md) has Neovim (`vim.lsp.config` and nvim-lspconfig), Helix, Zed, and VS Code configuration (including fix all on save), the supported requests, and a manual verification checklist.
 
 ### Supported options
 
